@@ -1,0 +1,21 @@
+table ChapterData {
+    chapterId: string;
+    chapterName: string;
+    chapterName2: string;
+    chapterIndex: int;
+    preposedChapterId: string;
+    startZoneId: string;
+    endZoneId: string;
+    chapterEndStageId: string;
+}
+
+table Dict_ChapterData {
+    key: string;
+    value: ChapterData;
+}
+
+table Root_ChapterData {
+    values: [Dict_ChapterData];
+}
+
+root_type Root_ChapterData;
