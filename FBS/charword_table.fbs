@@ -1,0 +1,86 @@
+enum CharWordVoiceType : int {
+	ONLY_TEXT = 0,
+	HAVE_CV = 1,
+	ENUM = 2,
+}
+
+enum DataUnlockType : int {
+	DIRECT = 0,
+	AWAKE = 1,
+	FAVOR = 2,
+	STAGE = 3,
+	ITEM = 4,
+	NEVER = 5,
+	PATCH = 6,
+	NONE = 7,
+}
+
+table CharWordUnlockParam {
+    valueStr: string;
+    valueInt: int;
+}
+
+enum CharWordShowType : int {
+    HOME_SHOW = 0,
+	HOME_PLACE = 1,
+	HOME_WAIT = 2,
+	GACHA = 3,
+	EVOLVE_ONE = 4,
+	EVOLVE_TWO = 5,
+	FOUR_STAR = 6,
+	THREE_STAR = 7,
+	TWO_STAR = 8,
+	LOSE = 9,
+	LEVEL_UP = 10,
+	SQUAD = 11,
+	SQUAD_FIRST = 12,
+	BATTLE_START = 13,
+	BATTLE_FACE_ENEMY = 14,
+	BATTLE_SELECT = 15,
+	BATTLE_PLACE = 16,
+	BATTLE_SKILL_1 = 17,
+	BATTLE_SKILL_2 = 18,
+	BATTLE_SKILL_3 = 19,
+	BATTLE_SKILL_4 = 20,
+	BUILDING_PLACE = 21,
+	BUILDING_DRAGGING = 22,
+	BUILDING_FAVOR_BUBBLE = 23,
+	BUILDING_TOUCHING = 24,
+	LOADING_PANEL = 25,
+	BIRTHDAY = 26,
+	NEW_YEAR = 27,
+	VALENT_DAY = 28,
+	DRAGON_BOAT_FESTIVAL = 29,
+	HALLOWEEN_DAY = 30,
+	CHRISMATS_DAY = 31,
+	GREETING = 32,
+	UNUSED = 33,
+	E_ALL = 34,
+}
+
+table CharWordData {
+    charWordId: string;
+    wordKey: string;
+    charId: string;
+    voiceId: string;
+    voiceText: string;
+    voiceTitle: string;
+    voiceIndex: int;
+    voiceType: CharWordVoiceType;
+    unlockType: DataUnlockType;
+    unlockParam: [CharWordUnlockParam];
+    lockDescription: string;
+    placeType: CharWordShowType;
+    voiceAsset: string;
+}
+
+table Dict_CharWordData {
+    key: string;
+    value: CharWordData;
+}
+
+table Root_CharWordData {
+    charWords: [Dict_CharWordData];
+}
+
+root_type Root_CharWordData;
