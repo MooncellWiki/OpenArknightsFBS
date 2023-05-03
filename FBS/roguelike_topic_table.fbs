@@ -1353,8 +1353,8 @@ table Torappu__RL02CustomizeData {
     endingText: Torappu__RL02EndingText;
 }
 table Torappu__RoguelikeTopicCustomizeData {
-    rl01: Torappu__RL01CustomizeData;
-    rl02: Torappu__RL02CustomizeData;
+    rogue_1: Torappu__RL01CustomizeData;
+    rogue_2: Torappu__RL02CustomizeData;
 }
 table Torappu__RoguelikeTopicTable {
     topics: [dict__string__Torappu__RoguelikeTopicBasicData];
