@@ -1,338 +1,338 @@
 enum Torappu__BuildableType : int {
-	NONE = 0,
-	MELEE = 1,
-	RANGED = 2,
-	ALL = 3,
+    NONE = 0,
+    MELEE = 1,
+    RANGED = 2,
+    ALL = 3,
 }
 enum Torappu__RarityRank : int {
-	TIER_1 = 0,
-	TIER_2 = 1,
-	TIER_3 = 2,
-	TIER_4 = 3,
-	TIER_5 = 4,
-	TIER_6 = 5,
-	E_NUM = 6,
+    TIER_1 = 0,
+    TIER_2 = 1,
+    TIER_3 = 2,
+    TIER_4 = 3,
+    TIER_5 = 4,
+    TIER_6 = 5,
+    E_NUM = 6,
 }
 enum Torappu__ProfessionCategory : int {
-	NONE = 0,
-	WARRIOR = 1,
-	SNIPER = 2,
-	TANK = 4,
-	MEDIC = 8,
-	SUPPORT = 16,
-	CASTER = 32,
-	SPECIAL = 64,
-	TOKEN = 128,
-	TRAP = 256,
-	PIONEER = 512,
+    NONE = 0,
+    WARRIOR = 1,
+    SNIPER = 2,
+    TANK = 4,
+    MEDIC = 8,
+    SUPPORT = 16,
+    CASTER = 32,
+    SPECIAL = 64,
+    TOKEN = 128,
+    TRAP = 256,
+    PIONEER = 512,
 }
 enum Torappu__EvolvePhase : int {
-	PHASE_0 = 0,
-	PHASE_1 = 1,
-	PHASE_2 = 2,
-	PHASE_3 = 3,
-	E_NUM = 4,
+    PHASE_0 = 0,
+    PHASE_1 = 1,
+    PHASE_2 = 2,
+    PHASE_3 = 3,
+    E_NUM = 4,
 }
 table Torappu__UnlockCondition {
-	phase: Torappu__EvolvePhase;
-	level: int;
+    phase: Torappu__EvolvePhase;
+    level: int;
 }
 table Torappu__DataPair {
-	key: string;
-	value: float;
-	valueStr: string;
+    key: string;
+    value: float;
+    valueStr: string;
 }
 table Torappu__TraitData {
-	unlockCondition: Torappu__UnlockCondition;
-	requiredPotentialRank: int;
-	blackboard: [Torappu__DataPair];
+    unlockCondition: Torappu__UnlockCondition;
+    requiredPotentialRank: int;
+    blackboard: [Torappu__DataPair];
 }
 table Torappu__TraitDataBundle {
-	candidates: [Torappu__TraitData];
+    candidates: [Torappu__TraitData];
 }
 table Torappu__AttributesData {
-	maxHp: int;
-	atk: int;
-	def: int;
-	magicResistance: float;
-	cost: int;
-	blockCnt: int;
-	moveSpeed: float;
-	attackSpeed: float;
-	baseAttackTime: float;
-	respawnTime: int;
-	hpRecoveryPerSec: float;
-	spRecoveryPerSec: float;
-	maxDeployCount: int;
-	maxDeckStackCnt: int;
-	tauntLevel: int;
-	massLevel: int;
-	baseForceLevel: int;
-	stunImmune: bool;
-	silenceImmune: bool;
-	sleepImmune: bool;
-	frozenImmune: bool;
-	levitateImmune: bool;
+    maxHp: int;
+    atk: int;
+    def: int;
+    magicResistance: float;
+    cost: int;
+    blockCnt: int;
+    moveSpeed: float;
+    attackSpeed: float;
+    baseAttackTime: float;
+    respawnTime: int;
+    hpRecoveryPerSec: float;
+    spRecoveryPerSec: float;
+    maxDeployCount: int;
+    maxDeckStackCnt: int;
+    tauntLevel: int;
+    massLevel: int;
+    baseForceLevel: int;
+    stunImmune: bool;
+    silenceImmune: bool;
+    sleepImmune: bool;
+    frozenImmune: bool;
+    levitateImmune: bool;
 }
 table Torappu__KeyFrame {
-	level: int;
-	data: Torappu__AttributesData;
+    level: int;
+    data: Torappu__AttributesData;
 }
 table Torappu__PhaseData {
-	characterPrefabKey: string;
-	rangeId: string;
-	maxLevel: int;
-	attributesKeyFrames: [Torappu__KeyFrame];
-	evolveCost: [Torappu__ItemBundle];
+    characterPrefabKey: string;
+    rangeId: string;
+    maxLevel: int;
+    attributesKeyFrames: [Torappu__KeyFrame];
+    evolveCost: [Torappu__ItemBundle];
 }
 enum Torappu__ItemType : int {
-	NONE = 0,
-	CHAR = 1,
-	CARD_EXP = 2,
-	MATERIAL = 3,
-	GOLD = 4,
-	EXP_PLAYER = 5,
-	TKT_TRY = 6,
-	TKT_RECRUIT = 7,
-	TKT_INST_FIN = 8,
-	TKT_GACHA = 9,
-	ACTIVITY_COIN = 10,
-	DIAMOND = 11,
-	DIAMOND_SHD = 12,
-	HGG_SHD = 13,
-	LGG_SHD = 14,
-	FURN = 15,
-	AP_GAMEPLAY = 16,
-	AP_BASE = 17,
-	SOCIAL_PT = 18,
-	CHAR_SKIN = 19,
-	TKT_GACHA_10 = 20,
-	TKT_GACHA_PRSV = 21,
-	AP_ITEM = 22,
-	AP_SUPPLY = 23,
-	RENAMING_CARD = 24,
-	RENAMING_CARD_2 = 25,
-	ET_STAGE = 26,
-	ACTIVITY_ITEM = 27,
-	VOUCHER_PICK = 28,
-	VOUCHER_CGACHA = 29,
-	VOUCHER_MGACHA = 30,
-	CRS_SHOP_COIN = 31,
-	CRS_RUNE_COIN = 32,
-	LMTGS_COIN = 33,
-	EPGS_COIN = 34,
-	LIMITED_TKT_GACHA_10 = 35,
-	LIMITED_FREE_GACHA = 36,
-	REP_COIN = 37,
-	ROGUELIKE = 38,
-	LINKAGE_TKT_GACHA_10 = 39,
-	VOUCHER_ELITE_II_5 = 40,
-	VOUCHER_ELITE_II_6 = 41,
-	VOUCHER_SKIN = 42,
-	RETRO_COIN = 43,
-	PLAYER_AVATAR = 44,
-	UNI_COLLECTION = 45,
-	VOUCHER_FULL_POTENTIAL = 46,
-	RL_COIN = 47,
-	RETURN_CREDIT = 48,
-	MEDAL = 49,
-	CHARM = 50,
-	HOME_BACKGROUND = 51,
-	EXTERMINATION_AGENT = 52,
-	OPTIONAL_VOUCHER_PICK = 53,
-	ACT_CART_COMPONENT = 54,
-	VOUCHER_LEVELMAX_6 = 55,
-	VOUCHER_LEVELMAX_5 = 56,
-	ACTIVITY_POTENTIAL = 57,
-	ITEM_PACK = 58,
-	SANDBOX = 59,
-	FAVOR_ADD_ITEM = 60,
-	CLASSIC_SHD = 61,
-	CLASSIC_TKT_GACHA = 62,
-	CLASSIC_TKT_GACHA_10 = 63,
-	LIMITED_BUFF = 64,
-	CLASSIC_FES_PICK_TIER_5 = 65,
-	CLASSIC_FES_PICK_TIER_6 = 66,
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_5 = 40,
+    VOUCHER_ELITE_II_6 = 41,
+    VOUCHER_SKIN = 42,
+    RETRO_COIN = 43,
+    PLAYER_AVATAR = 44,
+    UNI_COLLECTION = 45,
+    VOUCHER_FULL_POTENTIAL = 46,
+    RL_COIN = 47,
+    RETURN_CREDIT = 48,
+    MEDAL = 49,
+    CHARM = 50,
+    HOME_BACKGROUND = 51,
+    EXTERMINATION_AGENT = 52,
+    OPTIONAL_VOUCHER_PICK = 53,
+    ACT_CART_COMPONENT = 54,
+    VOUCHER_LEVELMAX_6 = 55,
+    VOUCHER_LEVELMAX_5 = 56,
+    ACTIVITY_POTENTIAL = 57,
+    ITEM_PACK = 58,
+    SANDBOX = 59,
+    FAVOR_ADD_ITEM = 60,
+    CLASSIC_SHD = 61,
+    CLASSIC_TKT_GACHA = 62,
+    CLASSIC_TKT_GACHA_10 = 63,
+    LIMITED_BUFF = 64,
+    CLASSIC_FES_PICK_TIER_5 = 65,
+    CLASSIC_FES_PICK_TIER_6 = 66,
 }
 table Torappu__ItemBundle {
-	id: string;
-	count: int;
-	type: Torappu__ItemType;
+    id: string;
+    count: int;
+    type: Torappu__ItemType;
 }
 table Torappu__SpecializeLevelData {
-	unlockCond: Torappu__UnlockCondition;
-	lvlUpTime: int;
-	levelUpCost: [Torappu__ItemBundle];
+    unlockCond: Torappu__UnlockCondition;
+    lvlUpTime: int;
+    levelUpCost: [Torappu__ItemBundle];
 }
 table Torappu__MainSkill {
-	skillId: string;
-	overridePrefabKey: string;
-	overrideTokenKey: string;
-	levelUpCostCond: [Torappu__SpecializeLevelData];
-	unlockCond: Torappu__UnlockCondition;
+    skillId: string;
+    overridePrefabKey: string;
+    overrideTokenKey: string;
+    levelUpCostCond: [Torappu__SpecializeLevelData];
+    unlockCond: Torappu__UnlockCondition;
 }
 table Torappu__TalentData {
-	unlockCondition: Torappu__UnlockCondition;
-	requiredPotentialRank: int;
-	prefabKey: string;
-	name: string;
-	description: string;
-	rangeId: string;
-	blackboard: [Torappu__DataPair];
+    unlockCondition: Torappu__UnlockCondition;
+    requiredPotentialRank: int;
+    prefabKey: string;
+    name: string;
+    description: string;
+    rangeId: string;
+    blackboard: [Torappu__DataPair];
 }
 table Torappu__TalentDataBundle {
-	candidates: [Torappu__TalentData];
+    candidates: [Torappu__TalentData];
 }
 enum Torappu__TypeEnum : int {
-	BUFF = 0,
-	CUSTOM = 1,
+    BUFF = 0,
+    CUSTOM = 1,
 }
 enum Torappu__AbnormalFlag : int {
-	STUNNED = 0,
-	SP_RECOVER_STOPPED = 1,
-	TARGET_FREE = 2,
-	BLOCK_FREE = 3,
-	HIDDEN = 4,
-	INVINCIBLE = 5,
-	UNDEADABLE = 6,
-	HEAL_FREE = 7,
-	UNBALANCE_IMMUNE = 8,
-	INVISIBLE = 9,
-	UNUSED_PLACEHOLDER_1 = 10,
-	DISARMED = 11,
-	SILENCED = 12,
-	UNMOVABLE = 13,
-	UNUSED_PLACEHOLDER_2 = 14,
-	ALLY_TARGET_FREE = 15,
-	FROZEN = 16,
-	CAMOUFLAGE = 17,
-	FORCE_DISARMED = 18,
-	STUNNED_NO_AMPLIFY_DAMAGE = 19,
-	DISABLE_COMBAT = 20,
-	ELEMENT_FREE_ALL = 21,
-	UNMOVABLE_PRIVATE = 22,
-	COLD = 23,
-	SKILL_NOT_ACTIVATABLE = 24,
-	LEVITATE = 25,
-	DURANCE = 26,
-	NOT_WITHDRAWABLE = 27,
-	OUT_OF_GROUND = 28,
-	E_NUM = 29,
+    STUNNED = 0,
+    SP_RECOVER_STOPPED = 1,
+    TARGET_FREE = 2,
+    BLOCK_FREE = 3,
+    HIDDEN = 4,
+    INVINCIBLE = 5,
+    UNDEADABLE = 6,
+    HEAL_FREE = 7,
+    UNBALANCE_IMMUNE = 8,
+    INVISIBLE = 9,
+    UNUSED_PLACEHOLDER_1 = 10,
+    DISARMED = 11,
+    SILENCED = 12,
+    UNMOVABLE = 13,
+    UNUSED_PLACEHOLDER_2 = 14,
+    ALLY_TARGET_FREE = 15,
+    FROZEN = 16,
+    CAMOUFLAGE = 17,
+    FORCE_DISARMED = 18,
+    STUNNED_NO_AMPLIFY_DAMAGE = 19,
+    DISABLE_COMBAT = 20,
+    ELEMENT_FREE_ALL = 21,
+    UNMOVABLE_PRIVATE = 22,
+    COLD = 23,
+    SKILL_NOT_ACTIVATABLE = 24,
+    LEVITATE = 25,
+    DURANCE = 26,
+    NOT_WITHDRAWABLE = 27,
+    OUT_OF_GROUND = 28,
+    E_NUM = 29,
 }
 enum Torappu__AbnormalCombo : int {
-	SLEEPING = 0,
-	SHELTERING = 1,
-	E_NUM = 2,
+    SLEEPING = 0,
+    SHELTERING = 1,
+    E_NUM = 2,
 }
 enum Torappu__AttributeType : int {
-	MAX_HP = 0,
-	ATK = 1,
-	DEF = 2,
-	MAGIC_RESISTANCE = 3,
-	COST = 4,
-	BLOCK_CNT = 5,
-	MOVE_SPEED = 6,
-	ATTACK_SPEED = 7,
-	BASE_ATTACK_TIME = 8,
-	RESERVED_0 = 9,
-	RESERVED_1 = 10,
-	RESERVED_2 = 11,
-	RESERVED_3 = 12,
-	HP_RECOVERY_PER_SEC = 13,
-	SP_RECOVERY_PER_SEC = 14,
-	ABILITY_RANGE_FORWARD_EXTEND = 15,
-	MAX_DEPLOY_COUNT = 16,
-	DEF_PENETRATE = 17,
-	MAGIC_RESIST_PENETRATE = 18,
-	HP_RECOVERY_PER_SEC_BY_MAX_HP_RATIO = 19,
-	TAUNT_LEVEL = 20,
-	RESPAWN_TIME = 21,
-	MAX_DECK_STACK_CNT = 22,
-	MASS_LEVEL = 23,
-	BASE_FORCE_LEVEL = 24,
-	DEF_PENETRATE_FIXED = 25,
-	ONE_MINUS_STATUS_RESISTANCE = 26,
-	MAGIC_RESIST_PENETRATE_FIXED = 27,
-	MAX_EP = 28,
-	EP_RECOVERY_PER_SEC = 29,
-	SP_RECOVER_RATIO = 30,
-	E_NUM = 31,
+    MAX_HP = 0,
+    ATK = 1,
+    DEF = 2,
+    MAGIC_RESISTANCE = 3,
+    COST = 4,
+    BLOCK_CNT = 5,
+    MOVE_SPEED = 6,
+    ATTACK_SPEED = 7,
+    BASE_ATTACK_TIME = 8,
+    RESERVED_0 = 9,
+    RESERVED_1 = 10,
+    RESERVED_2 = 11,
+    RESERVED_3 = 12,
+    HP_RECOVERY_PER_SEC = 13,
+    SP_RECOVERY_PER_SEC = 14,
+    ABILITY_RANGE_FORWARD_EXTEND = 15,
+    MAX_DEPLOY_COUNT = 16,
+    DEF_PENETRATE = 17,
+    MAGIC_RESIST_PENETRATE = 18,
+    HP_RECOVERY_PER_SEC_BY_MAX_HP_RATIO = 19,
+    TAUNT_LEVEL = 20,
+    RESPAWN_TIME = 21,
+    MAX_DECK_STACK_CNT = 22,
+    MASS_LEVEL = 23,
+    BASE_FORCE_LEVEL = 24,
+    DEF_PENETRATE_FIXED = 25,
+    ONE_MINUS_STATUS_RESISTANCE = 26,
+    MAGIC_RESIST_PENETRATE_FIXED = 27,
+    MAX_EP = 28,
+    EP_RECOVERY_PER_SEC = 29,
+    SP_RECOVER_RATIO = 30,
+    E_NUM = 31,
 }
 enum Torappu__FormulaItemType : int {
-	ADDITION = 0,
-	MULTIPLIER = 1,
-	FINAL_ADDITION = 2,
-	FINAL_SCALER = 3,
+    ADDITION = 0,
+    MULTIPLIER = 1,
+    FINAL_ADDITION = 2,
+    FINAL_SCALER = 3,
 }
 table Torappu__AttributeModifier {
-	attributeType: Torappu__AttributeType;
-	formulaItem: Torappu__FormulaItemType;
-	value: float;
-	loadFromBlackboard: bool;
-	fetchBaseValueFromSourceEntity: bool;
+    attributeType: Torappu__AttributeType;
+    formulaItem: Torappu__FormulaItemType;
+    value: float;
+    loadFromBlackboard: bool;
+    fetchBaseValueFromSourceEntity: bool;
 }
 table Torappu__AttributeModifierData {
-	abnormalFlags: [Torappu__AbnormalFlag];
-	abnormalImmunes: [Torappu__AbnormalFlag];
-	abnormalAntis: [Torappu__AbnormalFlag];
-	abnormalCombos: [Torappu__AbnormalCombo];
-	abnormalComboImmunes: [Torappu__AbnormalCombo];
-	attributeModifiers: [Torappu__AttributeModifier];
+    abnormalFlags: [Torappu__AbnormalFlag];
+    abnormalImmunes: [Torappu__AbnormalFlag];
+    abnormalAntis: [Torappu__AbnormalFlag];
+    abnormalCombos: [Torappu__AbnormalCombo];
+    abnormalComboImmunes: [Torappu__AbnormalCombo];
+    attributeModifiers: [Torappu__AttributeModifier];
 }
 table Torappu__ExternalBuff {
-	attributes: Torappu__AttributeModifierData;
+    attributes: Torappu__AttributeModifierData;
 }
 table Torappu__PotentialRank {
-	type: Torappu__TypeEnum;
-	description: string;
-	buff: Torappu__ExternalBuff;
-	equivalentCost: [Torappu__ItemBundle];
+    type: Torappu__TypeEnum;
+    description: string;
+    buff: Torappu__ExternalBuff;
+    equivalentCost: [Torappu__ItemBundle];
 }
 table Torappu__SkillLevelCost {
-	unlockCond: Torappu__UnlockCondition;
-	lvlUpCost: [Torappu__ItemBundle];
+    unlockCond: Torappu__UnlockCondition;
+    lvlUpCost: [Torappu__ItemBundle];
 }
 table Torappu__CharacterData {
-	name: string;
-	description: string;
-	canUseGeneralPotentialItem: bool;
-	canUseActivityPotentialItem: bool;
-	potentialItemId: string;
-	activityPotentialItemId: string;
-	classicPotentialItemId: string;
-	nationId: string;
-	groupId: string;
-	teamId: string;
-	displayNumber: string;
-	tokenKey: string;
-	appellation: string;
-	position: Torappu__BuildableType;
-	tagList: [string];
-	itemUsage: string;
-	itemDesc: string;
-	itemObtainApproach: string;
-	isNotObtainable: bool;
-	isSpChar: bool;
-	maxPotentialLevel: int;
-	rarity: Torappu__RarityRank;
-	profession: Torappu__ProfessionCategory;
-	subProfessionId: string;
-	trait: Torappu__TraitDataBundle;
-	phases: [Torappu__PhaseData];
-	skills: [Torappu__MainSkill];
-	talents: [Torappu__TalentDataBundle];
-	potentialRanks: [Torappu__PotentialRank];
-	favorKeyFrames: [Torappu__KeyFrame];
-	allSkillLvlup: [Torappu__SkillLevelCost];
+    name: string;
+    description: string;
+    canUseGeneralPotentialItem: bool;
+    canUseActivityPotentialItem: bool;
+    potentialItemId: string;
+    activityPotentialItemId: string;
+    classicPotentialItemId: string;
+    nationId: string;
+    groupId: string;
+    teamId: string;
+    displayNumber: string;
+    tokenKey: string;
+    appellation: string;
+    position: Torappu__BuildableType;
+    tagList: [string];
+    itemUsage: string;
+    itemDesc: string;
+    itemObtainApproach: string;
+    isNotObtainable: bool;
+    isSpChar: bool;
+    maxPotentialLevel: int;
+    rarity: Torappu__RarityRank;
+    profession: Torappu__ProfessionCategory;
+    subProfessionId: string;
+    trait: Torappu__TraitDataBundle;
+    phases: [Torappu__PhaseData];
+    skills: [Torappu__MainSkill];
+    talents: [Torappu__TalentDataBundle];
+    potentialRanks: [Torappu__PotentialRank];
+    favorKeyFrames: [Torappu__KeyFrame];
+    allSkillLvlup: [Torappu__SkillLevelCost];
 }
 
 table KV_Torappu__CharacterData {
-	key: string;
-	value: Torappu__CharacterData;
+    key: string;
+    value: Torappu__CharacterData;
 }
 
 table character_table {
-	values: [KV_Torappu__CharacterData];
+    values: [KV_Torappu__CharacterData];
 }
 
 root_type character_table;
