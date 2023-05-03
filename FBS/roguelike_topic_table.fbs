@@ -1,0 +1,1367 @@
+table Torappu__HomeEntryDisplayData {
+    topicId: string;
+    displayId: string;
+    startTs: long;
+    endTs: long;
+}
+enum Torappu__RoguelikeModuleType : int {
+    NONE = 0,
+    SANCHECK = 1,
+    DICE = 2,
+}
+enum Torappu__RoguelikeMonthChatTrigType : int {
+    NONE = 0,
+    TRANSITING = 1,
+    DUNGEON = 2,
+}
+table Torappu__RoguelikeTopicConfig {
+    loadCharCardPlugin: bool;
+    webBusType: string;
+    monthChatTrigType: Torappu__RoguelikeMonthChatTrigType;
+}
+table Torappu__RoguelikeTopicBasicData {
+    id: string;
+    name: string;
+    startTime: long;
+    disappearTimeOnMainScreen: long;
+    sort: int;
+    showMedalId: string;
+    medalGroupId: string;
+    fullStoredTime: long;
+    lineText: string;
+    homeEntryDisplayData: [Torappu__HomeEntryDisplayData];
+    moduleTypes: [Torappu__RoguelikeModuleType];
+    config: Torappu__RoguelikeTopicConfig;
+}
+table dict__string__Torappu__RoguelikeTopicBasicData {
+    key: string;
+    value: Torappu__RoguelikeTopicBasicData;
+}
+enum Torappu__RoguelikeCharState : int {
+    NORMAL = 0,
+    UPGRADE = 1,
+    UPGRADE_BUFF = 2,
+    UPGRADE_BONUS = 3,
+    FREE = 4,
+    ASSIST = 5,
+    THIRD = 6,
+    MONTHLY = 7,
+    THIRD_LOW = 8,
+}
+table Torappu__PredefinedChar {
+    charId: string;
+    canBeFree: bool;
+    uniEquipId: string;
+    recruitType: Torappu__RoguelikeCharState;
+}
+table dict__string__Torappu__PredefinedChar {
+    key: string;
+    value: Torappu__PredefinedChar;
+}
+table Torappu__RoguelikeTopicConst {
+    milestoneTokenRatio: int;
+    outerBuffTokenRatio: float;
+    relicTokenRatio: int;
+    rogueSystemUnlockStage: string;
+    ordiModeReOpenCoolDown: int;
+    monthModeReOpenCoolDown: int;
+    monthlyTaskUncompletedTime: int;
+    monthlyTaskManualRefreshLimit: int;
+    monthlyTeamUncompletedTime: int;
+    bpPurchaseSystemUnlockTime: long;
+    predefinedChars: [dict__string__Torappu__PredefinedChar];
+}
+table Torappu__RoguelikeTopicUpdate {
+    updateId: string;
+    topicUpdateTime: long;
+    topicEndTime: long;
+}
+table Torappu__RoguelikeTopicEnroll {
+    enrollId: string;
+    enrollTime: long;
+}
+table dict__string__Torappu__RoguelikeTopicEnroll {
+    key: string;
+    value: Torappu__RoguelikeTopicEnroll;
+}
+enum Torappu__ItemType : int {
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_5 = 40,
+    VOUCHER_ELITE_II_6 = 41,
+    VOUCHER_SKIN = 42,
+    RETRO_COIN = 43,
+    PLAYER_AVATAR = 44,
+    UNI_COLLECTION = 45,
+    VOUCHER_FULL_POTENTIAL = 46,
+    RL_COIN = 47,
+    RETURN_CREDIT = 48,
+    MEDAL = 49,
+    CHARM = 50,
+    HOME_BACKGROUND = 51,
+    EXTERMINATION_AGENT = 52,
+    OPTIONAL_VOUCHER_PICK = 53,
+    ACT_CART_COMPONENT = 54,
+    VOUCHER_LEVELMAX_6 = 55,
+    VOUCHER_LEVELMAX_5 = 56,
+    ACTIVITY_POTENTIAL = 57,
+    ITEM_PACK = 58,
+    SANDBOX = 59,
+    FAVOR_ADD_ITEM = 60,
+    CLASSIC_SHD = 61,
+    CLASSIC_TKT_GACHA = 62,
+    CLASSIC_TKT_GACHA_10 = 63,
+    LIMITED_BUFF = 64,
+    CLASSIC_FES_PICK_TIER_5 = 65,
+    CLASSIC_FES_PICK_TIER_6 = 66,
+}
+table Torappu__RoguelikeTopicBP {
+    id: string;
+    level: int;
+    tokenNum: int;
+    nextTokenNum: int;
+    itemID: string;
+    itemType: Torappu__ItemType;
+    itemCount: int;
+    isGoodPrize: bool;
+    isGrandPrize: bool;
+}
+table Torappu__RoguelikeTopicMilestoneUpdateData {
+    updateTime: long;
+    endTime: long;
+    maxBpLevel: int;
+    maxBpCount: int;
+    maxDisplayBpCount: int;
+}
+table Torappu__RoguelikeTopicBPGrandPrize {
+    grandPrizeDisplayId: string;
+    sortId: int;
+    displayUnlockYear: int;
+    displayUnlockMonth: int;
+    acquireTitle: string;
+    purchaseTitle: string;
+    displayName: string;
+    displayDiscription: string;
+    bpLevelId: string;
+    accordingCharId: string;
+    accordingSkinId: string;
+    detailAnnounceTime: string;
+    picIdAftrerUnlock: string;
+}
+enum Torappu__RoguelikeGameMonthTaskClass : int {
+    NONE = 0,
+    C = 1,
+    B = 2,
+    A = 3,
+}
+table Torappu__RoguelikeTopicMonthMission {
+    id: string;
+    taskName: string;
+    taskClass: Torappu__RoguelikeGameMonthTaskClass;
+    innerClassWeight: int;
+    template: string;
+    paramList: [string];
+    desc: string;
+    tokenRewardNum: int;
+}
+table Torappu__ItemBundle {
+    id: string;
+    count: int;
+    type: Torappu__ItemType;
+}
+table Torappu__RoguelikeTopicMonthSquad {
+    id: string;
+    teamName: string;
+    teamDes: string;
+    teamColor: string;
+    teamMonth: string;
+    teamYear: string;
+    teamChars: [string];
+    zoneId: string;
+    chatId: string;
+    tokenRewardNum: int;
+    items: [Torappu__ItemBundle];
+    startTime: long;
+    endTime: long;
+}
+table dict__string__Torappu__RoguelikeTopicMonthSquad {
+    key: string;
+    value: Torappu__RoguelikeTopicMonthSquad;
+}
+table Torappu__RoguelikeTopicChallenge {
+    challengeId: string;
+    sortId: int;
+    challengeName: string;
+    challengeGroup: int;
+    challengeGroupSortId: int;
+    challengeGroupName: string;
+    challengeUnlockDesc: string;
+    challengeUnlockToastDesc: string;
+    challengeDes: string;
+    challengeConditionDes: [string];
+    taskDes: string;
+    completionClass: string;
+    completionParams: [string];
+    rewards: [Torappu__ItemBundle];
+}
+table dict__string__Torappu__RoguelikeTopicChallenge {
+    key: string;
+    value: Torappu__RoguelikeTopicChallenge;
+}
+enum Torappu__RoguelikeTopicMode : int {
+    NONE = 0,
+    EASY = 1,
+    NORMAL = 2,
+    HARD = 3,
+    NORML_END = 4,
+    MONTH_TEAM = 5,
+    CHALLENGE = 6,
+}
+table Torappu__RoguelikeTopicDifficulty {
+    modeDifficulty: Torappu__RoguelikeTopicMode;
+    grade: int;
+    name: string;
+    subName: string;
+    enrollId: string;
+    haveInitialRelicIcon: bool;
+    scoreFactor: float;
+    canUnlockItem: bool;
+    doMonthTask: bool;
+    ruleDesc: string;
+    failTitle: string;
+    failImageId: string;
+    failForceDesc: string;
+    sortId: int;
+    color: string;
+    bpValue: int;
+    bossValue: int;
+    addDesc: string;
+    isHard: bool;
+    unlockText: string;
+}
+enum Torappu__RoguelikeTopicBankRewardType : int {
+    NONE = 0,
+    UNLOCK_ITEM = 1,
+    ADD_SHOP_POS = 2,
+    UNLOCK_WITHDRAW = 3,
+    UNLOCK_SHOP_BATTLE = 4,
+}
+table Torappu__RoguelikeTopicBankReward {
+    rewardId: string;
+    unlockGoldCnt: int;
+    rewardType: Torappu__RoguelikeTopicBankRewardType;
+    desc: string;
+}
+table Torappu__ActArchiveRelicItemData {
+    relicId: string;
+    relicSortId: int;
+    relicGroupId: int;
+    orderId: string;
+    isSpRelic: bool;
+    enrollId: string;
+}
+table dict__string__Torappu__ActArchiveRelicItemData {
+    key: string;
+    value: Torappu__ActArchiveRelicItemData;
+}
+table Torappu__ActArchiveRelicData {
+    relic: [dict__string__Torappu__ActArchiveRelicItemData];
+}
+table Torappu__ActArchiveCapsuleItemData {
+    capsuleId: string;
+    capsuleSortId: int;
+    englishName: string;
+    enrollId: string;
+}
+table dict__string__Torappu__ActArchiveCapsuleItemData {
+    key: string;
+    value: Torappu__ActArchiveCapsuleItemData;
+}
+table Torappu__ActArchiveCapsuleData {
+    capsule: [dict__string__Torappu__ActArchiveCapsuleItemData];
+}
+table Torappu__ActArchiveTrapItemData {
+    trapId: string;
+    trapSortId: int;
+    orderId: string;
+    enrollId: string;
+}
+table dict__string__Torappu__ActArchiveTrapItemData {
+    key: string;
+    value: Torappu__ActArchiveTrapItemData;
+}
+table Torappu__ActArchiveTrapData {
+    trap: [dict__string__Torappu__ActArchiveTrapItemData];
+}
+table Torappu__ActArchiveChatItemData {
+    chatFloor: int;
+    chatDesc: string;
+    chatStoryId: string;
+}
+table Torappu__ActArchiveChatGroupData {
+    sortId: int;
+    numChat: int;
+    clientChatItemData: [Torappu__ActArchiveChatItemData];
+}
+table dict__string__Torappu__ActArchiveChatGroupData {
+    key: string;
+    value: Torappu__ActArchiveChatGroupData;
+}
+table Torappu__ActArchiveChatData {
+    chat: [dict__string__Torappu__ActArchiveChatGroupData];
+}
+table Torappu__ActArchiveEndbookItemData {
+    endBookId: string;
+    sortId: int;
+    endbookName: string;
+    unlockDesc: string;
+    textId: string;
+}
+table Torappu__ActArchiveEndbookGroupData {
+    endId: string;
+    endingId: string;
+    sortId: int;
+    title: string;
+    cgId: string;
+    backBlurId: string;
+    cardId: string;
+    hasAvg: bool;
+    avgId: string;
+    clientEndbookItemDatas: [Torappu__ActArchiveEndbookItemData];
+}
+table dict__string__Torappu__ActArchiveEndbookGroupData {
+    key: string;
+    value: Torappu__ActArchiveEndbookGroupData;
+}
+table Torappu__ActArchiveEndbookData {
+    endbook: [dict__string__Torappu__ActArchiveEndbookGroupData];
+}
+table Torappu__ActArchiveBuffItemData {
+    buffId: string;
+    buffGroupIndex: int;
+    innerSortId: int;
+    name: string;
+    iconId: string;
+    usage: string;
+    desc: string;
+    color: string;
+}
+table dict__string__Torappu__ActArchiveBuffItemData {
+    key: string;
+    value: Torappu__ActArchiveBuffItemData;
+}
+table Torappu__ActArchiveBuffData {
+    buff: [dict__string__Torappu__ActArchiveBuffItemData];
+}
+table Torappu__RoguelikeArchiveComponentData {
+    relic: Torappu__ActArchiveRelicData;
+    capsule: Torappu__ActArchiveCapsuleData;
+    trap: Torappu__ActArchiveTrapData;
+    chat: Torappu__ActArchiveChatData;
+    endbook: Torappu__ActArchiveEndbookData;
+    buff: Torappu__ActArchiveBuffData;
+}
+enum Torappu__ActArchiveType : int {
+    NONE = 0,
+    TIMELINE = 1,
+    MUSIC = 2,
+    PIC = 3,
+    AVG = 4,
+    STORY = 5,
+    NEWS = 6,
+    BUFF = 7,
+    RELIC = 8,
+    CAPSULE = 9,
+    TRAP = 10,
+    CHAT = 11,
+    LANDMARK = 12,
+    LOG = 13,
+    ACTIVITY_ENTRY = 14,
+    DYNAMIC_MUSIC = 15,
+    DYNAMIC_PIC = 16,
+    ENDBOOK = 17,
+    DYNAMIC_STORY = 18,
+}
+table Torappu__RoguelikeArchiveUnlockCondDesc {
+    archiveType: Torappu__ActArchiveType;
+    description: string;
+}
+table dict__string__Torappu__RoguelikeArchiveUnlockCondDesc {
+    key: string;
+    value: Torappu__RoguelikeArchiveUnlockCondDesc;
+}
+table Torappu__RoguelikeArchiveEnroll {
+    archiveType: Torappu__ActArchiveType;
+    enrollId: string;
+}
+table dict__string__Torappu__RoguelikeArchiveEnroll {
+    key: string;
+    value: Torappu__RoguelikeArchiveEnroll;
+}
+table Torappu__RoguelikeArchiveUnlockCondData {
+    unlockCondDesc: [dict__string__Torappu__RoguelikeArchiveUnlockCondDesc];
+    enroll: [dict__string__Torappu__RoguelikeArchiveEnroll];
+}
+table Torappu__PlayerLevelData {
+    exp: int;
+    populationUp: int;
+    squadCapacityUp: int;
+    battleCharLimitUp: int;
+    maxHpUp: int;
+}
+table dict__int__Torappu__PlayerLevelData {
+    key: int;
+    value: Torappu__PlayerLevelData;
+}
+enum Torappu__EvolvePhase : int {
+    PHASE_0 = 0,
+    PHASE_1 = 1,
+    PHASE_2 = 2,
+    PHASE_3 = 3,
+    E_NUM = 4,
+}
+table Torappu__CharUpgradeData {
+    evolvePhase: Torappu__EvolvePhase;
+    skillLevel: int;
+    skillSpecializeLevel: int;
+}
+table dict__int__Torappu__CharUpgradeData {
+    key: int;
+    value: Torappu__CharUpgradeData;
+}
+table Torappu__RoguelikeTopicDetailConst {
+    playerLevelTable: [dict__int__Torappu__PlayerLevelData];
+    charUpgradeTable: [dict__int__Torappu__CharUpgradeData];
+    tokenBpId: string;
+    tokenOuterBuffId: string;
+    previewedRewardsAccordingUpdateId: string;
+    tipButtonName: string;
+    collectButtonName: string;
+    bpSystemName: string;
+    autoSetKV: string;
+    bpPurchaseActiveEnroll: string;
+    defaultSacrificeDesc: string;
+    defaultExpeditionSelectDesc: string;
+    gotCharBuffToast: string;
+    gotSquadBuffToast: string;
+    loseCharBuffToast: string;
+    monthTeamSystemName: string;
+    battlePassUpdateName: string;
+    monthCharCardTagName: string;
+    monthTeamDescTagName: string;
+    outerBuffCompleteText: string;
+    outerProgressTextColor: string;
+    challengeTaskTargetName: string;
+    challengeTaskConditionName: string;
+    challengeTaskRewardName: string;
+    challengeTaskModeName: string;
+    challengeTaskName: string;
+    outerBuffTokenSum: int;
+}
+table Torappu__RoguelikeGameInitData {
+    modeId: Torappu__RoguelikeTopicMode;
+    modeGrade: int;
+    predefinedId: string;
+    initialBandRelic: [string];
+    initialRecruitGroup: [string];
+    initialHp: int;
+    initialPopulation: int;
+    initialGold: int;
+    initialSquadCapacity: int;
+    initialShield: int;
+    initialMaxHp: int;
+    initialKey: int;
+}
+enum Torappu__Difficulty : int {
+    NONE = 0,
+    NORMAL = 1,
+    FOUR_STAR = 2,
+    EASY = 4,
+    ALL = 7,
+}
+table Torappu__RoguelikeGameStageData {
+    id: string;
+    linkedStageId: string;
+    levelId: string;
+    code: string;
+    name: string;
+    loadingPicId: string;
+    description: string;
+    eliteDesc: string;
+    isBoss: int;
+    isElite: int;
+    difficulty: Torappu__Difficulty;
+    capsulePool: string;
+    capsuleProb: float;
+    vutresProb: [double];
+    boxProb: [double];
+    specialNodeId: string;
+}
+table dict__string__Torappu__RoguelikeGameStageData {
+    key: string;
+    value: Torappu__RoguelikeGameStageData;
+}
+table Torappu__RoguelikeGameZoneData {
+    id: string;
+    name: string;
+    clockPerformance: string;
+    displayTime: string;
+    description: string;
+    endingDescription: string;
+    backgroundId: string;
+    subIconId: string;
+    isHiddenZone: bool;
+}
+table dict__string__Torappu__RoguelikeGameZoneData {
+    key: string;
+    value: Torappu__RoguelikeGameZoneData;
+}
+table Torappu__RoguelikeZoneVariationData {
+}
+table dict__string__Torappu__RoguelikeZoneVariationData {
+    key: string;
+    value: Torappu__RoguelikeZoneVariationData;
+}
+table Torappu__RoguelikeGameTrapData {
+    itemId: string;
+    trapId: string;
+    trapDesc: string;
+}
+table dict__string__Torappu__RoguelikeGameTrapData {
+    key: string;
+    value: Torappu__RoguelikeGameTrapData;
+}
+enum Torappu__ProfessionCategory : int {
+    NONE = 0,
+    WARRIOR = 1,
+    SNIPER = 2,
+    TANK = 4,
+    MEDIC = 8,
+    SUPPORT = 16,
+    CASTER = 32,
+    SPECIAL = 64,
+    TOKEN = 128,
+    TRAP = 256,
+    PIONEER = 512,
+}
+enum Torappu__RarityRankMask : int {
+    NONE = 0,
+    TIER_1 = 1,
+    TIER_2 = 2,
+    TIER_3 = 4,
+    TIER_4 = 8,
+    TIER_5 = 16,
+    TIER_6 = 32,
+    ALL = 63,
+}
+enum Torappu__ProfessionID : int {
+    WARRIOR = 0,
+    SNIPER = 1,
+    TANK = 2,
+    MEDIC = 3,
+    SUPPORT = 4,
+    CASTER = 5,
+    SPECIAL = 6,
+    TOKEN = 7,
+    TRAP = 8,
+    PIONEER = 9,
+}
+enum Torappu__RarityRank : int {
+    TIER_1 = 0,
+    TIER_2 = 1,
+    TIER_3 = 2,
+    TIER_4 = 3,
+    TIER_5 = 4,
+    TIER_6 = 5,
+    E_NUM = 6,
+}
+table Torappu__RoguelikeGameRecruitTicketData {
+    id: string;
+    profession: Torappu__ProfessionCategory;
+    rarity: Torappu__RarityRankMask;
+    professionList: [Torappu__ProfessionID];
+    rarityList: [Torappu__RarityRank];
+    extraEliteNum: int;
+    extraFreeRarity: [Torappu__RarityRank];
+    extraCharIds: [string];
+}
+table dict__string__Torappu__RoguelikeGameRecruitTicketData {
+    key: string;
+    value: Torappu__RoguelikeGameRecruitTicketData;
+}
+table Torappu__RoguelikeGameUpgradeTicketData {
+    id: string;
+    profession: Torappu__ProfessionCategory;
+    rarity: Torappu__RarityRankMask;
+    professionList: [Torappu__ProfessionID];
+    rarityList: [Torappu__RarityRank];
+}
+table dict__string__Torappu__RoguelikeGameUpgradeTicketData {
+    key: string;
+    value: Torappu__RoguelikeGameUpgradeTicketData;
+}
+enum Torappu__CustomTicketType : int {
+    NONE = 0,
+    PURIFY = 1,
+}
+table Torappu__RoguelikeGameCustomTicketData {
+    id: string;
+    subType: Torappu__CustomTicketType;
+    discardText: string;
+}
+table dict__string__Torappu__RoguelikeGameCustomTicketData {
+    key: string;
+    value: Torappu__RoguelikeGameCustomTicketData;
+}
+table Torappu__DataPair {
+    key: string;
+    value: float;
+    valueStr: string;
+}
+table Torappu__RoguelikeBuff {
+    key: string;
+    blackboard: [Torappu__DataPair];
+}
+table Torappu__RoguelikeGameRelicData {
+    id: string;
+    buffs: [Torappu__RoguelikeBuff];
+}
+table dict__string__Torappu__RoguelikeGameRelicData {
+    key: string;
+    value: Torappu__RoguelikeGameRelicData;
+}
+enum Torappu__RoguelikeGameRelicCheckType : int {
+    NONE = 0,
+    PROFESSION = 1,
+    SUB_PROFESSION = 2,
+    UPGRADE = 3,
+}
+table Torappu__RoguelikeGameRelicCheckParam {
+    valueProfessionMask: Torappu__ProfessionCategory;
+    valueStrs: [string];
+    valueInt: int;
+}
+table Torappu__RoguelikeGameRelicParamData {
+    id: string;
+    checkCharBoxTypes: [Torappu__RoguelikeGameRelicCheckType];
+    checkCharBoxParams: [Torappu__RoguelikeGameRelicCheckParam];
+}
+table dict__string__Torappu__RoguelikeGameRelicParamData {
+    key: string;
+    value: Torappu__RoguelikeGameRelicParamData;
+}
+table Torappu__RoguelikeGameRecruitGrpData {
+    id: string;
+    iconId: string;
+    name: string;
+    desc: string;
+    unlockDesc: string;
+}
+table dict__string__Torappu__RoguelikeGameRecruitGrpData {
+    key: string;
+    value: Torappu__RoguelikeGameRecruitGrpData;
+}
+enum Torappu__RoguelikeGameChoiceType : int {
+    NONE = 0,
+    LEAVE = 1,
+    NEXT = 2,
+    NEXT_PROB = 3,
+    TRADE = 4,
+    TRADE_PROB = 5,
+    SACRIFICE = 6,
+    TELEPORT = 7,
+    EXPEDITION = 8,
+    WISH = 9,
+    TRADE_PROB_SHOW = 10,
+}
+enum Torappu__RoguelikeChoiceLeftDecoType : int {
+    NONE = 0,
+    TASK = 1,
+    TASK_REWARD = 2,
+    DICE = 3,
+}
+enum Torappu__RoguelikeChoiceDisplayType : int {
+    NONE = 0,
+    NORMAL = 1,
+    ITEM = 2,
+    TASK = 3,
+}
+table Torappu__RoguelikeChoiceDisplayData {
+    type: Torappu__RoguelikeChoiceDisplayType;
+    funcIconId: string;
+    itemId: string;
+    taskId: string;
+}
+table Torappu__RoguelikeGameChoiceData {
+    id: string;
+    title: string;
+    description: string;
+    lockedCoverDesc: string;
+    type: Torappu__RoguelikeGameChoiceType;
+    leftDecoType: Torappu__RoguelikeChoiceLeftDecoType;
+    nextSceneId: string;
+    icon: string;
+    displayData: Torappu__RoguelikeChoiceDisplayData;
+}
+table dict__string__Torappu__RoguelikeGameChoiceData {
+    key: string;
+    value: Torappu__RoguelikeGameChoiceData;
+}
+table Torappu__RoguelikeGameChoiceSceneData {
+    id: string;
+    title: string;
+    description: string;
+    background: string;
+    titleIcon: string;
+    useHiddenMusic: bool;
+}
+table dict__string__Torappu__RoguelikeGameChoiceSceneData {
+    key: string;
+    value: Torappu__RoguelikeGameChoiceSceneData;
+}
+enum Torappu__RoguelikeEventType : int {
+    NONE = 0,
+    BATTLE_NORMAL = 1,
+    BATTLE_ELITE = 2,
+    BATTLE_BOSS = 4,
+    BATTLES = 7,
+    SHOP = 8,
+    REST = 16,
+    INCIDENT = 32,
+    TREASURE = 64,
+    ENTERTAINMENT = 128,
+    UNKNOWN = 256,
+    WISH = 512,
+    SACRIFICE = 1024,
+    EXPEDITION = 2048,
+    BATTLE_SHOP = 4096,
+    PORTAL = 8192,
+    MISSION = 16384,
+    CHOICES = 28400,
+    EVENTS = 32504,
+    ALL = 32511,
+}
+table Torappu__RoguelikeGameNodeTypeData {
+    name: string;
+    description: string;
+}
+table dict__Torappu__RoguelikeEventType__Torappu__RoguelikeGameNodeTypeData {
+    key: Torappu__RoguelikeEventType;
+    value: Torappu__RoguelikeGameNodeTypeData;
+}
+enum Torappu__RoguelikeGameVariationType : int {
+    NONE = 0,
+    MAP = 1,
+    RES = 2,
+    BAT = 3,
+}
+table Torappu__RoguelikeGameVariationData {
+    id: string;
+    type: Torappu__RoguelikeGameVariationType;
+    outerName: string;
+    innerName: string;
+    functionDesc: string;
+    desc: string;
+    iconId: string;
+    sound: string;
+}
+table dict__string__Torappu__RoguelikeGameVariationData {
+    key: string;
+    value: Torappu__RoguelikeGameVariationData;
+}
+table Torappu__RoguelikeGameCharBuffData {
+    id: string;
+    iconId: string;
+    outerName: string;
+    innerName: string;
+    functionDesc: string;
+    desc: string;
+    buffs: [Torappu__RoguelikeBuff];
+}
+table dict__string__Torappu__RoguelikeGameCharBuffData {
+    key: string;
+    value: Torappu__RoguelikeGameCharBuffData;
+}
+table Torappu__RoguelikeGameSquadBuffData {
+    id: string;
+    iconId: string;
+    outerName: string;
+    innerName: string;
+    functionDesc: string;
+    desc: string;
+    buffs: [Torappu__RoguelikeBuff];
+}
+table dict__string__Torappu__RoguelikeGameSquadBuffData {
+    key: string;
+    value: Torappu__RoguelikeGameSquadBuffData;
+}
+enum Torappu__RoguelikeTaskRarity : int {
+    NORMAL = 0,
+    RARE = 1,
+    SUPER_RARE = 2,
+}
+table Torappu__RoguelikeTaskData {
+    taskId: string;
+    taskName: string;
+    taskDesc: string;
+    rewardSceneId: string;
+    taskRarity: Torappu__RoguelikeTaskRarity;
+}
+table dict__string__Torappu__RoguelikeTaskData {
+    key: string;
+    value: Torappu__RoguelikeTaskData;
+}
+table Torappu__RoguelikeGameConst {
+    initSceneName: string;
+    failSceneName: string;
+    hpItemId: string;
+    goldItemId: string;
+    populationItemId: string;
+    squadCapacityItemId: string;
+    expItemId: string;
+    bankMaxGold: int;
+    bankCostId: string;
+    bankDrawCount: int;
+    mimicEnemyIds: [string];
+    bossIds: [string];
+    goldChestTrapId: string;
+    normBoxTrapId: string;
+    rareBoxTrapId: string;
+    badBoxTrapId: string;
+    maxHpItemId: string;
+    shieldItemId: string;
+    keyItemId: string;
+    sanItemId: string;
+    diceItemId: string;
+    chestKeyCnt: int;
+    chestKeyItemId: string;
+    keyColorId: string;
+    onceNodeTypeList: [Torappu__RoguelikeEventType];
+    gpScoreRatio: int;
+    overflowUsageSquadBuff: string;
+    specialTrapId: string;
+    trapRewardRelicId: string;
+}
+enum Torappu__RoguelikeGameShopDialogType : int {
+    NONE = 0,
+    MAIN = 1,
+    RELIC = 2,
+    RECRUIT_TICKET = 3,
+    ACTIVE_TOOL = 4,
+    BANK_ENTRY = 5,
+    BANK_INVEST = 6,
+    BANK_WITHDRAWAL = 7,
+    BANK_FAULTY = 8,
+    BANK_REWARD_UNLOCK = 9,
+    OUTER_NORMAL = 10,
+    OUTER_REWARD = 11,
+    FIGHT_BOSS = 12,
+}
+table Torappu__RoguelikeTopicCapsule {
+    itemId: string;
+    maskType: Torappu__RoguelikeEventType;
+    innerColor: string;
+}
+table dict__string__Torappu__RoguelikeTopicCapsule {
+    key: string;
+    value: Torappu__RoguelikeTopicCapsule;
+}
+table Torappu__RoguelikeGameEndingData {
+    id: string;
+    name: string;
+    desc: string;
+    bgId: string;
+    iconId: string;
+    priority: int;
+    changeEndingDesc: string;
+    bossIconId: string;
+}
+table dict__string__Torappu__RoguelikeGameEndingData {
+    key: string;
+    value: Torappu__RoguelikeGameEndingData;
+}
+table Torappu__RoguelikeBattleSummeryDescriptionData {
+    randomDescriptionList: [string];
+}
+table dict__Torappu__RoguelikeTopicMode__Torappu__RoguelikeBattleSummeryDescriptionData {
+    key: Torappu__RoguelikeTopicMode;
+    value: Torappu__RoguelikeBattleSummeryDescriptionData;
+}
+enum Torappu__Category : int {
+    NONE = 0,
+    BATTLE = 1,
+    UI = 2,
+    BUILDING = 4,
+    GACHA = 8,
+    MISC = 16,
+    ALL = 31,
+}
+table Torappu__TipData {
+    tip: string;
+    weight: float;
+    category: Torappu__Category;
+}
+enum Torappu__RoguelikeGameItemType : int {
+    NONE = 0,
+    HP = 1,
+    HPMAX = 2,
+    GOLD = 3,
+    POPULATION = 4,
+    EXP = 5,
+    SQUAD_CAPACITY = 6,
+    RECRUIT_TICKET = 7,
+    UPGRADE_TICKET = 8,
+    RELIC = 9,
+    BP_POINT = 10,
+    GROW_POINT = 11,
+    BAND = 12,
+    ACTIVE_TOOL = 13,
+    CAPSULE = 14,
+    POOL = 15,
+    RL_BP = 16,
+    RL_GP = 17,
+    KEY_POINT = 18,
+    SAN_POINT = 19,
+    DICE_POINT = 20,
+    DICE_TYPE = 21,
+    SHIELD = 22,
+    LOCKED_TREASURE = 23,
+    CUSTOM_TICKET = 24,
+}
+enum Torappu__RoguelikeGameItemSubType : int {
+    NONE = 0,
+    CURSE = 1,
+    TEMP_TICKET = 2,
+}
+enum Torappu__RoguelikeGameItemRarity : int {
+    NONE = 0,
+    BORN = 1,
+    NORMAL = 2,
+    RARE = 3,
+    SUPER_RARE = 4,
+}
+table Torappu__RoguelikeGameItemData {
+    id: string;
+    name: string;
+    description: string;
+    usage: string;
+    obtainApproach: string;
+    iconId: string;
+    type: Torappu__RoguelikeGameItemType;
+    subType: Torappu__RoguelikeGameItemSubType;
+    rarity: Torappu__RoguelikeGameItemRarity;
+    value: int;
+    sortId: int;
+    canSacrifice: bool;
+    unlockCondDesc: string;
+}
+table dict__string__Torappu__RoguelikeGameItemData {
+    key: string;
+    value: Torappu__RoguelikeGameItemData;
+}
+table Torappu__RoguelikeBandRefData {
+    itemId: string;
+    iconId: string;
+    description: string;
+    bandLevel: int;
+    normalBandId: string;
+}
+table dict__string__Torappu__RoguelikeBandRefData {
+    key: string;
+    value: Torappu__RoguelikeBandRefData;
+}
+enum Torappu__Type : int {
+    SHOW_CHOICE = 0,
+    SHOW_RELIC = 1,
+    SHOW_CAPSULE = 2,
+    SHOW_ACTIVE_TOOL = 3,
+    SHOW_ACCELERATE_CHAR = 4,
+    SHOW_NORMAL_RECRUIT = 5,
+    SHOW_DIRECT_RECRUIT = 6,
+    SHOW_FRIEND_RECRUIT = 7,
+    SHOW_FREE_RECRUIT = 8,
+    BUY = 9,
+    INVEST = 10,
+    SHOW_STAGE = 11,
+    SHOW_CONST = 12,
+    SUM = 13,
+    SHOW_BOSS_END = 14,
+}
+table Torappu__RoguelikeEndingDetailText {
+    textId: string;
+    text: string;
+    eventType: Torappu__RoguelikeEventType;
+    showType: Torappu__Type;
+    choiceSceneId: string;
+    paramList: [string];
+    otherPara1: string;
+}
+table dict__Torappu__RoguelikeGameShopDialogType__list_string {
+    key: Torappu__RoguelikeGameShopDialogType;
+    value: [string];
+}
+table Torappu__RoguelikeGameTreasureData {
+    treasureId: string;
+    groupId: string;
+    subIndex: int;
+    name: string;
+    usage: string;
+}
+table dict__string__list_RoguelikeGameTreasureData {
+    key: string;
+    value: [Torappu__RoguelikeGameTreasureData];
+}
+table Torappu__RoguelikeTopicDetail {
+    updates: [Torappu__RoguelikeTopicUpdate];
+    enrolls: [dict__string__Torappu__RoguelikeTopicEnroll];
+    milestones: [Torappu__RoguelikeTopicBP];
+    milestoneUpdates: [Torappu__RoguelikeTopicMilestoneUpdateData];
+    grandPrizes: [Torappu__RoguelikeTopicBPGrandPrize];
+    monthMission: [Torappu__RoguelikeTopicMonthMission];
+    monthSquad: [dict__string__Torappu__RoguelikeTopicMonthSquad];
+    challenges: [dict__string__Torappu__RoguelikeTopicChallenge];
+    difficulties: [Torappu__RoguelikeTopicDifficulty];
+    bankRewards: [Torappu__RoguelikeTopicBankReward];
+    archiveComp: Torappu__RoguelikeArchiveComponentData;
+    archiveUnlockCond: Torappu__RoguelikeArchiveUnlockCondData;
+    detailConst: Torappu__RoguelikeTopicDetailConst;
+    init: [Torappu__RoguelikeGameInitData];
+    stages: [dict__string__Torappu__RoguelikeGameStageData];
+    zones: [dict__string__Torappu__RoguelikeGameZoneData];
+    variation: [dict__string__Torappu__RoguelikeZoneVariationData];
+    traps: [dict__string__Torappu__RoguelikeGameTrapData];
+    recruitTickets: [dict__string__Torappu__RoguelikeGameRecruitTicketData];
+    upgradeTickets: [dict__string__Torappu__RoguelikeGameUpgradeTicketData];
+    customTickets: [dict__string__Torappu__RoguelikeGameCustomTicketData];
+    relics: [dict__string__Torappu__RoguelikeGameRelicData];
+    relicParams: [dict__string__Torappu__RoguelikeGameRelicParamData];
+    recruitGrps: [dict__string__Torappu__RoguelikeGameRecruitGrpData];
+    choices: [dict__string__Torappu__RoguelikeGameChoiceData];
+    choiceScenes: [dict__string__Torappu__RoguelikeGameChoiceSceneData];
+    nodeTypeData: [dict__Torappu__RoguelikeEventType__Torappu__RoguelikeGameNodeTypeData];
+    variationData: [dict__string__Torappu__RoguelikeGameVariationData];
+    charBuffData: [dict__string__Torappu__RoguelikeGameCharBuffData];
+    squadBuffData: [dict__string__Torappu__RoguelikeGameSquadBuffData];
+    taskData: [dict__string__Torappu__RoguelikeTaskData];
+    gameConst: Torappu__RoguelikeGameConst;
+    shopDialogs: [dict__Torappu__RoguelikeGameShopDialogType__list_string];
+    capsuleDict: [dict__string__Torappu__RoguelikeTopicCapsule];
+    endings: [dict__string__Torappu__RoguelikeGameEndingData];
+    battleSummeryDescriptions: [dict__Torappu__RoguelikeTopicMode__Torappu__RoguelikeBattleSummeryDescriptionData];
+    battleLoadingTips: [Torappu__TipData];
+    items: [dict__string__Torappu__RoguelikeGameItemData];
+    bandRef: [dict__string__Torappu__RoguelikeBandRefData];
+    endingDetailList: [Torappu__RoguelikeEndingDetailText];
+    treasures: [dict__string__list_RoguelikeGameTreasureData];
+}
+table dict__string__Torappu__RoguelikeTopicDetail {
+    key: string;
+    value: Torappu__RoguelikeTopicDetail;
+}
+enum Torappu__SanEffectRank : int {
+    SAN_EFFECT_0 = 0,
+    SAN_EFFECT_1 = 1,
+    SAN_EFFECT_2 = 2,
+    SAN_EFFECT_3 = 3,
+}
+table Torappu__RoguelikeSanRangeData {
+    sanMax: int;
+    diceGroupId: string;
+    description: string;
+    sanDungeonEffect: Torappu__SanEffectRank;
+    sanEffectRank: Torappu__SanEffectRank;
+    sanEndingDesc: string;
+}
+table Torappu__RoguelikeSanCheckConsts {
+    sanDecreaseToast: string;
+}
+table Torappu__RoguelikeSanCheckModuleData {
+    sanRanges: [Torappu__RoguelikeSanRangeData];
+    moduleConsts: Torappu__RoguelikeSanCheckConsts;
+}
+table Torappu__RoguelikeDiceData {
+    diceId: string;
+    description: string;
+    isUpgradeDice: int;
+    upgradeDiceId: string;
+    diceFaceCount: int;
+    battleDiceId: string;
+}
+table dict__string__Torappu__RoguelikeDiceData {
+    key: string;
+    value: Torappu__RoguelikeDiceData;
+}
+enum Torappu__DiceResultClass : int {
+    VERYBAD = 0,
+    BAD = 1,
+    NORMAL = 2,
+    GOOD = 3,
+    GREAT = 4,
+    BEST = 4,
+}
+enum Torappu__DiceResultShowType : int {
+    RAW_TEXT = 0,
+    MUTATION = 1,
+    VIRTUE = 2,
+}
+table Torappu__RoguelikeDiceRuleData {
+    dicePointMax: int;
+    diceResultClass: Torappu__DiceResultClass;
+    diceGroupId: string;
+    diceEventId: string;
+    resultDesc: string;
+    showType: Torappu__DiceResultShowType;
+    canReroll: bool;
+    diceEndingScene: string;
+    diceEndingDesc: string;
+    sound: string;
+}
+table dict__string__Torappu__RoguelikeDiceRuleData {
+    key: string;
+    value: Torappu__RoguelikeDiceRuleData;
+}
+table dict__string__string {
+    key: string;
+    value: string;
+}
+table Torappu__RoguelikeDiceRuleGroupData {
+    ruleGroupId: string;
+    minGoodNum: int;
+}
+table dict__string__Torappu__RoguelikeDiceRuleGroupData {
+    key: string;
+    value: Torappu__RoguelikeDiceRuleGroupData;
+}
+table Torappu__RoguelikeDicePredefineData {
+    modeId: Torappu__RoguelikeTopicMode;
+    modeGrade: int;
+    predefinedId: string;
+    initialDiceCount: int;
+}
+table Torappu__RoguelikeDiceModuleData {
+    dice: [dict__string__Torappu__RoguelikeDiceData];
+    diceEvents: [dict__string__Torappu__RoguelikeDiceRuleData];
+    diceChoices: [dict__string__string];
+    diceRuleGroups: [dict__string__Torappu__RoguelikeDiceRuleGroupData];
+    dicePredefines: [Torappu__RoguelikeDicePredefineData];
+}
+table Torappu__RoguelikeModule {
+    moduleTypes: [Torappu__RoguelikeModuleType];
+    sanCheck: Torappu__RoguelikeSanCheckModuleData;
+    dice: Torappu__RoguelikeDiceModuleData;
+}
+table dict__string__Torappu__RoguelikeModule {
+    key: string;
+    value: Torappu__RoguelikeModule;
+}
+enum Torappu__RoguelikeTopicDevNodeType : int {
+    BRANCH = 0,
+    KEY = 1,
+    NONE = 10,
+}
+enum Torappu__RoguelikeTopicDevTokenDisplayForm : int {
+    ABSOLUTE_VAL = 0,
+    PERCENTAGE = 1,
+}
+table Torappu__RoguelikeTopicDisplayItem {
+    displayType: string;
+    displayNum: int;
+    displayForm: Torappu__RoguelikeTopicDevTokenDisplayForm;
+    tokenDesc: string;
+    sortId: int;
+}
+table Torappu__RoguelikeTopicDev {
+    buffId: string;
+    sortId: int;
+    nodeType: Torappu__RoguelikeTopicDevNodeType;
+    nextNodeId: [string];
+    frontNodeId: [string];
+    tokenCost: int;
+    buffName: string;
+    buffIconId: string;
+    buffTypeName: string;
+    buffDisplayInfo: [Torappu__RoguelikeTopicDisplayItem];
+}
+table dict__string__Torappu__RoguelikeTopicDev {
+    key: string;
+    value: Torappu__RoguelikeTopicDev;
+}
+table Torappu__RoguelikeTopicDevToken {
+    sortId: int;
+    displayForm: Torappu__RoguelikeTopicDevTokenDisplayForm;
+    tokenDesc: string;
+}
+table dict__string__Torappu__RoguelikeTopicDevToken {
+    key: string;
+    value: Torappu__RoguelikeTopicDevToken;
+}
+table Torappu__RL01EndingText {
+    summaryActor: string;
+    summaryTop: string;
+    summaryZone: string;
+    summaryEnding: string;
+    summaryMode: string;
+    summaryGroup: string;
+    summaryNormalRecruit: string;
+    summaryDirectRecruit: string;
+    summaryFriendRecruit: string;
+    summaryFreeRecruit: string;
+    summaryMonthRecruit: string;
+    summaryEachZone: string;
+    summaryVariation: string;
+    summaryPerfectBattle: string;
+    summaryMeetBattle: string;
+    summaryMeetEvent: string;
+    summaryMeetShop: string;
+    summaryMeetTreasure: string;
+    summaryDefeatBoss: string;
+    summaryCompleteEnding: string;
+    summarySupport: string;
+    summaryUpgrade: string;
+    summaryAccidentMeet: string;
+    summaryRelic: string;
+    summaryCapsule: string;
+    summaryActiveTool: string;
+    summarySafeHouse: string;
+    summaryBuy: string;
+    summaryInvest: string;
+    summaryGet: string;
+    summaryFailEnd: string;
+}
+table Torappu__RL01CustomizeData {
+    developments: [dict__string__Torappu__RoguelikeTopicDev];
+    developmentTokens: [dict__string__Torappu__RoguelikeTopicDevToken];
+    endingText: Torappu__RL01EndingText;
+}
+enum Torappu__RL02DevelopmentNodeType : int {
+    NONE = 0,
+    SMALL = 1,
+    NORMAL = 2,
+    LARGE_RHODES = 3,
+    LARGE_ABYSSAL = 4,
+    LARGE_IBERIA = 5,
+}
+enum Torappu__RL02DevelopmentEffectType : int {
+    BUFF = 0,
+    RAW_TEXT_EFFECT = 1,
+    RAW_TEXT_BAND = 2,
+    NONE = 10,
+}
+table Torappu__RL02Development {
+    buffId: string;
+    nodeType: Torappu__RL02DevelopmentNodeType;
+    frontNodeId: [string];
+    nextNodeId: [string];
+    positionP: int;
+    positionR: int;
+    tokenCost: int;
+    buffName: string;
+    buffIconId: string;
+    effectType: Torappu__RL02DevelopmentEffectType;
+    rawDesc: string;
+    buffDisplayInfo: [Torappu__RoguelikeTopicDisplayItem];
+    enrollId: string;
+}
+table dict__string__Torappu__RL02Development {
+    key: string;
+    value: Torappu__RL02Development;
+}
+table Torappu__RL02DevRawTextBuffGroup {
+    nodeIdList: [string];
+    useLevelMark: bool;
+    groupIconId: string;
+    useUpBreak: bool;
+    sortId: int;
+}
+table Torappu__RL02DevelopmentLine {
+    fromNode: string;
+    toNode: string;
+    fromNodeP: int;
+    fromNodeR: int;
+    toNodeP: int;
+    toNodeR: int;
+    enrollId: string;
+}
+table Torappu__RL02EndingText {
+    summaryMutation: string;
+    summaryDice: string;
+    summaryDiceResultGood: string;
+    summaryDiceResultNormal: string;
+    summaryDiceResultBad: string;
+    summaryDiceResultDesc: string;
+    summaryCommuDesc: string;
+    summaryHiddenDesc: string;
+    summaryKnightDesc: string;
+    summaryGoldDesc: string;
+    summaryPracticeDesc: string;
+    summaryCommuEmptyDesc: string;
+    summaryCommuNotEmptyDesc: string;
+    summaryHiddenPassedDesc: string;
+    summaryHiddenNotPassedDesc: string;
+    summaryKnightPassedDesc: string;
+    summaryKnightNotPassedDesc: string;
+    summaryGoldThreshold: int;
+    summaryGoldHighDesc: string;
+    summaryGoldLowDesc: string;
+    summaryPracticeThreshold: int;
+    summaryPracticeHighDesc: string;
+    summaryPracticeLowDesc: string;
+}
+table Torappu__RL02CustomizeData {
+    developments: [dict__string__Torappu__RL02Development];
+    developmentTokens: [dict__string__Torappu__RoguelikeTopicDevToken];
+    developmentRawTextGroup: [Torappu__RL02DevRawTextBuffGroup];
+    developmentLines: [Torappu__RL02DevelopmentLine];
+    endingText: Torappu__RL02EndingText;
+}
+table Torappu__RoguelikeTopicCustomizeData {
+    rl01: Torappu__RL01CustomizeData;
+    rl02: Torappu__RL02CustomizeData;
+}
+table Torappu__RoguelikeTopicTable {
+    topics: [dict__string__Torappu__RoguelikeTopicBasicData];
+    constant: Torappu__RoguelikeTopicConst;
+    details: [dict__string__Torappu__RoguelikeTopicDetail];
+    modules: [dict__string__Torappu__RoguelikeModule];
+    customizeData: Torappu__RoguelikeTopicCustomizeData;
+}
+
+root_type Torappu__RoguelikeTopicTable;
