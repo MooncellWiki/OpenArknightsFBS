@@ -555,6 +555,10 @@ table Torappu__PackedRuneData__dict {
     key: string;
     value: Torappu__PackedRuneData;
 }
+table dict_string_int {
+    key: string;
+    value: int;
+}
 table Torappu__SandboxActTable {
     mapConstTable: Torappu__SandboxMapConstTable;
     baseConstTable: Torappu__SandboxBaseConstTable;
@@ -569,7 +573,7 @@ table Torappu__SandboxActTable {
     buildProduceUnlockDatas: [Torappu__SandboxBuildProduceUnlockData__dict];
     craftItemDatas: [Torappu__SandboxCraftItemData__dict];
     itemTrapDatas: [Torappu__SandboxItemTrapData__dict];
-    trapDeployLimitDatas: [int];
+    trapDeployLimitDatas: [dict_string_int];
     developmentDatas: [Torappu__SandboxDevelopmentData__dict];
     developmentLimitDatas: [Torappu__SandboxDevelopmentLimitData__dict];
     itemToastDatas: [Torappu__SandboxItemToastData__dict];
