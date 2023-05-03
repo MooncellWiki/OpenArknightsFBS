@@ -1,0 +1,59 @@
+enum RecommendItemTagTips : int {
+	ONSALE = 0,
+	DEADLINE = 1,
+	NONE = 2,
+}
+
+enum ShopRouteTarget : int {
+	RECOMMENDSHOP = 0,
+	CASHSHOP = 1,
+	GIFTPACKAGE = 2,
+	SKINSHOP = 3,
+	HQCSHOP = 4,
+	LQCSHOP = 5,
+	EXQCSHOP = 6,
+	SOCAILSHOP = 7,
+	FURNSHOP = 8,
+	REPSHOP = 9,
+	LMGTSSHOP = 10,
+	EPGSSHOP = 11,
+	CLASSICSHOP = 12,
+	NONE = 13,
+}
+
+table ShopRecommendData {
+    imgId: string;
+    slotIndex: int;
+    cmd: ShopRouteTarget;
+    param1: string;
+    param2: string;
+    skinId: string;
+}
+
+table ShopRecommendGroup {
+    recommendGroup: [int];
+    dataList: [ShopRecommendData];
+}
+
+table ShopKeeperWord {
+    id: string;
+    text: string;
+}
+
+table ShopRecommendItem {
+    tagI: string;
+    displayType: string;
+    tagName: string;
+    itemTag: RecommendItemTagTips;
+    orderNum: int;
+    startDatetime: long;
+    endDatetime: long;
+    groupList: [ShopRecommendGroup];
+    tagWord: ShopKeeperWord;
+}
+
+table Root_ShopRecommendItem {
+    recommendList: [ShopRecommendItem];
+}
+
+root_type Root_ShopRecommendItem;
