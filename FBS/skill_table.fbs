@@ -1,0 +1,137 @@
+enum Torappu__SkillType : int {
+    PASSIVE = 0,
+    MANUAL = 1,
+    AUTO = 2,
+}
+enum Torappu__SkillDurationType : int {
+    PASSIVE = 0,
+    INSTANT = 1,
+    LIMITED = 2,
+    INFINITY = 3,
+    SWITCHABLE = 4,
+    AMMO = 5,
+}
+enum Torappu__SpType : int {
+    NONE = 0,
+    INCREASE_WITH_TIME = 1,
+    INCREASE_WHEN_ATTACK = 2,
+    INCREASE_WHEN_TAKEN_DAMAGE = 4,
+    ATTACK_OR_DAMAGE = 6,
+    ALL = 7,
+}
+enum Torappu__ItemType : int {
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_5 = 40,
+    VOUCHER_ELITE_II_6 = 41,
+    VOUCHER_SKIN = 42,
+    RETRO_COIN = 43,
+    PLAYER_AVATAR = 44,
+    UNI_COLLECTION = 45,
+    VOUCHER_FULL_POTENTIAL = 46,
+    RL_COIN = 47,
+    RETURN_CREDIT = 48,
+    MEDAL = 49,
+    CHARM = 50,
+    HOME_BACKGROUND = 51,
+    EXTERMINATION_AGENT = 52,
+    OPTIONAL_VOUCHER_PICK = 53,
+    ACT_CART_COMPONENT = 54,
+    VOUCHER_LEVELMAX_6 = 55,
+    VOUCHER_LEVELMAX_5 = 56,
+    ACTIVITY_POTENTIAL = 57,
+    ITEM_PACK = 58,
+    SANDBOX = 59,
+    FAVOR_ADD_ITEM = 60,
+    CLASSIC_SHD = 61,
+    CLASSIC_TKT_GACHA = 62,
+    CLASSIC_TKT_GACHA_10 = 63,
+    LIMITED_BUFF = 64,
+    CLASSIC_FES_PICK_TIER_5 = 65,
+    CLASSIC_FES_PICK_TIER_6 = 66,
+}
+table Torappu__ItemBundle {
+    id: string;
+    count: int;
+    type: Torappu__ItemType;
+}
+table Torappu__SpData {
+    spType: Torappu__SpType;
+    levelUpCost: [Torappu__ItemBundle];
+    maxChargeTime: int;
+    spCost: int;
+    initSp: int;
+    increment: float;
+    m_incrementsForAllSpTypes: [float];
+}
+table Torappu__DataPair {
+    key: string;
+    value: float;
+    valueStr: string;
+}
+table Torappu__LevelData {
+    name: string;
+    rangeId: string;
+    description: string;
+    skillType: Torappu__SkillType;
+    durationType: Torappu__SkillDurationType;
+    spData: Torappu__SpData;
+    prefabId: string;
+    duration: float;
+    blackboard: [Torappu__DataPair];
+}
+table Torappu__SkillDataBundle {
+    skillId: string;
+    iconId: string;
+    hidden: bool;
+    levels: [Torappu__LevelData];
+}
+
+table KV_Torappu__SkillDataBundle {
+    key: string;
+    value: Torappu__SkillDataBundle;
+}
+
+table skill_table {
+    skills: [KV_Torappu__SkillDataBundle];
+}
+
+root_type skill_table;
