@@ -1,0 +1,128 @@
+enum Torappu__MedalRarity : int {
+	T1 = 0,
+	T1D5 = 1,
+	T2 = 2,
+	T2D5 = 3,
+	T3 = 4,
+	T3D5 = 5,
+}
+
+enum Torappu__MedalExpireType : int {
+	NONE = 0,
+	INIT = 1,
+	TEMP = 2,
+	PERM = 3,
+}
+
+table Torappu__MedalExpireTime {
+    start: long;
+    end: long;
+	type: Torappu__MedalExpireType;
+}
+
+enum Torappu__ItemType : int {
+	NONE = 0,
+	CHAR = 1,
+	CARD_EXP = 2,
+	MATERIAL = 3,
+	GOLD = 4,
+	EXP_PLAYER = 5,
+	TKT_TRY = 6,
+	TKT_RECRUIT = 7,
+	TKT_INST_FIN = 8,
+	TKT_GACHA = 9,
+	ACTIVITY_COIN = 10,
+	DIAMOND = 11,
+	DIAMOND_SHD = 12,
+	HGG_SHD = 13,
+	LGG_SHD = 14,
+	FURN = 15,
+	AP_GAMEPLAY = 16,
+	AP_BASE = 17,
+	SOCIAL_PT = 18,
+	CHAR_SKIN = 19,
+	TKT_GACHA_10 = 20,
+	TKT_GACHA_PRSV = 21,
+	AP_ITEM = 22,
+	AP_SUPPLY = 23,
+	RENAMING_CARD = 24,
+	RENAMING_CARD_2 = 25,
+	ET_STAGE = 26,
+	ACTIVITY_ITEM = 27,
+	VOUCHER_PICK = 28,
+	VOUCHER_CGACHA = 29,
+	VOUCHER_MGACHA = 30,
+	CRS_SHOP_COIN = 31,
+	CRS_RUNE_COIN = 32,
+	LMTGS_COIN = 33,
+	EPGS_COIN = 34,
+	LIMITED_TKT_GACHA_10 = 35,
+	LIMITED_FREE_GACHA = 36,
+	REP_COIN = 37,
+	ROGUELIKE = 38,
+	LINKAGE_TKT_GACHA_10 = 39,
+	VOUCHER_ELITE_II_5 = 40,
+	VOUCHER_ELITE_II_6 = 41,
+	VOUCHER_SKIN = 42,
+	RETRO_COIN = 43,
+	PLAYER_AVATAR = 44,
+	UNI_COLLECTION = 45,
+	VOUCHER_FULL_POTENTIAL = 46,
+	RL_COIN = 47,
+	RETURN_CREDIT = 48,
+	MEDAL = 49,
+	CHARM = 50,
+	HOME_BACKGROUND = 51,
+	EXTERMINATION_AGENT = 52,
+	OPTIONAL_VOUCHER_PICK = 53,
+	ACT_CART_COMPONENT = 54,
+	VOUCHER_LEVELMAX_6 = 55,
+	VOUCHER_LEVELMAX_5 = 56,
+	ACTIVITY_POTENTIAL = 57,
+	ITEM_PACK = 58,
+	SANDBOX = 59,
+	FAVOR_ADD_ITEM = 60,
+	CLASSIC_SHD = 61,
+	CLASSIC_TKT_GACHA = 62,
+	CLASSIC_TKT_GACHA_10 = 63,
+	LIMITED_BUFF = 64,
+	CLASSIC_FES_PICK_TIER_5 = 65,
+	CLASSIC_FES_PICK_TIER_6 = 66,
+}
+
+table Torappu__ItemBundle {
+    id: string;
+    count: int;
+	type: Torappu__ItemType;
+}
+
+table Torappu__MedalRewardGroupData {
+    groupId: string;
+    slotId: int;
+	itemList: [Torappu__ItemBundle];
+}
+
+table Torappu__MedalPerData {
+    medalId: string;
+    medalName: string;
+    medalType: string;
+	slotId: int;
+    preMedalIdList: [string];
+    rarity: Torappu__MedalRarity;
+    template: string;
+    unlockParam: [string];
+    getMethod: string;
+	description: string;
+	advancedMedal: string;
+	originMedal: string;
+	displayTime: long;
+	expireTimes: [Torappu__MedalExpireTime];
+	medalRewardGroup: [Torappu__MedalRewardGroupData];
+	isHidden: bool;
+}
+
+table medal_table {
+    medalList: [Torappu__MedalPerData];
+}
+
+root_type medal_table;
