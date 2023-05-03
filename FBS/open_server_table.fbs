@@ -1,0 +1,226 @@
+table Torappu__OpenServerScheduleItem {
+    id: string;
+    startTs: int;
+    endTs: int;
+    totalCheckinDescption: string;
+    chainLoginDescription: string;
+    charImg: string;
+}
+enum Torappu__MissionType : int {
+    UNKNOWN = 0,
+    MAIN = 1,
+    DAILY = 2,
+    WEEKLY = 3,
+    GUIDE = 4,
+    SUB = 5,
+    ACTIVITY = 6,
+    OPENSERVER = 7,
+    TOWERSEASON = 8,
+}
+enum Torappu__ItemType : int {
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_5 = 40,
+    VOUCHER_ELITE_II_6 = 41,
+    VOUCHER_SKIN = 42,
+    RETRO_COIN = 43,
+    PLAYER_AVATAR = 44,
+    UNI_COLLECTION = 45,
+    VOUCHER_FULL_POTENTIAL = 46,
+    RL_COIN = 47,
+    RETURN_CREDIT = 48,
+    MEDAL = 49,
+    CHARM = 50,
+    HOME_BACKGROUND = 51,
+    EXTERMINATION_AGENT = 52,
+    OPTIONAL_VOUCHER_PICK = 53,
+    ACT_CART_COMPONENT = 54,
+    VOUCHER_LEVELMAX_6 = 55,
+    VOUCHER_LEVELMAX_5 = 56,
+    ACTIVITY_POTENTIAL = 57,
+    ITEM_PACK = 58,
+    SANDBOX = 59,
+    FAVOR_ADD_ITEM = 60,
+    CLASSIC_SHD = 61,
+    CLASSIC_TKT_GACHA = 62,
+    CLASSIC_TKT_GACHA_10 = 63,
+    LIMITED_BUFF = 64,
+    CLASSIC_FES_PICK_TIER_5 = 65,
+    CLASSIC_FES_PICK_TIER_6 = 66,
+}
+table Torappu__MissionDisplayRewards {
+    type: Torappu__ItemType;
+    id: string;
+    count: int;
+}
+table Torappu__MissionGroup {
+    id: string;
+    title: string;
+    type: Torappu__MissionType;
+    preMissionGroup: string;
+    period: [int];
+    rewards: [Torappu__MissionDisplayRewards];
+    missionIds: [string];
+    startTs: long;
+    endTs: long;
+}
+enum Torappu__MissionItemBgType : int {
+    COMMON = 0,
+    Equipment = 1,
+    Char = 2,
+}
+table Torappu__MissionData {
+    id: string;
+    sortId: int;
+    description: string;
+    type: Torappu__MissionType;
+    itemBgType: Torappu__MissionItemBgType;
+    preMissionIds: [string];
+    template: string;
+    templateType: string;
+    param: [string];
+    unlockCondition: string;
+    unlockParam: [string];
+    missionGroup: string;
+    toPage: string;
+    periodicalPoint: int;
+    rewards: [Torappu__MissionDisplayRewards];
+    backImagePath: string;
+    foldId: string;
+    haveSubMissionToUnlock: bool;
+}
+table Torappu__OpenServerItemData {
+    itemId: string;
+    itemType: Torappu__ItemType;
+    count: int;
+}
+table Torappu__TotalCheckinData {
+    order: int;
+    item: Torappu__OpenServerItemData;
+    colorId: int;
+}
+table Torappu__ChainLoginData {
+    order: int;
+    item: Torappu__OpenServerItemData;
+    colorId: int;
+}
+table Torappu__OpenServerData {
+    openServerMissionGroup: Torappu__MissionGroup;
+    openServerMissionData: [Torappu__MissionData];
+    checkInData: [Torappu__TotalCheckinData];
+    chainLoginData: [Torappu__ChainLoginData];
+}
+table dict__string__Torappu__OpenServerData {
+    key: string;
+    value: Torappu__OpenServerData;
+}
+table Torappu__OpenServerConst {
+    firstDiamondShardMailCount: int;
+    initApMailEndTs: long;
+}
+table Torappu__ReturnConst {
+    startTime: long;
+    systemTab_time: int;
+    afkDays: int;
+    unlockLv: int;
+    unlockLevel: string;
+    juniorClear: bool;
+    ifvisitor: bool;
+    permMission_time: int;
+    needPoints: int;
+    defaultIntro: string;
+    pointId: string;
+}
+table Torappu__ItemBundle {
+    id: string;
+    count: int;
+    type: Torappu__ItemType;
+}
+table Torappu__ReturnIntroData {
+    sort: int;
+    pubTime: long;
+    image: string;
+}
+table Torappu__ReturnDailyTaskData {
+    groupId: string;
+    id: string;
+    groupSortId: int;
+    taskSortId: int;
+    template: string;
+    param: [string];
+    desc: string;
+    rewards: [Torappu__MissionDisplayRewards];
+    playPoint: int;
+}
+table Torappu__ReturnLongTermTaskData {
+    id: string;
+    sortId: int;
+    template: string;
+    param: [string];
+    desc: string;
+    rewards: [Torappu__MissionDisplayRewards];
+    playPoint: int;
+}
+table Torappu__ReturnCheckinData {
+    isImportant: bool;
+    checkinRewardItems: [Torappu__ItemBundle];
+}
+table dict__string__Torappu__ReturnDailyTaskData {
+    key: string;
+    value: [Torappu__ReturnDailyTaskData];
+}
+table Torappu__ReturnData {
+    constData: Torappu__ReturnConst;
+    onceRewards: [Torappu__ItemBundle];
+    intro: [Torappu__ReturnIntroData];
+    returnDailyTaskDic: [dict__string__Torappu__ReturnDailyTaskData];
+    returnLongTermTaskList: [Torappu__ReturnLongTermTaskData];
+    creditsList: [Torappu__ItemBundle];
+    checkinRewardList: [Torappu__ReturnCheckinData];
+}
+table Torappu__OpenServerSchedule {
+    schedule: [Torappu__OpenServerScheduleItem];
+    dataMap: [dict__string__Torappu__OpenServerData];
+    constant: Torappu__OpenServerConst;
+    playerReturn: Torappu__ReturnData;
+}
+
+root_type Torappu__OpenServerSchedule;
