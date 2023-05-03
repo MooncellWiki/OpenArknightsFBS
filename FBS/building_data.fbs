@@ -1,0 +1,685 @@
+table Torappu__RoomUnlockCond {
+    id: string;
+    number: [int];
+}
+table dict__string__Torappu__RoomUnlockCond {
+    key: string;
+    value: Torappu__RoomUnlockCond;
+}
+enum Torappu__RoomType : int {
+    NONE = 0,
+    CONTROL = 1,
+    POWER = 2,
+    MANUFACTURE = 4,
+    SHOP = 8,
+    DORMITORY = 16,
+    MEETING = 32,
+    HIRE = 64,
+    ELEVATOR = 128,
+    CORRIDOR = 256,
+    TRADING = 512,
+    WORKSHOP = 1024,
+    TRAINING = 2048,
+    FUNCTIONAL = 3710,
+    ALL = 4095,
+}
+enum Torappu__RoomCategory : int {
+    NONE = 0,
+    FUNCTION = 1,
+    OUTPUT = 2,
+    CUSTOM = 4,
+    ELEVATOR = 8,
+    CORRIDOR = 16,
+    SPECIAL = 32,
+    ALL = 63,
+}
+table Torappu__GridPosition {
+    row: int;
+    col: int;
+}
+enum Torappu__ItemType : int {
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_5 = 40,
+    VOUCHER_ELITE_II_6 = 41,
+    VOUCHER_SKIN = 42,
+    RETRO_COIN = 43,
+    PLAYER_AVATAR = 44,
+    UNI_COLLECTION = 45,
+    VOUCHER_FULL_POTENTIAL = 46,
+    RL_COIN = 47,
+    RETURN_CREDIT = 48,
+    MEDAL = 49,
+    CHARM = 50,
+    HOME_BACKGROUND = 51,
+    EXTERMINATION_AGENT = 52,
+    OPTIONAL_VOUCHER_PICK = 53,
+    ACT_CART_COMPONENT = 54,
+    VOUCHER_LEVELMAX_6 = 55,
+    VOUCHER_LEVELMAX_5 = 56,
+    ACTIVITY_POTENTIAL = 57,
+    ITEM_PACK = 58,
+    SANDBOX = 59,
+    FAVOR_ADD_ITEM = 60,
+    CLASSIC_SHD = 61,
+    CLASSIC_TKT_GACHA = 62,
+    CLASSIC_TKT_GACHA_10 = 63,
+    LIMITED_BUFF = 64,
+    CLASSIC_FES_PICK_TIER_5 = 65,
+    CLASSIC_FES_PICK_TIER_6 = 66,
+}
+table Torappu__ItemBundle {
+    id: string;
+    count: int;
+    type: Torappu__ItemType;
+}
+table Torappu__BuildCost {
+    items: [Torappu__ItemBundle];
+    time: long;
+    labor: int;
+}
+table Torappu__PhaseData {
+    overrideName: string;
+    overridePrefabId: string;
+    unlockCondId: string;
+    buildCost: Torappu__BuildCost;
+    electricity: int;
+    maxStationedNum: int;
+    manpowerCost: long;
+}
+table Torappu__RoomData {
+    id: Torappu__RoomType;
+    name: string;
+    description: string;
+    defaultPrefabId: string;
+    canLevelDown: bool;
+    maxCount: int;
+    category: Torappu__RoomCategory;
+    size: Torappu__GridPosition;
+    phases: [Torappu__PhaseData];
+}
+table dict__string__Torappu__RoomData {
+    key: string;
+    value: Torappu__RoomData;
+}
+table Torappu__RoomSlot {
+    id: string;
+    cleanCostId: string;
+    costLabor: int;
+    provideLabor: int;
+    size: Torappu__GridPosition;
+    offset: Torappu__GridPosition;
+    category: Torappu__RoomCategory;
+    storeyId: string;
+}
+table dict__string__Torappu__RoomSlot {
+    key: string;
+    value: Torappu__RoomSlot;
+}
+table Torappu__SlotCleanCost {
+    id: string;
+    number: [int];
+}
+table dict__string__Torappu__SlotCleanCost {
+    key: string;
+    value: Torappu__SlotCleanCost;
+}
+enum Torappu__BuildingData_LayoutData_StoreyData_Type : int {
+    UPGROUND = 0,
+    DOWNGROUND = 1,
+}
+table Torappu__StoreyData {
+    id: string;
+    yOffset: int;
+    unlockControlLevel: int;
+    type: Torappu__BuildingData_LayoutData_StoreyData_Type;
+}
+table dict__string__Torappu__StoreyData {
+    key: string;
+    value: Torappu__StoreyData;
+}
+table Torappu__LayoutData {
+    id: string;
+    slots: [dict__string__Torappu__RoomSlot];
+    cleanCosts: [dict__string__Torappu__SlotCleanCost];
+    storeys: [dict__string__Torappu__StoreyData];
+}
+table dict__string__Torappu__LayoutData {
+    key: string;
+    value: Torappu__LayoutData;
+}
+table Torappu__PrefabInfo {
+    id: string;
+    blueprintRoomOverrideId: string;
+    size: Torappu__GridPosition;
+    floorGridSize: Torappu__GridPosition;
+    backWallGridSize: Torappu__GridPosition;
+    obstacleId: string;
+}
+table dict__string__Torappu__PrefabInfo {
+    key: string;
+    value: Torappu__PrefabInfo;
+}
+table Torappu__ShopPhase {
+    counterNum: int;
+    speed: float;
+    moneyCapacity: int;
+}
+table Torappu__DormPhase {
+    manpowerRecover: int;
+    decorationLimit: int;
+}
+table Torappu__WorkshopPhase {
+    manpowerFactor: float;
+}
+enum Torappu__EvolvePhase : int {
+    PHASE_0 = 0,
+    PHASE_1 = 1,
+    PHASE_2 = 2,
+    PHASE_3 = 3,
+    E_NUM = 4,
+}
+table Torappu__UnlockCondition {
+    phase: Torappu__EvolvePhase;
+    level: int;
+}
+table Torappu__SlotItem {
+    buffId: string;
+    cond: Torappu__UnlockCondition;
+}
+table Torappu__BuildingBuffCharSlot {
+    buffData: [Torappu__SlotItem];
+}
+table Torappu__BuildingCharacter {
+    charId: string;
+    maxManpower: long;
+    buffChar: [Torappu__BuildingBuffCharSlot];
+}
+table dict__string__Torappu__BuildingCharacter {
+    key: string;
+    value: Torappu__BuildingCharacter;
+}
+enum Torappu__BuffCategory : int {
+    NONE = 0,
+    FUNCTION = 1,
+    OUTPUT = 2,
+    RECOVERY = 3,
+}
+table Torappu__BuildingBuff {
+    buffId: string;
+    buffName: string;
+    buffIcon: string;
+    skillIcon: string;
+    sortId: int;
+    buffColor: string;
+    textColor: string;
+    buffCategory: Torappu__BuffCategory;
+    roomType: Torappu__RoomType;
+    description: string;
+}
+table dict__string__Torappu__BuildingBuff {
+    key: string;
+    value: Torappu__BuildingBuff;
+}
+enum Torappu__FurnitureInteract : int {
+    NONE = 0,
+    ANIMATOR = 1,
+}
+enum Torappu__FurnitureType : int {
+    FLOOR = 0,
+    CARPET = 1,
+    SEATING = 2,
+    BEDDING = 3,
+    TABLE = 4,
+    CABINET = 5,
+    DECORATION = 6,
+    WALLPAPER = 7,
+    WALLDECO = 8,
+    WALLLAMP = 9,
+    CEILING = 10,
+    CEILINGLAMP = 11,
+}
+enum Torappu__FurnitureSubType : int {
+    NONE = 0,
+    CHAIR = 1,
+    SOFA = 2,
+    BARSTOOL = 3,
+    STOOL = 4,
+    BENCH = 5,
+    ORTHER_S = 6,
+    POSTER = 7,
+    CURTAIN = 8,
+    BOARD_WD = 9,
+    SHELF = 10,
+    INSTRUMENT_WD = 11,
+    ART_WD = 12,
+    PLAQUE = 13,
+    CONTRACT = 14,
+    ANNIHILATION = 15,
+    ORTHER_WD = 16,
+    FLOORLAMP = 17,
+    PLANT = 18,
+    PARTITION = 19,
+    COOKING = 20,
+    CATERING = 21,
+    DEVICE = 22,
+    INSTRUMENT_D = 23,
+    ART_D = 24,
+    BOARD_D = 25,
+    ENTERTAINMENT = 26,
+    STORAGE = 27,
+    DRESSING = 28,
+    WARM = 29,
+    WASH = 30,
+    ORTHER_D = 31,
+    COLUMN = 32,
+}
+enum Torappu__FurnitureLocation : int {
+    NONE = 0,
+    WALL = 1,
+    FLOOR = 2,
+    CARPET = 3,
+    CEILING = 4,
+    POSTER = 5,
+    CEILINGDECAL = 6,
+}
+enum Torappu__FurnitureCategory : int {
+    FURNITURE = 0,
+    WALL = 1,
+    FLOOR = 2,
+}
+table Torappu__WorkshopExtraWeightItem {
+    weight: int;
+    itemId: string;
+    itemCount: int;
+}
+table Torappu__FurnitureData {
+    id: string;
+    sortId: int;
+    name: string;
+    iconId: string;
+    interactType: Torappu__FurnitureInteract;
+    type: Torappu__FurnitureType;
+    subType: Torappu__FurnitureSubType;
+    location: Torappu__FurnitureLocation;
+    category: Torappu__FurnitureCategory;
+    validOnRotate: bool;
+    enableRotate: bool;
+    rarity: int;
+    themeId: string;
+    groupId: string;
+    width: int;
+    depth: int;
+    height: int;
+    comfort: int;
+    usage: string;
+    description: string;
+    obtainApproach: string;
+    processedProductId: string;
+    processedProductCount: int;
+    processedByProductPercentage: int;
+    processedByProductGroup: [Torappu__WorkshopExtraWeightItem];
+    canBeDestroy: bool;
+    isOnly: int;
+    quantity: int;
+}
+table dict__string__Torappu__FurnitureData {
+    key: string;
+    value: Torappu__FurnitureData;
+}
+enum Torappu__DiyUIType : int {
+    MENU = 0,
+    THEME = 1,
+    FURNITURE = 2,
+    FURNITURE_IN_THEME = 3,
+    RECENT_THEME = 4,
+    RECENT_FURNITURE = 5,
+    PRESET = 6,
+}
+enum Torappu__DiyUISortOrder : int {
+    DESC = 0,
+    ASC = 1,
+}
+table Torappu__DiyUISortTemplateData {
+    name: string;
+    sequences: [string];
+    stableSequence: string;
+    stableSequenceOrder: Torappu__DiyUISortOrder;
+}
+table Torappu__DiyUISortTemplateListData {
+    diyUIType: Torappu__DiyUIType;
+    expandState: string;
+    defaultTemplateIndex: int;
+    defaultTemplateOrder: Torappu__DiyUISortOrder;
+    templates: [Torappu__DiyUISortTemplateData];
+}
+table Torappu__InteractItem {
+    skinId: string;
+}
+table dict__string__list_Torappu__InteractItem {
+    key: string;
+    value: [Torappu__InteractItem];
+}
+table dict__string__Torappu__DiyUISortTemplateListData {
+    key: string;
+    value: Torappu__DiyUISortTemplateListData;
+}
+table dict__Torappu__DiyUIType__dict__string__DiyUISortTemplateListData {
+    key: Torappu__DiyUIType;
+    value: [dict__string__Torappu__DiyUISortTemplateListData];
+}
+table Torappu__ThemeQuickSetupItem {
+    furnitureId: string;
+    pos0: int;
+    pos1: int;
+    dir: int;
+}
+table Torappu__ThemeData {
+    id: string;
+    sortId: int;
+    name: string;
+    themeType: string;
+    desc: string;
+    quickSetup: [Torappu__ThemeQuickSetupItem];
+    groups: [string];
+    furnitures: [string];
+}
+table dict__string__Torappu__ThemeData {
+    key: string;
+    value: Torappu__ThemeData;
+}
+table Torappu__GroupData {
+    id: string;
+    sortId: int;
+    name: string;
+    themeId: string;
+    comfort: int;
+    count: int;
+    furniture: [string];
+}
+table dict__string__Torappu__GroupData {
+    key: string;
+    value: Torappu__GroupData;
+}
+table Torappu__FurnitureTypeData {
+    type: Torappu__FurnitureType;
+    name: string;
+}
+table dict__Torappu__FurnitureType__Torappu__FurnitureTypeData {
+    key: Torappu__FurnitureType;
+    value: Torappu__FurnitureTypeData;
+}
+table Torappu__FurnitureSubTypeData {
+    subType: Torappu__FurnitureSubType;
+    name: string;
+    type: Torappu__FurnitureType;
+    sortId: int;
+}
+table dict__Torappu__FurnitureSubType__Torappu__FurnitureSubTypeData {
+    key: Torappu__FurnitureSubType;
+    value: Torappu__FurnitureSubTypeData;
+}
+table Torappu__DormitoryDefaultFurnitureItem {
+    furnitureId: string;
+    xOffset: int;
+    yOffset: int;
+    defaultPrefabId: string;
+}
+table dict__string__Torappu__DormitoryDefaultFurnitureItem {
+    key: string;
+    value: [Torappu__DormitoryDefaultFurnitureItem];
+}
+table Torappu__CustomData {
+    furnitures: [dict__string__Torappu__FurnitureData];
+    themes: [dict__string__Torappu__ThemeData];
+    groups: [dict__string__Torappu__GroupData];
+    types: [dict__Torappu__FurnitureType__Torappu__FurnitureTypeData];
+    subTypes: [dict__Torappu__FurnitureSubType__Torappu__FurnitureSubTypeData];
+    defaultFurnitures: [dict__string__Torappu__DormitoryDefaultFurnitureItem];
+    interactGroups: [dict__string__list_Torappu__InteractItem];
+    diyUISortTemplates: [dict__Torappu__DiyUIType__dict__string__DiyUISortTemplateListData];
+}
+enum Torappu__FormulaItemType : int {
+    NONE = 0,
+    F_EVOLVE = 1,
+    F_BUILDING = 2,
+    F_GOLD = 3,
+    F_DIAMOND = 4,
+    F_FURNITURE = 5,
+    F_EXP = 6,
+    F_ASC = 7,
+    F_SKILL = 8,
+}
+table Torappu__UnlockRoom {
+    roomId: Torappu__RoomType;
+    roomLevel: int;
+    roomCount: int;
+}
+table Torappu__UnlockStage {
+    stageId: string;
+    rank: int;
+}
+table Torappu__ManufactFormula {
+    formulaId: string;
+    itemId: string;
+    count: int;
+    weight: int;
+    costPoint: long;
+    formulaType: Torappu__FormulaItemType;
+    buffType: string;
+    costs: [Torappu__ItemBundle];
+    requireRooms: [Torappu__UnlockRoom];
+    requireStages: [Torappu__UnlockStage];
+}
+table dict__string__Torappu__ManufactFormula {
+    key: string;
+    value: Torappu__ManufactFormula;
+}
+table Torappu__ShopFormula {
+    formulaId: string;
+    itemId: string;
+    formulaType: Torappu__FormulaItemType;
+    costPoint: long;
+    gainItem: Torappu__ItemBundle;
+    requireRooms: [Torappu__UnlockRoom];
+}
+table dict__string__Torappu__ShopFormula {
+    key: string;
+    value: Torappu__ShopFormula;
+}
+table Torappu__WorkshopFormula {
+    sortId: int;
+    formulaId: string;
+    rarity: int;
+    itemId: string;
+    count: int;
+    goldCost: long;
+    apCost: long;
+    formulaType: Torappu__FormulaItemType;
+    buffType: string;
+    extraOutcomeRate: float;
+    extraOutcomeGroup: [Torappu__WorkshopExtraWeightItem];
+    costs: [Torappu__ItemBundle];
+    requireRooms: [Torappu__UnlockRoom];
+    requireStages: [Torappu__UnlockStage];
+}
+table dict__string__Torappu__WorkshopFormula {
+    key: string;
+    value: Torappu__WorkshopFormula;
+}
+table Torappu__CreditFormula {
+    initiative: [int];
+    passive: [int];
+}
+table dict__string__int {
+    key: string;
+    value: int;
+}
+table dict__string__list_string {
+    key: string;
+    value: [string];
+}
+table Torappu__RoomBean_Torappu__ShopPhase {
+    phases: [Torappu__ShopPhase];
+}
+table Torappu__DormRoomBean {
+    phases: [Torappu__DormPhase];
+}
+table WHAT_THE_FUCK_IS_HG_DOING {}
+table Torappu__ControlRoomBean {
+    basicCostBuff: int;
+    phases: [WHAT_THE_FUCK_IS_HG_DOING];
+}
+table Torappu__ManufactPhase {
+    speed: float;
+    outputCapacity: int;
+}
+table Torappu__ManufactRoomBean {
+    basicSpeedBuff: float;
+    phases: [Torappu__ManufactPhase];
+}
+table Torappu__HirePhase {
+    economizeRate: float;
+    resSpeed: int;
+    refreshTimes: int;
+}
+table Torappu__HireRoomBean {
+    basicSpeedBuff: float;
+    phases: [Torappu__HirePhase];
+}
+table Torappu__MeetingPhase {
+    friendSlotInc: int;
+    maxVisitorNum: int;
+    gatheringSpeed: int;
+}
+table Torappu__MeetingRoomBean {
+    basicSpeedBuff: float;
+    phases: [Torappu__MeetingPhase];
+}
+table Torappu__TradingPhase {
+    orderSpeed: float;
+    orderLimit: int;
+    orderRarity: int;
+}
+table Torappu__TradingRoomBean {
+    basicSpeedBuff: float;
+    phases: [Torappu__TradingPhase];
+}
+table Torappu__RoomBean_Torappu__WorkshopPhase {
+    phases: [Torappu__WorkshopPhase];
+}
+table Torappu__TrainingPhase {
+    speed: float;
+    outputCapacity: int;
+}
+table Torappu__TrainingRoomBean {
+    basicSpeedBuff: float;
+    phases: [Torappu__TrainingPhase];
+}
+table Torappu__PowerRoomBean {
+    basicSpeedBuff: float;
+    phases: [WHAT_THE_FUCK_IS_HG_DOING];
+}
+table Torappu__BuildingData {
+    controlSlotId: string;
+    meetingSlotId: string;
+    initMaxLabor: int;
+    laborRecoverTime: int;
+    manufactInputCapacity: int;
+    shopCounterCapacity: int;
+    comfortLimit: int;
+    creditInitiativeLimit: int;
+    creditPassiveLimit: int;
+    creditComfortFactor: int;
+    creditGuaranteed: int;
+    creditCeiling: int;
+    manufactUnlockTips: string;
+    shopUnlockTips: string;
+    manufactStationBuff: float;
+    comfortManpowerRecoverFactor: int;
+    manpowerDisplayFactor: int;
+    shopOutputRatio: [string];
+    shopStackRatio: [string];
+    basicFavorPerDay: int;
+    humanResourceLimit: int;
+    tiredApThreshold: long;
+    processedCountRatio: int;
+    tradingStrategyUnlockLevel: int;
+    tradingReduceTimeUnit: int;
+    tradingLaborCostUnit: int;
+    manufactReduceTimeUnit: int;
+    manufactLaborCostUnit: int;
+    laborAssistUnlockLevel: int;
+    apToLaborUnlockLevel: int;
+    apToLaborRatio: int;
+    socialResourceLimit: int;
+    socialSlotNum: int;
+    furniDuplicationLimit: int;
+    assistFavorReport: long;
+    manufactManpowerCostByNum: [int];
+    tradingManpowerCostByNum: [int];
+    roomUnlockConds: [dict__string__Torappu__RoomUnlockCond];
+    rooms: [dict__string__Torappu__RoomData];
+    layouts: [dict__string__Torappu__LayoutData];
+    prefabs: [dict__string__Torappu__PrefabInfo];
+    controlData: Torappu__ControlRoomBean;
+    manufactData: Torappu__ManufactRoomBean;
+    shopData: Torappu__RoomBean_Torappu__ShopPhase; 
+    hireData: Torappu__HireRoomBean;
+    dormData: Torappu__DormRoomBean;
+    meetingData: Torappu__MeetingRoomBean;
+    tradingData: Torappu__TradingRoomBean;
+    workshopData: Torappu__RoomBean_Torappu__WorkshopPhase;
+    trainingData: Torappu__TrainingRoomBean;
+    powerData: Torappu__PowerRoomBean;
+    chars: [dict__string__Torappu__BuildingCharacter];
+    buffs: [dict__string__Torappu__BuildingBuff];
+    workshopBonus: [dict__string__list_string];
+    customData: Torappu__CustomData;
+    manufactFormulas: [dict__string__Torappu__ManufactFormula];
+    shopFormulas: [dict__string__Torappu__ShopFormula];
+    workshopFormulas: [dict__string__Torappu__WorkshopFormula];
+    creditFormula: Torappu__CreditFormula;
+    goldItems: [dict__string__int];
+    assistantUnlock: [int];
+}
+
+root_type Torappu__BuildingData;
