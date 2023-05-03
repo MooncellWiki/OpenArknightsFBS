@@ -155,7 +155,7 @@ table Torappu__NewVoiceTimeData {
 
 table KV_Torappu__StartTimeWithTypeDict {
     key: Torappu__VoiceLangType;
-    value: Torappu__NewVoiceTimeData;
+    value: [Torappu__NewVoiceTimeData];
 }
 
 table charword_table {
