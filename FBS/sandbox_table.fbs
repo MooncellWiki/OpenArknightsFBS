@@ -75,11 +75,15 @@ table Torappu__SandboxFoodStaminaData {
     potCnt: int;
     foodStaminaCnt: int;
 }
+table dict_string_int {
+    key: string;
+    value: int;
+}
 table Torappu__SandboxBuildProduceData {
     itemProduceId: string;
     itemId: string;
     itemTypeText: string;
-    materialItems: [int];
+    materialItems: [dict_string_int];
 }
 table Torappu__SandboxBuildGoldRatioData {
     itemId: string;
@@ -554,10 +558,6 @@ table dict_string_string {
 table Torappu__PackedRuneData__dict {
     key: string;
     value: Torappu__PackedRuneData;
-}
-table dict_string_int {
-    key: string;
-    value: int;
 }
 table Torappu__SandboxActTable {
     mapConstTable: Torappu__SandboxMapConstTable;
