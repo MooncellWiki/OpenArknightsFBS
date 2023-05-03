@@ -662,7 +662,7 @@ table Torappu__BuildingData {
     prefabs: [dict__string__Torappu__PrefabInfo];
     controlData: Torappu__ControlRoomBean;
     manufactData: Torappu__ManufactRoomBean;
-    shopData: Torappu__RoomBean_Torappu__ShopPhase; 
+    shopData: Torappu__RoomBean_Torappu__ShopPhase;
     hireData: Torappu__HireRoomBean;
     dormData: Torappu__DormRoomBean;
     meetingData: Torappu__MeetingRoomBean;
