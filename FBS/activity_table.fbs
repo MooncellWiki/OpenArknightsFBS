@@ -1619,11 +1619,11 @@ table dict__string__Torappu_SharedCharData_TmplData {
 table Torappu_SharedCharData {
     charId: string;
     potentialRank: int;
-    m_skillIndex: int;
-    m_skinId: string;
-    m_skills: [Torappu_SharedCharData_SharedCharSkillData];
-    m_selectEquip: string;
-    m_equips: [dict__string__Torappu_SharedCharData_CharEquipInfo];
+    skillIndex: int;
+    skinId: string;
+    skills: [Torappu_SharedCharData_SharedCharSkillData];
+    currentEquip: string;
+    equip: [dict__string__Torappu_SharedCharData_CharEquipInfo];
     mainSkillLvl: int;
     evolvePhase: int;
     level: int;

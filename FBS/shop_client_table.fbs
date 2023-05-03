@@ -26,7 +26,6 @@ table Torappu_ShopRecommendData {
     param1: string;
     param2: string;
     skinId: string;
-    islocked: bool;
 }
 table Torappu_ShopRecommendGroup {
     recommendGroup: [int];

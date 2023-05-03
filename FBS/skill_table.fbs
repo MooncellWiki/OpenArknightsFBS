@@ -100,7 +100,6 @@ table Torappu__SpData {
     spCost: int;
     initSp: int;
     increment: float;
-    m_incrementsForAllSpTypes: [float];
 }
 table Torappu__DataPair {
     key: string;
