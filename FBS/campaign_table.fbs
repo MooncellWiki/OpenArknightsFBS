@@ -1,0 +1,254 @@
+enum Torappu__ItemType : int {
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_5 = 40,
+    VOUCHER_ELITE_II_6 = 41,
+    VOUCHER_SKIN = 42,
+    RETRO_COIN = 43,
+    PLAYER_AVATAR = 44,
+    UNI_COLLECTION = 45,
+    VOUCHER_FULL_POTENTIAL = 46,
+    RL_COIN = 47,
+    RETURN_CREDIT = 48,
+    MEDAL = 49,
+    CHARM = 50,
+    HOME_BACKGROUND = 51,
+    EXTERMINATION_AGENT = 52,
+    OPTIONAL_VOUCHER_PICK = 53,
+    ACT_CART_COMPONENT = 54,
+    VOUCHER_LEVELMAX_6 = 55,
+    VOUCHER_LEVELMAX_5 = 56,
+    ACTIVITY_POTENTIAL = 57,
+    ITEM_PACK = 58,
+    SANDBOX = 59,
+    FAVOR_ADD_ITEM = 60,
+    CLASSIC_SHD = 61,
+    CLASSIC_TKT_GACHA = 62,
+    CLASSIC_TKT_GACHA_10 = 63,
+    LIMITED_BUFF = 64,
+    CLASSIC_FES_PICK_TIER_5 = 65,
+    CLASSIC_FES_PICK_TIER_6 = 66,
+}
+table Torappu__ItemBundle {
+    id: string;
+    count: int;
+    type: Torappu__ItemType;
+}
+table Torappu__BreakRewardLadder {
+    killCnt: int;
+    breakFeeAdd: int;
+    rewards: [Torappu__ItemBundle];
+}
+enum Torappu__CampaignStageType : int {
+    NONE = 0,
+    PERMANENT = 1,
+    ROTATE = 2,
+    TRAINING = 3,
+}
+enum Torappu__OccPer : int {
+    ALWAYS = 0,
+    ALMOST = 1,
+    USUAL = 2,
+    OFTEN = 3,
+    SOMETIMES = 4,
+    NEVER = 5,
+    DEFINITELY_BUFF = 6,
+}
+enum Torappu__StageDropType : int {
+    NONE = 0,
+    ONCE = 1,
+    NORMAL = 2,
+    SPECIAL = 3,
+    ADDITIONAL = 4,
+    APRETURN = 5,
+    DIAMOND_MATERIAL = 6,
+    FUNITURE_DROP = 7,
+    COMPLETE = 8,
+    CHARM_DROP = 9,
+    OVERRIDE_DROP = 10,
+    ITEM_RETURN = 11,
+}
+table Torappu__WeightItemBundle {
+    id: string;
+    type: Torappu__ItemType;
+    dropType: Torappu__StageDropType;
+    count: int;
+    weight: int;
+}
+table Torappu__WeightItemBundle__2d {
+    values: [Torappu__WeightItemBundle];
+}
+table Torappu__DisplayDetailRewards {
+    occPercent: Torappu__OccPer;
+    GetPercent: float;
+    CannotGetPercent: float;
+    type: Torappu__ItemType;
+    id: string;
+    dropType: Torappu__StageDropType;
+}
+table Torappu__CampaignDropInfo {
+    firstPassRewards: [Torappu__ItemBundle];
+    passRewards: [Torappu__WeightItemBundle__2d];
+    displayDetailRewards: [Torappu__DisplayDetailRewards];
+}
+table Torappu__DropLadder {
+    killCnt: int;
+    dropInfo: Torappu__CampaignDropInfo;
+}
+table Torappu__GainLadder {
+    killCnt: int;
+    apFailReturn: int;
+    favor: int;
+    expGain: int;
+    goldGain: int;
+    displayDiamondShdNum: int;
+}
+table Torappu__DisplayRewards {
+    type: Torappu__ItemType;
+    id: string;
+    dropType: Torappu__StageDropType;
+}
+table Torappu__DropGainInfo {
+    dropLadders: [Torappu__DropLadder];
+    gainLadders: [Torappu__GainLadder];
+    displayRewards: [Torappu__DisplayRewards];
+    displayDetailRewards: [Torappu__DisplayDetailRewards];
+}
+table dict__Torappu__CampaignStageType__Torappu__DropGainInfo {
+    key: Torappu__CampaignStageType;
+    value: Torappu__DropGainInfo;
+}
+table Torappu__CampaignData {
+    stageId: string;
+    isSmallScale: int;
+    breakLadders: [Torappu__BreakRewardLadder];
+    isCustomized: bool;
+    dropGains: [dict__Torappu__CampaignStageType__Torappu__DropGainInfo];
+}
+table dict__string__Torappu__CampaignData {
+    key: string;
+    value: Torappu__CampaignData;
+}
+table Torappu__CampaignGroupData {
+    groupId: string;
+    activeCamps: [string];
+    startTs: long;
+    endTs: long;
+}
+table dict__string__Torappu__CampaignGroupData {
+    key: string;
+    value: Torappu__CampaignGroupData;
+}
+table Torappu__CampaignRegionData {
+    id: string;
+    isUnknwon: int;
+}
+table dict__string__Torappu__CampaignRegionData {
+    key: string;
+    value: Torappu__CampaignRegionData;
+}
+table Torappu__CampaignZoneData {
+    id: string;
+    name: string;
+    regionId: string;
+    templateId: string;
+}
+table dict__string__Torappu__CampaignZoneData {
+    key: string;
+    value: Torappu__CampaignZoneData;
+}
+table Torappu__CampaignMissionData {
+    id: string;
+    sortId: int;
+    param: [string];
+    description: string;
+    breakFeeAdd: int;
+}
+table dict__string__Torappu__CampaignMissionData {
+    key: string;
+    value: Torappu__CampaignMissionData;
+}
+table dict__string__int {
+    key: string;
+    value: int;
+}
+table Torappu__CampaignConstTable {
+    systemPreposedStage: string;
+    rotateStartTime: long;
+    rotatePreposedStage: string;
+    zoneUnlockStage: string;
+    firstRotateRegion: string;
+    sweepStartTime: long;
+}
+table Torappu__CampaignRotateOpenTimeData {
+    groupId: string;
+    stageId: string;
+    mapId: string;
+    unknownRegions: [string];
+    duration: int;
+    startTs: long;
+    endTs: long;
+}
+table Torappu__CampaignTrainingOpenTimeData {
+    groupId: string;
+    stages: [string];
+    startTs: long;
+    endTs: long;
+}
+table Torappu__CampaignTrainingAllOpenTimeData {
+    groupId: string;
+    startTs: long;
+    endTs: long;
+}
+table Torappu__CampaignTable {
+    campaigns: [dict__string__Torappu__CampaignData];
+    campaignGroups: [dict__string__Torappu__CampaignGroupData];
+    campaignRegions: [dict__string__Torappu__CampaignRegionData];
+    campaignZones: [dict__string__Torappu__CampaignZoneData];
+    campaignMissions: [dict__string__Torappu__CampaignMissionData];
+    stageIndexInZoneMap: [dict__string__int];
+    campaignConstTable: Torappu__CampaignConstTable;
+    campaignRotateStageOpenTimes: [Torappu__CampaignRotateOpenTimeData];
+    campaignTrainingStageOpenTimes: [Torappu__CampaignTrainingOpenTimeData];
+    campaignTrainingAllOpenTimes: [Torappu__CampaignTrainingAllOpenTimeData];
+}
+
+root_type Torappu__CampaignTable;
