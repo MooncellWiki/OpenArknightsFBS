@@ -1,4 +1,4 @@
-table ChapterData {
+table Torappu_ChapterData {
     chapterId: string;
     chapterName: string;
     chapterName2: string;
@@ -9,13 +9,13 @@ table ChapterData {
     chapterEndStageId: string;
 }
 
-table Dict_ChapterData {
+table dict__string__Torappu_ChapterData {
     key: string;
-    value: ChapterData;
+    value: Torappu_ChapterData;
 }
 
 table Root_ChapterData {
-    values: [Dict_ChapterData];
+    chapters: [dict__string__Torappu_ChapterData];
 }
 
 root_type Root_ChapterData;

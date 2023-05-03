@@ -332,7 +332,7 @@ table KV_Torappu__CharacterData {
 }
 
 table character_table {
-    values: [KV_Torappu__CharacterData];
+    characters: [KV_Torappu__CharacterData];
 }
 
 root_type character_table;

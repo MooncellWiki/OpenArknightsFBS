@@ -1,4 +1,4 @@
-enum Torappu__MedalRarity : int {
+enum Torappu_MedalRarity : int {
     T1 = 0,
     T1D5 = 1,
     T2 = 2,
@@ -6,21 +6,18 @@ enum Torappu__MedalRarity : int {
     T3 = 4,
     T3D5 = 5,
 }
-
-enum Torappu__MedalExpireType : int {
+enum Torappu_MedalExpireType : int {
     NONE = 0,
     INIT = 1,
     TEMP = 2,
     PERM = 3,
 }
-
-table Torappu__MedalExpireTime {
+table Torappu_MedalExpireTime {
     start: long;
     end: long;
-    type: Torappu__MedalExpireType;
+    type: Torappu_MedalExpireType;
 }
-
-enum Torappu__ItemType : int {
+enum Torappu_ItemType : int {
     NONE = 0,
     CHAR = 1,
     CARD_EXP = 2,
@@ -89,26 +86,23 @@ enum Torappu__ItemType : int {
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
 }
-
-table Torappu__ItemBundle {
+table Torappu_ItemBundle {
     id: string;
     count: int;
-    type: Torappu__ItemType;
+    type: Torappu_ItemType;
 }
-
-table Torappu__MedalRewardGroupData {
+table Torappu_MedalRewardGroupData {
     groupId: string;
     slotId: int;
-    itemList: [Torappu__ItemBundle];
+    itemList: [Torappu_ItemBundle];
 }
-
-table Torappu__MedalPerData {
+table Torappu_MedalPerData {
     medalId: string;
     medalName: string;
     medalType: string;
     slotId: int;
     preMedalIdList: [string];
-    rarity: Torappu__MedalRarity;
+    rarity: Torappu_MedalRarity;
     template: string;
     unlockParam: [string];
     getMethod: string;
@@ -116,13 +110,33 @@ table Torappu__MedalPerData {
     advancedMedal: string;
     originMedal: string;
     displayTime: long;
-    expireTimes: [Torappu__MedalExpireTime];
-    medalRewardGroup: [Torappu__MedalRewardGroupData];
+    expireTimes: [Torappu_MedalExpireTime];
+    medalRewardGroup: [Torappu_MedalRewardGroupData];
     isHidden: bool;
 }
-
-table medal_table {
-    medalList: [Torappu__MedalPerData];
+table Torappu_MedalGroupData {
+    groupId: string;
+    groupName: string;
+    groupDesc: string;
+    medalId: [string];
+    sortId: int;
+    groupBackColor: string;
+    groupGetTime: long;
+    sharedExpireTimes: [Torappu_MedalExpireTime];
+}
+table Torappu_MedalTypeData {
+    medalGroupId: string;
+    sortId: int;
+    medalName: string;
+    groupData: [Torappu_MedalGroupData];
+}
+table dict__string__Torappu_MedalTypeData {
+    key: string;
+    value: Torappu_MedalTypeData;
+}
+table Torappu_MedalData {
+    medalList: [Torappu_MedalPerData];
+    medalTypeData: [dict__string__Torappu_MedalTypeData];
 }
 
-root_type medal_table;
+root_type Torappu_MedalData;

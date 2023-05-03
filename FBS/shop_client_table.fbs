@@ -1,10 +1,9 @@
-enum RecommendItemTagTips : int {
+enum Torappu_RecommendItemTagTips : int {
     ONSALE = 0,
     DEADLINE = 1,
     NONE = 2,
 }
-
-enum ShopRouteTarget : int {
+enum Torappu_ShopRouteTarget : int {
     RECOMMENDSHOP = 0,
     CASHSHOP = 1,
     GIFTPACKAGE = 2,
@@ -20,40 +19,105 @@ enum ShopRouteTarget : int {
     CLASSICSHOP = 12,
     NONE = 13,
 }
-
-table ShopRecommendData {
+table Torappu_ShopRecommendData {
     imgId: string;
     slotIndex: int;
-    cmd: ShopRouteTarget;
+    cmd: Torappu_ShopRouteTarget;
     param1: string;
     param2: string;
     skinId: string;
+    islocked: bool;
 }
-
-table ShopRecommendGroup {
+table Torappu_ShopRecommendGroup {
     recommendGroup: [int];
-    dataList: [ShopRecommendData];
+    dataList: [Torappu_ShopRecommendData];
 }
-
-table ShopKeeperWord {
+table Torappu_ShopKeeperWord {
     id: string;
     text: string;
 }
-
-table ShopRecommendItem {
-    tagI: string;
+table Torappu_ShopRecommendItem {
+    tagId: string;
     displayType: string;
     tagName: string;
-    itemTag: RecommendItemTagTips;
+    itemTag: Torappu_RecommendItemTagTips;
     orderNum: int;
     startDatetime: long;
     endDatetime: long;
-    groupList: [ShopRecommendGroup];
-    tagWord: ShopKeeperWord;
+    groupList: [Torappu_ShopRecommendGroup];
+    tagWord: Torappu_ShopKeeperWord;
+}
+table Torappu_ShopCreditUnlockItem {
+    sortId: int;
+    unlockNum: int;
+    charId: string;
+}
+table Torappu_ShopCreditUnlockGroup {
+    id: string;
+    index: string;
+    startDateTime: long;
+    charDict: [Torappu_ShopCreditUnlockItem];
+}
+table dict__string__Torappu_ShopCreditUnlockGroup {
+    key: string;
+    value: Torappu_ShopCreditUnlockGroup;
+}
+table Torappu_ShopClientData_ShopKeeperData {
+    welcomeWords: [Torappu_ShopKeeperWord];
+    clickWords: [Torappu_ShopKeeperWord];
+}
+table Torappu_ShopCarouselData_Item {
+    spriteId: string;
+    startTime: long;
+    endTime: long;
+    cmd: Torappu_ShopRouteTarget;
+    param1: string;
+    skinId: string;
+    furniId: string;
+}
+table Torappu_ShopCarouselData {
+    items: [Torappu_ShopCarouselData_Item];
+}
+table Torappu_ChooseShopRelation {
+    goodId: string;
+    optionList: [string];
+}
+enum Torappu_ShopUnlockType : int {
+    ALWAYS_UNLOCK = 0,
+    SKIN_UNLOCK = 1,
+    FURN_UNLOCK = 2,
+    BOTH_SKIN_FURN = 3,
+}
+table dict__string__Torappu_ShopUnlockType {
+    key: string;
+    value: Torappu_ShopUnlockType;
+}
+table Torappu_LMTGSShopSchedule {
+    gachaPoolId: string;
+    LMTGSId: string;
+    iconColor: string;
+    iconBackColor: string;
+    storeTextColor: string;
+    startTime: long;
+    endTime: long;
+}
+table Torappu_LMTGSShopOverlaySchedule {
+    gachaPoolId1: string;
+    gachaPoolId2: string;
+    picId: string;
+}
+table Torappu_ShopClientData {
+    recommendList: [Torappu_ShopRecommendItem];
+    creditUnlockGroup: [dict__string__Torappu_ShopCreditUnlockGroup];
+    shopKeeperData: Torappu_ShopClientData_ShopKeeperData;
+    carousels: [Torappu_ShopCarouselData];
+    chooseShopRelations: [Torappu_ChooseShopRelation];
+    shopUnlockDict: [dict__string__Torappu_ShopUnlockType];
+    extraQCShopRule: [string];
+    repQCShopRule: [string];
+    shopMonthlySubGoodId: string;
+    limitedShopSchedule: [Torappu_LMTGSShopSchedule];
+    overlaySchedule: [Torappu_LMTGSShopOverlaySchedule];
 }
 
-table Root_ShopRecommendItem {
-    recommendList: [ShopRecommendItem];
-}
-
-root_type Root_ShopRecommendItem;
+root_type Torappu_ShopClientData;

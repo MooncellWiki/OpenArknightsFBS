@@ -118,8 +118,6 @@ table Torappu__WeightItemBundle__2d {
 }
 table Torappu__DisplayDetailRewards {
     occPercent: Torappu__OccPer;
-    GetPercent: float;
-    CannotGetPercent: float;
     type: Torappu__ItemType;
     id: string;
     dropType: Torappu__StageDropType;

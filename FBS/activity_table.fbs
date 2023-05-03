@@ -1733,8 +1733,6 @@ enum Torappu_StageDropType : int {
 }
 table Torappu_ActivityBossRushData_DisplayDetailRewards {
     occPercent: Torappu_OccPer;
-    GetPercent: float;
-    CannotGetPercent: float;
     dropCount: int;
     type: Torappu_ItemType;
     id: string;
@@ -2095,8 +2093,6 @@ table Torappu_StageData_DisplayRewards {
 }
 table Torappu_StageData_DisplayDetailRewards {
     occPercent: Torappu_OccPer;
-    GetPercent: float;
-    CannotGetPercent: float;
     type: Torappu_ItemType;
     id: string;
     dropType: Torappu_StageDropType;
