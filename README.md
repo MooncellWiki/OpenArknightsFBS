@@ -16,7 +16,7 @@
 目前版本(CN 2.0.01)有 15 个数据文件使用 FlatBuffers 格式：
 
 - activity_table
-- building_table
+- building_data
 - campaign_table
 - chapter_table
 - character_table
