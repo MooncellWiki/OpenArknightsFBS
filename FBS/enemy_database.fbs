@@ -1,0 +1,111 @@
+table Undefinable_INT {
+    m_defined: bool;
+    m_value: int;
+}
+
+table Undefinable_FLOAT {
+    m_defined: bool;
+    m_value: float;
+}
+
+table Undefinable_BOOL {
+    m_defined: bool;
+    m_value: bool;
+}
+
+table Undefinable_STRING {
+    m_defined: bool;
+    m_value: string;
+}
+
+table Torappu__AttributesData {
+    maxHp: Undefinable_INT;
+    atk: Undefinable_INT;
+    def: Undefinable_INT;
+    magicResistance: Undefinable_FLOAT;
+    cost: Undefinable_INT;
+    blockCnt: Undefinable_INT;
+    moveSpeed: Undefinable_FLOAT;
+    attackSpeed: Undefinable_FLOAT;
+    baseAttackTime: Undefinable_FLOAT;
+    respawnTime: Undefinable_INT;
+    hpRecoveryPerSec: Undefinable_FLOAT;
+    spRecoveryPerSec: Undefinable_FLOAT;
+    maxDeployCount: Undefinable_INT;
+    massLevel: Undefinable_INT;
+    baseForceLevel: Undefinable_INT;
+    tauntLevel: Undefinable_INT;
+    stunImmune: Undefinable_BOOL;
+    silenceImmune: Undefinable_BOOL;
+    sleepImmune: Undefinable_BOOL;
+    frozenImmune: Undefinable_BOOL;
+    levitateImmune: Undefinable_BOOL;
+}
+enum Torappu__EnemyLevelType : int {
+    NORMAL = 0,
+    ELITE = 1,
+    BOSS = 2,
+}
+
+table Undefinable_Torappu__EnemyLevelType {
+    m_defined: bool;
+    m_value: Torappu__EnemyLevelType;
+}
+
+table Torappu__DataPair {
+    key: string;
+    value: float;
+    valueStr: string;
+}
+table Torappu__LevelData_EnemyData_ESkillData {
+    prefabKey: string;
+    priority: int;
+    cooldown: float;
+    initCooldown: float;
+    spCost: int;
+    blackboard: [Torappu__DataPair];
+}
+enum Torappu__SpType : int {
+    NONE = 0,
+    INCREASE_WITH_TIME = 1,
+    INCREASE_WHEN_ATTACK = 2,
+    INCREASE_WHEN_TAKEN_DAMAGE = 4,
+    ATTACK_OR_DAMAGE = 6,
+    ALL = 7,
+}
+table Torappu__LevelData_EnemyData_ESpData {
+    spType: Torappu__SpType;
+    maxSp: int;
+    initSp: int;
+    increment: float;
+}
+table Torappu__EnemyData {
+    name: Undefinable_STRING;
+    description: Undefinable_STRING;
+    prefabKey: Undefinable_STRING;
+    attributes: Torappu__AttributesData;
+    lifePointReduce: Undefinable_INT;
+    levelType: Undefinable_Torappu__EnemyLevelType;
+    rangeRadius: Undefinable_FLOAT;
+    numOfExtraDrops: Undefinable_INT;
+    viewRadius: Undefinable_FLOAT;
+    notCountInTotal: Undefinable_BOOL;
+    talentBlackboard: [Torappu__DataPair];
+    skills: [Torappu__LevelData_EnemyData_ESkillData];
+    spData: Torappu__LevelData_EnemyData_ESpData;
+}
+table Torappu__EnemyLevel {
+    level: int;
+    enemyData: Torappu__EnemyData;
+}
+
+table KV_Torappu__EnemyDatabase {
+    Key: string;
+    Value: [Torappu__EnemyLevel];
+}
+
+table enemy_database {
+    enemies: [KV_Torappu__EnemyDatabase];
+}
+
+root_type enemy_database;
