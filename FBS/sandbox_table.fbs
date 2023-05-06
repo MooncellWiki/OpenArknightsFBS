@@ -505,7 +505,7 @@ table clz_Torappu_SandboxMissionData {
     effectDesc: string; 
     costAction: int; 
     charCnt: int; 
-    profession: [enum__Torappu_ProfessionID]; // __prts__check_required__professionIds__
+    professionIds: [enum__Torappu_ProfessionID]; // __prts__check_required__professionIds__
     profession: enum__Torappu_ProfessionCategory; 
     costStamina: int; 
 }
