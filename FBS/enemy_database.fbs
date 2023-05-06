@@ -106,13 +106,13 @@ table clz_Torappu_EnemyDatabase_EnemyLevel {
     enemyData: clz_Torappu_EnemyDatabase_EnemyData; 
 }
 
-table dict__string__list_clz_Torappu_EnemyDatabase_EnemyLevel {
+table kvp__string__list_clz_Torappu_EnemyDatabase_EnemyLevel {
     Key: string(key);
     Value: [clz_Torappu_EnemyDatabase_EnemyLevel];
 }
 
 table clz_Torappu_EnemyDatabase {
-    enemies: [dict__string__list_clz_Torappu_EnemyDatabase_EnemyLevel]; 
+    enemies: [kvp__string__list_clz_Torappu_EnemyDatabase_EnemyLevel]; 
 }
 
 root_type clz_Torappu_EnemyDatabase;
