@@ -1,9 +1,11 @@
-enum Torappu__SkillType : int {
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_SkillType : int {
     PASSIVE = 0,
     MANUAL = 1,
     AUTO = 2,
 }
-enum Torappu__SkillDurationType : int {
+
+enum enum__Torappu_SkillDurationType : int {
     PASSIVE = 0,
     INSTANT = 1,
     LIMITED = 2,
@@ -11,7 +13,8 @@ enum Torappu__SkillDurationType : int {
     SWITCHABLE = 4,
     AMMO = 5,
 }
-enum Torappu__SpType : int {
+
+enum enum__Torappu_SpType : int {
     NONE = 0,
     INCREASE_WITH_TIME = 1,
     INCREASE_WHEN_ATTACK = 2,
@@ -19,7 +22,8 @@ enum Torappu__SpType : int {
     ATTACK_OR_DAMAGE = 6,
     ALL = 7,
 }
-enum Torappu__ItemType : int {
+
+enum enum__Torappu_ItemType : int {
     NONE = 0,
     CHAR = 1,
     CARD_EXP = 2,
@@ -88,49 +92,52 @@ enum Torappu__ItemType : int {
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
 }
-table Torappu__ItemBundle {
-    id: string;
-    count: int;
-    type: Torappu__ItemType;
-}
-table Torappu__SpData {
-    spType: Torappu__SpType;
-    levelUpCost: [Torappu__ItemBundle];
-    maxChargeTime: int;
-    spCost: int;
-    initSp: int;
-    increment: float;
-}
-table Torappu__DataPair {
-    key: string;
-    value: float;
-    valueStr: string;
-}
-table Torappu__LevelData {
-    name: string;
-    rangeId: string;
-    description: string;
-    skillType: Torappu__SkillType;
-    durationType: Torappu__SkillDurationType;
-    spData: Torappu__SpData;
-    prefabId: string;
-    duration: float;
-    blackboard: [Torappu__DataPair];
-}
-table Torappu__SkillDataBundle {
-    skillId: string;
-    iconId: string;
-    hidden: bool;
-    levels: [Torappu__LevelData];
+
+table clz_Torappu_ItemBundle {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
 }
 
-table KV_Torappu__SkillDataBundle {
-    key: string;
-    value: Torappu__SkillDataBundle;
+table clz_Torappu_SpData {
+    spType: enum__Torappu_SpType; 
+    levelUpCost: [clz_Torappu_ItemBundle]; 
+    maxChargeTime: int; 
+    spCost: int; 
+    initSp: int; 
+    increment: float; 
 }
 
-table skill_table {
-    skills: [KV_Torappu__SkillDataBundle];
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
 }
 
-root_type skill_table;
+table clz_Torappu_SkillDataBundle_LevelData {
+    name: string; 
+    rangeId: string; 
+    description: string; 
+    skillType: enum__Torappu_SkillType; 
+    durationType: enum__Torappu_SkillDurationType; 
+    spData: clz_Torappu_SpData; 
+    prefabId: string; 
+    duration: float; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table clz_Torappu_SkillDataBundle {
+    skillId: string; 
+    iconId: string; 
+    hidden: bool; 
+    levels: [clz_Torappu_SkillDataBundle_LevelData]; 
+}
+
+table dict__string__clz_Torappu_SkillDataBundle {
+    key: string(key);
+    value: clz_Torappu_SkillDataBundle;
+}
+table clz_Torappu_SimpleKVTable_clz_Torappu_SkillDataBundle {
+    skills: [dict__string__clz_Torappu_SkillDataBundle];
+}
+root_type clz_Torappu_SimpleKVTable_clz_Torappu_SkillDataBundle;

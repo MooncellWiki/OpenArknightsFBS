@@ -1,4 +1,5 @@
-enum Torappu__StageType : int {
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_StageType : int {
     MAIN = 0,
     DAILY = 1,
     TRAINING = 2,
@@ -11,36 +12,41 @@ enum Torappu__StageType : int {
     CLIMB_TOWER = 9,
     ENUM = 10,
 }
-enum Torappu__Difficulty : int {
+
+enum enum__Torappu_LevelData_Difficulty : int {
     NONE = 0,
     NORMAL = 1,
     FOUR_STAR = 2,
     EASY = 4,
     ALL = 7,
 }
-enum Torappu__PerformanceStageFlag : int {
+
+enum enum__Torappu_StageData_PerformanceStageFlag : int {
     NORMAL_STAGE = 0,
     PERFORMANCE_STAGE = 1,
 }
-enum Torappu__StageDiffGroup : int {
+
+enum enum__Torappu_StageDiffGroup : int {
     NONE = 0,
     EASY = 1,
     NORMAL = 2,
     TOUGH = 4,
     ALL = 7,
 }
-enum Torappu__PlayerBattleRank : int {
+
+enum enum__Torappu_PlayerBattleRank : int {
     FAIL = 1,
     PASS = 2,
     COMPLETE = 3,
+    ERR_ZERO = 0,
+}
 
-    NONE = 0,
+table clz_Torappu_StageData_ConditionDesc {
+    stageId: string; 
+    completeState: enum__Torappu_PlayerBattleRank; 
 }
-table Torappu__ConditionDesc {
-    stageId: string;
-    completeState: Torappu__PlayerBattleRank;
-}
-enum Torappu__AppearanceStyle : int {
+
+enum enum__Torappu_AppearanceStyle : int {
     MAIN_NORMAL = 0,
     MAIN_PREDEFINED = 1,
     SUB = 2,
@@ -49,7 +55,8 @@ enum Torappu__AppearanceStyle : int {
     MIST_OPS = 5,
     SPECIAL_STORY = 6,
 }
-enum Torappu__ItemType : int {
+
+enum enum__Torappu_ItemType : int {
     NONE = 0,
     CHAR = 1,
     CARD_EXP = 2,
@@ -118,12 +125,14 @@ enum Torappu__ItemType : int {
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
 }
-table Torappu__ItemBundle {
-    id: string;
-    count: int;
-    type: Torappu__ItemType;
+
+table clz_Torappu_ItemBundle {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
 }
-enum Torappu__StageDropType : int {
+
+enum enum__Torappu_StageDropType : int {
     NONE = 0,
     ONCE = 1,
     NORMAL = 2,
@@ -137,22 +146,26 @@ enum Torappu__StageDropType : int {
     OVERRIDE_DROP = 10,
     ITEM_RETURN = 11,
 }
-table Torappu__WeightItemBundle {
-    id: string;
-    type: Torappu__ItemType;
-    dropType: Torappu__StageDropType;
-    count: int;
-    weight: int;
+
+table clz_Torappu_WeightItemBundle {
+    id: string; 
+    type: enum__Torappu_ItemType; 
+    dropType: enum__Torappu_StageDropType; 
+    count: int; 
+    weight: int; 
 }
-table Torappu__WeightItemBundle__2d {
-    values: [Torappu__WeightItemBundle];
+
+table list_clz_Torappu_WeightItemBundle {
+    values: [clz_Torappu_WeightItemBundle];
 }
-table Torappu__DisplayRewards {
-    type: Torappu__ItemType;
-    id: string;
-    dropType: Torappu__StageDropType;
+
+table clz_Torappu_StageData_DisplayRewards {
+    type: enum__Torappu_ItemType; 
+    id: string; 
+    dropType: enum__Torappu_StageDropType; 
 }
-enum Torappu__OccPer : int {
+
+enum enum__Torappu_OccPer : int {
     ALWAYS = 0,
     ALMOST = 1,
     USUAL = 2,
@@ -161,312 +174,360 @@ enum Torappu__OccPer : int {
     NEVER = 5,
     DEFINITELY_BUFF = 6,
 }
-table Torappu__DisplayDetailRewards {
-    occPercent: Torappu__OccPer;
-    type: Torappu__ItemType;
-    id: string;
-    dropType: Torappu__StageDropType;
+
+table clz_Torappu_StageData_DisplayDetailRewards {
+    occPercent: enum__Torappu_OccPer; 
+    type: enum__Torappu_ItemType; 
+    id: string; 
+    dropType: enum__Torappu_StageDropType; 
 }
-table Torappu__StageDropInfo {
-    firstPassRewards: [Torappu__ItemBundle];
-    firstCompleteRewards: [Torappu__ItemBundle];
-    passRewards: [Torappu__WeightItemBundle__2d];
-    completeRewards: [Torappu__WeightItemBundle__2d];
-    displayRewards: [Torappu__DisplayRewards];
-    displayDetailRewards: [Torappu__DisplayDetailRewards];
+
+table clz_Torappu_StageData_StageDropInfo {
+    firstPassRewards: [clz_Torappu_ItemBundle]; 
+    firstCompleteRewards: [clz_Torappu_ItemBundle]; 
+    passRewards: [list_clz_Torappu_WeightItemBundle]; 
+    completeRewards: [list_clz_Torappu_WeightItemBundle]; 
+    displayRewards: [clz_Torappu_StageData_DisplayRewards]; 
+    displayDetailRewards: [clz_Torappu_StageData_DisplayDetailRewards]; 
 }
-table Torappu__ExtraConditionDesc {
-    index: int;
-    template: string;
-    unlockParam: [string];
+
+table clz_Torappu_StageData_ExtraConditionDesc {
+    index: int; 
+    template: string; 
+    unlockParam: [string]; 
 }
-enum Torappu__SpecialStageUnlockProgressType : int {
+
+enum enum__Torappu_StageData_SpecialStageUnlockProgressType : int {
     ONCE = 0,
     PROGRESS = 1,
 }
+
 table dict__int__string {
-    key: int;
+    key: int(key);
     value: string;
 }
-table Torappu__SpecialProgressInfo {
-    progressType: Torappu__SpecialStageUnlockProgressType;
-    descList: [dict__int__string];
+
+table clz_Torappu_StageData_SpecialProgressInfo {
+    progressType: enum__Torappu_StageData_SpecialStageUnlockProgressType; 
+    descList: [dict__int__string]; 
 }
-table Torappu__SpecialStoryInfo {
-    stageId: string;
-    rewards: [Torappu__ItemBundle];
-    progressInfo: Torappu__SpecialProgressInfo;
+
+table clz_Torappu_StageData_SpecialStoryInfo {
+    stageId: string; 
+    rewards: [clz_Torappu_ItemBundle]; 
+    progressInfo: clz_Torappu_StageData_SpecialProgressInfo; 
 }
-table Torappu__StageData {
-    stageType: Torappu__StageType;
-    difficulty: Torappu__Difficulty;
-    performanceStageFlag: Torappu__PerformanceStageFlag;
-    diffGroup: Torappu__StageDiffGroup;
-    unlockCondition: [Torappu__ConditionDesc];
-    stageId: string;
-    levelId: string;
-    zoneId: string;
-    code: string;
-    name: string;
-    description: string;
-    hardStagedId: string;
-    dangerLevel: string;
-    dangerPoint: float;
-    loadingPicId: string;
-    canPractice: bool;
-    canBattleReplay: bool;
-    apCost: int;
-    apFailReturn: int;
-    etItemId: string;
-    etCost: int;
-    etFailReturn: int;
-    etButtonStyle: string;
-    apProtectTimes: int;
-    diamondOnceDrop: int;
-    practiceTicketCost: int;
-    dailyStageDifficulty: int;
-    expGain: int;
-    goldGain: int;
-    loseExpGain: int;
-    loseGoldGain: int;
-    passFavor: int;
-    completeFavor: int;
-    slProgress: int;
-    displayMainItem: string;
-    hilightMark: bool;
-    bossMark: bool;
-    isPredefined: bool;
-    isHardPredefined: bool;
-    isSkillSelectablePredefined: bool;
-    isStoryOnly: bool;
-    appearanceStyle: Torappu__AppearanceStyle;
-    stageDropInfo: Torappu__StageDropInfo;
-    canUseCharm: bool;
-    canUseTech: bool;
-    canUseTrapTool: bool;
-    canUseBattlePerformance: bool;
-    startButtonOverrideId: string;
-    isStagePatch: bool;
-    mainStageId: string;
-    S_extraCondition: [Torappu__ExtraConditionDesc];
-    S_extraInfo: [Torappu__SpecialStoryInfo];
+
+table clz_Torappu_StageData {
+    stageType: enum__Torappu_StageType; 
+    difficulty: enum__Torappu_LevelData_Difficulty; 
+    performanceStageFlag: enum__Torappu_StageData_PerformanceStageFlag; 
+    diffGroup: enum__Torappu_StageDiffGroup; 
+    unlockCondition: [clz_Torappu_StageData_ConditionDesc]; 
+    stageId: string; 
+    levelId: string; 
+    zoneId: string; 
+    code: string; 
+    name: string; 
+    description: string; 
+    hardStagedId: string; 
+    dangerLevel: string; 
+    dangerPoint: float; 
+    loadingPicId: string; 
+    canPractice: bool; 
+    canBattleReplay: bool; 
+    apCost: int; 
+    apFailReturn: int; 
+    etItemId: string; 
+    etCost: int; 
+    etFailReturn: int; 
+    etButtonStyle: string; 
+    apProtectTimes: int; 
+    diamondOnceDrop: int; 
+    practiceTicketCost: int; 
+    dailyStageDifficulty: int; 
+    expGain: int; 
+    goldGain: int; 
+    loseExpGain: int; 
+    loseGoldGain: int; 
+    passFavor: int; 
+    completeFavor: int; 
+    slProgress: int; 
+    displayMainItem: string; 
+    hilightMark: bool; 
+    bossMark: bool; 
+    isPredefined: bool; 
+    isHardPredefined: bool; 
+    isSkillSelectablePredefined: bool; 
+    isStoryOnly: bool; 
+    appearanceStyle: enum__Torappu_AppearanceStyle; 
+    stageDropInfo: clz_Torappu_StageData_StageDropInfo; 
+    canUseCharm: bool; 
+    canUseTech: bool; 
+    canUseTrapTool: bool; 
+    canUseBattlePerformance: bool; 
+    startButtonOverrideId: string; 
+    isStagePatch: bool; 
+    mainStageId: string; 
+    extraCondition: [clz_Torappu_StageData_ExtraConditionDesc]; // __prts__check_required__S_extraCondition__
+    extraInfo: [clz_Torappu_StageData_SpecialStoryInfo]; // __prts__check_required__S_extraInfo__
 }
-table dict__string__Torappu__StageData {
-    key: string;
-    value: Torappu__StageData;
+
+table dict__string__clz_Torappu_StageData {
+    key: string(key);
+    value: clz_Torappu_StageData;
 }
-table Torappu__RuneStageInst {
-    stageId: string;
-    activePackedRuneIds: [string];
+
+table clz_Torappu_RuneStageGroupData_RuneStageInst {
+    stageId: string; 
+    activePackedRuneIds: [string]; 
 }
-table Torappu__RuneStageGroupData {
-    groupId: string;
-    activeRuneStages: [Torappu__RuneStageInst];
-    startTs: long;
-    endTs: long;
+
+table clz_Torappu_RuneStageGroupData {
+    groupId: string; 
+    activeRuneStages: [clz_Torappu_RuneStageGroupData_RuneStageInst]; 
+    startTs: long; 
+    endTs: long; 
 }
-table dict__string__Torappu__RuneStageGroupData {
-    key: string;
-    value: Torappu__RuneStageGroupData;
+
+table dict__string__clz_Torappu_RuneStageGroupData {
+    key: string(key);
+    value: clz_Torappu_RuneStageGroupData;
 }
-table Torappu__MapThemeData {
-    themeId: string;
-    unitColor: string;
-    buildableColor: string;
-    themeType: string;
-    trapTintColor: string;
+
+table clz_Torappu_MapThemeData {
+    themeId: string; 
+    unitColor: string; 
+    buildableColor: string; 
+    themeType: string; 
+    trapTintColor: string; 
 }
-table dict__string__Torappu__MapThemeData {
-    key: string;
-    value: Torappu__MapThemeData;
+
+table dict__string__clz_Torappu_MapThemeData {
+    key: string(key);
+    value: clz_Torappu_MapThemeData;
 }
+
+table clz_Torappu_TileAppendInfo {
+    tileKey: string; 
+    name: string; 
+    description: string; 
+    isFunctional: bool; 
+}
+
+table dict__string__clz_Torappu_TileAppendInfo {
+    key: string(key);
+    value: clz_Torappu_TileAppendInfo;
+}
+
+table clz_Torappu_WeeklyForceOpenTable {
+    id: string; 
+    startTime: long; 
+    endTime: long; 
+    forceOpenList: [string]; 
+}
+
+table dict__string__clz_Torappu_WeeklyForceOpenTable {
+    key: string(key);
+    value: clz_Torappu_WeeklyForceOpenTable;
+}
+
 table dict__string__long {
-    key: string;
+    key: string(key);
     value: long;
 }
-table Torappu__TimelyDropTimeInfo {
-    startTs: long;
-    endTs: long;
-    stagePic: string;
-    dropPicId: string;
-    stageUnlock: string;
-    entranceDownPicId: string;
-    entranceUpPicId: string;
-    timelyGroupId: string;
-    weeklyPicId: string;
-    apSupplyOutOfDateDict: [dict__string__long];
+
+table clz_Torappu_TimelyDropTimeInfo {
+    startTs: long; 
+    endTs: long; 
+    stagePic: string; 
+    dropPicId: string; 
+    stageUnlock: string; 
+    entranceDownPicId: string; 
+    entranceUpPicId: string; 
+    timelyGroupId: string; 
+    weeklyPicId: string; 
+    apSupplyOutOfDateDict: [dict__string__long]; 
 }
-table dict__string__Torappu__TimelyDropTimeInfo {
-    key: string;
-    value: Torappu__TimelyDropTimeInfo;
+
+table dict__string__clz_Torappu_TimelyDropTimeInfo {
+    key: string(key);
+    value: clz_Torappu_TimelyDropTimeInfo;
 }
-table dict__string__Torappu__StageDropInfo {
-    key: string;
-    value: Torappu__StageDropInfo;
+
+table dict__string__clz_Torappu_StageData_StageDropInfo {
+    key: string(key);
+    value: clz_Torappu_StageData_StageDropInfo;
 }
-table Torappu__OverrideDropInfo {
-    itemId: string;
-    startTs: long;
-    endTs: long;
-    zoneRange: string;
-    times: int;
-    name: string;
-    egName: string;
-    desc1: string;
-    desc2: string;
-    desc3: string;
-    dropTag: string;
-    dropTypeDesc: string;
-    dropInfo: [dict__string__Torappu__StageDropInfo];
+
+table clz_Torappu_OverrideDropInfo {
+    itemId: string; 
+    startTs: long; 
+    endTs: long; 
+    zoneRange: string; 
+    times: int; 
+    name: string; 
+    egName: string; 
+    desc1: string; 
+    desc2: string; 
+    desc3: string; 
+    dropTag: string; 
+    dropTypeDesc: string; 
+    dropInfo: [dict__string__clz_Torappu_StageData_StageDropInfo]; 
 }
-table dict__string__Torappu__OverrideDropInfo {
-    key: string;
-    value: Torappu__OverrideDropInfo;
+
+table dict__string__clz_Torappu_OverrideDropInfo {
+    key: string(key);
+    value: clz_Torappu_OverrideDropInfo;
 }
-table Torappu__TimelyDropInfo {
-    dropInfo: [dict__string__Torappu__StageDropInfo];
+
+table clz_Torappu_TimelyDropInfo {
+    dropInfo: [dict__string__clz_Torappu_StageData_StageDropInfo]; 
 }
-table dict__string__Torappu__TimelyDropInfo {
-    key: string;
-    value: Torappu__TimelyDropInfo;
+
+table dict__string__clz_Torappu_TimelyDropInfo {
+    key: string(key);
+    value: clz_Torappu_TimelyDropInfo;
 }
-table Torappu__StageValidInfo {
-    startTs: long;
-    endTs: long;
+
+table clz_Torappu_StageValidInfo {
+    startTs: long; 
+    endTs: long; 
 }
-table dict__string__Torappu__StageValidInfo {
-    key: string;
-    value: Torappu__StageValidInfo;
+
+table dict__string__clz_Torappu_StageValidInfo {
+    key: string(key);
+    value: clz_Torappu_StageValidInfo;
 }
-enum Torappu__FogType : int {
+
+enum enum__Torappu_FogType : int {
     ZONE = 0,
     STAGE = 1,
 }
-table Torappu__StageFogInfo {
-    lockId: string;
-    fogType: Torappu__FogType;
-    stageId: string;
-    lockName: string;
-    lockDesc: string;
-    unlockItemId: string;
-    unlockItemType: Torappu__ItemType;
-    unlockItemNum: int;
-    preposedStageId: string;
-    preposedLockId: string;
+
+table clz_Torappu_StageFogInfo {
+    lockId: string; 
+    fogType: enum__Torappu_FogType; 
+    stageId: string; 
+    lockName: string; 
+    lockDesc: string; 
+    unlockItemId: string; 
+    unlockItemType: enum__Torappu_ItemType; 
+    unlockItemNum: int; 
+    preposedStageId: string; 
+    preposedLockId: string; 
 }
-table dict__string__Torappu__StageFogInfo {
-    key: string;
-    value: Torappu__StageFogInfo;
+
+table dict__string__clz_Torappu_StageFogInfo {
+    key: string(key);
+    value: clz_Torappu_StageFogInfo;
 }
-enum Torappu__EvolvePhase : int {
+
+enum enum__Torappu_EvolvePhase : int {
     PHASE_0 = 0,
     PHASE_1 = 1,
     PHASE_2 = 2,
     PHASE_3 = 3,
     E_NUM = 4,
 }
-table Torappu__RequireChar {
-    charId: string;
-    evolvePhase: Torappu__EvolvePhase;
-}
-table Torappu__StageStartCond {
-    requireChars: [Torappu__RequireChar];
-    excludeAssists: [string];
-    isNotPass: bool;
-}
-table dict__string__Torappu__StageStartCond {
-    key: string;
-    value: Torappu__StageStartCond;
-}
-table Torappu__StageDiffGroupTable {
-    normalId: string;
-    toughId: string;
-    easyId: string;
-}
-table dict__string__Torappu__StageDiffGroupTable {
-    key: string;
-    value: Torappu__StageDiffGroupTable;
-}
-table Torappu__StoryStageShowGroup {
-    displayRecordId: string;
-    stageId: string;
-    accordingStageId: string;
-    diffGroup: Torappu__StageDiffGroup;
-}
-table Torappu__SpecialBattleFinishStageData {
-    stageId: string;
-    skipAccomplishPerform: bool;
-}
-table dict__string__Torappu__SpecialBattleFinishStageData {
-    key: string;
-    value: Torappu__SpecialBattleFinishStageData;
-}
-table Torappu__RecordRewardServerData {
-    stageId: string;
-    rewards: [Torappu__ItemBundle];
-}
-table dict__string__Torappu__RecordRewardServerData {
-    key: string;
-    value: Torappu__RecordRewardServerData;
-}
-table Torappu__TimeRange {
-    startTs: long;
-    endTs: long;
-}
-table Torappu__ApProtectZoneInfo {
-    zoneId: string;
-    timeRanges: [Torappu__TimeRange];
-}
-table dict__string__Torappu__ApProtectZoneInfo {
-    key: string;
-    value: Torappu__ApProtectZoneInfo;
-}
-table Torappu__TileAppendInfo {
-    tileKey: string;
-    name: string;
-    description: string;
-    isFunctional: bool;
-}
-table dict__string__Torappu__TileAppendInfo {
-    key: string;
-    value: Torappu__TileAppendInfo;
-}
-table Torappu__WeeklyForceOpenTable {
-    id: string;
-    startTime: long;
-    endTime: long;
-    forceOpenList: [string];
-}
-table dict__string__Torappu__WeeklyForceOpenTable {
-    key: string;
-    value: Torappu__WeeklyForceOpenTable;
-}
-table dict__Torappu__StageDiffGroup__Torappu__StoryStageShowGroup {
-    key: Torappu__StageDiffGroup;
-    value: Torappu__StoryStageShowGroup;
-}
-table dict__string__dict__Torappu__StageDiffGroup__Torappu__StoryStageShowGroup {
-    key: string;
-    value: [dict__Torappu__StageDiffGroup__Torappu__StoryStageShowGroup];
-}
-table Torappu__StageTable {
-    stages: [dict__string__Torappu__StageData];
-    runeStageGroups: [dict__string__Torappu__RuneStageGroupData];
-    mapThemes: [dict__string__Torappu__MapThemeData];
-    tileInfo: [dict__string__Torappu__TileAppendInfo];
-    forceOpenTable: [dict__string__Torappu__WeeklyForceOpenTable];
-    timelyStageDropInfo: [dict__string__Torappu__TimelyDropTimeInfo];
-    overrideDropInfo: [dict__string__Torappu__OverrideDropInfo];
-    timelyTable: [dict__string__Torappu__TimelyDropInfo];
-    stageValidInfo: [dict__string__Torappu__StageValidInfo];
-    stageFogInfo: [dict__string__Torappu__StageFogInfo];
-    stageStartConds: [dict__string__Torappu__StageStartCond];
-    diffGroupTable: [dict__string__Torappu__StageDiffGroupTable];
-    storyStageShowGroup: [dict__string__dict__Torappu__StageDiffGroup__Torappu__StoryStageShowGroup];
-    specialBattleFinishStageData: [dict__string__Torappu__SpecialBattleFinishStageData];
-    recordRewardData: [dict__string__Torappu__RecordRewardServerData];
-    apProtectZoneInfo: [dict__string__Torappu__ApProtectZoneInfo];
-    spNormalStageIdFor4StarList: [string];
+
+table clz_Torappu_StageStartCond_RequireChar {
+    charId: string; 
+    evolvePhase: enum__Torappu_EvolvePhase; 
 }
 
-root_type Torappu__StageTable;
+table clz_Torappu_StageStartCond {
+    requireChars: [clz_Torappu_StageStartCond_RequireChar]; 
+    excludeAssists: [string]; 
+    isNotPass: bool; 
+}
+
+table dict__string__clz_Torappu_StageStartCond {
+    key: string(key);
+    value: clz_Torappu_StageStartCond;
+}
+
+table clz_Torappu_StageDiffGroupTable {
+    normalId: string; 
+    toughId: string; 
+    easyId: string; 
+}
+
+table dict__string__clz_Torappu_StageDiffGroupTable {
+    key: string(key);
+    value: clz_Torappu_StageDiffGroupTable;
+}
+
+table clz_Torappu_StoryStageShowGroup {
+    displayRecordId: string; 
+    stageId: string; 
+    accordingStageId: string; 
+    diffGroup: enum__Torappu_StageDiffGroup; 
+}
+
+table dict__enum__Torappu_StageDiffGroup__clz_Torappu_StoryStageShowGroup {
+    key: enum__Torappu_StageDiffGroup(key);
+    value: clz_Torappu_StoryStageShowGroup;
+}
+
+table dict__string__list_dict__enum__Torappu_StageDiffGroup__clz_Torappu_StoryStageShowGroup {
+    key: string(key);
+    value: [dict__enum__Torappu_StageDiffGroup__clz_Torappu_StoryStageShowGroup];
+}
+
+table clz_Torappu_SpecialBattleFinishStageData {
+    stageId: string; 
+    skipAccomplishPerform: bool; 
+}
+
+table dict__string__clz_Torappu_SpecialBattleFinishStageData {
+    key: string(key);
+    value: clz_Torappu_SpecialBattleFinishStageData;
+}
+
+table clz_Torappu_RecordRewardServerData {
+    stageId: string; 
+    rewards: [clz_Torappu_ItemBundle]; 
+}
+
+table dict__string__clz_Torappu_RecordRewardServerData {
+    key: string(key);
+    value: clz_Torappu_RecordRewardServerData;
+}
+
+table clz_Torappu_ApProtectZoneInfo_TimeRange {
+    startTs: long; 
+    endTs: long; 
+}
+
+table clz_Torappu_ApProtectZoneInfo {
+    zoneId: string; 
+    timeRanges: [clz_Torappu_ApProtectZoneInfo_TimeRange]; 
+}
+
+table dict__string__clz_Torappu_ApProtectZoneInfo {
+    key: string(key);
+    value: clz_Torappu_ApProtectZoneInfo;
+}
+
+table clz_Torappu_StageTable {
+    stages: [dict__string__clz_Torappu_StageData]; 
+    runeStageGroups: [dict__string__clz_Torappu_RuneStageGroupData]; 
+    mapThemes: [dict__string__clz_Torappu_MapThemeData]; 
+    tileInfo: [dict__string__clz_Torappu_TileAppendInfo]; 
+    forceOpenTable: [dict__string__clz_Torappu_WeeklyForceOpenTable]; 
+    timelyStageDropInfo: [dict__string__clz_Torappu_TimelyDropTimeInfo]; 
+    overrideDropInfo: [dict__string__clz_Torappu_OverrideDropInfo]; 
+    timelyTable: [dict__string__clz_Torappu_TimelyDropInfo]; 
+    stageValidInfo: [dict__string__clz_Torappu_StageValidInfo]; 
+    stageFogInfo: [dict__string__clz_Torappu_StageFogInfo]; 
+    stageStartConds: [dict__string__clz_Torappu_StageStartCond]; 
+    diffGroupTable: [dict__string__clz_Torappu_StageDiffGroupTable]; 
+    storyStageShowGroup: [dict__string__list_dict__enum__Torappu_StageDiffGroup__clz_Torappu_StoryStageShowGroup]; 
+    specialBattleFinishStageData: [dict__string__clz_Torappu_SpecialBattleFinishStageData]; 
+    recordRewardData: [dict__string__clz_Torappu_RecordRewardServerData]; 
+    apProtectZoneInfo: [dict__string__clz_Torappu_ApProtectZoneInfo]; 
+    spNormalStageIdFor4StarList: [string]; 
+}
+
+root_type clz_Torappu_StageTable;

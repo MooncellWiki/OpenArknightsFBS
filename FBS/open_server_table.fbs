@@ -1,12 +1,14 @@
-table Torappu__OpenServerScheduleItem {
-    id: string;
-    startTs: int;
-    endTs: int;
-    totalCheckinDescption: string;
-    chainLoginDescription: string;
-    charImg: string;
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table clz_Torappu_OpenServerScheduleItem {
+    id: string; 
+    startTs: int; 
+    endTs: int; 
+    totalCheckinDescption: string; 
+    chainLoginDescription: string; 
+    charImg: string; 
 }
-enum Torappu__MissionType : int {
+
+enum enum__Torappu_MissionType : int {
     UNKNOWN = 0,
     MAIN = 1,
     DAILY = 2,
@@ -17,7 +19,8 @@ enum Torappu__MissionType : int {
     OPENSERVER = 7,
     TOWERSEASON = 8,
 }
-enum Torappu__ItemType : int {
+
+enum enum__Torappu_ItemType : int {
     NONE = 0,
     CHAR = 1,
     CARD_EXP = 2,
@@ -86,141 +89,160 @@ enum Torappu__ItemType : int {
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
 }
-table Torappu__MissionDisplayRewards {
-    type: Torappu__ItemType;
-    id: string;
-    count: int;
+
+table clz_Torappu_MissionDisplayRewards {
+    type: enum__Torappu_ItemType; 
+    id: string; 
+    count: int; 
 }
-table Torappu__MissionGroup {
-    id: string;
-    title: string;
-    type: Torappu__MissionType;
-    preMissionGroup: string;
-    period: [int];
-    rewards: [Torappu__MissionDisplayRewards];
-    missionIds: [string];
-    startTs: long;
-    endTs: long;
+
+table clz_Torappu_MissionGroup {
+    id: string; 
+    title: string; 
+    type: enum__Torappu_MissionType; 
+    preMissionGroup: string; 
+    period: [int]; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+    missionIds: [string]; 
+    startTs: long; 
+    endTs: long; 
 }
-enum Torappu__MissionItemBgType : int {
+
+enum enum__Torappu_MissionItemBgType : int {
     COMMON = 0,
     Equipment = 1,
     Char = 2,
 }
-table Torappu__MissionData {
-    id: string;
-    sortId: int;
-    description: string;
-    type: Torappu__MissionType;
-    itemBgType: Torappu__MissionItemBgType;
-    preMissionIds: [string];
-    template: string;
-    templateType: string;
-    param: [string];
-    unlockCondition: string;
-    unlockParam: [string];
-    missionGroup: string;
-    toPage: string;
-    periodicalPoint: int;
-    rewards: [Torappu__MissionDisplayRewards];
-    backImagePath: string;
-    foldId: string;
-    haveSubMissionToUnlock: bool;
-}
-table Torappu__OpenServerItemData {
-    itemId: string;
-    itemType: Torappu__ItemType;
-    count: int;
-}
-table Torappu__TotalCheckinData {
-    order: int;
-    item: Torappu__OpenServerItemData;
-    colorId: int;
-}
-table Torappu__ChainLoginData {
-    order: int;
-    item: Torappu__OpenServerItemData;
-    colorId: int;
-}
-table Torappu__OpenServerData {
-    openServerMissionGroup: Torappu__MissionGroup;
-    openServerMissionData: [Torappu__MissionData];
-    checkInData: [Torappu__TotalCheckinData];
-    chainLoginData: [Torappu__ChainLoginData];
-}
-table dict__string__Torappu__OpenServerData {
-    key: string;
-    value: Torappu__OpenServerData;
-}
-table Torappu__OpenServerConst {
-    firstDiamondShardMailCount: int;
-    initApMailEndTs: long;
-}
-table Torappu__ReturnConst {
-    startTime: long;
-    systemTab_time: int;
-    afkDays: int;
-    unlockLv: int;
-    unlockLevel: string;
-    juniorClear: bool;
-    ifvisitor: bool;
-    permMission_time: int;
-    needPoints: int;
-    defaultIntro: string;
-    pointId: string;
-}
-table Torappu__ItemBundle {
-    id: string;
-    count: int;
-    type: Torappu__ItemType;
-}
-table Torappu__ReturnIntroData {
-    sort: int;
-    pubTime: long;
-    image: string;
-}
-table Torappu__ReturnDailyTaskData {
-    groupId: string;
-    id: string;
-    groupSortId: int;
-    taskSortId: int;
-    template: string;
-    param: [string];
-    desc: string;
-    rewards: [Torappu__MissionDisplayRewards];
-    playPoint: int;
-}
-table Torappu__ReturnLongTermTaskData {
-    id: string;
-    sortId: int;
-    template: string;
-    param: [string];
-    desc: string;
-    rewards: [Torappu__MissionDisplayRewards];
-    playPoint: int;
-}
-table Torappu__ReturnCheckinData {
-    isImportant: bool;
-    checkinRewardItems: [Torappu__ItemBundle];
-}
-table dict__string__Torappu__ReturnDailyTaskData {
-    key: string;
-    value: [Torappu__ReturnDailyTaskData];
-}
-table Torappu__ReturnData {
-    constData: Torappu__ReturnConst;
-    onceRewards: [Torappu__ItemBundle];
-    intro: [Torappu__ReturnIntroData];
-    returnDailyTaskDic: [dict__string__Torappu__ReturnDailyTaskData];
-    returnLongTermTaskList: [Torappu__ReturnLongTermTaskData];
-    creditsList: [Torappu__ItemBundle];
-    checkinRewardList: [Torappu__ReturnCheckinData];
-}
-table Torappu__OpenServerSchedule {
-    schedule: [Torappu__OpenServerScheduleItem];
-    dataMap: [dict__string__Torappu__OpenServerData];
-    constant: Torappu__OpenServerConst;
-    playerReturn: Torappu__ReturnData;
+
+table clz_Torappu_MissionData {
+    id: string; 
+    sortId: int; 
+    description: string; 
+    type: enum__Torappu_MissionType; 
+    itemBgType: enum__Torappu_MissionItemBgType; 
+    preMissionIds: [string]; 
+    template: string; 
+    templateType: string; 
+    param: [string]; 
+    unlockCondition: string; 
+    unlockParam: [string]; 
+    missionGroup: string; 
+    toPage: string; 
+    periodicalPoint: int; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+    backImagePath: string; 
+    foldId: string; 
+    haveSubMissionToUnlock: bool; 
 }
 
-root_type Torappu__OpenServerSchedule;
+table clz_Torappu_OpenServerItemData {
+    itemId: string; 
+    itemType: enum__Torappu_ItemType; 
+    count: int; 
+}
+
+table clz_Torappu_TotalCheckinData {
+    order: int; 
+    item: clz_Torappu_OpenServerItemData; 
+    colorId: int; 
+}
+
+table clz_Torappu_ChainLoginData {
+    order: int; 
+    item: clz_Torappu_OpenServerItemData; 
+    colorId: int; 
+}
+
+table clz_Torappu_OpenServerData {
+    openServerMissionGroup: clz_Torappu_MissionGroup; 
+    openServerMissionData: [clz_Torappu_MissionData]; 
+    checkInData: [clz_Torappu_TotalCheckinData]; 
+    chainLoginData: [clz_Torappu_ChainLoginData]; 
+}
+
+table dict__string__clz_Torappu_OpenServerData {
+    key: string(key);
+    value: clz_Torappu_OpenServerData;
+}
+
+table clz_Torappu_OpenServerConst {
+    firstDiamondShardMailCount: int; 
+    initApMailEndTs: long; 
+}
+
+table clz_Torappu_ReturnConst {
+    startTime: long; 
+    systemTab_time: int; 
+    afkDays: int; 
+    unlockLv: int; 
+    unlockLevel: string; 
+    juniorClear: bool; 
+    ifvisitor: bool; 
+    permMission_time: int; 
+    needPoints: int; 
+    defaultIntro: string; 
+    pointId: string; 
+}
+
+table clz_Torappu_ItemBundle {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
+}
+
+table clz_Torappu_ReturnIntroData {
+    sort: int; 
+    pubTime: long; 
+    image: string; 
+}
+
+table clz_Torappu_ReturnDailyTaskData {
+    groupId: string; 
+    id: string; 
+    groupSortId: int; 
+    taskSortId: int; 
+    template: string; 
+    param: [string]; 
+    desc: string; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+    playPoint: int; 
+}
+
+table dict__string__list_clz_Torappu_ReturnDailyTaskData {
+    key: string(key);
+    value: [clz_Torappu_ReturnDailyTaskData];
+}
+
+table clz_Torappu_ReturnLongTermTaskData {
+    id: string; 
+    sortId: int; 
+    template: string; 
+    param: [string]; 
+    desc: string; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+    playPoint: int; 
+}
+
+table clz_Torappu_ReturnCheckinData {
+    isImportant: bool; 
+    checkinRewardItems: [clz_Torappu_ItemBundle]; 
+}
+
+table clz_Torappu_ReturnData {
+    constData: clz_Torappu_ReturnConst; 
+    onceRewards: [clz_Torappu_ItemBundle]; 
+    intro: [clz_Torappu_ReturnIntroData]; 
+    returnDailyTaskDic: [dict__string__list_clz_Torappu_ReturnDailyTaskData]; 
+    returnLongTermTaskList: [clz_Torappu_ReturnLongTermTaskData]; 
+    creditsList: [clz_Torappu_ItemBundle]; 
+    checkinRewardList: [clz_Torappu_ReturnCheckinData]; 
+}
+
+table clz_Torappu_OpenServerSchedule {
+    schedule: [clz_Torappu_OpenServerScheduleItem]; 
+    dataMap: [dict__string__clz_Torappu_OpenServerData]; 
+    constant: clz_Torappu_OpenServerConst; 
+    playerReturn: clz_Torappu_ReturnData; 
+}
+
+root_type clz_Torappu_OpenServerSchedule;

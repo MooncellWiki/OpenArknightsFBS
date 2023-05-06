@@ -1,4 +1,5 @@
-enum Torappu_ActivityType : int {
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_ActivityType : int {
     DEFAULT = 0,
     MISSION_ONLY = 1,
     CHECKIN_ONLY = 2,
@@ -35,48 +36,55 @@ enum Torappu_ActivityType : int {
     TYPE_ACT38D1 = 33,
     ENUM = 34,
 }
-enum Torappu_ActivityDisplayType : int {
+
+enum enum__Torappu_ActivityDisplayType : int {
     NONE = 0,
     SIDESTORY = 1,
     BRANCHLINE = 2,
     MINISTORY = 3,
 }
-table Torappu_ActivityTable_BasicData {
-    id: string;
-    type: Torappu_ActivityType;
-    displayType: Torappu_ActivityDisplayType;
-    name: string;
-    startTime: long;
-    endTime: long;
-    rewardEndTime: long;
-    displayOnHome: bool;
-    hasStage: bool;
-    templateShopId: string;
-    medalGroupId: string;
-    ungroupedMedalIds: [string];
-    isReplicate: bool;
-    needFixedSync: bool;
+
+table clz_Torappu_ActivityTable_BasicData {
+    id: string; 
+    type: enum__Torappu_ActivityType; 
+    displayType: enum__Torappu_ActivityDisplayType; 
+    name: string; 
+    startTime: long; 
+    endTime: long; 
+    rewardEndTime: long; 
+    displayOnHome: bool; 
+    hasStage: bool; 
+    templateShopId: string; 
+    medalGroupId: string; 
+    ungroupedMedalIds: [string]; 
+    isReplicate: bool; 
+    needFixedSync: bool; 
 }
-table dict__string__Torappu_ActivityTable_BasicData {
-    key: string;
-    value: Torappu_ActivityTable_BasicData;
+
+table dict__string__clz_Torappu_ActivityTable_BasicData {
+    key: string(key);
+    value: clz_Torappu_ActivityTable_BasicData;
 }
-table Torappu_ActivityTable_HomeActivityConfig {
-    actId: string;
-    isPopupAfterCheckin: bool;
-    showTopBarMenu: bool;
-    actTopBarColor: string;
-    actTopBarText: string;
+
+table clz_Torappu_ActivityTable_HomeActivityConfig {
+    actId: string; 
+    isPopupAfterCheckin: bool; 
+    showTopBarMenu: bool; 
+    actTopBarColor: string; 
+    actTopBarText: string; 
 }
-table dict__string__Torappu_ActivityTable_HomeActivityConfig {
-    key: string;
-    value: Torappu_ActivityTable_HomeActivityConfig;
+
+table dict__string__clz_Torappu_ActivityTable_HomeActivityConfig {
+    key: string(key);
+    value: clz_Torappu_ActivityTable_HomeActivityConfig;
 }
+
 table dict__string__string {
-    key: string;
+    key: string(key);
     value: string;
 }
-enum Torappu_MissionType : int {
+
+enum enum__Torappu_MissionType : int {
     UNKNOWN = 0,
     MAIN = 1,
     DAILY = 2,
@@ -87,12 +95,14 @@ enum Torappu_MissionType : int {
     OPENSERVER = 7,
     TOWERSEASON = 8,
 }
-enum Torappu_MissionItemBgType : int {
+
+enum enum__Torappu_MissionItemBgType : int {
     COMMON = 0,
     Equipment = 1,
     Char = 2,
 }
-enum Torappu_ItemType : int {
+
+enum enum__Torappu_ItemType : int {
     NONE = 0,
     CHAR = 1,
     CARD_EXP = 2,
@@ -161,501 +171,584 @@ enum Torappu_ItemType : int {
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
 }
-table Torappu_MissionDisplayRewards {
-    type: Torappu_ItemType;
-    id: string;
-    count: int;
+
+table clz_Torappu_MissionDisplayRewards {
+    type: enum__Torappu_ItemType; 
+    id: string; 
+    count: int; 
 }
-table Torappu_MissionData {
-    id: string;
-    sortId: int;
-    description: string;
-    type: Torappu_MissionType;
-    itemBgType: Torappu_MissionItemBgType;
-    preMissionIds: [string];
-    template: string;
-    templateType: string;
-    param: [string];
-    unlockCondition: string;
-    unlockParam: [string];
-    missionGroup: string;
-    toPage: string;
-    periodicalPoint: int;
-    rewards: [Torappu_MissionDisplayRewards];
-    backImagePath: string;
-    foldId: string;
-    haveSubMissionToUnlock: bool;
+
+table clz_Torappu_MissionData {
+    id: string; 
+    sortId: int; 
+    description: string; 
+    type: enum__Torappu_MissionType; 
+    itemBgType: enum__Torappu_MissionItemBgType; 
+    preMissionIds: [string]; 
+    template: string; 
+    templateType: string; 
+    param: [string]; 
+    unlockCondition: string; 
+    unlockParam: [string]; 
+    missionGroup: string; 
+    toPage: string; 
+    periodicalPoint: int; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+    backImagePath: string; 
+    foldId: string; 
+    haveSubMissionToUnlock: bool; 
 }
-table Torappu_MissionGroup {
-    id: string;
-    title: string;
-    type: Torappu_MissionType;
-    preMissionGroup: string;
-    period: [int];
-    rewards: [Torappu_MissionDisplayRewards];
-    missionIds: [string];
-    startTs: long;
-    endTs: long;
+
+table clz_Torappu_MissionGroup {
+    id: string; 
+    title: string; 
+    type: enum__Torappu_MissionType; 
+    preMissionGroup: string; 
+    period: [int]; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+    missionIds: [string]; 
+    startTs: long; 
+    endTs: long; 
 }
-table Torappu_DefaultZoneData {
-    zoneId: string;
-    zoneIndex: string;
-    zoneName: string;
-    zoneDesc: string;
-    itemDropList: [string];
+
+table clz_Torappu_DefaultZoneData {
+    zoneId: string; 
+    zoneIndex: string; 
+    zoneName: string; 
+    zoneDesc: string; 
+    itemDropList: [string]; 
 }
-table Torappu_ItemBundle {
-    id: string;
-    count: int;
-    type: Torappu_ItemType;
+
+table clz_Torappu_ItemBundle {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
 }
-table Torappu_DefaultShopData {
-    goodId: string;
-    slotId: int;
-    price: int;
-    availCount: int;
-    overrideName: string;
-    item: Torappu_ItemBundle;
+
+table clz_Torappu_DefaultShopData {
+    goodId: string; 
+    slotId: int; 
+    price: int; 
+    availCount: int; 
+    overrideName: string; 
+    item: clz_Torappu_ItemBundle; 
 }
-table Torappu_DefaultFirstData {
-    zoneList: [Torappu_DefaultZoneData];
-    shopList: [Torappu_DefaultShopData];
+
+table clz_Torappu_DefaultFirstData {
+    zoneList: [clz_Torappu_DefaultZoneData]; 
+    shopList: [clz_Torappu_DefaultShopData]; 
 }
-table dict__string__Torappu_DefaultFirstData {
-    key: string;
-    value: Torappu_DefaultFirstData;
+
+table dict__string__clz_Torappu_DefaultFirstData {
+    key: string(key);
+    value: clz_Torappu_DefaultFirstData;
 }
-table Torappu_DefaultCheckInData_CheckInDailyInfo {
-    itemList: [Torappu_ItemBundle];
-    order: int;
-    color: int;
-    keyItem: int;
-    showItemOrder: int;
-    isDynItem: bool;
+
+table clz_Torappu_DefaultCheckInData_CheckInDailyInfo {
+    itemList: [clz_Torappu_ItemBundle]; 
+    order: int; 
+    color: int; 
+    keyItem: int; 
+    showItemOrder: int; 
+    isDynItem: bool; 
 }
-table dict__int__Torappu_DefaultCheckInData_CheckInDailyInfo {
-    key: int;
-    value: Torappu_DefaultCheckInData_CheckInDailyInfo;
+
+table dict__int__clz_Torappu_DefaultCheckInData_CheckInDailyInfo {
+    key: int(key);
+    value: clz_Torappu_DefaultCheckInData_CheckInDailyInfo;
 }
+
 table dict__string__long {
-    key: string;
+    key: string(key);
     value: long;
 }
-table Torappu_DefaultCheckInData_DynCheckInDailyInfo {
-    questionDesc: string;
-    preOption: string;
-    optionList: [string];
-    showDay: int;
-    spOrderIconId: string;
-    spOrderDesc: string;
-    spOrderCompleteDesc: string;
+
+table clz_Torappu_DefaultCheckInData_DynCheckInDailyInfo {
+    questionDesc: string; 
+    preOption: string; 
+    optionList: [string]; 
+    showDay: int; 
+    spOrderIconId: string; 
+    spOrderDesc: string; 
+    spOrderCompleteDesc: string; 
 }
-table dict__string__Torappu_DefaultCheckInData_DynCheckInDailyInfo {
-    key: string;
-    value: Torappu_DefaultCheckInData_DynCheckInDailyInfo;
+
+table dict__string__clz_Torappu_DefaultCheckInData_DynCheckInDailyInfo {
+    key: string(key);
+    value: clz_Torappu_DefaultCheckInData_DynCheckInDailyInfo;
 }
-table Torappu_DefaultCheckInData_OptionInfo {
-    optionDesc: string;
-    showImageId1: string;
-    showImageId2: string;
-    optionCompleteDesc: string;
-    isStart: bool;
+
+table clz_Torappu_DefaultCheckInData_OptionInfo {
+    optionDesc: string; 
+    showImageId1: string; 
+    showImageId2: string; 
+    optionCompleteDesc: string; 
+    isStart: bool; 
 }
-table dict__string__Torappu_DefaultCheckInData_OptionInfo {
-    key: string;
-    value: Torappu_DefaultCheckInData_OptionInfo;
+
+table dict__string__clz_Torappu_DefaultCheckInData_OptionInfo {
+    key: string(key);
+    value: clz_Torappu_DefaultCheckInData_OptionInfo;
 }
-table Torappu_DefaultCheckInData_DynamicCheckInConsts {
-    firstQuestionDesc: string;
-    firstQuestionTipsDesc: string;
-    expirationDesc: string;
-    firstQuestionConfirmDesc: string;
+
+table dict__string__list_clz_Torappu_ItemBundle {
+    key: string(key);
+    value: [clz_Torappu_ItemBundle];
 }
-table dict__string__list__Torappu_ItemBundle {
-    key: string;
-    value: [Torappu_ItemBundle];
+
+table clz_Torappu_DefaultCheckInData_DynamicCheckInConsts {
+    firstQuestionDesc: string; 
+    firstQuestionTipsDesc: string; 
+    expirationDesc: string; 
+    firstQuestionConfirmDesc: string; 
 }
-table Torappu_DefaultCheckInData_DynamicCheckInData {
-    dynCheckInDict: [dict__string__Torappu_DefaultCheckInData_DynCheckInDailyInfo];
-    dynOptionDict: [dict__string__Torappu_DefaultCheckInData_OptionInfo];
-    dynItemDict: [dict__string__list__Torappu_ItemBundle];
-    constData: Torappu_DefaultCheckInData_DynamicCheckInConsts;
-    initOption: string;
+
+table clz_Torappu_DefaultCheckInData_DynamicCheckInData {
+    dynCheckInDict: [dict__string__clz_Torappu_DefaultCheckInData_DynCheckInDailyInfo]; 
+    dynOptionDict: [dict__string__clz_Torappu_DefaultCheckInData_OptionInfo]; 
+    dynItemDict: [dict__string__list_clz_Torappu_ItemBundle]; 
+    constData: clz_Torappu_DefaultCheckInData_DynamicCheckInConsts; 
+    initOption: string; 
 }
-table Torappu_DefaultCheckInData_ExtraCheckinDailyInfo {
-    order: int;
-    blessing: string;
-    absolutData: long;
-    adTip: string;
-    relativeData: int;
-    itemList: [Torappu_ItemBundle];
+
+table clz_Torappu_DefaultCheckInData_ExtraCheckinDailyInfo {
+    order: int; 
+    blessing: string; 
+    absolutData: long; 
+    adTip: string; 
+    relativeData: int; 
+    itemList: [clz_Torappu_ItemBundle]; 
 }
-table Torappu_DefaultCheckInData {
-    checkInList: [dict__int__Torappu_DefaultCheckInData_CheckInDailyInfo];
-    apSupplyOutOfDateDict: [dict__string__long];
-    dynCheckInData: Torappu_DefaultCheckInData_DynamicCheckInData;
-    extraCheckinList: [Torappu_DefaultCheckInData_ExtraCheckinDailyInfo];
+
+table clz_Torappu_DefaultCheckInData {
+    checkInList: [dict__int__clz_Torappu_DefaultCheckInData_CheckInDailyInfo]; 
+    apSupplyOutOfDateDict: [dict__string__long]; 
+    dynCheckInData: clz_Torappu_DefaultCheckInData_DynamicCheckInData; 
+    extraCheckinList: [clz_Torappu_DefaultCheckInData_ExtraCheckinDailyInfo]; 
 }
-table dict__string__Torappu_DefaultCheckInData {
-    key: string;
-    value: Torappu_DefaultCheckInData;
+
+table dict__string__clz_Torappu_DefaultCheckInData {
+    key: string(key);
+    value: clz_Torappu_DefaultCheckInData;
 }
-table Torappu_AllPlayerCheckinData_DailyInfo {
-    itemList: [Torappu_ItemBundle];
-    order: int;
-    keyItem: bool;
-    showItemOrder: int;
+
+table clz_Torappu_AllPlayerCheckinData_DailyInfo {
+    itemList: [clz_Torappu_ItemBundle]; 
+    order: int; 
+    keyItem: bool; 
+    showItemOrder: int; 
 }
-table dict__int__Torappu_AllPlayerCheckinData_DailyInfo {
-    key: int;
-    value: Torappu_AllPlayerCheckinData_DailyInfo;
+
+table dict__int__clz_Torappu_AllPlayerCheckinData_DailyInfo {
+    key: int(key);
+    value: clz_Torappu_AllPlayerCheckinData_DailyInfo;
 }
-table Torappu_AllPlayerCheckinData_PublicBehaviour {
-    sortId: int;
-    allBehaviorId: string;
-    displayOrder: int;
-    allBehaviorDesc: string;
-    requiringValue: int;
-    requireRepeatCompletion: bool;
-    rewardReceivedDesc: string;
-    rewards: [Torappu_ItemBundle];
+
+table clz_Torappu_AllPlayerCheckinData_PublicBehaviour {
+    sortId: int; 
+    allBehaviorId: string; 
+    displayOrder: int; 
+    allBehaviorDesc: string; 
+    requiringValue: int; 
+    requireRepeatCompletion: bool; 
+    rewardReceivedDesc: string; 
+    rewards: [clz_Torappu_ItemBundle]; 
 }
-table dict__string__Torappu_AllPlayerCheckinData_PublicBehaviour {
-    key: string;
-    value: Torappu_AllPlayerCheckinData_PublicBehaviour;
+
+table dict__string__clz_Torappu_AllPlayerCheckinData_PublicBehaviour {
+    key: string(key);
+    value: clz_Torappu_AllPlayerCheckinData_PublicBehaviour;
 }
-table Torappu_AllPlayerCheckinData_PersonalBehaviour {
-    sortId: int;
-    personalBehaviorId: string;
-    displayOrder: int;
-    requireRepeatCompletion: bool;
-    desc: string;
+
+table clz_Torappu_AllPlayerCheckinData_PersonalBehaviour {
+    sortId: int; 
+    personalBehaviorId: string; 
+    displayOrder: int; 
+    requireRepeatCompletion: bool; 
+    desc: string; 
 }
-table dict__string__Torappu_AllPlayerCheckinData_PersonalBehaviour {
-    key: string;
-    value: Torappu_AllPlayerCheckinData_PersonalBehaviour;
+
+table dict__string__clz_Torappu_AllPlayerCheckinData_PersonalBehaviour {
+    key: string(key);
+    value: clz_Torappu_AllPlayerCheckinData_PersonalBehaviour;
 }
-table Torappu_AllPlayerCheckinData_ConstData {
-    characterName: string;
-    skinName: string;
+
+table clz_Torappu_AllPlayerCheckinData_ConstData {
+    characterName: string; 
+    skinName: string; 
 }
-table Torappu_AllPlayerCheckinData {
-    checkInList: [dict__int__Torappu_AllPlayerCheckinData_DailyInfo];
-    apSupplyOutOfDateDict: [dict__string__long];
-    pubBhvs: [dict__string__Torappu_AllPlayerCheckinData_PublicBehaviour];
-    personalBhvs: [dict__string__Torappu_AllPlayerCheckinData_PersonalBehaviour];
-    constData: Torappu_AllPlayerCheckinData_ConstData;
+
+table clz_Torappu_AllPlayerCheckinData {
+    checkInList: [dict__int__clz_Torappu_AllPlayerCheckinData_DailyInfo]; 
+    apSupplyOutOfDateDict: [dict__string__long]; 
+    pubBhvs: [dict__string__clz_Torappu_AllPlayerCheckinData_PublicBehaviour]; 
+    personalBhvs: [dict__string__clz_Torappu_AllPlayerCheckinData_PersonalBehaviour]; 
+    constData: clz_Torappu_AllPlayerCheckinData_ConstData; 
 }
-table dict__string__Torappu_AllPlayerCheckinData {
-    key: string;
-    value: Torappu_AllPlayerCheckinData;
+
+table dict__string__clz_Torappu_AllPlayerCheckinData {
+    key: string(key);
+    value: clz_Torappu_AllPlayerCheckinData;
 }
-table Torappu_Act3D0Data_CampBasicInfo {
-    campId: string;
-    campName: string;
-    campDesc: string;
-    rewardDesc: string;
+
+table clz_Torappu_Act3D0Data_CampBasicInfo {
+    campId: string; 
+    campName: string; 
+    campDesc: string; 
+    rewardDesc: string; 
 }
-table dict__string__Torappu_Act3D0Data_CampBasicInfo {
-    key: string;
-    value: Torappu_Act3D0Data_CampBasicInfo;
+
+table dict__string__clz_Torappu_Act3D0Data_CampBasicInfo {
+    key: string(key);
+    value: clz_Torappu_Act3D0Data_CampBasicInfo;
 }
-enum Torappu_Act3D0Data_GoodType : int {
+
+enum enum__Torappu_Act3D0Data_GoodType : int {
     NORMAL = 0,
     SPECIAL = 1,
 }
-table Torappu_Act3D0Data_LimitedPoolDetailInfo_PoolItemInfo {
-    goodId: string;
-    itemInfo: Torappu_ItemBundle;
-    goodType: Torappu_Act3D0Data_GoodType;
-    perCount: int;
-    totalCount: int;
-    weight: int;
-    type: string;
-    orderId: int;
+
+table clz_Torappu_Act3D0Data_LimitedPoolDetailInfo_PoolItemInfo {
+    goodId: string; 
+    itemInfo: clz_Torappu_ItemBundle; 
+    goodType: enum__Torappu_Act3D0Data_GoodType; 
+    perCount: int; 
+    totalCount: int; 
+    weight: int; 
+    type: string; 
+    orderId: int; 
 }
-table Torappu_Act3D0Data_LimitedPoolDetailInfo {
-    poolId: string;
-    poolItemInfo: [Torappu_Act3D0Data_LimitedPoolDetailInfo_PoolItemInfo];
+
+table clz_Torappu_Act3D0Data_LimitedPoolDetailInfo {
+    poolId: string; 
+    poolItemInfo: [clz_Torappu_Act3D0Data_LimitedPoolDetailInfo_PoolItemInfo]; 
 }
-table dict__string__Torappu_Act3D0Data_LimitedPoolDetailInfo {
-    key: string;
-    value: Torappu_Act3D0Data_LimitedPoolDetailInfo;
+
+table dict__string__clz_Torappu_Act3D0Data_LimitedPoolDetailInfo {
+    key: string(key);
+    value: clz_Torappu_Act3D0Data_LimitedPoolDetailInfo;
 }
-table Torappu_Act3D0Data_InfinitePoolDetailInfo_PoolItemInfo {
-    goodId: string;
-    goodType: Torappu_Act3D0Data_GoodType;
-    itemInfo: Torappu_ItemBundle;
-    perCount: int;
-    weight: int;
-    type: string;
-    orderId: int;
+
+table clz_Torappu_Act3D0Data_InfinitePoolDetailInfo_PoolItemInfo {
+    goodId: string; 
+    goodType: enum__Torappu_Act3D0Data_GoodType; 
+    itemInfo: clz_Torappu_ItemBundle; 
+    perCount: int; 
+    weight: int; 
+    type: string; 
+    orderId: int; 
 }
-table Torappu_Act3D0Data_InfinitePoolDetailInfo {
-    poolId: string;
-    poolItemInfo: [Torappu_Act3D0Data_InfinitePoolDetailInfo_PoolItemInfo];
+
+table clz_Torappu_Act3D0Data_InfinitePoolDetailInfo {
+    poolId: string; 
+    poolItemInfo: [clz_Torappu_Act3D0Data_InfinitePoolDetailInfo_PoolItemInfo]; 
 }
-table dict__string__Torappu_Act3D0Data_InfinitePoolDetailInfo {
-    key: string;
-    value: Torappu_Act3D0Data_InfinitePoolDetailInfo;
+
+table dict__string__clz_Torappu_Act3D0Data_InfinitePoolDetailInfo {
+    key: string(key);
+    value: clz_Torappu_Act3D0Data_InfinitePoolDetailInfo;
 }
+
 table dict__string__int {
-    key: string;
+    key: string(key);
     value: int;
 }
-table Torappu_Act3D0Data_InfinitePoolPercent {
-    percentDict: [dict__string__int];
+
+table clz_Torappu_Act3D0Data_InfinitePoolPercent {
+    percentDict: [dict__string__int]; 
 }
-table dict__string__Torappu_Act3D0Data_InfinitePoolPercent {
-    key: string;
-    value: Torappu_Act3D0Data_InfinitePoolPercent;
+
+table dict__string__clz_Torappu_Act3D0Data_InfinitePoolPercent {
+    key: string(key);
+    value: clz_Torappu_Act3D0Data_InfinitePoolPercent;
 }
-table dict__string__Torappu_ItemBundle {
-    key: string;
-    value: Torappu_ItemBundle;
+
+table dict__string__clz_Torappu_ItemBundle {
+    key: string(key);
+    value: clz_Torappu_ItemBundle;
 }
-table Torappu_Act3D0Data_CampItemMapInfo {
-    goodId: string;
-    itemDict: [dict__string__Torappu_ItemBundle];
+
+table clz_Torappu_Act3D0Data_CampItemMapInfo {
+    goodId: string; 
+    itemDict: [dict__string__clz_Torappu_ItemBundle]; 
 }
-table dict__string__Torappu_Act3D0Data_CampItemMapInfo {
-    key: string;
-    value: Torappu_Act3D0Data_CampItemMapInfo;
+
+table dict__string__clz_Torappu_Act3D0Data_CampItemMapInfo {
+    key: string(key);
+    value: clz_Torappu_Act3D0Data_CampItemMapInfo;
 }
-table Torappu_Act3D0Data_ClueInfo {
-    itemId: string;
-    campId: string;
-    orderId: int;
-    imageId: string;
+
+table clz_Torappu_Act3D0Data_ClueInfo {
+    itemId: string; 
+    campId: string; 
+    orderId: int; 
+    imageId: string; 
 }
-table dict__string__Torappu_Act3D0Data_ClueInfo {
-    key: string;
-    value: Torappu_Act3D0Data_ClueInfo;
+
+table dict__string__clz_Torappu_Act3D0Data_ClueInfo {
+    key: string(key);
+    value: clz_Torappu_Act3D0Data_ClueInfo;
 }
-table Torappu_Act3D0Data_MileStoneInfo {
-    mileStoneId: string;
-    orderId: int;
-    mileStoneType: Torappu_Act3D0Data_GoodType;
-    normalItem: Torappu_ItemBundle;
-    specialItemDict: [dict__string__Torappu_ItemBundle];
-    tokenNum: int;
+
+table clz_Torappu_Act3D0Data_MileStoneInfo {
+    mileStoneId: string; 
+    orderId: int; 
+    mileStoneType: enum__Torappu_Act3D0Data_GoodType; 
+    normalItem: clz_Torappu_ItemBundle; 
+    specialItemDict: [dict__string__clz_Torappu_ItemBundle]; 
+    tokenNum: int; 
 }
-enum Torappu_Act3D0Data_GachaBoxType : int {
+
+enum enum__Torappu_Act3D0Data_GachaBoxType : int {
     LIMITED = 0,
     UNLIMITED = 1,
 }
-table Torappu_Act3D0Data_GachaBoxInfo {
-    gachaBoxId: string;
-    boxType: Torappu_Act3D0Data_GachaBoxType;
-    keyGoodId: string;
-    tokenId: Torappu_ItemBundle;
-    tokenNumOnce: int;
-    unlockImg: string;
-    nextGachaBoxInfoId: string;
+
+table clz_Torappu_Act3D0Data_GachaBoxInfo {
+    gachaBoxId: string; 
+    boxType: enum__Torappu_Act3D0Data_GachaBoxType; 
+    keyGoodId: string; 
+    tokenId: clz_Torappu_ItemBundle; 
+    tokenNumOnce: int; 
+    unlockImg: string; 
+    nextGachaBoxInfoId: string; 
 }
-table Torappu_Act3D0Data_CampInfo {
-    campId: string;
-    campChineseName: string;
+
+table clz_Torappu_Act3D0Data_CampInfo {
+    campId: string; 
+    campChineseName: string; 
 }
-table dict__string__Torappu_Act3D0Data_CampInfo {
-    key: string;
-    value: Torappu_Act3D0Data_CampInfo;
+
+table dict__string__clz_Torappu_Act3D0Data_CampInfo {
+    key: string(key);
+    value: clz_Torappu_Act3D0Data_CampInfo;
 }
-table Torappu_Act3D0Data_ZoneDescInfo {
-    zoneId: string;
-    lockedText: string;
+
+table clz_Torappu_Act3D0Data_ZoneDescInfo {
+    zoneId: string; 
+    lockedText: string; 
 }
-table dict__string__Torappu_Act3D0Data_ZoneDescInfo {
-    key: string;
-    value: Torappu_Act3D0Data_ZoneDescInfo;
+
+table dict__string__clz_Torappu_Act3D0Data_ZoneDescInfo {
+    key: string(key);
+    value: clz_Torappu_Act3D0Data_ZoneDescInfo;
 }
-table Torappu_CommonFavorUpInfo {
-    charId: string;
-    displayStartTime: long;
-    displayEndTime: long;
+
+table clz_Torappu_CommonFavorUpInfo {
+    charId: string; 
+    displayStartTime: long; 
+    displayEndTime: long; 
 }
-table dict__string__Torappu_CommonFavorUpInfo {
-    key: string;
-    value: Torappu_CommonFavorUpInfo;
+
+table dict__string__clz_Torappu_CommonFavorUpInfo {
+    key: string(key);
+    value: clz_Torappu_CommonFavorUpInfo;
 }
-table Torappu_Act3D0Data {
-    campBasicInfo: [dict__string__Torappu_Act3D0Data_CampBasicInfo];
-    limitedPoolList: [dict__string__Torappu_Act3D0Data_LimitedPoolDetailInfo];
-    infinitePoolList: [dict__string__Torappu_Act3D0Data_InfinitePoolDetailInfo];
-    infinitePercent: [dict__string__Torappu_Act3D0Data_InfinitePoolPercent];
-    campItemMapInfo: [dict__string__Torappu_Act3D0Data_CampItemMapInfo];
-    clueInfo: [dict__string__Torappu_Act3D0Data_ClueInfo];
-    mileStoneInfo: [Torappu_Act3D0Data_MileStoneInfo];
-    mileStoneTokenId: string;
-    coinTokenId: string;
-    etTokenId: string;
-    gachaBoxInfo: [Torappu_Act3D0Data_GachaBoxInfo];
-    campInfo: [dict__string__Torappu_Act3D0Data_CampInfo];
-    zoneDesc: [dict__string__Torappu_Act3D0Data_ZoneDescInfo];
-    favorUpList: [dict__string__Torappu_CommonFavorUpInfo];
+
+table clz_Torappu_Act3D0Data {
+    campBasicInfo: [dict__string__clz_Torappu_Act3D0Data_CampBasicInfo]; 
+    limitedPoolList: [dict__string__clz_Torappu_Act3D0Data_LimitedPoolDetailInfo]; 
+    infinitePoolList: [dict__string__clz_Torappu_Act3D0Data_InfinitePoolDetailInfo]; 
+    infinitePercent: [dict__string__clz_Torappu_Act3D0Data_InfinitePoolPercent]; 
+    campItemMapInfo: [dict__string__clz_Torappu_Act3D0Data_CampItemMapInfo]; 
+    clueInfo: [dict__string__clz_Torappu_Act3D0Data_ClueInfo]; 
+    mileStoneInfo: [clz_Torappu_Act3D0Data_MileStoneInfo]; 
+    mileStoneTokenId: string; 
+    coinTokenId: string; 
+    etTokenId: string; 
+    gachaBoxInfo: [clz_Torappu_Act3D0Data_GachaBoxInfo]; 
+    campInfo: [dict__string__clz_Torappu_Act3D0Data_CampInfo]; 
+    zoneDesc: [dict__string__clz_Torappu_Act3D0Data_ZoneDescInfo]; 
+    favorUpList: [dict__string__clz_Torappu_CommonFavorUpInfo]; 
 }
-table dict__string__Torappu_Act3D0Data {
-    key: string;
-    value: Torappu_Act3D0Data;
+
+table dict__string__clz_Torappu_Act3D0Data {
+    key: string(key);
+    value: clz_Torappu_Act3D0Data;
 }
-table Torappu_Act4D0Data_MileStoneItemInfo {
-    mileStoneId: string;
-    orderId: int;
-    tokenNum: int;
-    item: Torappu_ItemBundle;
+
+table clz_Torappu_Act4D0Data_MileStoneItemInfo {
+    mileStoneId: string; 
+    orderId: int; 
+    tokenNum: int; 
+    item: clz_Torappu_ItemBundle; 
 }
-table Torappu_Act4D0Data_MileStoneStoryInfo {
-    mileStoneId: string;
-    orderId: int;
-    tokenNum: int;
-    storyKey: string;
-    desc: string;
+
+table clz_Torappu_Act4D0Data_MileStoneStoryInfo {
+    mileStoneId: string; 
+    orderId: int; 
+    tokenNum: int; 
+    storyKey: string; 
+    desc: string; 
 }
-table Torappu_Act4D0Data_StoryInfo {
-    storyKey: string;
-    storyId: string;
-    storySort: string;
-    storyName: string;
-    lockDesc: string;
-    storyDesc: string;
+
+table clz_Torappu_Act4D0Data_StoryInfo {
+    storyKey: string; 
+    storyId: string; 
+    storySort: string; 
+    storyName: string; 
+    lockDesc: string; 
+    storyDesc: string; 
 }
-table Torappu_Act4D0Data_StageJumpInfo {
-    stageKey: string;
-    zoneId: string;
-    stageId: string;
-    unlockDesc: string;
-    lockDesc: string;
+
+table clz_Torappu_Act4D0Data_StageJumpInfo {
+    stageKey: string; 
+    zoneId: string; 
+    stageId: string; 
+    unlockDesc: string; 
+    lockDesc: string; 
 }
-table Torappu_Act4D0Data {
-    mileStoneItemList: [Torappu_Act4D0Data_MileStoneItemInfo];
-    mileStoneStoryList: [Torappu_Act4D0Data_MileStoneStoryInfo];
-    storyInfoList: [Torappu_Act4D0Data_StoryInfo];
-    stageInfo: [Torappu_Act4D0Data_StageJumpInfo];
-    tokenItem: Torappu_ItemBundle;
-    charStoneId: string;
-    apSupplyOutOfDateDict: [dict__string__long];
-    extraDropZones: [string];
+
+table clz_Torappu_Act4D0Data {
+    mileStoneItemList: [clz_Torappu_Act4D0Data_MileStoneItemInfo]; 
+    mileStoneStoryList: [clz_Torappu_Act4D0Data_MileStoneStoryInfo]; 
+    storyInfoList: [clz_Torappu_Act4D0Data_StoryInfo]; 
+    stageInfo: [clz_Torappu_Act4D0Data_StageJumpInfo]; 
+    tokenItem: clz_Torappu_ItemBundle; 
+    charStoneId: string; 
+    apSupplyOutOfDateDict: [dict__string__long]; 
+    extraDropZones: [string]; 
 }
-table dict__string__Torappu_Act4D0Data {
-    key: string;
-    value: Torappu_Act4D0Data;
+
+table dict__string__clz_Torappu_Act4D0Data {
+    key: string(key);
+    value: clz_Torappu_Act4D0Data;
 }
-enum Torappu_MileStoneInfo_GoodType : int {
+
+enum enum__Torappu_MileStoneInfo_GoodType : int {
     NORMAL = 0,
     SPECIAL = 1,
 }
-table Torappu_MileStoneInfo {
-    mileStoneId: string;
-    orderId: int;
-    tokenNum: int;
-    mileStoneType: Torappu_MileStoneInfo_GoodType;
-    normalItem: Torappu_ItemBundle;
-    IsBonus: int;
+
+table clz_Torappu_MileStoneInfo {
+    mileStoneId: string; 
+    orderId: int; 
+    tokenNum: int; 
+    mileStoneType: enum__Torappu_MileStoneInfo_GoodType; 
+    normalItem: clz_Torappu_ItemBundle; 
+    IsBonus: int; 
 }
-table Torappu_Act5D0Data_ZoneDescInfo {
-    zoneId: string;
-    lockedText: string;
+
+table clz_Torappu_Act5D0Data_ZoneDescInfo {
+    zoneId: string; 
+    lockedText: string; 
 }
-table dict__string__Torappu_Act5D0Data_ZoneDescInfo {
-    key: string;
-    value: Torappu_Act5D0Data_ZoneDescInfo;
+
+table dict__string__clz_Torappu_Act5D0Data_ZoneDescInfo {
+    key: string(key);
+    value: clz_Torappu_Act5D0Data_ZoneDescInfo;
 }
-table Torappu_Act5D0Data_MissionExtraInfo {
-    difficultLevel: int;
-    levelDesc: string;
-    sortId: int;
+
+table clz_Torappu_Act5D0Data_MissionExtraInfo {
+    difficultLevel: int; 
+    levelDesc: string; 
+    sortId: int; 
 }
-table dict__string__Torappu_Act5D0Data_MissionExtraInfo {
-    key: string;
-    value: Torappu_Act5D0Data_MissionExtraInfo;
+
+table dict__string__clz_Torappu_Act5D0Data_MissionExtraInfo {
+    key: string(key);
+    value: clz_Torappu_Act5D0Data_MissionExtraInfo;
 }
-table Torappu_Act5D0Data {
-    mileStoneInfo: [Torappu_MileStoneInfo];
-    mileStoneTokenId: string;
-    zoneDesc: [dict__string__Torappu_Act5D0Data_ZoneDescInfo];
-    missionExtraList: [dict__string__Torappu_Act5D0Data_MissionExtraInfo];
-    spReward: string;
+
+table clz_Torappu_Act5D0Data {
+    mileStoneInfo: [clz_Torappu_MileStoneInfo]; 
+    mileStoneTokenId: string; 
+    zoneDesc: [dict__string__clz_Torappu_Act5D0Data_ZoneDescInfo]; 
+    missionExtraList: [dict__string__clz_Torappu_Act5D0Data_MissionExtraInfo]; 
+    spReward: string; 
 }
-table dict__string__Torappu_Act5D0Data {
-    key: string;
-    value: Torappu_Act5D0Data;
+
+table dict__string__clz_Torappu_Act5D0Data {
+    key: string(key);
+    value: clz_Torappu_Act5D0Data;
 }
-table Torappu_Act5D1Data_RuneStageData {
-    stageId: string;
-    levelId: string;
-    code: string;
-    name: string;
-    loadingPicId: string;
-    description: string;
-    picId: string;
+
+table clz_Torappu_Act5D1Data_RuneStageData {
+    stageId: string; 
+    levelId: string; 
+    code: string; 
+    name: string; 
+    loadingPicId: string; 
+    description: string; 
+    picId: string; 
 }
-table Torappu_Act5D1Data_RuneRecurrentStateData {
-    runeReId: string;
-    stageId: string;
-    slotId: int;
-    startTime: long;
-    endTime: long;
-    runeList: [string];
-    isAvail: bool;
-    warningPoint: int;
+
+table clz_Torappu_Act5D1Data_RuneRecurrentStateData {
+    runeReId: string; 
+    stageId: string; 
+    slotId: int; 
+    startTime: long; 
+    endTime: long; 
+    runeList: [string]; 
+    isAvail: bool; 
+    warningPoint: int; 
 }
-table Torappu_Act5D1Data_RuneUnlockData {
-    runeId: string;
-    priceItem: Torappu_ItemBundle;
-    runeName: string;
-    bgPic: string;
-    runeDesc: string;
-    sortId: int;
-    iconId: string;
+
+table clz_Torappu_Act5D1Data_RuneUnlockData {
+    runeId: string; 
+    priceItem: clz_Torappu_ItemBundle; 
+    runeName: string; 
+    bgPic: string; 
+    runeDesc: string; 
+    sortId: int; 
+    iconId: string; 
 }
-table Torappu_Act5D1Data_RuneReleaseData {
-    runeId: string;
-    stageId: string;
-    releaseTime: long;
+
+table dict__string__list_clz_Torappu_Act5D1Data_RuneUnlockData {
+    key: string(key);
+    value: [clz_Torappu_Act5D1Data_RuneUnlockData];
 }
+
+table clz_Torappu_Act5D1Data_RuneReleaseData {
+    runeId: string; 
+    stageId: string; 
+    releaseTime: long; 
+}
+
 table dict__string__bool {
-    key: string;
+    key: string(key);
     value: bool;
 }
-enum Torappu_Act5D1Data_GoodType : int {
+
+enum enum__Torappu_Act5D1Data_GoodType : int {
     NORMAL = 0,
     PROGRESS = 1,
 }
-table Torappu_Act5D1Data_ShopGood {
-    goodId: string;
-    slotId: int;
-    price: int;
-    availCount: int;
-    item: Torappu_ItemBundle;
-    progressGoodId: string;
-    goodType: Torappu_Act5D1Data_GoodType;
-    rarity: string;
+
+table clz_Torappu_Act5D1Data_ShopGood {
+    goodId: string; 
+    slotId: int; 
+    price: int; 
+    availCount: int; 
+    item: clz_Torappu_ItemBundle; 
+    progressGoodId: string; 
+    goodType: enum__Torappu_Act5D1Data_GoodType; 
+    rarity: string; 
 }
-table dict__string__Torappu_Act5D1Data_ShopGood {
-    key: string;
-    value: Torappu_Act5D1Data_ShopGood;
+
+table dict__string__clz_Torappu_Act5D1Data_ShopGood {
+    key: string(key);
+    value: clz_Torappu_Act5D1Data_ShopGood;
 }
-table Torappu_Act5D1Data_ProgessGoodItem {
-    order: int;
-    price: int;
-    displayName: string;
-    item: Torappu_ItemBundle;
+
+table clz_Torappu_Act5D1Data_ProgessGoodItem {
+    order: int; 
+    price: int; 
+    displayName: string; 
+    item: clz_Torappu_ItemBundle; 
 }
-table Torappu_UI_TemplateShop_TemplateShopData_ProgessGoodItem {
-    order: int;
-    price: int;
-    displayName: string;
-    item: Torappu_ItemBundle;
+
+table dict__string__list_clz_Torappu_Act5D1Data_ProgessGoodItem {
+    key: string(key);
+    value: [clz_Torappu_Act5D1Data_ProgessGoodItem];
 }
-table dict__string__list__Torappu_UI_TemplateShop_TemplateShopData_ProgessGoodItem {
-    key: string;
-    value: [Torappu_UI_TemplateShop_TemplateShopData_ProgessGoodItem];
+
+table clz_Torappu_Act5D1Data_ShopData {
+    shopGoods: [dict__string__clz_Torappu_Act5D1Data_ShopGood]; 
+    progressGoods: [dict__string__list_clz_Torappu_Act5D1Data_ProgessGoodItem]; 
 }
-table Torappu_Act5D1Data_ShopData {
-    shopGoods: [dict__string__Torappu_Act5D1Data_ShopGood];
-    progressGoods: [dict__string__list__Torappu_UI_TemplateShop_TemplateShopData_ProgessGoodItem];
-}
-enum Torappu_ProfessionCategory : int {
+
+enum enum__Torappu_ProfessionCategory : int {
     NONE = 0,
     WARRIOR = 1,
     SNIPER = 2,
@@ -668,226 +761,257 @@ enum Torappu_ProfessionCategory : int {
     TRAP = 256,
     PIONEER = 512,
 }
-enum Torappu_BuildableType : int {
+
+enum enum__Torappu_BuildableType : int {
     NONE = 0,
     MELEE = 1,
     RANGED = 2,
     ALL = 3,
 }
-table Torappu_RuneData_Selector {
-    professionMask: Torappu_ProfessionCategory;
-    buildableMask: Torappu_BuildableType;
-    charIdFilter: [string];
-    enemyIdFilter: [string];
-    enemyIdExcludeFilter: [string];
-    skillIdFilter: [string];
-    tileKeyFilter: [string];
-    groupTagFilter: [string];
-    filterTagFilter: [string];
+
+table clz_Torappu_RuneData_Selector {
+    professionMask: enum__Torappu_ProfessionCategory; 
+    buildableMask: enum__Torappu_BuildableType; 
+    charIdFilter: [string]; 
+    enemyIdFilter: [string]; 
+    enemyIdExcludeFilter: [string]; 
+    skillIdFilter: [string]; 
+    tileKeyFilter: [string]; 
+    groupTagFilter: [string]; 
+    filterTagFilter: [string]; 
 }
-table Torappu_Blackboard_DataPair {
-    key: string;
-    value: float;
-    valueStr: string;
+
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
 }
-table Torappu_RuneData {
-    key: string;
-    selector: Torappu_RuneData_Selector;
-    blackboard: [Torappu_Blackboard_DataPair];
+
+table clz_Torappu_RuneData {
+    key: string; 
+    selector: clz_Torappu_RuneData_Selector; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
 }
-table Torappu_RuneTable_PackedRuneData {
-    id: string;
-    points: float;
-    mutexGroupKey: string;
-    description: string;
-    runes: [Torappu_RuneData];
+
+table clz_Torappu_RuneTable_PackedRuneData {
+    id: string; 
+    points: float; 
+    mutexGroupKey: string; 
+    description: string; 
+    runes: [clz_Torappu_RuneData]; 
 }
-table Torappu_RuneTable_RuneStageExtraData {
-    stageId: string;
-    runes: [Torappu_RuneTable_PackedRuneData];
+
+table clz_Torappu_RuneTable_RuneStageExtraData {
+    stageId: string; 
+    runes: [clz_Torappu_RuneTable_PackedRuneData]; 
 }
-table dict__string__list__Torappu_Act5D1Data_RuneUnlockData {
-    key: string;
-    value: [Torappu_Act5D1Data_RuneUnlockData];
+
+table clz_Torappu_Act5D1Data {
+    stageCommonData: [clz_Torappu_Act5D1Data_RuneStageData]; 
+    runeStageData: [clz_Torappu_Act5D1Data_RuneRecurrentStateData]; 
+    runeUnlockDict: [dict__string__list_clz_Torappu_Act5D1Data_RuneUnlockData]; 
+    runeReleaseData: [clz_Torappu_Act5D1Data_RuneReleaseData]; 
+    missionData: [clz_Torappu_MissionData]; 
+    missionGroup: [clz_Torappu_MissionGroup]; 
+    useBenefitMissionDict: [dict__string__bool]; 
+    shopData: clz_Torappu_Act5D1Data_ShopData; 
+    coinItemId: string; 
+    ptItemId: string; 
+    stageRune: [clz_Torappu_RuneTable_RuneStageExtraData]; 
+    showRuneMissionList: [string]; 
 }
-table Torappu_Act5D1Data {
-    stageCommonData: [Torappu_Act5D1Data_RuneStageData];
-    runeStageData: [Torappu_Act5D1Data_RuneRecurrentStateData];
-    runeUnlockDict: [dict__string__list__Torappu_Act5D1Data_RuneUnlockData];
-    runeReleaseData: [Torappu_Act5D1Data_RuneReleaseData];
-    missionData: [Torappu_MissionData];
-    missionGroup: [Torappu_MissionGroup];
-    useBenefitMissionDict: [dict__string__bool];
-    shopData: Torappu_Act5D1Data_ShopData;
-    coinItemId: string;
-    ptItemId: string;
-    stageRune: [Torappu_RuneTable_RuneStageExtraData];
-    showRuneMissionList: [string];
+
+table dict__string__clz_Torappu_Act5D1Data {
+    key: string(key);
+    value: clz_Torappu_Act5D1Data;
 }
-table dict__string__Torappu_Act5D1Data {
-    key: string;
-    value: Torappu_Act5D1Data;
+
+table clz_Torappu_ActivityCollectionData_CollectionInfo {
+    id: int; 
+    itemType: enum__Torappu_ItemType; 
+    itemId: string; 
+    itemCnt: int; 
+    pointId: string; 
+    pointCnt: int; 
+    isBonus: bool; 
+    pngName: string; 
+    pngSort: int; 
+    isShow: bool; 
+    showInList: bool; 
+    showIconBG: bool; 
 }
-table Torappu_ActivityCollectionData_CollectionInfo {
-    id: int;
-    itemType: Torappu_ItemType;
-    itemId: string;
-    itemCnt: int;
-    pointId: string;
-    pointCnt: int;
-    isBonus: bool;
-    pngName: string;
-    pngSort: int;
-    isShow: bool;
-    showInList: bool;
-    showIconBG: bool;
+
+table clz_Torappu_ActivityCollectionData {
+    collections: [clz_Torappu_ActivityCollectionData_CollectionInfo]; 
+    apSupplyOutOfDateDict: [dict__string__long]; 
 }
-table Torappu_ActivityCollectionData {
-    collections: [Torappu_ActivityCollectionData_CollectionInfo];
-    apSupplyOutOfDateDict: [dict__string__long];
+
+table dict__string__clz_Torappu_ActivityCollectionData {
+    key: string(key);
+    value: clz_Torappu_ActivityCollectionData;
 }
-table dict__string__Torappu_ActivityCollectionData {
-    key: string;
-    value: Torappu_ActivityCollectionData;
+
+table clz_Torappu_Act9D0Data_ZoneDescInfo {
+    zoneId: string; 
+    unlockText: string; 
+    displayStartTime: long; 
 }
-table Torappu_Act9D0Data_ZoneDescInfo {
-    zoneId: string;
-    unlockText: string;
-    displayStartTime: long;
+
+table dict__string__clz_Torappu_Act9D0Data_ZoneDescInfo {
+    key: string(key);
+    value: clz_Torappu_Act9D0Data_ZoneDescInfo;
 }
-table dict__string__Torappu_Act9D0Data_ZoneDescInfo {
-    key: string;
-    value: Torappu_Act9D0Data_ZoneDescInfo;
+
+table clz_Torappu_Act9D0Data_FavorUpInfo {
+    charId: string; 
+    displayStartTime: long; 
+    displayEndTime: long; 
 }
-table Torappu_Act9D0Data_FavorUpInfo {
-    charId: string;
-    displayStartTime: long;
-    displayEndTime: long;
+
+table dict__string__clz_Torappu_Act9D0Data_FavorUpInfo {
+    key: string(key);
+    value: clz_Torappu_Act9D0Data_FavorUpInfo;
 }
-table dict__string__Torappu_Act9D0Data_FavorUpInfo {
-    key: string;
-    value: Torappu_Act9D0Data_FavorUpInfo;
+
+table clz_Torappu_Act9D0Data_SubMissionInfo {
+    missionId: string; 
+    missionTitle: string; 
+    sortId: int; 
+    missionIndex: string; 
 }
-table Torappu_Act9D0Data_SubMissionInfo {
-    missionId: string;
-    missionTitle: string;
-    sortId: int;
-    missionIndex: string;
+
+table dict__string__clz_Torappu_Act9D0Data_SubMissionInfo {
+    key: string(key);
+    value: clz_Torappu_Act9D0Data_SubMissionInfo;
 }
-table dict__string__Torappu_Act9D0Data_SubMissionInfo {
-    key: string;
-    value: Torappu_Act9D0Data_SubMissionInfo;
+
+table clz_Torappu_Act9D0Data_ActivityNewsStyleInfo {
+    typeId: string; 
+    typeName: string; 
+    typeLogo: string; 
+    typeMainLogo: string; 
 }
-table Torappu_Act9D0Data_ActivityNewsStyleInfo {
-    typeId: string;
-    typeName: string;
-    typeLogo: string;
-    typeMainLogo: string;
-}
-enum Torappu_Act9D0Data_ActivityNewsLineType : int {
+
+enum enum__Torappu_Act9D0Data_ActivityNewsLineType : int {
     TextContent = 0,
     ImageContent = 1,
 }
-table Torappu_Act9D0Data_ActivityNewsLine {
-    lineType: Torappu_Act9D0Data_ActivityNewsLineType;
-    content: string;
+
+table clz_Torappu_Act9D0Data_ActivityNewsLine {
+    lineType: enum__Torappu_Act9D0Data_ActivityNewsLineType; 
+    content: string; 
 }
-table Torappu_Act9D0Data_ActivityNewsInfo {
-    newsId: string;
-    newsSortId: int;
-    styleInfo: Torappu_Act9D0Data_ActivityNewsStyleInfo;
-    preposedStage: string;
-    titlePic: string;
-    newsTitle: string;
-    newsInfShow: int;
-    newsFrom: string;
-    newsText: string;
-    newsParam1: int;
-    newsParam2: int;
-    newsParam3: float;
-    newsLines: [Torappu_Act9D0Data_ActivityNewsLine];
+
+table clz_Torappu_Act9D0Data_ActivityNewsInfo {
+    newsId: string; 
+    newsSortId: int; 
+    styleInfo: clz_Torappu_Act9D0Data_ActivityNewsStyleInfo; 
+    preposedStage: string; 
+    titlePic: string; 
+    newsTitle: string; 
+    newsInfShow: int; 
+    newsFrom: string; 
+    newsText: string; 
+    newsParam1: int; 
+    newsParam2: int; 
+    newsParam3: float; 
+    newsLines: [clz_Torappu_Act9D0Data_ActivityNewsLine]; 
 }
-table dict__string__Torappu_Act9D0Data_ActivityNewsInfo {
-    key: string;
-    value: Torappu_Act9D0Data_ActivityNewsInfo;
+
+table dict__string__clz_Torappu_Act9D0Data_ActivityNewsInfo {
+    key: string(key);
+    value: clz_Torappu_Act9D0Data_ActivityNewsInfo;
 }
-table Torappu_Act9D0Data_ActivityNewsServerInfo {
-    newsId: string;
-    preposedStage: string;
+
+table clz_Torappu_Act9D0Data_ActivityNewsServerInfo {
+    newsId: string; 
+    preposedStage: string; 
 }
-table dict__string__Torappu_Act9D0Data_ActivityNewsServerInfo {
-    key: string;
-    value: Torappu_Act9D0Data_ActivityNewsServerInfo;
+
+table dict__string__clz_Torappu_Act9D0Data_ActivityNewsServerInfo {
+    key: string(key);
+    value: clz_Torappu_Act9D0Data_ActivityNewsServerInfo;
 }
-table Torappu_Act9D0Data {
-    tokenItemId: string;
-    zoneDescList: [dict__string__Torappu_Act9D0Data_ZoneDescInfo];
-    favorUpList: [dict__string__Torappu_Act9D0Data_FavorUpInfo];
-    subMissionInfo: [dict__string__Torappu_Act9D0Data_SubMissionInfo];
-    hasSubMission: bool;
-    apSupplyOutOfDateDict: [dict__string__long];
-    newsInfoList: [dict__string__Torappu_Act9D0Data_ActivityNewsInfo];
-    newsServerInfoList: [dict__string__Torappu_Act9D0Data_ActivityNewsServerInfo];
-    miscHub: [dict__string__string];
+
+table clz_Torappu_Act9D0Data {
+    tokenItemId: string; 
+    zoneDescList: [dict__string__clz_Torappu_Act9D0Data_ZoneDescInfo]; 
+    favorUpList: [dict__string__clz_Torappu_Act9D0Data_FavorUpInfo]; 
+    subMissionInfo: [dict__string__clz_Torappu_Act9D0Data_SubMissionInfo]; 
+    hasSubMission: bool; 
+    apSupplyOutOfDateDict: [dict__string__long]; 
+    newsInfoList: [dict__string__clz_Torappu_Act9D0Data_ActivityNewsInfo]; 
+    newsServerInfoList: [dict__string__clz_Torappu_Act9D0Data_ActivityNewsServerInfo]; 
+    miscHub: [dict__string__string]; 
 }
-table dict__string__Torappu_Act9D0Data {
-    key: string;
-    value: Torappu_Act9D0Data;
+
+table dict__string__clz_Torappu_Act9D0Data {
+    key: string(key);
+    value: clz_Torappu_Act9D0Data;
 }
-table Torappu_Act12SideData_ConstData {
-    recycleRewardThreshold: int;
-    charmRepoUnlockStageId: string;
-    recycleLowThreshold: int;
-    recycleMediumThreshold: int;
-    recycleHighThreshold: int;
-    autoGetCharmId: string;
-    fogStageId: string;
-    fogUnlockStageId: string;
-    fogUnlockTs: long;
-    fogUnlockDesc: string;
+
+table clz_Torappu_Act12SideData_ConstData {
+    recycleRewardThreshold: int; 
+    charmRepoUnlockStageId: string; 
+    recycleLowThreshold: int; 
+    recycleMediumThreshold: int; 
+    recycleHighThreshold: int; 
+    autoGetCharmId: string; 
+    fogStageId: string; 
+    fogUnlockStageId: string; 
+    fogUnlockTs: long; 
+    fogUnlockDesc: string; 
 }
-enum Torappu_Act12SideData_ActZoneClass : int {
+
+enum enum__Torappu_Act12SideData_ActZoneClass : int {
     NONE = 0,
     NORMAL = 1,
     HIGHLEVEL = 2,
     SUB = 3,
 }
-table Torappu_Act12SideData_ZoneAdditionData {
-    zoneId: string;
-    unlockText: string;
-    zoneClass: Torappu_Act12SideData_ActZoneClass;
+
+table clz_Torappu_Act12SideData_ZoneAdditionData {
+    zoneId: string; 
+    unlockText: string; 
+    zoneClass: enum__Torappu_Act12SideData_ActZoneClass; 
 }
-table Torappu_Act12SideData_MissionDescInfo {
-    zoneClass: Torappu_Act12SideData_ActZoneClass;
-    specialMissionDesc: string;
-    needLock: bool;
-    unlockHint: string;
-    unlockStage: string;
+
+table clz_Torappu_Act12SideData_MissionDescInfo {
+    zoneClass: enum__Torappu_Act12SideData_ActZoneClass; 
+    specialMissionDesc: string; 
+    needLock: bool; 
+    unlockHint: string; 
+    unlockStage: string; 
 }
-table dict__string__Torappu_Act12SideData_MissionDescInfo {
-    key: string;
-    value: Torappu_Act12SideData_MissionDescInfo;
+
+table dict__string__clz_Torappu_Act12SideData_MissionDescInfo {
+    key: string(key);
+    value: clz_Torappu_Act12SideData_MissionDescInfo;
 }
-table Torappu_Act12SideData_MileStoneInfo {
-    mileStoneId: string;
-    orderId: int;
-    tokenNum: int;
-    item: Torappu_ItemBundle;
-    isPrecious: bool;
-    mileStoneStage: int;
+
+table clz_Torappu_Act12SideData_MileStoneInfo {
+    mileStoneId: string; 
+    orderId: int; 
+    tokenNum: int; 
+    item: clz_Torappu_ItemBundle; 
+    isPrecious: bool; 
+    mileStoneStage: int; 
 }
-table Torappu_Act12SideData_PhotoInfo {
-    picId: string;
-    picName: string;
-    mileStoneId: string;
-    picDesc: string;
-    jumpStageId: string;
+
+table clz_Torappu_Act12SideData_PhotoInfo {
+    picId: string; 
+    picName: string; 
+    mileStoneId: string; 
+    picDesc: string; 
+    jumpStageId: string; 
 }
-table dict__string__Torappu_Act12SideData_PhotoInfo {
-    key: string;
-    value: Torappu_Act12SideData_PhotoInfo;
+
+table dict__string__clz_Torappu_Act12SideData_PhotoInfo {
+    key: string(key);
+    value: clz_Torappu_Act12SideData_PhotoInfo;
 }
-enum Torappu_Act12SideData_RecycleDialogType : int {
+
+enum enum__Torappu_Act12SideData_RecycleDialogType : int {
     NONE = 0,
     EMPTY = 1,
     LOW = 2,
@@ -895,142 +1019,163 @@ enum Torappu_Act12SideData_RecycleDialogType : int {
     HIGH = 4,
     GACHA = 5,
 }
-enum Torappu_Act12SideData_RecycleAnimationState : int {
+
+enum enum__Torappu_Act12SideData_RecycleAnimationState : int {
     NONE = 0,
     NORMAL = 1,
     SMILE = 2,
 }
-table Torappu_Act12SideData_RecycleDialogData {
-    dialogType: Torappu_Act12SideData_RecycleDialogType;
-    dialog: string;
-    dialogExpress: Torappu_Act12SideData_RecycleAnimationState;
+
+table clz_Torappu_Act12SideData_RecycleDialogData {
+    dialogType: enum__Torappu_Act12SideData_RecycleDialogType; 
+    dialog: string; 
+    dialogExpress: enum__Torappu_Act12SideData_RecycleAnimationState; 
 }
-table dict__Torappu_Act12SideData_RecycleDialogType__list__Torappu_Act12SideData_RecycleDialogData {
-    key: Torappu_Act12SideData_RecycleDialogType;
-    value: [Torappu_Act12SideData_RecycleDialogData];
+
+table dict__enum__Torappu_Act12SideData_RecycleDialogType__list_clz_Torappu_Act12SideData_RecycleDialogData {
+    key: enum__Torappu_Act12SideData_RecycleDialogType(key);
+    value: [clz_Torappu_Act12SideData_RecycleDialogData];
 }
-table Torappu_Act12SideData {
-    constData: Torappu_Act12SideData_ConstData;
-    zoneAdditionDataList: [Torappu_Act12SideData_ZoneAdditionData];
-    missionDescList: [dict__string__Torappu_Act12SideData_MissionDescInfo];
-    mileStoneInfoList: [Torappu_Act12SideData_MileStoneInfo];
-    photoList: [dict__string__Torappu_Act12SideData_PhotoInfo];
-    recycleDialogDict: [dict__Torappu_Act12SideData_RecycleDialogType__list__Torappu_Act12SideData_RecycleDialogData];
+
+table clz_Torappu_Act12SideData {
+    constData: clz_Torappu_Act12SideData_ConstData; 
+    zoneAdditionDataList: [clz_Torappu_Act12SideData_ZoneAdditionData]; 
+    missionDescList: [dict__string__clz_Torappu_Act12SideData_MissionDescInfo]; 
+    mileStoneInfoList: [clz_Torappu_Act12SideData_MileStoneInfo]; 
+    photoList: [dict__string__clz_Torappu_Act12SideData_PhotoInfo]; 
+    recycleDialogDict: [dict__enum__Torappu_Act12SideData_RecycleDialogType__list_clz_Torappu_Act12SideData_RecycleDialogData]; 
 }
-table dict__string__Torappu_Act12SideData {
-    key: string;
-    value: Torappu_Act12SideData;
+
+table dict__string__clz_Torappu_Act12SideData {
+    key: string(key);
+    value: clz_Torappu_Act12SideData;
 }
-table dict__int__list_int {
-    key: int;
-    value: [int];
+
+table list_int {
+    values: [int];
 }
-table Torappu_Act13SideData_ConstData {
-    prestigeDescList: [string];
-    dailyRandomCount: [dict__int__list_int];
-    dailyWeightInitial: int;
-    dailyWeightComplete: int;
-    agendaRecover: int;
-    agendaMax: int;
-    agendaHint: int;
-    missionPoolMax: int;
-    missionBoardMax: int;
-    itemRandomList: [Torappu_ItemBundle];
-    unlockPrestigeCond: string;
-    hotSpotShowFlag: long;
+
+table clz_Torappu_Act13SideData_ConstData {
+    prestigeDescList: [string]; 
+    dailyRandomCount: [list_int]; 
+    dailyWeightInitial: int; 
+    dailyWeightComplete: int; 
+    agendaRecover: int; 
+    agendaMax: int; 
+    agendaHint: int; 
+    missionPoolMax: int; 
+    missionBoardMax: int; 
+    itemRandomList: [clz_Torappu_ItemBundle]; 
+    unlockPrestigeCond: string; 
+    hotSpotShowFlag: long; 
 }
-enum Torappu_Act13SideData_PrestigeRank : int {
+
+enum enum__Torappu_Act13SideData_PrestigeRank : int {
     D = 0,
     C = 1,
     B = 2,
     A = 3,
     S = 4,
 }
-table Torappu_Act13SideData_PrestigeData {
-    rank: Torappu_Act13SideData_PrestigeRank;
-    threshold: int;
-    reward: Torappu_ItemBundle;
-    newsCount: int;
-    archiveCount: int;
-    avgCount: int;
+
+table clz_Torappu_Act13SideData_PrestigeData {
+    rank: enum__Torappu_Act13SideData_PrestigeRank; 
+    threshold: int; 
+    reward: clz_Torappu_ItemBundle; 
+    newsCount: int; 
+    archiveCount: int; 
+    avgCount: int; 
 }
-table dict__int__Torappu_ItemBundle {
-    key: int;
-    value: Torappu_ItemBundle;
+
+table dict__int__clz_Torappu_ItemBundle {
+    key: int(key);
+    value: clz_Torappu_ItemBundle;
 }
-table Torappu_Act13SideData_LongTermMissionGroupData {
-    groupId: string;
-    groupName: string;
-    orgId: string;
-    missionList: [string];
+
+table clz_Torappu_Act13SideData_LongTermMissionGroupData {
+    groupId: string; 
+    groupName: string; 
+    orgId: string; 
+    missionList: [string]; 
 }
-table Torappu_Act13SideData_OrgSectionData {
-    sectionName: string;
-    sortId: int;
-    groupData: Torappu_Act13SideData_LongTermMissionGroupData;
+
+table clz_Torappu_Act13SideData_OrgSectionData {
+    sectionName: string; 
+    sortId: int; 
+    groupData: clz_Torappu_Act13SideData_LongTermMissionGroupData; 
 }
-table Torappu_Act13SideData_OrgData {
-    orgId: string;
-    orgName: string;
-    orgEnName: string;
-    openTime: long;
-    principalIdList: [string];
-    prestigeList: [Torappu_Act13SideData_PrestigeData];
-    agendaCount2PrestigeItemMap: [dict__int__Torappu_ItemBundle];
-    orgSectionList: [Torappu_Act13SideData_OrgSectionData];
-    prestigeItem: Torappu_ItemBundle;
+
+table clz_Torappu_Act13SideData_OrgData {
+    orgId: string; 
+    orgName: string; 
+    orgEnName: string; 
+    openTime: long; 
+    principalIdList: [string]; 
+    prestigeList: [clz_Torappu_Act13SideData_PrestigeData]; 
+    agendaCount2PrestigeItemMap: [dict__int__clz_Torappu_ItemBundle]; 
+    orgSectionList: [clz_Torappu_Act13SideData_OrgSectionData]; 
+    prestigeItem: clz_Torappu_ItemBundle; 
 }
-table dict__string__Torappu_Act13SideData_OrgData {
-    key: string;
-    value: Torappu_Act13SideData_OrgData;
+
+table dict__string__clz_Torappu_Act13SideData_OrgData {
+    key: string(key);
+    value: clz_Torappu_Act13SideData_OrgData;
 }
-table Torappu_Act13SideData_PrincipalData {
-    principalId: string;
-    principalName: string;
-    principalEnName: string;
-    avgCharId: string;
-    principalDescList: [string];
+
+table clz_Torappu_Act13SideData_PrincipalData {
+    principalId: string; 
+    principalName: string; 
+    principalEnName: string; 
+    avgCharId: string; 
+    principalDescList: [string]; 
 }
-table dict__string__Torappu_Act13SideData_PrincipalData {
-    key: string;
-    value: Torappu_Act13SideData_PrincipalData;
+
+table dict__string__clz_Torappu_Act13SideData_PrincipalData {
+    key: string(key);
+    value: clz_Torappu_Act13SideData_PrincipalData;
 }
-table Torappu_Act13SideData_LongTermMissionData {
-    missionName: string;
-    groupId: string;
-    principalId: string;
-    finishedDesc: string;
-    sectionSortId: int;
-    haveStageBtn: bool;
-    jumpStageId: string;
+
+table clz_Torappu_Act13SideData_LongTermMissionData {
+    missionName: string; 
+    groupId: string; 
+    principalId: string; 
+    finishedDesc: string; 
+    sectionSortId: int; 
+    haveStageBtn: bool; 
+    jumpStageId: string; 
 }
-table dict__string__Torappu_Act13SideData_LongTermMissionData {
-    key: string;
-    value: Torappu_Act13SideData_LongTermMissionData;
+
+table dict__string__clz_Torappu_Act13SideData_LongTermMissionData {
+    key: string(key);
+    value: clz_Torappu_Act13SideData_LongTermMissionData;
 }
-table Torappu_Act13SideData_DailyMissionData {
-    id: string;
-    sortId: int;
-    description: string;
-    missionName: string;
-    template: string;
-    templateType: string;
-    param: [string];
-    rewards: [Torappu_MissionDisplayRewards];
-    orgPool: [string];
-    rewardPool: [string];
-    jumpStageId: string;
-    agendaCount: int;
+
+table clz_Torappu_Act13SideData_DailyMissionData {
+    id: string; 
+    sortId: int; 
+    description: string; 
+    missionName: string; 
+    template: string; 
+    templateType: string; 
+    param: [string]; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+    orgPool: [string]; 
+    rewardPool: [string]; 
+    jumpStageId: string; 
+    agendaCount: int; 
 }
-table Torappu_Act13SideData_DailyMissionRewardGroupData {
-    groupId: string;
-    rewards: [Torappu_ItemBundle];
+
+table clz_Torappu_Act13SideData_DailyMissionRewardGroupData {
+    groupId: string; 
+    rewards: [clz_Torappu_ItemBundle]; 
 }
-table dict__string__Torappu_Act13SideData_DailyMissionRewardGroupData {
-    key: string;
-    value: Torappu_Act13SideData_DailyMissionRewardGroupData;
+
+table dict__string__clz_Torappu_Act13SideData_DailyMissionRewardGroupData {
+    key: string(key);
+    value: clz_Torappu_Act13SideData_DailyMissionRewardGroupData;
 }
-enum Torappu_ActArchiveType : int {
+
+enum enum__Torappu_ActArchiveType : int {
     NONE = 0,
     TIMELINE = 1,
     MUSIC = 2,
@@ -1051,84 +1196,99 @@ enum Torappu_ActArchiveType : int {
     ENDBOOK = 17,
     DYNAMIC_STORY = 18,
 }
-enum Torappu_Act13SideData_UnlockCondition : int {
+
+enum enum__Torappu_Act13SideData_UnlockCondition : int {
     NONE = 0,
     PRESTIGE = 1,
     STAGE = 2,
 }
-table Torappu_Act13SideData_ArchiveItemUnlockData {
-    itemId: string;
-    itemType: Torappu_ActArchiveType;
-    unlockCondition: Torappu_Act13SideData_UnlockCondition;
-    param1: string;
-    param2: string;
+
+table clz_Torappu_Act13SideData_ArchiveItemUnlockData {
+    itemId: string; 
+    itemType: enum__Torappu_ActArchiveType; 
+    unlockCondition: enum__Torappu_Act13SideData_UnlockCondition; 
+    param1: string; 
+    param2: string; 
 }
-table dict__string__Torappu_Act13SideData_ArchiveItemUnlockData {
-    key: string;
-    value: Torappu_Act13SideData_ArchiveItemUnlockData;
+
+table dict__string__clz_Torappu_Act13SideData_ArchiveItemUnlockData {
+    key: string(key);
+    value: clz_Torappu_Act13SideData_ArchiveItemUnlockData;
 }
-enum Torappu_PlayerBattleRank : int {
+
+enum enum__Torappu_PlayerBattleRank : int {
     FAIL = 1,
     PASS = 2,
     COMPLETE = 3,
-    NONE = 0,
+    ERR_ZERO = 0,
 }
-table Torappu_ActivityTable_ActHiddenAreaPreposeStageData {
-    stageId: string;
-    unlockRank: Torappu_PlayerBattleRank;
+
+table clz_Torappu_ActivityTable_ActHiddenAreaPreposeStageData {
+    stageId: string; 
+    unlockRank: enum__Torappu_PlayerBattleRank; 
 }
-table Torappu_ActivityTable_ActivityHiddenAreaData {
-    name: string;
-    desc: string;
-    preposedStage: [Torappu_ActivityTable_ActHiddenAreaPreposeStageData];
-    preposedTime: long;
+
+table clz_Torappu_ActivityTable_ActivityHiddenAreaData {
+    name: string; 
+    desc: string; 
+    preposedStage: [clz_Torappu_ActivityTable_ActHiddenAreaPreposeStageData]; 
+    preposedTime: long; 
 }
-table dict__string__Torappu_ActivityTable_ActivityHiddenAreaData {
-    key: string;
-    value: Torappu_ActivityTable_ActivityHiddenAreaData;
+
+table dict__string__clz_Torappu_ActivityTable_ActivityHiddenAreaData {
+    key: string(key);
+    value: clz_Torappu_ActivityTable_ActivityHiddenAreaData;
 }
-enum Torappu_Act13SideData_ActZoneClass : int {
+
+enum enum__Torappu_Act13SideData_ActZoneClass : int {
     NONE = 0,
     NORMAL = 1,
     HIGHLEVEL = 2,
     SUB = 3,
 }
-table Torappu_Act13SideData_ZoneAdditionData {
-    unlockText: string;
-    zoneClass: Torappu_Act13SideData_ActZoneClass;
+
+table clz_Torappu_Act13SideData_ZoneAdditionData {
+    unlockText: string; 
+    zoneClass: enum__Torappu_Act13SideData_ActZoneClass; 
 }
-table dict__string__Torappu_Act13SideData_ZoneAdditionData {
-    key: string;
-    value: Torappu_Act13SideData_ZoneAdditionData;
+
+table dict__string__clz_Torappu_Act13SideData_ZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act13SideData_ZoneAdditionData;
 }
-table Torappu_Act13SideData {
-    constData: Torappu_Act13SideData_ConstData;
-    orgDataMap: [dict__string__Torappu_Act13SideData_OrgData];
-    principalDataMap: [dict__string__Torappu_Act13SideData_PrincipalData];
-    longTermMissionDataMap: [dict__string__Torappu_Act13SideData_LongTermMissionData];
-    dailyMissionDataList: [Torappu_Act13SideData_DailyMissionData];
-    dailyRewardGroupDataMap: [dict__string__Torappu_Act13SideData_DailyMissionRewardGroupData];
-    archiveItemUnlockData: [dict__string__Torappu_Act13SideData_ArchiveItemUnlockData];
-    hiddenAreaData: [dict__string__Torappu_ActivityTable_ActivityHiddenAreaData];
-    zoneAddtionDataMap: [dict__string__Torappu_Act13SideData_ZoneAdditionData];
+
+table clz_Torappu_Act13SideData {
+    constData: clz_Torappu_Act13SideData_ConstData; 
+    orgDataMap: [dict__string__clz_Torappu_Act13SideData_OrgData]; 
+    principalDataMap: [dict__string__clz_Torappu_Act13SideData_PrincipalData]; 
+    longTermMissionDataMap: [dict__string__clz_Torappu_Act13SideData_LongTermMissionData]; 
+    dailyMissionDataList: [clz_Torappu_Act13SideData_DailyMissionData]; 
+    dailyRewardGroupDataMap: [dict__string__clz_Torappu_Act13SideData_DailyMissionRewardGroupData]; 
+    archiveItemUnlockData: [dict__string__clz_Torappu_Act13SideData_ArchiveItemUnlockData]; 
+    hiddenAreaData: [dict__string__clz_Torappu_ActivityTable_ActivityHiddenAreaData]; 
+    zoneAddtionDataMap: [dict__string__clz_Torappu_Act13SideData_ZoneAdditionData]; 
 }
-table dict__string__Torappu_Act13SideData {
-    key: string;
-    value: Torappu_Act13SideData;
+
+table dict__string__clz_Torappu_Act13SideData {
+    key: string(key);
+    value: clz_Torappu_Act13SideData;
 }
-table Torappu_Act17sideData_PlaceData {
-    placeId: string;
-    placeDesc: string;
-    lockEventId: string;
-    zoneId: string;
-    visibleCondType: string;
-    visibleParams: [string];
+
+table clz_Torappu_Act17sideData_PlaceData {
+    placeId: string; 
+    placeDesc: string; 
+    lockEventId: string; 
+    zoneId: string; 
+    visibleCondType: string; 
+    visibleParams: [string]; 
 }
-table dict__string__Torappu_Act17sideData_PlaceData {
-    key: string;
-    value: Torappu_Act17sideData_PlaceData;
+
+table dict__string__clz_Torappu_Act17sideData_PlaceData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_PlaceData;
 }
-enum Torappu_Act17sideData_NodeType : int {
+
+enum enum__Torappu_Act17sideData_NodeType : int {
     LANDMARK = 0,
     STORY = 1,
     BATTLE = 2,
@@ -1138,577 +1298,677 @@ enum Torappu_Act17sideData_NodeType : int {
     TECH = 6,
     CHOICE = 7,
 }
-enum Torappu_Act17sideData_TrackPointType : int {
+
+enum enum__Torappu_Act17sideData_TrackPointType : int {
     NONE = 0,
     MAIN = 1,
     SUB = 2,
 }
-table Torappu_Act17sideData_NodeInfoData {
-    nodeId: string;
-    nodeType: Torappu_Act17sideData_NodeType;
-    sortId: int;
-    placeId: string;
-    isPointPlace: bool;
-    chapterId: string;
-    trackPointType: Torappu_Act17sideData_TrackPointType;
-    unlockCondType: string;
-    unlockParams: [string];
+
+table clz_Torappu_Act17sideData_NodeInfoData {
+    nodeId: string; 
+    nodeType: enum__Torappu_Act17sideData_NodeType; 
+    sortId: int; 
+    placeId: string; 
+    isPointPlace: bool; 
+    chapterId: string; 
+    trackPointType: enum__Torappu_Act17sideData_TrackPointType; 
+    unlockCondType: string; 
+    unlockParams: [string]; 
 }
-table dict__string__Torappu_Act17sideData_NodeInfoData {
-    key: string;
-    value: Torappu_Act17sideData_NodeInfoData;
+
+table dict__string__clz_Torappu_Act17sideData_NodeInfoData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_NodeInfoData;
 }
-table Torappu_Act17sideData_LandmarkNodeData {
-    nodeId: string;
-    landmarkId: string;
-    landmarkName: string;
-    landmarkPic: string;
-    landmarkSpecialPic: string;
-    landmarkDesList: [string];
+
+table clz_Torappu_Act17sideData_LandmarkNodeData {
+    nodeId: string; 
+    landmarkId: string; 
+    landmarkName: string; 
+    landmarkPic: string; 
+    landmarkSpecialPic: string; 
+    landmarkDesList: [string]; 
 }
-table dict__string__Torappu_Act17sideData_LandmarkNodeData {
-    key: string;
-    value: Torappu_Act17sideData_LandmarkNodeData;
+
+table dict__string__clz_Torappu_Act17sideData_LandmarkNodeData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_LandmarkNodeData;
 }
-table Torappu_Act17sideData_StoryNodeData {
-    nodeId: string;
-    storyId: string;
-    storyKey: string;
-    storyName: string;
-    storyPic: string;
-    confirmDes: string;
-    storyDesList: [string];
+
+table clz_Torappu_Act17sideData_StoryNodeData {
+    nodeId: string; 
+    storyId: string; 
+    storyKey: string; 
+    storyName: string; 
+    storyPic: string; 
+    confirmDes: string; 
+    storyDesList: [string]; 
 }
-table dict__string__Torappu_Act17sideData_StoryNodeData {
-    key: string;
-    value: Torappu_Act17sideData_StoryNodeData;
+
+table dict__string__clz_Torappu_Act17sideData_StoryNodeData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_StoryNodeData;
 }
-table Torappu_Act17sideData_BattleNodeData {
-    nodeId: string;
-    stageId: string;
+
+table clz_Torappu_Act17sideData_BattleNodeData {
+    nodeId: string; 
+    stageId: string; 
 }
-table dict__string__Torappu_Act17sideData_BattleNodeData {
-    key: string;
-    value: Torappu_Act17sideData_BattleNodeData;
+
+table dict__string__clz_Torappu_Act17sideData_BattleNodeData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_BattleNodeData;
 }
-enum Torappu_Act17sideData_TreasureType : int {
+
+enum enum__Torappu_Act17sideData_TreasureType : int {
     SMALL = 0,
     SPECIAL = 1,
 }
-table Torappu_Act17sideData_TreasureNodeData {
-    nodeId: string;
-    treasureId: string;
-    treasureName: string;
-    treasurePic: string;
-    treasureSpecialPic: string;
-    endEventId: string;
-    confirmDes: string;
-    treasureDesList: [string];
-    missionIdList: [string];
-    rewardList: [Torappu_ItemBundle];
-    treasureType: Torappu_Act17sideData_TreasureType;
+
+table clz_Torappu_Act17sideData_TreasureNodeData {
+    nodeId: string; 
+    treasureId: string; 
+    treasureName: string; 
+    treasurePic: string; 
+    treasureSpecialPic: string; 
+    endEventId: string; 
+    confirmDes: string; 
+    treasureDesList: [string]; 
+    missionIdList: [string]; 
+    rewardList: [clz_Torappu_ItemBundle]; 
+    treasureType: enum__Torappu_Act17sideData_TreasureType; 
 }
-table dict__string__Torappu_Act17sideData_TreasureNodeData {
-    key: string;
-    value: Torappu_Act17sideData_TreasureNodeData;
+
+table dict__string__clz_Torappu_Act17sideData_TreasureNodeData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_TreasureNodeData;
 }
-table Torappu_Act17sideData_EventNodeData {
-    nodeId: string;
-    eventId: string;
-    endEventId: string;
+
+table clz_Torappu_Act17sideData_EventNodeData {
+    nodeId: string; 
+    eventId: string; 
+    endEventId: string; 
 }
-table dict__string__Torappu_Act17sideData_EventNodeData {
-    key: string;
-    value: Torappu_Act17sideData_EventNodeData;
+
+table dict__string__clz_Torappu_Act17sideData_EventNodeData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_EventNodeData;
 }
-table Torappu_Act17sideData_TechNodeData {
-    nodeId: string;
-    techTreeId: string;
-    techTreeName: string;
-    techPic: string;
-    techSpecialPic: string;
-    endEventId: string;
-    confirmDes: string;
-    techDesList: [string];
-    missionIdList: [string];
+
+table clz_Torappu_Act17sideData_TechNodeData {
+    nodeId: string; 
+    techTreeId: string; 
+    techTreeName: string; 
+    techPic: string; 
+    techSpecialPic: string; 
+    endEventId: string; 
+    confirmDes: string; 
+    techDesList: [string]; 
+    missionIdList: [string]; 
 }
-table dict__string__Torappu_Act17sideData_TechNodeData {
-    key: string;
-    value: Torappu_Act17sideData_TechNodeData;
+
+table dict__string__clz_Torappu_Act17sideData_TechNodeData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_TechNodeData;
 }
-table Torappu_Act17sideData_ChoiceNodeOptionData {
-    canRepeat: bool;
-    eventId: string;
-    des: string;
-    unlockDes: string;
-    unlockCondType: string;
-    unlockParams: [string];
+
+table clz_Torappu_Act17sideData_ChoiceNodeOptionData {
+    canRepeat: bool; 
+    eventId: string; 
+    des: string; 
+    unlockDes: string; 
+    unlockCondType: string; 
+    unlockParams: [string]; 
 }
-table Torappu_Act17sideData_ChoiceNodeData {
-    nodeId: string;
-    choicePic: string;
-    isDisposable: bool;
-    choiceSpecialPic: string;
-    choiceName: string;
-    choiceDesList: [string];
-    cancelDes: string;
-    choiceNum: int;
-    optionList: [Torappu_Act17sideData_ChoiceNodeOptionData];
+
+table clz_Torappu_Act17sideData_ChoiceNodeData {
+    nodeId: string; 
+    choicePic: string; 
+    isDisposable: bool; 
+    choiceSpecialPic: string; 
+    choiceName: string; 
+    choiceDesList: [string]; 
+    cancelDes: string; 
+    choiceNum: int; 
+    optionList: [clz_Torappu_Act17sideData_ChoiceNodeOptionData]; 
 }
-table dict__string__Torappu_Act17sideData_ChoiceNodeData {
-    key: string;
-    value: Torappu_Act17sideData_ChoiceNodeData;
+
+table dict__string__clz_Torappu_Act17sideData_ChoiceNodeData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_ChoiceNodeData;
 }
-table Torappu_Act17sideData_EventData {
-    eventId: string;
-    eventPic: string;
-    eventSpecialPic: string;
-    eventTitle: string;
-    eventDesList: [string];
+
+table clz_Torappu_Act17sideData_EventData {
+    eventId: string; 
+    eventPic: string; 
+    eventSpecialPic: string; 
+    eventTitle: string; 
+    eventDesList: [string]; 
 }
-table dict__string__Torappu_Act17sideData_EventData {
-    key: string;
-    value: Torappu_Act17sideData_EventData;
+
+table dict__string__clz_Torappu_Act17sideData_EventData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_EventData;
 }
-enum Torappu_Act17sideData_ArchiveItemUnlockCondition : int {
+
+enum enum__Torappu_Act17sideData_ArchiveItemUnlockCondition : int {
     NONE = 0,
     STAGE = 1,
     NODE = 2,
 }
-enum Torappu_Act17sideData_ArchiveItemStageUnlockParam : int {
+
+enum enum__Torappu_Act17sideData_ArchiveItemStageUnlockParam : int {
     NONE = 0,
     PLAYED = 1,
     PASS = 2,
     COMPLETE = 3,
 }
-table Torappu_Act17sideData_ArchiveItemUnlockData {
-    itemId: string;
-    itemType: Torappu_ActArchiveType;
-    unlockCondition: Torappu_Act17sideData_ArchiveItemUnlockCondition;
-    nodeId: string;
-    stageParam: Torappu_Act17sideData_ArchiveItemStageUnlockParam;
-    chapterId: string;
+
+table clz_Torappu_Act17sideData_ArchiveItemUnlockData {
+    itemId: string; 
+    itemType: enum__Torappu_ActArchiveType; 
+    unlockCondition: enum__Torappu_Act17sideData_ArchiveItemUnlockCondition; 
+    nodeId: string; 
+    stageParam: enum__Torappu_Act17sideData_ArchiveItemStageUnlockParam; 
+    chapterId: string; 
 }
-table dict__string__Torappu_Act17sideData_ArchiveItemUnlockData {
-    key: string;
-    value: Torappu_Act17sideData_ArchiveItemUnlockData;
+
+table dict__string__clz_Torappu_Act17sideData_ArchiveItemUnlockData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_ArchiveItemUnlockData;
 }
-table Torappu_Act17sideData_TechTreeData {
-    techTreeId: string;
-    sortId: int;
-    techTreeName: string;
-    defaultBranchId: string;
-    lockDes: string;
+
+table clz_Torappu_Act17sideData_TechTreeData {
+    techTreeId: string; 
+    sortId: int; 
+    techTreeName: string; 
+    defaultBranchId: string; 
+    lockDes: string; 
 }
-table dict__string__Torappu_Act17sideData_TechTreeData {
-    key: string;
-    value: Torappu_Act17sideData_TechTreeData;
+
+table dict__string__clz_Torappu_Act17sideData_TechTreeData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_TechTreeData;
 }
-table Torappu_Act17sideData_TechTreeBranchData {
-    techTreeBranchId: string;
-    techTreeId: string;
-    techTreeBranchName: string;
-    techTreeBranchIcon: string;
-    techTreeBranchDesc: string;
-    runeData: Torappu_RuneTable_PackedRuneData;
+
+table clz_Torappu_Act17sideData_TechTreeBranchData {
+    techTreeBranchId: string; 
+    techTreeId: string; 
+    techTreeBranchName: string; 
+    techTreeBranchIcon: string; 
+    techTreeBranchDesc: string; 
+    runeData: clz_Torappu_RuneTable_PackedRuneData; 
 }
-table dict__string__Torappu_Act17sideData_TechTreeBranchData {
-    key: string;
-    value: Torappu_Act17sideData_TechTreeBranchData;
+
+table dict__string__clz_Torappu_Act17sideData_TechTreeBranchData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_TechTreeBranchData;
 }
-enum Torappu_Act17sideData_ChapterIconType : int {
+
+enum enum__Torappu_Act17sideData_ChapterIconType : int {
     NORMAL = 0,
     EX = 1,
     HARD = 2,
 }
-table Torappu_Act17sideData_MainlineChapterData {
-    chapterId: string;
-    chapterDes: string;
-    chapterIcon: Torappu_Act17sideData_ChapterIconType;
-    unlockDes: string;
-    id: string;
+
+table clz_Torappu_Act17sideData_MainlineChapterData {
+    chapterId: string; 
+    chapterDes: string; 
+    chapterIcon: enum__Torappu_Act17sideData_ChapterIconType; 
+    unlockDes: string; 
+    id: string; 
 }
-table dict__string__Torappu_Act17sideData_MainlineChapterData {
-    key: string;
-    value: Torappu_Act17sideData_MainlineChapterData;
+
+table dict__string__clz_Torappu_Act17sideData_MainlineChapterData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_MainlineChapterData;
 }
-table Torappu_Act17sideData_MainlineData {
-    mainlineId: string;
-    nodeId: string;
-    sortId: int;
-    missionSort: string;
-    zoneId: string;
-    mainlineDes: string;
-    focusNodeId: string;
+
+table clz_Torappu_Act17sideData_MainlineData {
+    mainlineId: string; 
+    nodeId: string; 
+    sortId: int; 
+    missionSort: string; 
+    zoneId: string; 
+    mainlineDes: string; 
+    focusNodeId: string; 
 }
-table dict__string__Torappu_Act17sideData_MainlineData {
-    key: string;
-    value: Torappu_Act17sideData_MainlineData;
+
+table dict__string__clz_Torappu_Act17sideData_MainlineData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData_MainlineData;
 }
-table Torappu_Act17sideData_ZoneData {
-    zoneId: string;
-    unlockPlaceId: string;
-    unlockText: string;
+
+table clz_Torappu_Act17sideData_ZoneData {
+    zoneId: string; 
+    unlockPlaceId: string; 
+    unlockText: string; 
 }
-table Torappu_Act17sideData_ConstData {
-    techTreeUnlockEventId: string;
+
+table clz_Torappu_Act17sideData_ConstData {
+    techTreeUnlockEventId: string; 
 }
-table Torappu_Act17sideData {
-    placeDataMap: [dict__string__Torappu_Act17sideData_PlaceData];
-    nodeInfoDataMap: [dict__string__Torappu_Act17sideData_NodeInfoData];
-    landmarkNodeDataMap: [dict__string__Torappu_Act17sideData_LandmarkNodeData];
-    storyNodeDataMap: [dict__string__Torappu_Act17sideData_StoryNodeData];
-    battleNodeDataMap: [dict__string__Torappu_Act17sideData_BattleNodeData];
-    treasureNodeDataMap: [dict__string__Torappu_Act17sideData_TreasureNodeData];
-    eventNodeDataMap: [dict__string__Torappu_Act17sideData_EventNodeData];
-    techNodeDataMap: [dict__string__Torappu_Act17sideData_TechNodeData];
-    choiceNodeDataMap: [dict__string__Torappu_Act17sideData_ChoiceNodeData];
-    eventDataMap: [dict__string__Torappu_Act17sideData_EventData];
-    archiveItemUnlockDataMap: [dict__string__Torappu_Act17sideData_ArchiveItemUnlockData];
-    techTreeDataMap: [dict__string__Torappu_Act17sideData_TechTreeData];
-    techTreeBranchDataMap: [dict__string__Torappu_Act17sideData_TechTreeBranchData];
-    mainlineChapterDataMap: [dict__string__Torappu_Act17sideData_MainlineChapterData];
-    mainlineDataMap: [dict__string__Torappu_Act17sideData_MainlineData];
-    zoneDataList: [Torappu_Act17sideData_ZoneData];
-    constData: Torappu_Act17sideData_ConstData;
+
+table clz_Torappu_Act17sideData {
+    placeDataMap: [dict__string__clz_Torappu_Act17sideData_PlaceData]; 
+    nodeInfoDataMap: [dict__string__clz_Torappu_Act17sideData_NodeInfoData]; 
+    landmarkNodeDataMap: [dict__string__clz_Torappu_Act17sideData_LandmarkNodeData]; 
+    storyNodeDataMap: [dict__string__clz_Torappu_Act17sideData_StoryNodeData]; 
+    battleNodeDataMap: [dict__string__clz_Torappu_Act17sideData_BattleNodeData]; 
+    treasureNodeDataMap: [dict__string__clz_Torappu_Act17sideData_TreasureNodeData]; 
+    eventNodeDataMap: [dict__string__clz_Torappu_Act17sideData_EventNodeData]; 
+    techNodeDataMap: [dict__string__clz_Torappu_Act17sideData_TechNodeData]; 
+    choiceNodeDataMap: [dict__string__clz_Torappu_Act17sideData_ChoiceNodeData]; 
+    eventDataMap: [dict__string__clz_Torappu_Act17sideData_EventData]; 
+    archiveItemUnlockDataMap: [dict__string__clz_Torappu_Act17sideData_ArchiveItemUnlockData]; 
+    techTreeDataMap: [dict__string__clz_Torappu_Act17sideData_TechTreeData]; 
+    techTreeBranchDataMap: [dict__string__clz_Torappu_Act17sideData_TechTreeBranchData]; 
+    mainlineChapterDataMap: [dict__string__clz_Torappu_Act17sideData_MainlineChapterData]; 
+    mainlineDataMap: [dict__string__clz_Torappu_Act17sideData_MainlineData]; 
+    zoneDataList: [clz_Torappu_Act17sideData_ZoneData]; 
+    constData: clz_Torappu_Act17sideData_ConstData; 
 }
-table dict__string__Torappu_Act17sideData {
-    key: string;
-    value: Torappu_Act17sideData;
+
+table dict__string__clz_Torappu_Act17sideData {
+    key: string(key);
+    value: clz_Torappu_Act17sideData;
 }
-table Torappu_Act20SideData_ResidentCartData {
-    residentPic: string;
+
+table clz_Torappu_Act20SideData_ResidentCartData {
+    residentPic: string; 
 }
-table dict__string__Torappu_Act20SideData_ResidentCartData {
-    key: string;
-    value: Torappu_Act20SideData_ResidentCartData;
+
+table dict__string__clz_Torappu_Act20SideData_ResidentCartData {
+    key: string(key);
+    value: clz_Torappu_Act20SideData_ResidentCartData;
 }
-table Torappu_Act20SideData {
-    zoneAdditionDataMap: [dict__string__string];
-    residentCartDatas: [dict__string__Torappu_Act20SideData_ResidentCartData];
+
+table clz_Torappu_Act20SideData {
+    zoneAdditionDataMap: [dict__string__string]; 
+    residentCartDatas: [dict__string__clz_Torappu_Act20SideData_ResidentCartData]; 
 }
-table dict__string__Torappu_Act20SideData {
-    key: string;
-    value: Torappu_Act20SideData;
+
+table dict__string__clz_Torappu_Act20SideData {
+    key: string(key);
+    value: clz_Torappu_Act20SideData;
 }
-table Torappu_Act21SideData_ZoneAddtionData {
-    zoneId: string;
-    unlockText: string;
-    stageUnlockText: string;
-    entryId: string;
+
+table clz_Torappu_Act21SideData_ZoneAddtionData {
+    zoneId: string; 
+    unlockText: string; 
+    stageUnlockText: string; 
+    entryId: string; 
 }
-table dict__string__Torappu_Act21SideData_ZoneAddtionData {
-    key: string;
-    value: Torappu_Act21SideData_ZoneAddtionData;
+
+table dict__string__clz_Torappu_Act21SideData_ZoneAddtionData {
+    key: string(key);
+    value: clz_Torappu_Act21SideData_ZoneAddtionData;
 }
-table Torappu_Act21SideData_ConstData {
-    lineConnectZone: string;
+
+table clz_Torappu_Act21SideData_ConstData {
+    lineConnectZone: string; 
 }
-table Torappu_Act21SideData {
-    zoneAdditionDataMap: [dict__string__Torappu_Act21SideData_ZoneAddtionData];
-    constData: Torappu_Act21SideData_ConstData;
+
+table clz_Torappu_Act21SideData {
+    zoneAdditionDataMap: [dict__string__clz_Torappu_Act21SideData_ZoneAddtionData]; 
+    constData: clz_Torappu_Act21SideData_ConstData; 
 }
-table dict__string__Torappu_Act21SideData {
-    key: string;
-    value: Torappu_Act21SideData;
+
+table dict__string__clz_Torappu_Act21SideData {
+    key: string(key);
+    value: clz_Torappu_Act21SideData;
 }
-table Torappu_ActivityLoginData {
-    description: string;
-    itemList: [Torappu_ItemBundle];
-    apSupplyOutOfDateDict: [dict__string__long];
+
+table clz_Torappu_ActivityLoginData {
+    description: string; 
+    itemList: [clz_Torappu_ItemBundle]; 
+    apSupplyOutOfDateDict: [dict__string__long]; 
 }
-table dict__string__Torappu_ActivityLoginData {
-    key: string;
-    value: Torappu_ActivityLoginData;
+
+table dict__string__clz_Torappu_ActivityLoginData {
+    key: string(key);
+    value: clz_Torappu_ActivityLoginData;
 }
-table Torappu_ActivityMiniStoryData_ZoneDescInfo {
-    zoneId: string;
-    unlockText: string;
+
+table clz_Torappu_ActivityMiniStoryData_ZoneDescInfo {
+    zoneId: string; 
+    unlockText: string; 
 }
-table dict__string__Torappu_ActivityMiniStoryData_ZoneDescInfo {
-    key: string;
-    value: Torappu_ActivityMiniStoryData_ZoneDescInfo;
+
+table dict__string__clz_Torappu_ActivityMiniStoryData_ZoneDescInfo {
+    key: string(key);
+    value: clz_Torappu_ActivityMiniStoryData_ZoneDescInfo;
 }
-table Torappu_ActivityMiniStoryData_FavorUpInfo {
-    charId: string;
-    displayStartTime: long;
-    displayEndTime: long;
+
+table clz_Torappu_ActivityMiniStoryData_FavorUpInfo {
+    charId: string; 
+    displayStartTime: long; 
+    displayEndTime: long; 
 }
-table dict__string__Torappu_ActivityMiniStoryData_FavorUpInfo {
-    key: string;
-    value: Torappu_ActivityMiniStoryData_FavorUpInfo;
+
+table dict__string__clz_Torappu_ActivityMiniStoryData_FavorUpInfo {
+    key: string(key);
+    value: clz_Torappu_ActivityMiniStoryData_FavorUpInfo;
 }
-table Torappu_ActivityMiniStoryData {
-    tokenItemId: string;
-    zoneDescList: [dict__string__Torappu_ActivityMiniStoryData_ZoneDescInfo];
-    favorUpList: [dict__string__Torappu_ActivityMiniStoryData_FavorUpInfo];
-    extraDropZoneList: [string];
+
+table clz_Torappu_ActivityMiniStoryData {
+    tokenItemId: string; 
+    zoneDescList: [dict__string__clz_Torappu_ActivityMiniStoryData_ZoneDescInfo]; 
+    favorUpList: [dict__string__clz_Torappu_ActivityMiniStoryData_FavorUpInfo]; 
+    extraDropZoneList: [string]; 
 }
-table dict__string__Torappu_ActivityMiniStoryData {
-    key: string;
-    value: Torappu_ActivityMiniStoryData;
+
+table dict__string__clz_Torappu_ActivityMiniStoryData {
+    key: string(key);
+    value: clz_Torappu_ActivityMiniStoryData;
 }
-table Torappu_ActivityRoguelikeData_OuterBuffUnlockInfo {
-    buffLevel: int;
-    name: string;
-    iconId: string;
-    description: string;
-    usage: string;
-    itemId: string;
-    itemType: Torappu_ItemType;
-    cost: int;
+
+table clz_Torappu_ActivityRoguelikeData_OuterBuffUnlockInfo {
+    buffLevel: int; 
+    name: string; 
+    iconId: string; 
+    description: string; 
+    usage: string; 
+    itemId: string; 
+    itemType: enum__Torappu_ItemType; 
+    cost: int; 
 }
-table dict__int__Torappu_ActivityRoguelikeData_OuterBuffUnlockInfo {
-    key: int;
-    value: Torappu_ActivityRoguelikeData_OuterBuffUnlockInfo;
+
+table dict__int__clz_Torappu_ActivityRoguelikeData_OuterBuffUnlockInfo {
+    key: int(key);
+    value: clz_Torappu_ActivityRoguelikeData_OuterBuffUnlockInfo;
 }
-table Torappu_ActivityRoguelikeData_OuterBuffUnlockInfoData {
-    buffId: string;
-    buffUnlockInfos: [dict__int__Torappu_ActivityRoguelikeData_OuterBuffUnlockInfo];
+
+table clz_Torappu_ActivityRoguelikeData_OuterBuffUnlockInfoData {
+    buffId: string; 
+    buffUnlockInfos: [dict__int__clz_Torappu_ActivityRoguelikeData_OuterBuffUnlockInfo]; 
 }
-table dict__string__Torappu_ActivityRoguelikeData_OuterBuffUnlockInfoData {
-    key: string;
-    value: Torappu_ActivityRoguelikeData_OuterBuffUnlockInfoData;
+
+table dict__string__clz_Torappu_ActivityRoguelikeData_OuterBuffUnlockInfoData {
+    key: string(key);
+    value: clz_Torappu_ActivityRoguelikeData_OuterBuffUnlockInfoData;
 }
-table Torappu_ActivityRoguelikeData_MileStoneItemInfo {
-    mileStoneId: string;
-    orderId: int;
-    tokenNum: int;
-    item: Torappu_ItemBundle;
+
+table clz_Torappu_ActivityRoguelikeData_MileStoneItemInfo {
+    mileStoneId: string; 
+    orderId: int; 
+    tokenNum: int; 
+    item: clz_Torappu_ItemBundle; 
 }
-table Torappu_ActivityTable_CustomUnlockCond {
-    actId: string;
-    stageId: string;
+
+table clz_Torappu_ActivityTable_CustomUnlockCond {
+    actId: string; 
+    stageId: string; 
 }
-table Torappu_ActivityRoguelikeData {
-    outBuffInfos: [dict__string__Torappu_ActivityRoguelikeData_OuterBuffUnlockInfoData];
-    apSupplyOutOfDateDict: [dict__string__long];
-    outerBuffToken: string;
-    shopToken: string;
-    relicUnlockTime: long;
-    milestoneTokenRatio: float;
-    outerBuffTokenRatio: float;
-    relicTokenRatio: float;
-    relicOuterBuffTokenRatio: float;
-    reOpenCoolDown: int;
-    tokenItem: Torappu_ItemBundle;
-    charStoneId: string;
-    milestone: [Torappu_ActivityRoguelikeData_MileStoneItemInfo];
-    unlockConds: [Torappu_ActivityTable_CustomUnlockCond];
+
+table clz_Torappu_ActivityRoguelikeData {
+    outBuffInfos: [dict__string__clz_Torappu_ActivityRoguelikeData_OuterBuffUnlockInfoData]; 
+    apSupplyOutOfDateDict: [dict__string__long]; 
+    outerBuffToken: string; 
+    shopToken: string; 
+    relicUnlockTime: long; 
+    milestoneTokenRatio: float; 
+    outerBuffTokenRatio: float; 
+    relicTokenRatio: float; 
+    relicOuterBuffTokenRatio: float; 
+    reOpenCoolDown: int; 
+    tokenItem: clz_Torappu_ItemBundle; 
+    charStoneId: string; 
+    milestone: [clz_Torappu_ActivityRoguelikeData_MileStoneItemInfo]; 
+    unlockConds: [clz_Torappu_ActivityTable_CustomUnlockCond]; 
 }
-table dict__string__Torappu_ActivityRoguelikeData {
-    key: string;
-    value: Torappu_ActivityRoguelikeData;
+
+table dict__string__clz_Torappu_ActivityRoguelikeData {
+    key: string(key);
+    value: clz_Torappu_ActivityRoguelikeData;
 }
-enum Torappu_ActivityMultiplayData_StageDifficulty : int {
+
+enum enum__Torappu_ActivityMultiplayData_StageDifficulty : int {
     NONE = 0,
     EASY = 1,
     NORMAL = 2,
     HARD = 3,
 }
-table Torappu_ActivityMultiplayData_StageData {
-    stageId: string;
-    levelId: string;
-    groupId: string;
-    difficulty: Torappu_ActivityMultiplayData_StageDifficulty;
-    loadingPicId: string;
-    dangerLevel: string;
-    unlockConds: [string];
+
+table clz_Torappu_ActivityMultiplayData_StageData {
+    stageId: string; 
+    levelId: string; 
+    groupId: string; 
+    difficulty: enum__Torappu_ActivityMultiplayData_StageDifficulty; 
+    loadingPicId: string; 
+    dangerLevel: string; 
+    unlockConds: [string]; 
 }
-table dict__string__Torappu_ActivityMultiplayData_StageData {
-    key: string;
-    value: Torappu_ActivityMultiplayData_StageData;
+
+table dict__string__clz_Torappu_ActivityMultiplayData_StageData {
+    key: string(key);
+    value: clz_Torappu_ActivityMultiplayData_StageData;
 }
-table Torappu_ActivityMultiplayData_StageGroupData {
-    groupId: string;
-    sortId: int;
-    code: string;
-    name: string;
-    description: string;
+
+table clz_Torappu_ActivityMultiplayData_StageGroupData {
+    groupId: string; 
+    sortId: int; 
+    code: string; 
+    name: string; 
+    description: string; 
 }
-table dict__string__Torappu_ActivityMultiplayData_StageGroupData {
-    key: string;
-    value: Torappu_ActivityMultiplayData_StageGroupData;
+
+table dict__string__clz_Torappu_ActivityMultiplayData_StageGroupData {
+    key: string(key);
+    value: clz_Torappu_ActivityMultiplayData_StageGroupData;
 }
-table Torappu_ActivityMultiplayData_MissionExtraData {
-    missionId: string;
-    isHard: bool;
+
+table clz_Torappu_ActivityMultiplayData_MissionExtraData {
+    missionId: string; 
+    isHard: bool; 
 }
-table dict__string__Torappu_ActivityMultiplayData_MissionExtraData {
-    key: string;
-    value: Torappu_ActivityMultiplayData_MissionExtraData;
+
+table dict__string__clz_Torappu_ActivityMultiplayData_MissionExtraData {
+    key: string(key);
+    value: clz_Torappu_ActivityMultiplayData_MissionExtraData;
 }
-table Torappu_ActivityMultiplayData_RoomMessageData {
-    sortId: int;
-    picId: string;
+
+table clz_Torappu_ActivityMultiplayData_RoomMessageData {
+    sortId: int; 
+    picId: string; 
 }
-table Torappu_ActivityMultiplayData_ConstData {
-    linkActId: string;
-    maxRetryTimeInTeamRoom: int;
-    maxRetryTimeInMatchRoom: int;
-    maxRetryTimeInBattle: int;
-    maxOperatorDelay: float;
-    maxPlaySpeed: float;
-    delayTimeNeedTip: float;
-    blockTimeNeedTip: float;
-    hideTeamNameFlag: bool;
-    settleRetryTime: float;
+
+table clz_Torappu_ActivityMultiplayData_ConstData {
+    linkActId: string; 
+    maxRetryTimeInTeamRoom: int; 
+    maxRetryTimeInMatchRoom: int; 
+    maxRetryTimeInBattle: int; 
+    maxOperatorDelay: float; 
+    maxPlaySpeed: float; 
+    delayTimeNeedTip: float; 
+    blockTimeNeedTip: float; 
+    hideTeamNameFlag: bool; 
+    settleRetryTime: float; 
 }
-table Torappu_ActivityMultiplayData {
-    stages: [dict__string__Torappu_ActivityMultiplayData_StageData];
-    stageGroups: [dict__string__Torappu_ActivityMultiplayData_StageGroupData];
-    missionExtras: [dict__string__Torappu_ActivityMultiplayData_MissionExtraData];
-    roomMessages: [Torappu_ActivityMultiplayData_RoomMessageData];
-    constData: Torappu_ActivityMultiplayData_ConstData;
-    unlockConds: [Torappu_ActivityTable_CustomUnlockCond];
+
+table clz_Torappu_ActivityMultiplayData {
+    stages: [dict__string__clz_Torappu_ActivityMultiplayData_StageData]; 
+    stageGroups: [dict__string__clz_Torappu_ActivityMultiplayData_StageGroupData]; 
+    missionExtras: [dict__string__clz_Torappu_ActivityMultiplayData_MissionExtraData]; 
+    roomMessages: [clz_Torappu_ActivityMultiplayData_RoomMessageData]; 
+    constData: clz_Torappu_ActivityMultiplayData_ConstData; 
+    unlockConds: [clz_Torappu_ActivityTable_CustomUnlockCond]; 
 }
-table dict__string__Torappu_ActivityMultiplayData {
-    key: string;
-    value: Torappu_ActivityMultiplayData;
+
+table dict__string__clz_Torappu_ActivityMultiplayData {
+    key: string(key);
+    value: clz_Torappu_ActivityMultiplayData;
 }
-enum Torappu_ActivityInterlockData_InterlockStageType : int {
+
+enum enum__Torappu_ActivityInterlockData_InterlockStageType : int {
     NONE = 0,
     NORMAL = 1,
     INTERLOCK = 2,
     FINAL = 3,
 }
-table Torappu_ActivityInterlockData_StageAdditionData {
-    stageId: string;
-    stageType: Torappu_ActivityInterlockData_InterlockStageType;
-    lockStageKey: string;
-    lockSortIndex: int;
+
+table clz_Torappu_ActivityInterlockData_StageAdditionData {
+    stageId: string; 
+    stageType: enum__Torappu_ActivityInterlockData_InterlockStageType; 
+    lockStageKey: string; 
+    lockSortIndex: int; 
 }
-table dict__string__Torappu_ActivityInterlockData_StageAdditionData {
-    key: string;
-    value: Torappu_ActivityInterlockData_StageAdditionData;
+
+table dict__string__clz_Torappu_ActivityInterlockData_StageAdditionData {
+    key: string(key);
+    value: clz_Torappu_ActivityInterlockData_StageAdditionData;
 }
-table Torappu_ActivityInterlockData_TreasureMonsterData {
-    lockStageKey: string;
-    enemyId: string;
-    enemyName: string;
-    enemyIcon: string;
-    enemyDescription: string;
+
+table clz_Torappu_ActivityInterlockData_TreasureMonsterData {
+    lockStageKey: string; 
+    enemyId: string; 
+    enemyName: string; 
+    enemyIcon: string; 
+    enemyDescription: string; 
 }
-table dict__string__Torappu_ActivityInterlockData_TreasureMonsterData {
-    key: string;
-    value: Torappu_ActivityInterlockData_TreasureMonsterData;
+
+table dict__string__clz_Torappu_ActivityInterlockData_TreasureMonsterData {
+    key: string(key);
+    value: clz_Torappu_ActivityInterlockData_TreasureMonsterData;
 }
-table Torappu_SharedCharData_SharedCharSkillData {
-    skillId: string;
-    specializeLevel: int;
+
+table clz_Torappu_SharedCharData_SharedCharSkillData {
+    skillId: string; 
+    specializeLevel: int; 
 }
-table Torappu_SharedCharData_CharEquipInfo {
-    locked: bool;
-    level: int;
+
+table clz_Torappu_SharedCharData_CharEquipInfo {
+    locked: bool; 
+    level: int; 
 }
-table dict__string__Torappu_SharedCharData_CharEquipInfo {
-    key: string;
-    value: Torappu_SharedCharData_CharEquipInfo;
+
+table dict__string__clz_Torappu_SharedCharData_CharEquipInfo {
+    key: string(key);
+    value: clz_Torappu_SharedCharData_CharEquipInfo;
 }
-table Torappu_SharedCharData_TmplData {
-    skillIndex: int;
-    skinId: string;
-    skills: [Torappu_SharedCharData_SharedCharSkillData];
-    selectEquip: string;
-    equips: [dict__string__Torappu_SharedCharData_CharEquipInfo];
+
+table clz_Torappu_SharedCharData_TmplData {
+    skillIndex: int; 
+    skinId: string; 
+    skills: [clz_Torappu_SharedCharData_SharedCharSkillData]; 
+    currentEquip: string; // __prts__check_required__selectEquip__
+    equip: [dict__string__clz_Torappu_SharedCharData_CharEquipInfo]; // __prts__check_required__equips__
 }
-table dict__string__Torappu_SharedCharData_TmplData {
-    key: string;
-    value: Torappu_SharedCharData_TmplData;
+
+table dict__string__clz_Torappu_SharedCharData_TmplData {
+    key: string(key);
+    value: clz_Torappu_SharedCharData_TmplData;
 }
-table Torappu_SharedCharData {
-    charId: string;
-    potentialRank: int;
-    skillIndex: int;
-    skinId: string;
-    skills: [Torappu_SharedCharData_SharedCharSkillData];
-    currentEquip: string;
-    equip: [dict__string__Torappu_SharedCharData_CharEquipInfo];
-    mainSkillLvl: int;
-    evolvePhase: int;
-    level: int;
-    favorPoint: int;
-    crisisRecord: [dict__string__int];
-    currentTmpl: string;
-    tmpl: [dict__string__Torappu_SharedCharData_TmplData];
+
+table clz_Torappu_SharedCharData {
+    charId: string; 
+    potentialRank: int; 
+    skillIndex: int; // __prts__check_required__m_skillIndex__
+    skinId: string; // __prts__check_required__m_skinId__
+    skills: [clz_Torappu_SharedCharData_SharedCharSkillData]; // __prts__check_required__m_skills__
+    currentEquip: string; // __prts__check_required__m_selectEquip__
+    equip: [dict__string__clz_Torappu_SharedCharData_CharEquipInfo]; // __prts__check_required__m_equips__
+    mainSkillLvl: int; 
+    evolvePhase: int; 
+    level: int; 
+    favorPoint: int; 
+    crisisRecord: [dict__string__int]; 
+    currentTmpl: string; 
+    tmpl: [dict__string__clz_Torappu_SharedCharData_TmplData]; 
 }
-table Torappu_ActivityInterlockData_MileStoneItemInfo {
-    mileStoneId: string;
-    orderId: int;
-    tokenNum: int;
-    item: Torappu_ItemBundle;
+
+table clz_Torappu_ActivityInterlockData_MileStoneItemInfo {
+    mileStoneId: string; 
+    orderId: int; 
+    tokenNum: int; 
+    item: clz_Torappu_ItemBundle; 
 }
-table Torappu_ActivityInterlockData_FinalStageProgressData {
-    stageId: string;
-    killCnt: int;
-    apCost: int;
-    favor: int;
-    exp: int;
-    gold: int;
+
+table clz_Torappu_ActivityInterlockData_FinalStageProgressData {
+    stageId: string; 
+    killCnt: int; 
+    apCost: int; 
+    favor: int; 
+    exp: int; 
+    gold: int; 
 }
-table dict__string__list_Torappu_ActivityInterlockData_FinalStageProgressData {
-    key: string;
-    value: [Torappu_ActivityInterlockData_FinalStageProgressData];
+
+table dict__string__list_clz_Torappu_ActivityInterlockData_FinalStageProgressData {
+    key: string(key);
+    value: [clz_Torappu_ActivityInterlockData_FinalStageProgressData];
 }
-table Torappu_ActivityInterlockData {
-    stageAdditionInfoMap: [dict__string__Torappu_ActivityInterlockData_StageAdditionData];
-    treasureMonsterMap: [dict__string__Torappu_ActivityInterlockData_TreasureMonsterData];
-    specialAssistData: Torappu_SharedCharData;
-    mileStoneItemList: [Torappu_ActivityInterlockData_MileStoneItemInfo];
-    finalStageProgressMap: [dict__string__list_Torappu_ActivityInterlockData_FinalStageProgressData];
+
+table clz_Torappu_ActivityInterlockData {
+    stageAdditionInfoMap: [dict__string__clz_Torappu_ActivityInterlockData_StageAdditionData]; 
+    treasureMonsterMap: [dict__string__clz_Torappu_ActivityInterlockData_TreasureMonsterData]; 
+    specialAssistData: clz_Torappu_SharedCharData; 
+    mileStoneItemList: [clz_Torappu_ActivityInterlockData_MileStoneItemInfo]; 
+    finalStageProgressMap: [dict__string__list_clz_Torappu_ActivityInterlockData_FinalStageProgressData]; 
 }
-table dict__string__Torappu_ActivityInterlockData {
-    key: string;
-    value: Torappu_ActivityInterlockData;
+
+table dict__string__clz_Torappu_ActivityInterlockData {
+    key: string(key);
+    value: clz_Torappu_ActivityInterlockData;
 }
-table Torappu_ActivityBossRushData_ZoneAdditionData {
-    unlockText: string;
-    displayStartTime: long;
+
+table clz_Torappu_ActivityBossRushData_ZoneAdditionData {
+    unlockText: string; 
+    displayStartTime: long; 
 }
-table dict__string__Torappu_ActivityBossRushData_ZoneAdditionData {
-    key: string;
-    value: Torappu_ActivityBossRushData_ZoneAdditionData;
+
+table dict__string__clz_Torappu_ActivityBossRushData_ZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_ActivityBossRushData_ZoneAdditionData;
 }
-enum Torappu_ActivityBossRushData_BossRushStageType : int {
+
+enum enum__Torappu_ActivityBossRushData_BossRushStageType : int {
     NONE = 0,
     NORMAL = 1,
     TEAM = 2,
     EX = 3,
     SP = 4,
 }
-table dict__Torappu_ActivityBossRushData_BossRushStageType__string {
-    key: Torappu_ActivityBossRushData_BossRushStageType;
+
+table dict__enum__Torappu_ActivityBossRushData_BossRushStageType__string {
+    key: enum__Torappu_ActivityBossRushData_BossRushStageType(key);
     value: string;
 }
+
 table list_string {
     values: [string];
 }
-table Torappu_ActivityBossRushData_BossRushStageGroupData {
-    stageGroupId: string;
-    sortId: int;
-    stageGroupName: string;
-    stageIdMap: [dict__Torappu_ActivityBossRushData_BossRushStageType__string];
-    waveBossInfo: [list_string];
-    normalStageCount: int;
-    isHardStageGroup: bool;
-    unlockCondtion: string;
+
+table clz_Torappu_ActivityBossRushData_BossRushStageGroupData {
+    stageGroupId: string; 
+    sortId: int; 
+    stageGroupName: string; 
+    stageIdMap: [dict__enum__Torappu_ActivityBossRushData_BossRushStageType__string]; 
+    waveBossInfo: [list_string]; 
+    normalStageCount: int; 
+    isHardStageGroup: bool; 
+    unlockCondtion: string; 
 }
-table dict__string__Torappu_ActivityBossRushData_BossRushStageGroupData {
-    key: string;
-    value: Torappu_ActivityBossRushData_BossRushStageGroupData;
+
+table dict__string__clz_Torappu_ActivityBossRushData_BossRushStageGroupData {
+    key: string(key);
+    value: clz_Torappu_ActivityBossRushData_BossRushStageGroupData;
 }
-table Torappu_ActivityBossRushData_BossRushStageAdditionData {
-    stageId: string;
-    stageType: Torappu_ActivityBossRushData_BossRushStageType;
-    stageGroupId: string;
-    teamIdList: [string];
-    unlockText: string;
+
+table clz_Torappu_ActivityBossRushData_BossRushStageAdditionData {
+    stageId: string; 
+    stageType: enum__Torappu_ActivityBossRushData_BossRushStageType; 
+    stageGroupId: string; 
+    teamIdList: [string]; 
+    unlockText: string; 
 }
-table dict__string__Torappu_ActivityBossRushData_BossRushStageAdditionData {
-    key: string;
-    value: Torappu_ActivityBossRushData_BossRushStageAdditionData;
+
+table dict__string__clz_Torappu_ActivityBossRushData_BossRushStageAdditionData {
+    key: string(key);
+    value: clz_Torappu_ActivityBossRushData_BossRushStageAdditionData;
 }
-enum Torappu_OccPer : int {
+
+enum enum__Torappu_OccPer : int {
     ALWAYS = 0,
     ALMOST = 1,
     USUAL = 2,
@@ -1717,7 +1977,8 @@ enum Torappu_OccPer : int {
     NEVER = 5,
     DEFINITELY_BUFF = 6,
 }
-enum Torappu_StageDropType : int {
+
+enum enum__Torappu_StageDropType : int {
     NONE = 0,
     ONCE = 1,
     NORMAL = 2,
@@ -1731,259 +1992,302 @@ enum Torappu_StageDropType : int {
     OVERRIDE_DROP = 10,
     ITEM_RETURN = 11,
 }
-table Torappu_ActivityBossRushData_DisplayDetailRewards {
-    occPercent: Torappu_OccPer;
-    dropCount: int;
-    type: Torappu_ItemType;
-    id: string;
-    dropType: Torappu_StageDropType;
+
+table clz_Torappu_ActivityBossRushData_DisplayDetailRewards {
+    occPercent: enum__Torappu_OccPer; 
+    dropCount: int; 
+    type: enum__Torappu_ItemType; 
+    id: string; 
+    dropType: enum__Torappu_StageDropType; 
 }
-table Torappu_ActivityBossRushData_BossRushDropInfo {
-    clearWaveCount: int;
-    displayDetailRewards: [Torappu_ActivityBossRushData_DisplayDetailRewards];
-    firstPassRewards: [Torappu_ItemBundle];
-    passRewards: [Torappu_ItemBundle];
+
+table clz_Torappu_ActivityBossRushData_BossRushDropInfo {
+    clearWaveCount: int; 
+    displayDetailRewards: [clz_Torappu_ActivityBossRushData_DisplayDetailRewards]; 
+    firstPassRewards: [clz_Torappu_ItemBundle]; 
+    passRewards: [clz_Torappu_ItemBundle]; 
 }
-table Torappu_ActivityBossRushData_BossRushMissionAdditionData {
-    missionId: string;
-    isRelicTask: bool;
+
+table dict__int__clz_Torappu_ActivityBossRushData_BossRushDropInfo {
+    key: int(key);
+    value: clz_Torappu_ActivityBossRushData_BossRushDropInfo;
 }
-table dict__string__Torappu_ActivityBossRushData_BossRushMissionAdditionData {
-    key: string;
-    value: Torappu_ActivityBossRushData_BossRushMissionAdditionData;
+
+table dict__string__list_dict__int__clz_Torappu_ActivityBossRushData_BossRushDropInfo {
+    key: string(key);
+    value: [dict__int__clz_Torappu_ActivityBossRushData_BossRushDropInfo];
 }
-table Torappu_ActivityBossRushData_BossRushTeamData {
-    teamId: string;
-    teamName: string;
-    charIdList: [string];
-    teamBuffName: string;
-    teamBuffDes: string;
-    teamBuffId: string;
-    maxCharNum: int;
-    runeData: Torappu_RuneTable_PackedRuneData;
+
+table clz_Torappu_ActivityBossRushData_BossRushMissionAdditionData {
+    missionId: string; 
+    isRelicTask: bool; 
 }
-table dict__string__Torappu_ActivityBossRushData_BossRushTeamData {
-    key: string;
-    value: Torappu_ActivityBossRushData_BossRushTeamData;
+
+table dict__string__clz_Torappu_ActivityBossRushData_BossRushMissionAdditionData {
+    key: string(key);
+    value: clz_Torappu_ActivityBossRushData_BossRushMissionAdditionData;
 }
-table Torappu_ActivityBossRushData_RelicData {
-    relicId: string;
-    sortId: int;
-    name: string;
-    icon: string;
-    relicTaskId: string;
+
+table clz_Torappu_ActivityBossRushData_BossRushTeamData {
+    teamId: string; 
+    teamName: string; 
+    charIdList: [string]; 
+    teamBuffName: string; 
+    teamBuffDes: string; 
+    teamBuffId: string; 
+    maxCharNum: int; 
+    runeData: clz_Torappu_RuneTable_PackedRuneData; 
 }
-table Torappu_ActivityBossRushData_RelicLevelInfo {
-    level: int;
-    effectDesc: string;
-    runeData: Torappu_RuneTable_PackedRuneData;
-    needItemCount: int;
+
+table dict__string__clz_Torappu_ActivityBossRushData_BossRushTeamData {
+    key: string(key);
+    value: clz_Torappu_ActivityBossRushData_BossRushTeamData;
 }
-table dict__int__Torappu_ActivityBossRushData_RelicLevelInfo {
-    key: int;
-    value: Torappu_ActivityBossRushData_RelicLevelInfo;
+
+table clz_Torappu_ActivityBossRushData_RelicData {
+    relicId: string; 
+    sortId: int; 
+    name: string; 
+    icon: string; 
+    relicTaskId: string; 
 }
-table Torappu_ActivityBossRushData_RelicLevelInfoData {
-    relicId: string;
-    levelInfos: [dict__int__Torappu_ActivityBossRushData_RelicLevelInfo];
+
+table clz_Torappu_ActivityBossRushData_RelicLevelInfo {
+    level: int; 
+    effectDesc: string; 
+    runeData: clz_Torappu_RuneTable_PackedRuneData; 
+    needItemCount: int; 
 }
-table dict__string__Torappu_ActivityBossRushData_RelicLevelInfoData {
-    key: string;
-    value: Torappu_ActivityBossRushData_RelicLevelInfoData;
+
+table dict__int__clz_Torappu_ActivityBossRushData_RelicLevelInfo {
+    key: int(key);
+    value: clz_Torappu_ActivityBossRushData_RelicLevelInfo;
 }
-table Torappu_ActivityBossRushData_BossRushMileStoneData {
-    mileStoneId: string;
-    mileStoneLvl: int;
-    needPointCnt: int;
-    rewardItem: Torappu_ItemBundle;
+
+table clz_Torappu_ActivityBossRushData_RelicLevelInfoData {
+    relicId: string; 
+    levelInfos: [dict__int__clz_Torappu_ActivityBossRushData_RelicLevelInfo]; 
 }
-table Torappu_ActivityBossRushData_ConstData {
-    maxProvidedCharNum: int;
-    textMilestoneItemLevelDesc: string;
-    milestonePointId: string;
-    relicUpgradeItemId: string;
-    defaultRelictList: [string];
-    rewardSkinId: string;
+
+table dict__string__clz_Torappu_ActivityBossRushData_RelicLevelInfoData {
+    key: string(key);
+    value: clz_Torappu_ActivityBossRushData_RelicLevelInfoData;
 }
-table dict__int__Torappu_ActivityBossRushData_BossRushDropInfo {
-    key: int;
-    value: Torappu_ActivityBossRushData_BossRushDropInfo;
+
+table clz_Torappu_ActivityBossRushData_BossRushMileStoneData {
+    mileStoneId: string; 
+    mileStoneLvl: int; 
+    needPointCnt: int; 
+    rewardItem: clz_Torappu_ItemBundle; 
 }
-table dict__string__dict__int__Torappu_ActivityBossRushData_BossRushDropInfo {
-    key: string;
-    value: [dict__int__Torappu_ActivityBossRushData_BossRushDropInfo];
+
+table clz_Torappu_ActivityBossRushData_ConstData {
+    maxProvidedCharNum: int; 
+    textMilestoneItemLevelDesc: string; 
+    milestonePointId: string; 
+    relicUpgradeItemId: string; 
+    defaultRelictList: [string]; 
+    rewardSkinId: string; 
 }
-table Torappu_ActivityBossRushData {
-    zoneAdditionDataMap: [dict__string__Torappu_ActivityBossRushData_ZoneAdditionData];
-    stageGroupMap: [dict__string__Torappu_ActivityBossRushData_BossRushStageGroupData];
-    stageAdditionDataMap: [dict__string__Torappu_ActivityBossRushData_BossRushStageAdditionData];
-    stageDropDataMap: [dict__string__dict__int__Torappu_ActivityBossRushData_BossRushDropInfo];
-    missionAdditionDataMap: [dict__string__Torappu_ActivityBossRushData_BossRushMissionAdditionData];
-    teamDataMap: [dict__string__Torappu_ActivityBossRushData_BossRushTeamData];
-    relicList: [Torappu_ActivityBossRushData_RelicData];
-    relicLevelInfoDataMap: [dict__string__Torappu_ActivityBossRushData_RelicLevelInfoData];
-    mileStoneList: [Torappu_ActivityBossRushData_BossRushMileStoneData];
-    bestWaveRuneList: [Torappu_RuneTable_PackedRuneData];
-    constData: Torappu_ActivityBossRushData_ConstData;
+
+table clz_Torappu_ActivityBossRushData {
+    zoneAdditionDataMap: [dict__string__clz_Torappu_ActivityBossRushData_ZoneAdditionData]; 
+    stageGroupMap: [dict__string__clz_Torappu_ActivityBossRushData_BossRushStageGroupData]; 
+    stageAdditionDataMap: [dict__string__clz_Torappu_ActivityBossRushData_BossRushStageAdditionData]; 
+    stageDropDataMap: [dict__string__list_dict__int__clz_Torappu_ActivityBossRushData_BossRushDropInfo]; 
+    missionAdditionDataMap: [dict__string__clz_Torappu_ActivityBossRushData_BossRushMissionAdditionData]; 
+    teamDataMap: [dict__string__clz_Torappu_ActivityBossRushData_BossRushTeamData]; 
+    relicList: [clz_Torappu_ActivityBossRushData_RelicData]; 
+    relicLevelInfoDataMap: [dict__string__clz_Torappu_ActivityBossRushData_RelicLevelInfoData]; 
+    mileStoneList: [clz_Torappu_ActivityBossRushData_BossRushMileStoneData]; 
+    bestWaveRuneList: [clz_Torappu_RuneTable_PackedRuneData]; 
+    constData: clz_Torappu_ActivityBossRushData_ConstData; 
 }
-table dict__string__Torappu_ActivityBossRushData {
-    key: string;
-    value: Torappu_ActivityBossRushData;
+
+table dict__string__clz_Torappu_ActivityBossRushData {
+    key: string(key);
+    value: clz_Torappu_ActivityBossRushData;
 }
-table Torappu_ActivityFloatParadeData_ConstData {
-    cityName: string;
-    lowStandard: float;
-    variationTitle: string;
-    ruleDesc: string;
+
+table clz_Torappu_ActivityFloatParadeData_ConstData {
+    cityName: string; 
+    lowStandard: float; 
+    variationTitle: string; 
+    ruleDesc: string; 
 }
-table Torappu_ActivityFloatParadeData_DailyData {
-    dayIndex: int;
-    dateName: string;
-    placeName: string;
-    placeEnName: string;
-    placePic: string;
-    eventGroupId: string;
-    extReward: Torappu_ItemBundle;
+
+table clz_Torappu_ActivityFloatParadeData_DailyData {
+    dayIndex: int; 
+    dateName: string; 
+    placeName: string; 
+    placeEnName: string; 
+    placePic: string; 
+    eventGroupId: string; 
+    extReward: clz_Torappu_ItemBundle; 
 }
-table Torappu_ActivityFloatParadeData_RewardPool {
-    grpId: string;
-    id: string;
-    type: string;
-    name: string;
-    desc: string;
-    reward: Torappu_ItemBundle;
+
+table clz_Torappu_ActivityFloatParadeData_RewardPool {
+    grpId: string; 
+    id: string; 
+    type: string; 
+    name: string; 
+    desc: string; 
+    reward: clz_Torappu_ItemBundle; 
 }
+
+table dict__string__clz_Torappu_ActivityFloatParadeData_RewardPool {
+    key: string(key);
+    value: clz_Torappu_ActivityFloatParadeData_RewardPool;
+}
+
+table dict__string__list_dict__string__clz_Torappu_ActivityFloatParadeData_RewardPool {
+    key: string(key);
+    value: [dict__string__clz_Torappu_ActivityFloatParadeData_RewardPool];
+}
+
 table dict__string__float {
-    key: string;
+    key: string(key);
     value: float;
 }
-table Torappu_ActivityFloatParadeData_Tactic {
-    id: int;
-    name: string;
-    packName: string;
-    briefName: string;
-    rewardVar: [dict__string__float];
+
+table clz_Torappu_ActivityFloatParadeData_Tactic {
+    id: int; 
+    name: string; 
+    packName: string; 
+    briefName: string; 
+    rewardVar: [dict__string__float]; 
 }
-table Torappu_ActivityFloatParadeData_GroupData {
-    groupId: string;
-    name: string;
-    startDay: int;
-    endDay: int;
-    extRewardDay: int;
-    extRewardCount: int;
+
+table clz_Torappu_ActivityFloatParadeData_GroupData {
+    groupId: string; 
+    name: string; 
+    startDay: int; 
+    endDay: int; 
+    extRewardDay: int; 
+    extRewardCount: int; 
 }
-table dict__string__Torappu_ActivityFloatParadeData_GroupData {
-    key: string;
-    value: Torappu_ActivityFloatParadeData_GroupData;
+
+table dict__string__clz_Torappu_ActivityFloatParadeData_GroupData {
+    key: string(key);
+    value: clz_Torappu_ActivityFloatParadeData_GroupData;
 }
-table dict__string__Torappu_ActivityFloatParadeData_RewardPool {
-    key: string;
-    value: Torappu_ActivityFloatParadeData_RewardPool;
+
+table clz_Torappu_ActivityFloatParadeData {
+    constData: clz_Torappu_ActivityFloatParadeData_ConstData; 
+    dailyDataDic: [clz_Torappu_ActivityFloatParadeData_DailyData]; 
+    rewardPools: [dict__string__list_dict__string__clz_Torappu_ActivityFloatParadeData_RewardPool]; 
+    tacticList: [clz_Torappu_ActivityFloatParadeData_Tactic]; 
+    groupInfos: [dict__string__clz_Torappu_ActivityFloatParadeData_GroupData]; 
 }
-table dict__string__dict__string__Torappu_ActivityFloatParadeData_RewardPool {
-    key: string;
-    value: [dict__string__Torappu_ActivityFloatParadeData_RewardPool];
+
+table dict__string__clz_Torappu_ActivityFloatParadeData {
+    key: string(key);
+    value: clz_Torappu_ActivityFloatParadeData;
 }
-table Torappu_ActivityFloatParadeData {
-    constData: Torappu_ActivityFloatParadeData_ConstData;
-    dailyDataDic: [Torappu_ActivityFloatParadeData_DailyData];
-    rewardPools: [dict__string__dict__string__Torappu_ActivityFloatParadeData_RewardPool];
-    tacticList: [Torappu_ActivityFloatParadeData_Tactic];
-    groupInfos: [dict__string__Torappu_ActivityFloatParadeData_GroupData];
+
+table clz_Torappu_ActSandboxData_MilestoneData {
+    milestoneId: string; 
+    orderId: int; 
+    tokenId: string; 
+    tokenNum: int; 
+    item: clz_Torappu_ItemBundle; 
+    isPrecious: bool; 
 }
-table dict__string__Torappu_ActivityFloatParadeData {
-    key: string;
-    value: Torappu_ActivityFloatParadeData;
+
+table clz_Torappu_ActSandboxData {
+    milestoneDataList: [clz_Torappu_ActSandboxData_MilestoneData]; 
+    milestoneTokenId: string; 
 }
-table Torappu_ActSandboxData_MilestoneData {
-    milestoneId: string;
-    orderId: int;
-    tokenId: string;
-    tokenNum: int;
-    item: Torappu_ItemBundle;
-    isPrecious: bool;
+
+table dict__string__clz_Torappu_ActSandboxData {
+    key: string(key);
+    value: clz_Torappu_ActSandboxData;
 }
-table Torappu_ActSandboxData {
-    milestoneDataList: [Torappu_ActSandboxData_MilestoneData];
-    milestoneTokenId: string;
+
+table clz_Torappu_ActivityMainlineBuffData_MissionGroupData {
+    id: string; 
+    bindBanner: string; 
+    sortId: int; 
+    zoneId: string; 
+    missionIdList: [string]; 
 }
-table dict__string__Torappu_ActSandboxData {
-    key: string;
-    value: Torappu_ActSandboxData;
+
+table dict__string__clz_Torappu_ActivityMainlineBuffData_MissionGroupData {
+    key: string(key);
+    value: clz_Torappu_ActivityMainlineBuffData_MissionGroupData;
 }
-table Torappu_ActivityMainlineBuffData_MissionGroupData {
-    id: string;
-    bindBanner: string;
-    sortId: int;
-    zoneId: string;
-    missionIdList: [string];
+
+table clz_Torappu_ActivityMainlineBuffData_PeriodData_StepData {
+    isBlock: bool; 
+    favorUpDesc: string; 
+    unlockDesc: string; 
+    bindStageId: string; 
+    blockDesc: string; 
 }
-table dict__string__Torappu_ActivityMainlineBuffData_MissionGroupData {
-    key: string;
-    value: Torappu_ActivityMainlineBuffData_MissionGroupData;
+
+table clz_Torappu_ActivityMainlineBuffData_PeriodData {
+    id: string; 
+    startTime: long; 
+    endTime: long; 
+    favorUpCharDesc: string; 
+    favorUpImgName: string; 
+    newChapterImgName: string; 
+    newChapterZoneId: string; 
+    stepDataList: [clz_Torappu_ActivityMainlineBuffData_PeriodData_StepData]; 
 }
-table Torappu_ActivityMainlineBuffData_PeriodData_StepData {
-    isBlock: bool;
-    favorUpDesc: string;
-    unlockDesc: string;
-    bindStageId: string;
-    blockDesc: string;
+
+table clz_Torappu_ActivityMainlineBuffData_ConstData {
+    favorUpStageRange: string; 
 }
-table Torappu_ActivityMainlineBuffData_PeriodData {
-    id: string;
-    startTime: long;
-    endTime: long;
-    favorUpCharDesc: string;
-    favorUpImgName: string;
-    newChapterImgName: string;
-    newChapterZoneId: string;
-    stepDataList: [Torappu_ActivityMainlineBuffData_PeriodData_StepData];
+
+table clz_Torappu_ActivityMainlineBuffData {
+    missionGroupList: [dict__string__clz_Torappu_ActivityMainlineBuffData_MissionGroupData]; 
+    periodDataList: [clz_Torappu_ActivityMainlineBuffData_PeriodData]; 
+    apSupplyOutOfDateDict: [dict__string__long]; 
+    constData: clz_Torappu_ActivityMainlineBuffData_ConstData; 
 }
-table Torappu_ActivityMainlineBuffData_ConstData {
-    favorUpStageRange: string;
+
+table dict__string__clz_Torappu_ActivityMainlineBuffData {
+    key: string(key);
+    value: clz_Torappu_ActivityMainlineBuffData;
 }
-table Torappu_ActivityMainlineBuffData {
-    missionGroupList: [dict__string__Torappu_ActivityMainlineBuffData_MissionGroupData];
-    periodDataList: [Torappu_ActivityMainlineBuffData_PeriodData];
-    apSupplyOutOfDateDict: [dict__string__long];
-    constData: Torappu_ActivityMainlineBuffData_ConstData;
+
+table clz_Torappu_Act24SideData_ToolData {
+    toolId: string; 
+    sortId: int; 
+    toolName: string; 
+    toolDesc: string; 
+    toolIcon1: string; 
+    toolIcon2: string; 
+    toolUnlockDesc: string; 
+    toolBuffId: string; 
+    runeData: clz_Torappu_RuneTable_PackedRuneData; 
+    toolStageId: string; 
 }
-table dict__string__Torappu_ActivityMainlineBuffData {
-    key: string;
-    value: Torappu_ActivityMainlineBuffData;
+
+table dict__string__clz_Torappu_Act24SideData_ToolData {
+    key: string(key);
+    value: clz_Torappu_Act24SideData_ToolData;
 }
-table Torappu_Act24SideData_ToolData {
-    toolId: string;
-    sortId: int;
-    toolName: string;
-    toolDesc: string;
-    toolIcon1: string;
-    toolIcon2: string;
-    toolUnlockDesc: string;
-    toolBuffId: string;
-    runeData: Torappu_RuneTable_PackedRuneData;
-    toolStageId: string;
+
+table clz_Torappu_Act24SideData_MealData {
+    mealId: string; 
+    sortId: int; 
+    mealName: string; 
+    mealEffectDesc: string; 
+    mealDesc: string; 
+    mealIcon: string; 
+    mealCost: int; 
+    mealRewardAP: int; 
+    mealRewardItemInfo: clz_Torappu_ItemBundle; 
 }
-table dict__string__Torappu_Act24SideData_ToolData {
-    key: string;
-    value: Torappu_Act24SideData_ToolData;
+
+table dict__string__clz_Torappu_Act24SideData_MealData {
+    key: string(key);
+    value: clz_Torappu_Act24SideData_MealData;
 }
-table Torappu_Act24SideData_MealData {
-    mealId: string;
-    sortId: int;
-    mealName: string;
-    mealEffectDesc: string;
-    mealDesc: string;
-    mealIcon: string;
-    mealCost: int;
-    mealRewardAP: int;
-    mealRewardItemInfo: Torappu_ItemBundle;
-}
-table dict__string__Torappu_Act24SideData_MealData {
-    key: string;
-    value: Torappu_Act24SideData_MealData;
-}
-enum Torappu_Act24SideData_MeldingItemRarityType : int {
+
+enum enum__Torappu_Act24SideData_MeldingItemRarityType : int {
     NONE = 0,
     RARITY_1 = 1,
     RARITY_2 = 2,
@@ -1992,317 +2296,365 @@ enum Torappu_Act24SideData_MeldingItemRarityType : int {
     RARITY_5 = 5,
     RARITY_6 = 6,
 }
-table Torappu_Act24SideData_MeldingItemData {
-    meldingId: string;
-    sortId: int;
-    meldingPrice: int;
-    rarity: Torappu_Act24SideData_MeldingItemRarityType;
+
+table clz_Torappu_Act24SideData_MeldingItemData {
+    meldingId: string; 
+    sortId: int; 
+    meldingPrice: int; 
+    rarity: enum__Torappu_Act24SideData_MeldingItemRarityType; 
 }
-table dict__string__Torappu_Act24SideData_MeldingItemData {
-    key: string;
-    value: Torappu_Act24SideData_MeldingItemData;
+
+table dict__string__clz_Torappu_Act24SideData_MeldingItemData {
+    key: string(key);
+    value: clz_Torappu_Act24SideData_MeldingItemData;
 }
-table Torappu_Act24SideData_MeldingGachaBoxData {
-    gachaBoxId: string;
-    gachaSortId: int;
-    gachaIcon: string;
-    gachaBoxName: string;
-    gachaCost: int;
-    gachaTimesLimit: int;
-    themeColor: string;
-    remainItemBgColor: string;
+
+table clz_Torappu_Act24SideData_MeldingGachaBoxData {
+    gachaBoxId: string; 
+    gachaSortId: int; 
+    gachaIcon: string; 
+    gachaBoxName: string; 
+    gachaCost: int; 
+    gachaTimesLimit: int; 
+    themeColor: string; 
+    remainItemBgColor: string; 
 }
-table dict__string__Torappu_Act24SideData_MeldingGachaBoxData {
-    key: string;
-    value: Torappu_Act24SideData_MeldingGachaBoxData;
+
+table dict__string__clz_Torappu_Act24SideData_MeldingGachaBoxData {
+    key: string(key);
+    value: clz_Torappu_Act24SideData_MeldingGachaBoxData;
 }
-enum Torappu_Act24SideData_MeldingGoodDisplayType : int {
+
+enum enum__Torappu_Act24SideData_MeldingGoodDisplayType : int {
     NONE = 0,
     RARE_1 = 1,
     RARE_2 = 2,
     RARE_3 = 3,
 }
-enum Torappu_Act24SideData_MeldingGoodGachaType : int {
+
+enum enum__Torappu_Act24SideData_MeldingGoodGachaType : int {
     NONE = 0,
     LIMITED = 1,
     UNLIMITED = 2,
 }
-table Torappu_Act24SideData_MeldingGachaBoxGoodData {
-    goodId: string;
-    gachaBoxId: string;
-    orderId: int;
-    itemId: string;
-    itemType: Torappu_ItemType;
-    displayType: Torappu_Act24SideData_MeldingGoodDisplayType;
-    perCount: int;
-    totalCount: int;
-    gachaType: Torappu_Act24SideData_MeldingGoodGachaType;
-    weight: int;
-    gachaOrderId: int;
-    gachaNum: int;
+
+table clz_Torappu_Act24SideData_MeldingGachaBoxGoodData {
+    goodId: string; 
+    gachaBoxId: string; 
+    orderId: int; 
+    itemId: string; 
+    itemType: enum__Torappu_ItemType; 
+    displayType: enum__Torappu_Act24SideData_MeldingGoodDisplayType; 
+    perCount: int; 
+    totalCount: int; 
+    gachaType: enum__Torappu_Act24SideData_MeldingGoodGachaType; 
+    weight: int; 
+    gachaOrderId: int; 
+    gachaNum: int; 
 }
-table Torappu_Act24SideData_ZoneAdditionData {
-    zoneId: string;
-    zoneIcon: string;
-    unlockText: string;
-    displayTime: string;
+
+table dict__string__list_clz_Torappu_Act24SideData_MeldingGachaBoxGoodData {
+    key: string(key);
+    value: [clz_Torappu_Act24SideData_MeldingGachaBoxGoodData];
 }
-table dict__string__Torappu_Act24SideData_ZoneAdditionData {
-    key: string;
-    value: Torappu_Act24SideData_ZoneAdditionData;
+
+table clz_Torappu_Act24SideData_ZoneAdditionData {
+    zoneId: string; 
+    zoneIcon: string; 
+    unlockText: string; 
+    displayTime: string; 
 }
-table Torappu_QuestStageData {
-    stageId: string;
-    stageRank: int;
-    sortId: int;
-    isUrgentStage: bool;
-    isDragonStage: bool;
+
+table dict__string__clz_Torappu_Act24SideData_ZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act24SideData_ZoneAdditionData;
 }
-enum Torappu_Act24SideData_MissionType : int {
+
+table clz_Torappu_QuestStageData {
+    stageId: string; 
+    stageRank: int; 
+    sortId: int; 
+    isUrgentStage: bool; 
+    isDragonStage: bool; 
+}
+
+enum enum__Torappu_Act24SideData_MissionType : int {
     NONE = 0,
     HUNTING_TASK = 1,
     COLLECTION_TASK = 2,
     EXPLORATION_TASK = 3,
 }
-table Torappu_Act24SideData_MissionExtraData {
-    taskTypeName: string;
-    taskTypeIcon: string;
-    taskType: Torappu_Act24SideData_MissionType;
-    taskTitle: string;
-    taskClient: string;
-    taskClientDesc: string;
+
+table clz_Torappu_Act24SideData_MissionExtraData {
+    taskTypeName: string; 
+    taskTypeIcon: string; 
+    taskType: enum__Torappu_Act24SideData_MissionType; 
+    taskTitle: string; 
+    taskClient: string; 
+    taskClientDesc: string; 
 }
-table dict__string__Torappu_Act24SideData_MissionExtraData {
-    key: string;
-    value: Torappu_Act24SideData_MissionExtraData;
+
+table dict__string__clz_Torappu_Act24SideData_MissionExtraData {
+    key: string(key);
+    value: clz_Torappu_Act24SideData_MissionExtraData;
 }
-table Torappu__WeightItemBundle {
-    id: string;
-    type: Torappu_ItemType;
-    dropType: Torappu_StageDropType;
-    count: int;
-    weight: int;
+
+table clz_Torappu_WeightItemBundle {
+    id: string; 
+    type: enum__Torappu_ItemType; 
+    dropType: enum__Torappu_StageDropType; 
+    count: int; 
+    weight: int; 
 }
-table Torappu__WeightItemBundle__2d {
-    values: [Torappu__WeightItemBundle];
+
+table list_clz_Torappu_WeightItemBundle {
+    values: [clz_Torappu_WeightItemBundle];
 }
-table Torappu_StageData_DisplayRewards {
-    type: Torappu_ItemType;
-    id: string;
-    dropType: Torappu_StageDropType;
+
+table clz_Torappu_StageData_DisplayRewards {
+    type: enum__Torappu_ItemType; 
+    id: string; 
+    dropType: enum__Torappu_StageDropType; 
 }
-table Torappu_StageData_DisplayDetailRewards {
-    occPercent: Torappu_OccPer;
-    type: Torappu_ItemType;
-    id: string;
-    dropType: Torappu_StageDropType;
+
+table clz_Torappu_StageData_DisplayDetailRewards {
+    occPercent: enum__Torappu_OccPer; 
+    type: enum__Torappu_ItemType; 
+    id: string; 
+    dropType: enum__Torappu_StageDropType; 
 }
-table Torappu_StageData_StageDropInfo {
-    firstPassRewards: [Torappu_ItemBundle];
-    firstCompleteRewards: [Torappu_ItemBundle];
-    passRewards: [Torappu__WeightItemBundle__2d];
-    completeRewards: [Torappu__WeightItemBundle__2d];
-    displayRewards: [Torappu_StageData_DisplayRewards];
-    displayDetailRewards: [Torappu_StageData_DisplayDetailRewards];
+
+table clz_Torappu_StageData_StageDropInfo {
+    firstPassRewards: [clz_Torappu_ItemBundle]; 
+    firstCompleteRewards: [clz_Torappu_ItemBundle]; 
+    passRewards: [list_clz_Torappu_WeightItemBundle]; 
+    completeRewards: [list_clz_Torappu_WeightItemBundle]; 
+    displayRewards: [clz_Torappu_StageData_DisplayRewards]; 
+    displayDetailRewards: [clz_Torappu_StageData_DisplayDetailRewards]; 
 }
-table dict__string__Torappu_StageData_StageDropInfo {
-    key: string;
-    value: Torappu_StageData_StageDropInfo;
+
+table dict__string__clz_Torappu_StageData_StageDropInfo {
+    key: string(key);
+    value: clz_Torappu_StageData_StageDropInfo;
 }
-table Torappu_Act24SideData_ConstData {
-    stageUnlockToolDesc: string;
-    mealLackMoney: string;
-    mealDayTimesLimit: int;
-    toolMaximum: int;
-    stageCanNotUseToTool: [string];
-    gachaDefaultProb: float;
-    gachaExtraProb: float;
-}
-table dict__string__list_Torappu_Act24SideData_MeldingGachaBoxGoodData {
-    key: string;
-    value: [Torappu_Act24SideData_MeldingGachaBoxGoodData];
-}
+
 table dict__string__list_string {
-    key: string;
+    key: string(key);
     value: [string];
 }
-table Torappu_Act24SideData {
-    toolDataList: [dict__string__Torappu_Act24SideData_ToolData];
-    mealDataList: [dict__string__Torappu_Act24SideData_MealData];
-    meldingDict: [dict__string__Torappu_Act24SideData_MeldingItemData];
-    meldingGachaBoxDataList: [dict__string__Torappu_Act24SideData_MeldingGachaBoxData];
-    meldingGachaBoxGoodDataMap: [dict__string__list_Torappu_Act24SideData_MeldingGachaBoxGoodData];
-    mealWelcomeTxtDataMap: [dict__string__string];
-    zoneAdditionDataMap: [dict__string__Torappu_Act24SideData_ZoneAdditionData];
-    questStageList: [Torappu_QuestStageData];
-    missionDataList: [dict__string__Torappu_Act24SideData_MissionExtraData];
-    meldingDropDict: [dict__string__Torappu_StageData_StageDropInfo];
-    stageMapPreviewDict: [dict__string__list_string];
-    constData: Torappu_Act24SideData_ConstData;
+
+table clz_Torappu_Act24SideData_ConstData {
+    stageUnlockToolDesc: string; 
+    mealLackMoney: string; 
+    mealDayTimesLimit: int; 
+    toolMaximum: int; 
+    stageCanNotUseToTool: [string]; 
+    gachaDefaultProb: float; 
+    gachaExtraProb: float; 
 }
-table dict__string__Torappu_Act24SideData {
-    key: string;
-    value: Torappu_Act24SideData;
+
+table clz_Torappu_Act24SideData {
+    toolDataList: [dict__string__clz_Torappu_Act24SideData_ToolData]; 
+    mealDataList: [dict__string__clz_Torappu_Act24SideData_MealData]; 
+    meldingDict: [dict__string__clz_Torappu_Act24SideData_MeldingItemData]; 
+    meldingGachaBoxDataList: [dict__string__clz_Torappu_Act24SideData_MeldingGachaBoxData]; 
+    meldingGachaBoxGoodDataMap: [dict__string__list_clz_Torappu_Act24SideData_MeldingGachaBoxGoodData]; 
+    mealWelcomeTxtDataMap: [dict__string__string]; 
+    zoneAdditionDataMap: [dict__string__clz_Torappu_Act24SideData_ZoneAdditionData]; 
+    questStageList: [clz_Torappu_QuestStageData]; 
+    missionDataList: [dict__string__clz_Torappu_Act24SideData_MissionExtraData]; 
+    meldingDropDict: [dict__string__clz_Torappu_StageData_StageDropInfo]; 
+    stageMapPreviewDict: [dict__string__list_string]; 
+    constData: clz_Torappu_Act24SideData_ConstData; 
 }
-table Torappu_Act25SideData_ConstData {
-    getDailyCount: int;
-    costName: string;
-    costDesc: string;
-    costLimit: int;
-    rewardLimit: int;
-    researchUnlockText: string;
-    harvestReward: Torappu_ItemBundle;
-    costCount: int;
-    costCountLimit: int;
-    basicProgress: int;
-    harvestDesc: string;
+
+table dict__string__clz_Torappu_Act24SideData {
+    key: string(key);
+    value: clz_Torappu_Act24SideData;
 }
-table Torappu_Act25SideData_ZoneDescInfo {
-    zoneId: string;
-    unlockText: string;
-    displayStartTime: long;
+
+table clz_Torappu_Act25SideData_ConstData {
+    getDailyCount: int; 
+    costName: string; 
+    costDesc: string; 
+    costLimit: int; 
+    rewardLimit: int; 
+    researchUnlockText: string; 
+    harvestReward: clz_Torappu_ItemBundle; 
+    costCount: int; 
+    costCountLimit: int; 
+    basicProgress: int; 
+    harvestDesc: string; 
 }
-table dict__string__Torappu_Act25SideData_ZoneDescInfo {
-    key: string;
-    value: Torappu_Act25SideData_ZoneDescInfo;
+
+table clz_Torappu_Act25SideData_ZoneDescInfo {
+    zoneId: string; 
+    unlockText: string; 
+    displayStartTime: long; 
 }
-enum Torappu_Act25SideData_Act25SideArchiveItemType : int {
+
+table dict__string__clz_Torappu_Act25SideData_ZoneDescInfo {
+    key: string(key);
+    value: clz_Torappu_Act25SideData_ZoneDescInfo;
+}
+
+enum enum__Torappu_Act25SideData_Act25SideArchiveItemType : int {
     PIC = 0,
     STORY = 1,
     BATTLE_PERFORMANCE = 2,
     KEY = 3,
     ENUM = 4,
 }
-enum Torappu_Act25SideData_Act25SideArchiveItemUnlockType : int {
+
+enum enum__Torappu_Act25SideData_Act25SideArchiveItemUnlockType : int {
     MISSION = 0,
     STAGE = 1,
 }
-table Torappu_Act25SideData_ArchiveItemData {
-    itemId: string;
-    itemType: Torappu_Act25SideData_Act25SideArchiveItemType;
-    itemUnlockType: Torappu_Act25SideData_Act25SideArchiveItemUnlockType;
-    itemUnlockParam: string;
-    unlockDesc: string;
-    iconId: string;
-    itemName: string;
+
+table clz_Torappu_Act25SideData_ArchiveItemData {
+    itemId: string; 
+    itemType: enum__Torappu_Act25SideData_Act25SideArchiveItemType; 
+    itemUnlockType: enum__Torappu_Act25SideData_Act25SideArchiveItemUnlockType; 
+    itemUnlockParam: string; 
+    unlockDesc: string; 
+    iconId: string; 
+    itemName: string; 
 }
-table dict__string__Torappu_Act25SideData_ArchiveItemData {
-    key: string;
-    value: Torappu_Act25SideData_ArchiveItemData;
+
+table dict__string__clz_Torappu_Act25SideData_ArchiveItemData {
+    key: string(key);
+    value: clz_Torappu_Act25SideData_ArchiveItemData;
 }
-table Torappu_Act25SideData_ArchiveMapInfoData {
-    objectId: string;
-    type: Torappu_Act25SideData_Act25SideArchiveItemType;
-    numberId: string;
-    areaId: string;
-    sortId: int;
-    position: int;
-    hasDot: bool;
+
+table clz_Torappu_Act25SideData_ArchiveMapInfoData {
+    objectId: string; 
+    type: enum__Torappu_Act25SideData_Act25SideArchiveItemType; 
+    numberId: string; 
+    areaId: string; 
+    sortId: int; 
+    position: int; 
+    hasDot: bool; 
 }
-table dict__string__Torappu_Act25SideData_ArchiveMapInfoData {
-    key: string;
-    value: Torappu_Act25SideData_ArchiveMapInfoData;
+
+table dict__string__clz_Torappu_Act25SideData_ArchiveMapInfoData {
+    key: string(key);
+    value: clz_Torappu_Act25SideData_ArchiveMapInfoData;
 }
-table Torappu_Act25SideData_AreaInfoData {
-    areaId: string;
-    sortId: int;
-    areaIcon: string;
-    areaName: string;
-    unlockText: string;
-    preposedStage: string;
-    areaInitialDesc: string;
-    areaEndingDesc: string;
-    areaEndingAud: string;
-    reward: Torappu_ItemBundle;
-    finalId: string;
+
+table clz_Torappu_Act25SideData_AreaInfoData {
+    areaId: string; 
+    sortId: int; 
+    areaIcon: string; 
+    areaName: string; 
+    unlockText: string; 
+    preposedStage: string; 
+    areaInitialDesc: string; 
+    areaEndingDesc: string; 
+    areaEndingAud: string; 
+    reward: clz_Torappu_ItemBundle; 
+    finalId: string; 
 }
-table dict__string__Torappu_Act25SideData_AreaInfoData {
-    key: string;
-    value: Torappu_Act25SideData_AreaInfoData;
+
+table dict__string__clz_Torappu_Act25SideData_AreaInfoData {
+    key: string(key);
+    value: clz_Torappu_Act25SideData_AreaInfoData;
 }
-table Torappu_Act25SideData_AreaMissionData {
-    id: string;
-    areaId: string;
-    preposedMissionId: string;
-    sortId: int;
-    isZone: bool;
-    stageId: string;
-    costCount: int;
-    transform: int;
-    progress: int;
-    progressPicId: string;
-    template: string;
-    templateType: int;
-    desc: string;
-    param: [string];
-    rewards: [Torappu_ItemBundle];
-    archiveItems: [string];
+
+table clz_Torappu_Act25SideData_AreaMissionData {
+    id: string; 
+    areaId: string; 
+    preposedMissionId: string; 
+    sortId: int; 
+    isZone: bool; 
+    stageId: string; 
+    costCount: int; 
+    transform: int; 
+    progress: int; 
+    progressPicId: string; 
+    template: string; 
+    templateType: int; 
+    desc: string; 
+    param: [string]; 
+    rewards: [clz_Torappu_ItemBundle]; 
+    archiveItems: [string]; 
 }
-table dict__string__Torappu_Act25SideData_AreaMissionData {
-    key: string;
-    value: Torappu_Act25SideData_AreaMissionData;
+
+table dict__string__clz_Torappu_Act25SideData_AreaMissionData {
+    key: string(key);
+    value: clz_Torappu_Act25SideData_AreaMissionData;
 }
-enum Torappu_Act25SideData_Act25sideTechType : int {
+
+enum enum__Torappu_Act25SideData_Act25sideTechType : int {
     TECH_1 = 0,
     TECH_2 = 1,
     TECH_3 = 2,
     TECH_4 = 3,
     TECH_NUM = 4,
 }
-table Torappu_Act25SideData_BattlePerformanceData {
-    itemId: string;
-    sortId: int;
-    itemName: string;
-    itemIcon: string;
-    itemDesc: string;
-    itemTechType: Torappu_Act25SideData_Act25sideTechType;
-    runeData: Torappu_RuneTable_PackedRuneData;
+
+table clz_Torappu_Act25SideData_BattlePerformanceData {
+    itemId: string; 
+    sortId: int; 
+    itemName: string; 
+    itemIcon: string; 
+    itemDesc: string; 
+    itemTechType: enum__Torappu_Act25SideData_Act25sideTechType; 
+    runeData: clz_Torappu_RuneTable_PackedRuneData; 
 }
-table dict__string__Torappu_Act25SideData_BattlePerformanceData {
-    key: string;
-    value: Torappu_Act25SideData_BattlePerformanceData;
+
+table dict__string__clz_Torappu_Act25SideData_BattlePerformanceData {
+    key: string(key);
+    value: clz_Torappu_Act25SideData_BattlePerformanceData;
 }
-table Torappu_Act25SideData_KeyData {
-    keyId: string;
-    keyName: string;
-    keyIcon: string;
-    toastText: string;
+
+table clz_Torappu_Act25SideData_KeyData {
+    keyId: string; 
+    keyName: string; 
+    keyIcon: string; 
+    toastText: string; 
 }
-table dict__string__Torappu_Act25SideData_KeyData {
-    key: string;
-    value: Torappu_Act25SideData_KeyData;
+
+table dict__string__clz_Torappu_Act25SideData_KeyData {
+    key: string(key);
+    value: clz_Torappu_Act25SideData_KeyData;
 }
-table Torappu_Act25SideData_FogUnlockData {
-    lockId: string;
-    lockedCollectionIconId: string;
-    unlockedCollectionIconId: string;
+
+table clz_Torappu_Act25SideData_FogUnlockData {
+    lockId: string; 
+    lockedCollectionIconId: string; 
+    unlockedCollectionIconId: string; 
 }
-table dict__string__Torappu_Act25SideData_FogUnlockData {
-    key: string;
-    value: Torappu_Act25SideData_FogUnlockData;
+
+table dict__string__clz_Torappu_Act25SideData_FogUnlockData {
+    key: string(key);
+    value: clz_Torappu_Act25SideData_FogUnlockData;
 }
-table Torappu_Act25SideData_DailyFarmData {
-    transform: int;
-    unitTime: long;
+
+table clz_Torappu_Act25SideData_DailyFarmData {
+    transform: int; 
+    unitTime: long; 
 }
-table Torappu_Act25SideData {
-    tokenItemId: string;
-    constData: Torappu_Act25SideData_ConstData;
-    zoneDescList: [dict__string__Torappu_Act25SideData_ZoneDescInfo];
-    archiveItemData: [dict__string__Torappu_Act25SideData_ArchiveItemData];
-    arcMapInfoData: [dict__string__Torappu_Act25SideData_ArchiveMapInfoData];
-    areaInfoData: [dict__string__Torappu_Act25SideData_AreaInfoData];
-    areaMissionData: [dict__string__Torappu_Act25SideData_AreaMissionData];
-    battlePerformanceData: [dict__string__Torappu_Act25SideData_BattlePerformanceData];
-    keyData: [dict__string__Torappu_Act25SideData_KeyData];
-    fogUnlockData: [dict__string__Torappu_Act25SideData_FogUnlockData];
-    farmList: [Torappu_Act25SideData_DailyFarmData];
+
+table clz_Torappu_Act25SideData {
+    tokenItemId: string; 
+    constData: clz_Torappu_Act25SideData_ConstData; 
+    zoneDescList: [dict__string__clz_Torappu_Act25SideData_ZoneDescInfo]; 
+    archiveItemData: [dict__string__clz_Torappu_Act25SideData_ArchiveItemData]; 
+    arcMapInfoData: [dict__string__clz_Torappu_Act25SideData_ArchiveMapInfoData]; 
+    areaInfoData: [dict__string__clz_Torappu_Act25SideData_AreaInfoData]; 
+    areaMissionData: [dict__string__clz_Torappu_Act25SideData_AreaMissionData]; 
+    battlePerformanceData: [dict__string__clz_Torappu_Act25SideData_BattlePerformanceData]; 
+    keyData: [dict__string__clz_Torappu_Act25SideData_KeyData]; 
+    fogUnlockData: [dict__string__clz_Torappu_Act25SideData_FogUnlockData]; 
+    farmList: [clz_Torappu_Act25SideData_DailyFarmData]; 
 }
-table dict__string__Torappu_Act25SideData {
-    key: string;
-    value: Torappu_Act25SideData;
+
+table dict__string__clz_Torappu_Act25SideData {
+    key: string(key);
+    value: clz_Torappu_Act25SideData;
 }
-enum Torappu_Act38D1Data_Act38D1AppraiseType : int {
+
+enum enum__Torappu_Act38D1Data_Act38D1AppraiseType : int {
     RANK_D = 0,
     RANK_C = 1,
     RANK_B = 2,
@@ -2311,160 +2663,192 @@ enum Torappu_Act38D1Data_Act38D1AppraiseType : int {
     RANK_SS = 5,
     RANK_SSS = 6,
 }
-table dict__int__Torappu_Act38D1Data_Act38D1AppraiseType {
-    key: int;
-    value: Torappu_Act38D1Data_Act38D1AppraiseType;
+
+table dict__int__enum__Torappu_Act38D1Data_Act38D1AppraiseType {
+    key: int(key);
+    value: enum__Torappu_Act38D1Data_Act38D1AppraiseType;
 }
-table Torappu_Act38D1Data_Act38D1NodeData {
-    slotId: string;
-    groupId: string;
-    isUpper: bool;
-    adjacentSlotList: [string];
+
+table clz_Torappu_Act38D1Data_Act38D1NodeData {
+    slotId: string; 
+    groupId: string; 
+    isUpper: bool; 
+    adjacentSlotList: [string]; 
 }
-table dict__string__Torappu_Act38D1Data_Act38D1NodeData {
-    key: string;
-    value: Torappu_Act38D1Data_Act38D1NodeData;
+
+table dict__string__clz_Torappu_Act38D1Data_Act38D1NodeData {
+    key: string(key);
+    value: clz_Torappu_Act38D1Data_Act38D1NodeData;
 }
-table Torappu_Act38D1Data_Act38D1RoadData {
-    roadId: string;
-    startSlotId: string;
-    endSlotId: string;
+
+table clz_Torappu_Act38D1Data_Act38D1RoadData {
+    roadId: string; 
+    startSlotId: string; 
+    endSlotId: string; 
 }
-table dict__string__Torappu_Act38D1Data_Act38D1RoadData {
-    key: string;
-    value: Torappu_Act38D1Data_Act38D1RoadData;
+
+table dict__string__clz_Torappu_Act38D1Data_Act38D1RoadData {
+    key: string(key);
+    value: clz_Torappu_Act38D1Data_Act38D1RoadData;
 }
-table Torappu_Act38D1Data_Act38D1RewardBoxData {
-    rewardBoxId: string;
-    roadId: string;
+
+table clz_Torappu_Act38D1Data_Act38D1RewardBoxData {
+    rewardBoxId: string; 
+    roadId: string; 
 }
-table dict__string__Torappu_Act38D1Data_Act38D1RewardBoxData {
-    key: string;
-    value: Torappu_Act38D1Data_Act38D1RewardBoxData;
+
+table dict__string__clz_Torappu_Act38D1Data_Act38D1RewardBoxData {
+    key: string(key);
+    value: clz_Torappu_Act38D1Data_Act38D1RewardBoxData;
 }
-table Torappu_Act38D1Data_Act38D1ExclusionGroupData {
-    groupId: string;
-    slotIdList: [string];
+
+table clz_Torappu_Act38D1Data_Act38D1ExclusionGroupData {
+    groupId: string; 
+    slotIdList: [string]; 
 }
-table dict__string__Torappu_Act38D1Data_Act38D1ExclusionGroupData {
-    key: string;
-    value: Torappu_Act38D1Data_Act38D1ExclusionGroupData;
+
+table dict__string__clz_Torappu_Act38D1Data_Act38D1ExclusionGroupData {
+    key: string(key);
+    value: clz_Torappu_Act38D1Data_Act38D1ExclusionGroupData;
 }
-table Torappu_Act38D1Data_Act38D1DimensionItemData {
-    desc: string;
-    maxScore: int;
+
+table clz_Torappu_Act38D1Data_Act38D1DimensionItemData {
+    desc: string; 
+    maxScore: int; 
 }
-table Torappu_Act38D1Data_Act38D1CommentData {
-    id: string;
-    sortId: int;
-    desc: string;
+
+table clz_Torappu_Act38D1Data_Act38D1CommentData {
+    id: string; 
+    sortId: int; 
+    desc: string; 
 }
-table dict__string__Torappu_Act38D1Data_Act38D1CommentData {
-    key: string;
-    value: Torappu_Act38D1Data_Act38D1CommentData;
+
+table dict__string__clz_Torappu_Act38D1Data_Act38D1CommentData {
+    key: string(key);
+    value: clz_Torappu_Act38D1Data_Act38D1CommentData;
 }
-table Torappu_Act38D1Data_Act38D1StageDetailData {
-    nodeDataMap: [dict__string__Torappu_Act38D1Data_Act38D1NodeData];
-    roadDataMap: [dict__string__Torappu_Act38D1Data_Act38D1RoadData];
-    rewardBoxDataMap: [dict__string__Torappu_Act38D1Data_Act38D1RewardBoxData];
-    exclusionGroupDataMap: [dict__string__Torappu_Act38D1Data_Act38D1ExclusionGroupData];
-    dimensionItemList: [Torappu_Act38D1Data_Act38D1DimensionItemData];
-    commentDataMap: [dict__string__Torappu_Act38D1Data_Act38D1CommentData];
+
+table clz_Torappu_Act38D1Data_Act38D1StageDetailData {
+    nodeDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1NodeData]; 
+    roadDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1RoadData]; 
+    rewardBoxDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1RewardBoxData]; 
+    exclusionGroupDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1ExclusionGroupData]; 
+    dimensionItemList: [clz_Torappu_Act38D1Data_Act38D1DimensionItemData]; 
+    commentDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1CommentData]; 
 }
-table dict__string__Torappu_Act38D1Data_Act38D1StageDetailData {
-    key: string;
-    value: Torappu_Act38D1Data_Act38D1StageDetailData;
+
+table dict__string__clz_Torappu_Act38D1Data_Act38D1StageDetailData {
+    key: string(key);
+    value: clz_Torappu_Act38D1Data_Act38D1StageDetailData;
 }
-table Torappu_Act38D1Data_Act38D1ConstData {
-    redScoreThreshold: int;
-    detailBkgRedThreshold: int;
-    voiceGrade: int;
-    stageInfoTitle: string;
-    missionListReceiveRewardText: string;
-    missionListChangeMapText: string;
-    missionListCompleteTagText: string;
-    mapStartBattleText: string;
-    mapJumpDailyMapText: string;
-    mapRewardReceivedText: string;
+
+table clz_Torappu_Act38D1Data_Act38D1ConstData {
+    redScoreThreshold: int; 
+    detailBkgRedThreshold: int; 
+    voiceGrade: int; 
+    stageInfoTitle: string; 
+    missionListReceiveRewardText: string; 
+    missionListChangeMapText: string; 
+    missionListCompleteTagText: string; 
+    mapStartBattleText: string; 
+    mapJumpDailyMapText: string; 
+    mapRewardReceivedText: string; 
 }
-table Torappu_Act38D1Data {
-    scoreLevelToAppraiseDataMap: [dict__int__Torappu_Act38D1Data_Act38D1AppraiseType];
-    detailDataMap: [dict__string__Torappu_Act38D1Data_Act38D1StageDetailData];
-    constData: Torappu_Act38D1Data_Act38D1ConstData;
-    trackPointPeriodData: [long];
+
+table clz_Torappu_Act38D1Data {
+    scoreLevelToAppraiseDataMap: [dict__int__enum__Torappu_Act38D1Data_Act38D1AppraiseType]; 
+    detailDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1StageDetailData]; 
+    constData: clz_Torappu_Act38D1Data_Act38D1ConstData; 
+    trackPointPeriodData: [long]; 
 }
-table dict__string__Torappu_Act38D1Data {
-    key: string;
-    value: Torappu_Act38D1Data;
+
+table dict__string__clz_Torappu_Act38D1Data {
+    key: string(key);
+    value: clz_Torappu_Act38D1Data;
 }
-table Torappu_ActivityTable_ActivityDetailTable {
-    defaultActivityData: [dict__string__Torappu_DefaultFirstData];
-    defaultCheckinData: [dict__string__Torappu_DefaultCheckInData];
-    allPlayerCheckinData: [dict__string__Torappu_AllPlayerCheckinData];
-    typeAct3d0Data: [dict__string__Torappu_Act3D0Data];
-    typeAct4d0Data: [dict__string__Torappu_Act4D0Data];
-    typeAct5d0Data: [dict__string__Torappu_Act5D0Data];
-    typeAct5d1Data: [dict__string__Torappu_Act5D1Data];
-    defaultCollectionData: [dict__string__Torappu_ActivityCollectionData];
-    typeAct9d0Data: [dict__string__Torappu_Act9D0Data];
-    typeAct12SideData: [dict__string__Torappu_Act12SideData];
-    typeAct13SideData: [dict__string__Torappu_Act13SideData];
-    typeAct17sideData: [dict__string__Torappu_Act17sideData];
-    typeAct20SideData: [dict__string__Torappu_Act20SideData];
-    typeAct21SideData: [dict__string__Torappu_Act21SideData];
-    defaultLoginData: [dict__string__Torappu_ActivityLoginData];
-    defaultMiniStoryData: [dict__string__Torappu_ActivityMiniStoryData];
-    defaultRoguelikeData: [dict__string__Torappu_ActivityRoguelikeData];
-    defaultMultiplayData: [dict__string__Torappu_ActivityMultiplayData];
-    defaultInterlockData: [dict__string__Torappu_ActivityInterlockData];
-    defaultBossRushData: [dict__string__Torappu_ActivityBossRushData];
-    floatParadeData: [dict__string__Torappu_ActivityFloatParadeData];
-    typeSandboxData: [dict__string__Torappu_ActSandboxData];
-    mainlineBuffData: [dict__string__Torappu_ActivityMainlineBuffData];
-    typeAct24SideData: [dict__string__Torappu_Act24SideData];
-    typeAct25SideData: [dict__string__Torappu_Act25SideData];
-    typeAct38d1Data: [dict__string__Torappu_Act38D1Data];
+
+table clz_Torappu_ActivityTable_ActivityDetailTable {
+    DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; // __prts__check_required__defaultActivityData__
+    CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; // __prts__check_required__defaultCheckinData__
+    CHECKIN_ALL_PLAYER: [dict__string__clz_Torappu_AllPlayerCheckinData]; // __prts__check_required__allPlayerCheckinData__
+    TYPE_ACT3D0: [dict__string__clz_Torappu_Act3D0Data]; // __prts__check_required__typeAct3d0Data__
+    TYPE_ACT4D0: [dict__string__clz_Torappu_Act4D0Data]; // __prts__check_required__typeAct4d0Data__
+    TYPE_ACT5D0: [dict__string__clz_Torappu_Act5D0Data]; // __prts__check_required__typeAct5d0Data__
+    TYPE_ACT5D1: [dict__string__clz_Torappu_Act5D1Data]; // __prts__check_required__typeAct5d1Data__
+    COLLECTION: [dict__string__clz_Torappu_ActivityCollectionData]; // __prts__check_required__defaultCollectionData__
+    TYPE_ACT9D0: [dict__string__clz_Torappu_Act9D0Data]; // __prts__check_required__typeAct9d0Data__
+    TYPE_ACT12SIDE: [dict__string__clz_Torappu_Act12SideData]; // __prts__check_required__typeAct12SideData__
+    TYPE_ACT13SIDE: [dict__string__clz_Torappu_Act13SideData]; // __prts__check_required__typeAct13SideData__
+    TYPE_ACT17SIDE: [dict__string__clz_Torappu_Act17sideData]; // __prts__check_required__typeAct17sideData__
+    TYPE_ACT20SIDE: [dict__string__clz_Torappu_Act20SideData]; // __prts__check_required__typeAct20SideData__
+    TYPE_ACT21SIDE: [dict__string__clz_Torappu_Act21SideData]; // __prts__check_required__typeAct21SideData__
+    LOGIN_ONLY: [dict__string__clz_Torappu_ActivityLoginData]; // __prts__check_required__defaultLoginData__
+    MINISTORY: [dict__string__clz_Torappu_ActivityMiniStoryData]; // __prts__check_required__defaultMiniStoryData__
+    ROGUELIKE: [dict__string__clz_Torappu_ActivityRoguelikeData]; // __prts__check_required__defaultRoguelikeData__
+    MULTIPLAY: [dict__string__clz_Torappu_ActivityMultiplayData]; // __prts__check_required__defaultMultiplayData__
+    INTERLOCK: [dict__string__clz_Torappu_ActivityInterlockData]; // __prts__check_required__defaultInterlockData__
+    BOSS_RUSH: [dict__string__clz_Torappu_ActivityBossRushData]; // __prts__check_required__defaultBossRushData__
+    FLOAT_PARADE: [dict__string__clz_Torappu_ActivityFloatParadeData]; // __prts__check_required__floatParadeData__
+    SANDBOX: [dict__string__clz_Torappu_ActSandboxData]; // __prts__check_required__typeSandboxData__
+    MAIN_BUFF: [dict__string__clz_Torappu_ActivityMainlineBuffData]; // __prts__check_required__mainlineBuffData__
+    TYPE_ACT24SIDE: [dict__string__clz_Torappu_Act24SideData]; // __prts__check_required__typeAct24SideData__
+    TYPE_ACT25SIDE: [dict__string__clz_Torappu_Act25SideData]; // __prts__check_required__typeAct25SideData__
+    TYPE_ACT38D1: [dict__string__clz_Torappu_Act38D1Data]; // __prts__check_required__typeAct38d1Data__
 }
-table JObject {
+
+table dict__string__list_long {
+    key: string(key);
+    value: [long];
+}
+
+table hg__internal__JObject {
     base64: string;
 }
-table dict__string__JObject {
-    key: string;
-    value: JObject;
+
+table dict__string__hg__internal__JObject {
+    key: string(key);
+    value: hg__internal__JObject;
 }
-table dict__string__list_Torappu_StageData_DisplayDetailRewards {
-    key: string;
-    value: [Torappu_StageData_DisplayDetailRewards];
+
+table dict__string__list_clz_Torappu_StageData_DisplayDetailRewards {
+    key: string(key);
+    value: [clz_Torappu_StageData_DisplayDetailRewards];
 }
-table Torappu_ActivityStageRewardData {
-    stageRewardsDict: [dict__string__list_Torappu_StageData_DisplayDetailRewards];
+
+table clz_Torappu_ActivityStageRewardData {
+    stageRewardsDict: [dict__string__list_clz_Torappu_StageData_DisplayDetailRewards]; 
 }
-table dict__string__Torappu_ActivityStageRewardData {
-    key: string;
-    value: Torappu_ActivityStageRewardData;
+
+table dict__string__clz_Torappu_ActivityStageRewardData {
+    key: string(key);
+    value: clz_Torappu_ActivityStageRewardData;
 }
-enum Torappu_ActivityThemeType : int {
+
+enum enum__Torappu_ActivityThemeType : int {
     NONE = 0,
     ACTIVITY = 1,
     CRISIS = 2,
     MAINLINE = 3,
     ROGUELIKE = 4,
 }
-table Torappu_ActivityThemeData_TimeNode {
-    title: string;
-    ts: long;
+
+table clz_Torappu_ActivityThemeData_TimeNode {
+    title: string; 
+    ts: long; 
 }
-table Torappu_ActivityThemeData {
-    id: string;
-    type: Torappu_ActivityThemeType;
-    funcId: string;
-    endTs: long;
-    sortId: int;
-    itemId: string;
-    timeNodes: [Torappu_ActivityThemeData_TimeNode];
-    startTs: long;
+
+table clz_Torappu_ActivityThemeData {
+    id: string; 
+    type: enum__Torappu_ActivityThemeType; 
+    funcId: string; 
+    endTs: long; 
+    sortId: int; 
+    itemId: string; 
+    timeNodes: [clz_Torappu_ActivityThemeData_TimeNode]; 
+    startTs: long; 
 }
-enum Torappu_AppearanceStyle : int {
+
+enum enum__Torappu_AppearanceStyle : int {
     MAIN_NORMAL = 0,
     MAIN_PREDEFINED = 1,
     SUB = 2,
@@ -2473,277 +2857,319 @@ enum Torappu_AppearanceStyle : int {
     MIST_OPS = 5,
     SPECIAL_STORY = 6,
 }
-enum Torappu_LevelData_Difficulty : int {
+
+enum enum__Torappu_LevelData_Difficulty : int {
     NONE = 0,
     NORMAL = 1,
     FOUR_STAR = 2,
     EASY = 4,
     ALL = 7,
 }
-table Torappu_StageData_ConditionDesc {
-    stageId: string;
-    completeState: Torappu_PlayerBattleRank;
+
+table clz_Torappu_StageData_ConditionDesc {
+    stageId: string; 
+    completeState: enum__Torappu_PlayerBattleRank; 
 }
-table Torappu_AprilFoolStageData {
-    stageId: string;
-    levelId: string;
-    code: string;
-    name: string;
-    appearanceStyle: Torappu_AppearanceStyle;
-    loadingPicId: string;
-    difficulty: Torappu_LevelData_Difficulty;
-    unlockCondition: [Torappu_StageData_ConditionDesc];
-    stageDropInfo: [Torappu_ItemBundle];
+
+table clz_Torappu_AprilFoolStageData {
+    stageId: string; 
+    levelId: string; 
+    code: string; 
+    name: string; 
+    appearanceStyle: enum__Torappu_AppearanceStyle; 
+    loadingPicId: string; 
+    difficulty: enum__Torappu_LevelData_Difficulty; 
+    unlockCondition: [clz_Torappu_StageData_ConditionDesc]; 
+    stageDropInfo: [clz_Torappu_ItemBundle]; 
 }
-table dict__string__Torappu_AprilFoolStageData {
-    key: string;
-    value: Torappu_AprilFoolStageData;
+
+table dict__string__clz_Torappu_AprilFoolStageData {
+    key: string(key);
+    value: clz_Torappu_AprilFoolStageData;
 }
-table Torappu_AprilFoolScoreData {
-    stageId: string;
-    sortId: int;
-    playerName: string;
-    playerScore: long;
+
+table clz_Torappu_AprilFoolScoreData {
+    stageId: string; 
+    sortId: int; 
+    playerName: string; 
+    playerScore: long; 
 }
-table Torappu_AprilFoolConst {
-    battleFinishLoseDes: string;
-    killEnemyDes: string;
-    killBossDes: string;
-    totalTime: string;
+
+table dict__string__list_clz_Torappu_AprilFoolScoreData {
+    key: string(key);
+    value: [clz_Torappu_AprilFoolScoreData];
 }
-table Torappu_Act4funPerformGroupInfo {
-    performGroupId: string;
-    performIds: [string];
+
+table clz_Torappu_AprilFoolConst {
+    battleFinishLoseDes: string; 
+    killEnemyDes: string; 
+    killBossDes: string; 
+    totalTime: string; 
 }
-table dict__string__Torappu_Act4funPerformGroupInfo {
-    key: string;
-    value: Torappu_Act4funPerformGroupInfo;
+
+table clz_Torappu_Act4funPerformGroupInfo {
+    performGroupId: string; 
+    performIds: [string]; 
 }
-table Torappu_Act4funPerformWordData {
-    text: string;
-    picId: string;
-    backgroundId: string;
+
+table dict__string__clz_Torappu_Act4funPerformGroupInfo {
+    key: string(key);
+    value: clz_Torappu_Act4funPerformGroupInfo;
 }
-table Torappu_Act4funPerformInfo {
-    performId: string;
-    performFinishedPicId: string;
-    fixedCmpGroup: string;
-    cmpGroups: [string];
-    words: [Torappu_Act4funPerformWordData];
+
+table clz_Torappu_Act4funPerformWordData {
+    text: string; 
+    picId: string; 
+    backgroundId: string; 
 }
-table dict__string__Torappu_Act4funPerformInfo {
-    key: string;
-    value: Torappu_Act4funPerformInfo;
+
+table clz_Torappu_Act4funPerformInfo {
+    performId: string; 
+    performFinishedPicId: string; 
+    fixedCmpGroup: string; 
+    cmpGroups: [string]; 
+    words: [clz_Torappu_Act4funPerformWordData]; 
 }
-enum Torappu_Act4funStageAttributeType : int {
+
+table dict__string__clz_Torappu_Act4funPerformInfo {
+    key: string(key);
+    value: clz_Torappu_Act4funPerformInfo;
+}
+
+enum enum__Torappu_Act4funStageAttributeType : int {
     POS = 0,
     NEG = 1,
 }
-table Torappu_Act4funLiveMatEffectInfo {
-    liveMatEffectId: string;
-    valueId: string;
-    performGroup: string;
+
+table clz_Torappu_Act4funLiveMatEffectInfo {
+    liveMatEffectId: string; 
+    valueId: string; 
+    performGroup: string; 
 }
-table dict__Torappu_Act4funStageAttributeType__Torappu_Act4funLiveMatEffectInfo {
-    key: Torappu_Act4funStageAttributeType;
-    value: Torappu_Act4funLiveMatEffectInfo;
+
+table dict__enum__Torappu_Act4funStageAttributeType__clz_Torappu_Act4funLiveMatEffectInfo {
+    key: enum__Torappu_Act4funStageAttributeType(key);
+    value: clz_Torappu_Act4funLiveMatEffectInfo;
 }
-table Torappu_Act4funLiveMatInfoData {
-    liveMatId: string;
-    stageId: string;
-    name: string;
-    picId: string;
-    tagTxt: string;
-    emojiIcon: string;
-    selectedPerformId: string;
-    effectInfos: [dict__Torappu_Act4funStageAttributeType__Torappu_Act4funLiveMatEffectInfo];
+
+table clz_Torappu_Act4funLiveMatInfoData {
+    liveMatId: string; 
+    stageId: string; 
+    name: string; 
+    picId: string; 
+    tagTxt: string; 
+    emojiIcon: string; 
+    selectedPerformId: string; 
+    effectInfos: [dict__enum__Torappu_Act4funStageAttributeType__clz_Torappu_Act4funLiveMatEffectInfo]; 
 }
-table dict__string__Torappu_Act4funLiveMatInfoData {
-    key: string;
-    value: Torappu_Act4funLiveMatInfoData;
+
+table dict__string__clz_Torappu_Act4funLiveMatInfoData {
+    key: string(key);
+    value: clz_Torappu_Act4funLiveMatInfoData;
 }
-table Torappu_Act4funSpLiveMatInfoData {
-    spLiveMatId: string;
-    spLiveEveId: string;
-    stageId: string;
-    name: string;
-    picId: string;
-    tagTxt: string;
-    emojiIcon: string;
-    accordingPerformId: string;
-    selectedPerformId: string;
-    valueEffectId: string;
-    accordingSuperChatId: string;
+
+table clz_Torappu_Act4funSpLiveMatInfoData {
+    spLiveMatId: string; 
+    spLiveEveId: string; 
+    stageId: string; 
+    name: string; 
+    picId: string; 
+    tagTxt: string; 
+    emojiIcon: string; 
+    accordingPerformId: string; 
+    selectedPerformId: string; 
+    valueEffectId: string; 
+    accordingSuperChatId: string; 
 }
-table dict__string__Torappu_Act4funSpLiveMatInfoData {
-    key: string;
-    value: Torappu_Act4funSpLiveMatInfoData;
+
+table dict__string__clz_Torappu_Act4funSpLiveMatInfoData {
+    key: string(key);
+    value: clz_Torappu_Act4funSpLiveMatInfoData;
 }
-table Torappu_Act4funValueEffectInfoData {
-    valueEffectId: string;
-    effectParams: [dict__string__int];
+
+table clz_Torappu_Act4funValueEffectInfoData {
+    valueEffectId: string; 
+    effectParams: [dict__string__int]; 
 }
-table dict__string__Torappu_Act4funValueEffectInfoData {
-    key: string;
-    value: Torappu_Act4funValueEffectInfoData;
+
+table dict__string__clz_Torappu_Act4funValueEffectInfoData {
+    key: string(key);
+    value: clz_Torappu_Act4funValueEffectInfoData;
 }
-table Torappu_Act4funLiveValueInfoData {
-    liveValueId: string;
-    name: string;
-    stageId: string;
-    iconId: string;
-    highEndingId: string;
-    lowEndingId: string;
-    increaseToastTxt: string;
-    decreaseToastTxt: string;
+
+table clz_Torappu_Act4funLiveValueInfoData {
+    liveValueId: string; 
+    name: string; 
+    stageId: string; 
+    iconId: string; 
+    highEndingId: string; 
+    lowEndingId: string; 
+    increaseToastTxt: string; 
+    decreaseToastTxt: string; 
 }
-table dict__string__Torappu_Act4funLiveValueInfoData {
-    key: string;
-    value: Torappu_Act4funLiveValueInfoData;
+
+table dict__string__clz_Torappu_Act4funLiveValueInfoData {
+    key: string(key);
+    value: clz_Torappu_Act4funLiveValueInfoData;
 }
-enum Torappu_Act4funSuperChatType : int {
+
+enum enum__Torappu_Act4funSuperChatType : int {
     ROLLED = 0,
     RELATED = 1,
 }
-table Torappu_Act4funSuperChatInfo {
-    superChatId: string;
-    chatType: Torappu_Act4funSuperChatType;
-    userName: string;
-    iconId: string;
-    valueEffectId: string;
-    performId: string;
-    superChatTxt: string;
+
+table clz_Torappu_Act4funSuperChatInfo {
+    superChatId: string; 
+    chatType: enum__Torappu_Act4funSuperChatType; 
+    userName: string; 
+    iconId: string; 
+    valueEffectId: string; 
+    performId: string; 
+    superChatTxt: string; 
 }
-table dict__string__Torappu_Act4funSuperChatInfo {
-    key: string;
-    value: Torappu_Act4funSuperChatInfo;
+
+table dict__string__clz_Torappu_Act4funSuperChatInfo {
+    key: string(key);
+    value: clz_Torappu_Act4funSuperChatInfo;
 }
-table Torappu_Act4funCmtInfo {
-    iconId: string;
-    name: string;
-    cmtTxt: string;
+
+table clz_Torappu_Act4funCmtInfo {
+    iconId: string; 
+    name: string; 
+    cmtTxt: string; 
 }
-table Torappu_Act4funCmtGroupInfo {
-    cmtGroupId: string;
-    cmtList: [Torappu_Act4funCmtInfo];
+
+table clz_Torappu_Act4funCmtGroupInfo {
+    cmtGroupId: string; 
+    cmtList: [clz_Torappu_Act4funCmtInfo]; 
 }
-table dict__string__Torappu_Act4funCmtGroupInfo {
-    key: string;
-    value: Torappu_Act4funCmtGroupInfo;
+
+table dict__string__clz_Torappu_Act4funCmtGroupInfo {
+    key: string(key);
+    value: clz_Torappu_Act4funCmtGroupInfo;
 }
-table Torappu_Act4funEndingInfo {
-    endingId: string;
-    endingAvg: string;
-    endingDesc: string;
-    stageId: string;
-    isGoodEnding: bool;
+
+table clz_Torappu_Act4funEndingInfo {
+    endingId: string; 
+    endingAvg: string; 
+    endingDesc: string; 
+    stageId: string; 
+    isGoodEnding: bool; 
 }
-table dict__string__Torappu_Act4funEndingInfo {
-    key: string;
-    value: Torappu_Act4funEndingInfo;
+
+table dict__string__clz_Torappu_Act4funEndingInfo {
+    key: string(key);
+    value: clz_Torappu_Act4funEndingInfo;
 }
-table Torappu_Act4funTokenInfoData {
-    tokenLevelId: string;
-    levelDesc: string;
-    skillDesc: string;
-    tokenLevelNum: int;
-    levelIconId: string;
+
+table clz_Torappu_Act4funTokenInfoData {
+    tokenLevelId: string; 
+    levelDesc: string; 
+    skillDesc: string; 
+    tokenLevelNum: int; 
+    levelIconId: string; 
 }
-table dict__string__Torappu_Act4funTokenInfoData {
-    key: string;
-    value: Torappu_Act4funTokenInfoData;
+
+table dict__string__clz_Torappu_Act4funTokenInfoData {
+    key: string(key);
+    value: clz_Torappu_Act4funTokenInfoData;
 }
-table Torappu_Act4funMissionData {
-    missionId: string;
-    sortId: string;
-    missionDes: string;
-    rewardIconIds: [string];
-    rewards: [Torappu_ItemBundle];
+
+table clz_Torappu_Act4funMissionData {
+    missionId: string; 
+    sortId: string; 
+    missionDes: string; 
+    rewardIconIds: [string]; 
+    rewards: [clz_Torappu_ItemBundle]; 
 }
-table dict__string__Torappu_Act4funMissionData {
-    key: string;
-    value: Torappu_Act4funMissionData;
+
+table dict__string__clz_Torappu_Act4funMissionData {
+    key: string(key);
+    value: clz_Torappu_Act4funMissionData;
 }
-table Torappu_Act4funConst {
-    liveMatAmtLowerLimit: int;
-    liveTurnUpperLimit: int;
-    superChatCountDownNum: int;
-    badEndingPerformEffectTitle: string;
-    performEffectTitle: string;
-    defaultPerformPicId: string;
-    defaultTxtBackground: string;
-    openingPerformGroup: string;
-    forgetPerformGroup: string;
-    runPerformGroup: string;
-    liveMatDefaultUserIcon: string;
-    liveMatAttributeIcon: string;
-    liveMatAttribIconDiffNum: int;
-    liveValueAbsLimit: int;
-    cmtAppearTimeLowerLimit: float;
-    cmtAppearTimeUpperLimit: float;
-    subtitleIntervalTime: float;
-    mainPageEventDes: string;
-    spStageEndingTip: string;
-    noLiveEndingTip: string;
-    notEnoughEndingTip: string;
-    enoughEndingTip: string;
-    mainPagePersonal: string;
-    mainPageJobDes: string;
-    endingPageConfirmTxt: string;
-    runConfirmTxt: string;
-    mainPageDiamondMissionId: string;
-    reconnectConfirmTxt: string;
-    studyStageId: string;
-    goodEndingToastTxt: string;
-    tokenLevelUpToastTxt: string;
-    studyStageToastTxt: string;
-    matNotEnoughToastTxt: string;
-    formalLevelUnlockToastTxt: string;
+
+table clz_Torappu_Act4funConst {
+    liveMatAmtLowerLimit: int; 
+    liveTurnUpperLimit: int; 
+    superChatCountDownNum: int; 
+    badEndingPerformEffectTitle: string; 
+    performEffectTitle: string; 
+    defaultPerformPicId: string; 
+    defaultTxtBackground: string; 
+    openingPerformGroup: string; 
+    forgetPerformGroup: string; 
+    runPerformGroup: string; 
+    liveMatDefaultUserIcon: string; 
+    liveMatAttributeIcon: string; 
+    liveMatAttribIconDiffNum: int; 
+    liveValueAbsLimit: int; 
+    cmtAppearTimeLowerLimit: float; 
+    cmtAppearTimeUpperLimit: float; 
+    subtitleIntervalTime: float; 
+    mainPageEventDes: string; 
+    spStageEndingTip: string; 
+    noLiveEndingTip: string; 
+    notEnoughEndingTip: string; 
+    enoughEndingTip: string; 
+    mainPagePersonal: string; 
+    mainPageJobDes: string; 
+    endingPageConfirmTxt: string; 
+    runConfirmTxt: string; 
+    mainPageDiamondMissionId: string; 
+    reconnectConfirmTxt: string; 
+    studyStageId: string; 
+    goodEndingToastTxt: string; 
+    tokenLevelUpToastTxt: string; 
+    studyStageToastTxt: string; 
+    matNotEnoughToastTxt: string; 
+    formalLevelUnlockToastTxt: string; 
 }
-table Torappu_Act4funStageExtraData {
-    description: string;
-    valueIconId: string;
+
+table clz_Torappu_Act4funStageExtraData {
+    description: string; 
+    valueIconId: string; 
 }
-table dict__string__Torappu_Act4funStageExtraData {
-    key: string;
-    value: Torappu_Act4funStageExtraData;
+
+table dict__string__clz_Torappu_Act4funStageExtraData {
+    key: string(key);
+    value: clz_Torappu_Act4funStageExtraData;
 }
-table Torappu_Act4funData {
-    performGroupInfoDict: [dict__string__Torappu_Act4funPerformGroupInfo];
-    performInfoDict: [dict__string__Torappu_Act4funPerformInfo];
-    normalMatDict: [dict__string__Torappu_Act4funLiveMatInfoData];
-    spMatDict: [dict__string__Torappu_Act4funSpLiveMatInfoData];
-    valueEffectInfoDict: [dict__string__Torappu_Act4funValueEffectInfoData];
-    liveValueInfoDict: [dict__string__Torappu_Act4funLiveValueInfoData];
-    superChatInfoDict: [dict__string__Torappu_Act4funSuperChatInfo];
-    cmtGroupInfoDict: [dict__string__Torappu_Act4funCmtGroupInfo];
-    cmtUsers: [string];
-    endingDict: [dict__string__Torappu_Act4funEndingInfo];
-    tokenLevelInfos: [dict__string__Torappu_Act4funTokenInfoData];
-    missionDatas: [dict__string__Torappu_Act4funMissionData];
-    constant: Torappu_Act4funConst;
-    stageExtraDatas: [dict__string__Torappu_Act4funStageExtraData];
-    randomMsgText: [string];
-    randomUserIconId: [string];
+
+table clz_Torappu_Act4funData {
+    performGroupInfoDict: [dict__string__clz_Torappu_Act4funPerformGroupInfo]; 
+    performInfoDict: [dict__string__clz_Torappu_Act4funPerformInfo]; 
+    normalMatDict: [dict__string__clz_Torappu_Act4funLiveMatInfoData]; 
+    spMatDict: [dict__string__clz_Torappu_Act4funSpLiveMatInfoData]; 
+    valueEffectInfoDict: [dict__string__clz_Torappu_Act4funValueEffectInfoData]; 
+    liveValueInfoDict: [dict__string__clz_Torappu_Act4funLiveValueInfoData]; 
+    superChatInfoDict: [dict__string__clz_Torappu_Act4funSuperChatInfo]; 
+    cmtGroupInfoDict: [dict__string__clz_Torappu_Act4funCmtGroupInfo]; 
+    cmtUsers: [string]; 
+    endingDict: [dict__string__clz_Torappu_Act4funEndingInfo]; 
+    tokenLevelInfos: [dict__string__clz_Torappu_Act4funTokenInfoData]; 
+    missionDatas: [dict__string__clz_Torappu_Act4funMissionData]; 
+    constant: clz_Torappu_Act4funConst; 
+    stageExtraDatas: [dict__string__clz_Torappu_Act4funStageExtraData]; 
+    randomMsgText: [string]; 
+    randomUserIconId: [string]; 
 }
-table dict__string__list_Torappu_AprilFoolScoreData {
-    key: string;
-    value: [Torappu_AprilFoolScoreData];
+
+table clz_Torappu_AprilFoolTable {
+    stages: [dict__string__clz_Torappu_AprilFoolStageData]; 
+    scoreDict: [dict__string__list_clz_Torappu_AprilFoolScoreData]; 
+    constant: clz_Torappu_AprilFoolConst; 
+    act4FunData: clz_Torappu_Act4funData; 
 }
-table Torappu_AprilFoolTable {
-    stages: [dict__string__Torappu_AprilFoolStageData];
-    scoreDict: [dict__string__list_Torappu_AprilFoolScoreData];
-    constant: Torappu_AprilFoolConst;
-    act4FunData: Torappu_Act4funData;
-}
-enum Torappu_CartComponents_CartAccessoryType : int {
+
+enum enum__Torappu_CartComponents_CartAccessoryType : int {
     NONE = 0,
     ROOF = 1,
     HEADSTOCK = 2,
     TRUNK = 3,
     CAR_OS = 4,
 }
-enum Torappu_CartComponents_CartAccessoryPos : int {
+
+enum enum__Torappu_CartComponents_CartAccessoryPos : int {
     NONE = 0,
     ROOF = 1,
     HEADSTOCK = 2,
@@ -2752,359 +3178,409 @@ enum Torappu_CartComponents_CartAccessoryPos : int {
     CAR_OS_01 = 5,
     CAR_OS_02 = 6,
 }
-table dict__Torappu_CartComponents_CartAccessoryPos__list_string {
-    key: Torappu_CartComponents_CartAccessoryPos;
+
+table dict__enum__Torappu_CartComponents_CartAccessoryPos__list_string {
+    key: enum__Torappu_CartComponents_CartAccessoryPos(key);
     value: [string];
 }
-table Torappu_CartComponents {
-    compId: string;
-    sortId: int;
-    type: Torappu_CartComponents_CartAccessoryType;
-    posList: [Torappu_CartComponents_CartAccessoryPos];
-    posIdDict: [dict__Torappu_CartComponents_CartAccessoryPos__list_string];
-    name: string;
-    icon: string;
-    showScores: int;
-    itemUsage: string;
-    itemDesc: string;
-    itemObtain: string;
-    rarity: int;
-    detailDesc: string;
-    price: int;
-    specialObtain: string;
-    obtainInRandom: bool;
-    additiveColor: string;
+
+table clz_Torappu_CartComponents {
+    compId: string; 
+    sortId: int; 
+    type: enum__Torappu_CartComponents_CartAccessoryType; 
+    posList: [enum__Torappu_CartComponents_CartAccessoryPos]; 
+    posIdDict: [dict__enum__Torappu_CartComponents_CartAccessoryPos__list_string]; 
+    name: string; 
+    icon: string; 
+    showScores: int; 
+    itemUsage: string; 
+    itemDesc: string; 
+    itemObtain: string; 
+    rarity: int; 
+    detailDesc: string; 
+    price: int; 
+    specialObtain: string; 
+    obtainInRandom: bool; 
+    additiveColor: string; 
 }
-table dict__string__Torappu_CartComponents {
-    key: string;
-    value: Torappu_CartComponents;
+
+table dict__string__clz_Torappu_CartComponents {
+    key: string(key);
+    value: clz_Torappu_CartComponents;
 }
-table dict__string__Torappu_RuneTable_PackedRuneData {
-    key: string;
-    value: Torappu_RuneTable_PackedRuneData;
+
+table dict__string__clz_Torappu_RuneTable_PackedRuneData {
+    key: string(key);
+    value: clz_Torappu_RuneTable_PackedRuneData;
 }
-table Torappu_CartData_CartConstData {
-    carItemUnlockStageId: string;
-    carItemUnlockDesc: string;
-    spLevelUnlockItemCnt: int;
-    mileStoneBaseInterval: int;
-    spStageIds: [string];
-    carFrameDefaultColor: string;
+
+table clz_Torappu_CartData_CartConstData {
+    carItemUnlockStageId: string; 
+    carItemUnlockDesc: string; 
+    spLevelUnlockItemCnt: int; 
+    mileStoneBaseInterval: int; 
+    spStageIds: [string]; 
+    carFrameDefaultColor: string; 
 }
-table Torappu_CartData {
-    carDict: [dict__string__Torappu_CartComponents];
-    runeDataDict: [dict__string__Torappu_RuneTable_PackedRuneData];
-    cartStages: [string];
-    constData: Torappu_CartData_CartConstData;
+
+table clz_Torappu_CartData {
+    carDict: [dict__string__clz_Torappu_CartComponents]; 
+    runeDataDict: [dict__string__clz_Torappu_RuneTable_PackedRuneData]; 
+    cartStages: [string]; 
+    constData: clz_Torappu_CartData_CartConstData; 
 }
-enum Torappu_SiracusaData_ZoneUnlockType : int {
+
+enum enum__Torappu_SiracusaData_ZoneUnlockType : int {
     NONE = 0,
     STAGE_UNLOCK = 1,
     TASK_UNLOCK = 2,
 }
-table Torappu_SiracusaData_AreaData {
-    areaId: string;
-    areaName: string;
-    areaSubName: string;
-    unlockType: Torappu_SiracusaData_ZoneUnlockType;
-    unlockStage: string;
-    areaIconId: string;
-    pointList: [string];
+
+table clz_Torappu_SiracusaData_AreaData {
+    areaId: string; 
+    areaName: string; 
+    areaSubName: string; 
+    unlockType: enum__Torappu_SiracusaData_ZoneUnlockType; 
+    unlockStage: string; 
+    areaIconId: string; 
+    pointList: [string]; 
 }
-table dict__string__Torappu_SiracusaData_AreaData {
-    key: string;
-    value: Torappu_SiracusaData_AreaData;
+
+table dict__string__clz_Torappu_SiracusaData_AreaData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_AreaData;
 }
-table Torappu_SiracusaData_PointData {
-    pointId: string;
-    areaId: string;
-    pointName: string;
-    pointDesc: string;
-    pointIconId: string;
-    pointItaName: string;
+
+table clz_Torappu_SiracusaData_PointData {
+    pointId: string; 
+    areaId: string; 
+    pointName: string; 
+    pointDesc: string; 
+    pointIconId: string; 
+    pointItaName: string; 
 }
-table dict__string__Torappu_SiracusaData_PointData {
-    key: string;
-    value: Torappu_SiracusaData_PointData;
+
+table dict__string__clz_Torappu_SiracusaData_PointData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_PointData;
 }
-enum Torappu_SiracusaData_CardGainType : int {
+
+enum enum__Torappu_SiracusaData_CardGainType : int {
     NONE = 0,
     STAGE_GAIN = 1,
     TASK_GAIN = 2,
 }
-table Torappu_SiracusaData_CharCardData {
-    charCardId: string;
-    sortIndex: int;
-    avgChar: string;
-    avgCharOffsetY: float;
-    charCardName: string;
-    charCardItaName: string;
-    charCardTitle: string;
-    charCardDesc: string;
-    fullCompleteDes: string;
-    gainDesc: string;
-    themeColor: string;
-    taskRingList: [string];
-    operaItemId: string;
-    gainType: Torappu_SiracusaData_CardGainType;
-    gainParamList: [string];
+
+table clz_Torappu_SiracusaData_CharCardData {
+    charCardId: string; 
+    sortIndex: int; 
+    avgChar: string; 
+    avgCharOffsetY: float; 
+    charCardName: string; 
+    charCardItaName: string; 
+    charCardTitle: string; 
+    charCardDesc: string; 
+    fullCompleteDes: string; 
+    gainDesc: string; 
+    themeColor: string; 
+    taskRingList: [string]; 
+    operaItemId: string; 
+    gainType: enum__Torappu_SiracusaData_CardGainType; 
+    gainParamList: [string]; 
 }
-table dict__string__Torappu_SiracusaData_CharCardData {
-    key: string;
-    value: Torappu_SiracusaData_CharCardData;
+
+table dict__string__clz_Torappu_SiracusaData_CharCardData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_CharCardData;
 }
-enum Torappu_SiracusaData_TaskRingLogicType : int {
+
+enum enum__Torappu_SiracusaData_TaskRingLogicType : int {
     NONE = 0,
     LINEAR = 1,
     AND = 2,
     OR = 3,
 }
-table Torappu_SiracusaData_TaskRingData {
-    taskRingId: string;
-    sortIndex: int;
-    charCardId: string;
-    logicType: Torappu_SiracusaData_TaskRingLogicType;
-    ringText: string;
-    item: Torappu_ItemBundle;
-    isPrecious: bool;
-    taskIdList: [string];
+
+table clz_Torappu_SiracusaData_TaskRingData {
+    taskRingId: string; 
+    sortIndex: int; 
+    charCardId: string; 
+    logicType: enum__Torappu_SiracusaData_TaskRingLogicType; 
+    ringText: string; 
+    item: clz_Torappu_ItemBundle; 
+    isPrecious: bool; 
+    taskIdList: [string]; 
 }
-table dict__string__Torappu_SiracusaData_TaskRingData {
-    key: string;
-    value: Torappu_SiracusaData_TaskRingData;
+
+table dict__string__clz_Torappu_SiracusaData_TaskRingData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_TaskRingData;
 }
-enum Torappu_SiracusaData_TaskType : int {
+
+enum enum__Torappu_SiracusaData_TaskType : int {
     NONE = 0,
     BATTLE = 1,
     AVG = 2,
 }
-table Torappu_SiracusaData_TaskBasicInfoData {
-    taskId: string;
-    taskRingId: string;
-    sortIndex: int;
-    placeId: string;
-    npcId: string;
-    taskType: Torappu_SiracusaData_TaskType;
+
+table clz_Torappu_SiracusaData_TaskBasicInfoData {
+    taskId: string; 
+    taskRingId: string; 
+    sortIndex: int; 
+    placeId: string; 
+    npcId: string; 
+    taskType: enum__Torappu_SiracusaData_TaskType; 
 }
-table dict__string__Torappu_SiracusaData_TaskBasicInfoData {
-    key: string;
-    value: Torappu_SiracusaData_TaskBasicInfoData;
+
+table dict__string__clz_Torappu_SiracusaData_TaskBasicInfoData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_TaskBasicInfoData;
 }
-table Torappu_SiracusaData_BattleTaskData {
-    taskId: string;
-    stageId: string;
-    battleTaskDesc: string;
-    targetType: string;
-    targetTemplate: string;
-    targetParamList: [string];
+
+table clz_Torappu_SiracusaData_BattleTaskData {
+    taskId: string; 
+    stageId: string; 
+    battleTaskDesc: string; 
+    targetType: string; 
+    targetTemplate: string; 
+    targetParamList: [string]; 
 }
-table dict__string__Torappu_SiracusaData_BattleTaskData {
-    key: string;
-    value: Torappu_SiracusaData_BattleTaskData;
+
+table dict__string__clz_Torappu_SiracusaData_BattleTaskData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_BattleTaskData;
 }
-table Torappu_SiracusaData_AVGTaskData {
-    taskId: string;
-    taskAvg: string;
+
+table clz_Torappu_SiracusaData_AVGTaskData {
+    taskId: string; 
+    taskAvg: string; 
 }
-table dict__string__Torappu_SiracusaData_AVGTaskData {
-    key: string;
-    value: Torappu_SiracusaData_AVGTaskData;
+
+table dict__string__clz_Torappu_SiracusaData_AVGTaskData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_AVGTaskData;
 }
-table Torappu_SiracusaData_ItemInfoData {
-    itemId: string;
-    itemName: string;
-    itemItalyName: string;
-    itemDesc: string;
-    itemIcon: string;
+
+table clz_Torappu_SiracusaData_ItemInfoData {
+    itemId: string; 
+    itemName: string; 
+    itemItalyName: string; 
+    itemDesc: string; 
+    itemIcon: string; 
 }
-table dict__string__Torappu_SiracusaData_ItemInfoData {
-    key: string;
-    value: Torappu_SiracusaData_ItemInfoData;
+
+table dict__string__clz_Torappu_SiracusaData_ItemInfoData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_ItemInfoData;
 }
-table Torappu_SiracusaData_ItemCardInfoData {
-    cardId: string;
-    cardName: string;
-    cardDesc: string;
-    optionScript: string;
+
+table clz_Torappu_SiracusaData_ItemCardInfoData {
+    cardId: string; 
+    cardName: string; 
+    cardDesc: string; 
+    optionScript: string; 
 }
-table dict__string__Torappu_SiracusaData_ItemCardInfoData {
-    key: string;
-    value: Torappu_SiracusaData_ItemCardInfoData;
+
+table dict__string__clz_Torappu_SiracusaData_ItemCardInfoData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_ItemCardInfoData;
 }
-enum Torappu_SiracusaData_NavigationType : int {
+
+enum enum__Torappu_SiracusaData_NavigationType : int {
     NONE = 0,
     AVG = 1,
     LEVEL = 2,
     CHAR_CARD = 3,
 }
-table Torappu_SiracusaData_NavigationInfoData {
-    entryId: string;
-    navigationType: Torappu_SiracusaData_NavigationType;
-    entryIcon: string;
-    entryName: string;
-    entrySubName: string;
-}
-table dict__string__Torappu_SiracusaData_NavigationInfoData {
-    key: string;
-    value: Torappu_SiracusaData_NavigationInfoData;
-}
-table Torappu_SiracusaData_OptionInfoData {
-    optionId: string;
-    optionDesc: string;
-    optionScript: string;
-    optionGoToScript: string;
-    isLeaveOption: bool;
-    needCommentLike: bool;
-    requireCardId: string;
-}
-table dict__string__Torappu_SiracusaData_OptionInfoData {
-    key: string;
-    value: Torappu_SiracusaData_OptionInfoData;
-}
-table Torappu_SiracusaData_StagePointInfoData {
-    stageId: string;
-    pointId: string;
-    sortId: int;
-    isTaskStage: bool;
-}
-table Torappu_SiracusaData_StoryBriefInfoData {
-    storyId: string;
-    stageId: string;
-    storyInfo: string;
-}
-table dict__string__Torappu_SiracusaData_StoryBriefInfoData {
-    key: string;
-    value: Torappu_SiracusaData_StoryBriefInfoData;
-}
-table Torappu_SiracusaData_OperaInfoData {
-    operaId: string;
-    sortId: int;
-    operaName: string;
-    operaSubName: string;
-    operaScore: string;
-    unlockTime: long;
-}
-table dict__string__Torappu_SiracusaData_OperaInfoData {
-    key: string;
-    value: Torappu_SiracusaData_OperaInfoData;
-}
-table Torappu_SiracusaData_OperaCommentInfoData {
-    commentId: string;
-    referenceOperaId: string;
-    columnIndex: int;
-    columnSortId: int;
-    commentTitle: string;
-    score: string;
-    commentContent: string;
-    commentCharId: string;
-}
-table dict__string__Torappu_SiracusaData_OperaCommentInfoData {
-    key: string;
-    value: Torappu_SiracusaData_OperaCommentInfoData;
-}
-table Torappu_SiracusaData_ConstData {
-    operaDailyNum: int;
-    operaAllUnlockTime: long;
-    defaultFocusArea: string;
-}
-table Torappu_SiracusaData {
-    areaDataMap: [dict__string__Torappu_SiracusaData_AreaData];
-    pointDataMap: [dict__string__Torappu_SiracusaData_PointData];
-    charCardMap: [dict__string__Torappu_SiracusaData_CharCardData];
-    taskRingMap: [dict__string__Torappu_SiracusaData_TaskRingData];
-    taskInfoMap: [dict__string__Torappu_SiracusaData_TaskBasicInfoData];
-    battleTaskMap: [dict__string__Torappu_SiracusaData_BattleTaskData];
-    avgTaskMap: [dict__string__Torappu_SiracusaData_AVGTaskData];
-    itemInfoMap: [dict__string__Torappu_SiracusaData_ItemInfoData];
-    itemCardInfoMap: [dict__string__Torappu_SiracusaData_ItemCardInfoData];
-    navigationInfoMap: [dict__string__Torappu_SiracusaData_NavigationInfoData];
-    optionInfoMap: [dict__string__Torappu_SiracusaData_OptionInfoData];
-    stagePointList: [Torappu_SiracusaData_StagePointInfoData];
-    storyBriefInfoDataMap: [dict__string__Torappu_SiracusaData_StoryBriefInfoData];
-    operaInfoMap: [dict__string__Torappu_SiracusaData_OperaInfoData];
-    operaCommentInfoMap: [dict__string__Torappu_SiracusaData_OperaCommentInfoData];
-    constData: Torappu_SiracusaData_ConstData;
-}
-table Torappu_KVSwitchInfo {
-    isDefault: bool;
-    displayTime: long;
-    zoneId: string;
-}
-table dict__string__Torappu_KVSwitchInfo {
-    key: string;
-    value: Torappu_KVSwitchInfo;
-}
-table Torappu_ActivityKVSwitchData {
-    kvSwitchInfo: [dict__string__Torappu_KVSwitchInfo];
-}
-table dict__string__Torappu_ActivityKVSwitchData {
-    key: string;
-    value: Torappu_ActivityKVSwitchData;
-}
-table Torappu_DynEntrySwitchInfo {
-    entryId: string;
-    sortId: int;
-    stageId: string;
-}
-table dict__string__Torappu_DynEntrySwitchInfo {
-    key: string;
-    value: Torappu_DynEntrySwitchInfo;
-}
-table Torappu_ActivityDynEntrySwitchData {
-    entrySwitchInfo: [dict__string__Torappu_DynEntrySwitchInfo];
-}
-table dict__string__Torappu_ActivityDynEntrySwitchData {
-    key: string;
-    value: Torappu_ActivityDynEntrySwitchData;
-}
-table Torappu_ActivityTable_ActivityHiddenStageUnlockConditionData {
-    unlockStageId: string;
-    unlockTemplate: string;
-    unlockParams: [string];
-    missionStageId: string;
-    unlockedName: string;
-    lockedName: string;
-    lockCode: string;
-    unlockedDes: string;
-    templateDesc: string;
-    desc: string;
-    riddle: string;
-}
-table Torappu_ActivityTable_ActivityHiddenStageData {
-    stageId: string;
-    encodedName: string;
-    showStageId: string;
-    rewardDiamond: bool;
-    missions: [Torappu_ActivityTable_ActivityHiddenStageUnlockConditionData];
-}
-table dict__string__list_long {
-    key: string;
-    value: [long];
-}
-table dict__string__dict__string__string {
-    key: string;
-    value: [dict__string__string];
-}
-table Torappu_ActivityTable {
-    basicInfo: [dict__string__Torappu_ActivityTable_BasicData];
-    homeActConfig: [dict__string__Torappu_ActivityTable_HomeActivityConfig];
-    zoneToActivity: [dict__string__string];
-    missionData: [Torappu_MissionData];
-    missionGroup: [Torappu_MissionGroup];
-    replicateMissions: [dict__string__string];
-    activity: Torappu_ActivityTable_ActivityDetailTable;
-    activityItems: [dict__string__list_string];
-    syncPoints: [dict__string__list_long];
-    dynActs: [dict__string__JObject];
-    stageRewardsData: [dict__string__Torappu_ActivityStageRewardData];
-    actThemes: [Torappu_ActivityThemeData];
-    actFunData: Torappu_AprilFoolTable;
-    carData: Torappu_CartData;
-    siracusaData: Torappu_SiracusaData;
-    kvSwitchData: [dict__string__Torappu_ActivityKVSwitchData];
-    dynEntrySwitchData: [dict__string__Torappu_ActivityDynEntrySwitchData];
-    hiddenStageData: [Torappu_ActivityTable_ActivityHiddenStageData];
-    stringRes: [dict__string__dict__string__string];
+
+table clz_Torappu_SiracusaData_NavigationInfoData {
+    entryId: string; 
+    navigationType: enum__Torappu_SiracusaData_NavigationType; 
+    entryIcon: string; 
+    entryName: string; 
+    entrySubName: string; 
 }
 
-root_type Torappu_ActivityTable;
+table dict__string__clz_Torappu_SiracusaData_NavigationInfoData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_NavigationInfoData;
+}
+
+table clz_Torappu_SiracusaData_OptionInfoData {
+    optionId: string; 
+    optionDesc: string; 
+    optionScript: string; 
+    optionGoToScript: string; 
+    isLeaveOption: bool; 
+    needCommentLike: bool; 
+    requireCardId: string; 
+}
+
+table dict__string__clz_Torappu_SiracusaData_OptionInfoData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_OptionInfoData;
+}
+
+table clz_Torappu_SiracusaData_StagePointInfoData {
+    stageId: string; 
+    pointId: string; 
+    sortId: int; 
+    isTaskStage: bool; 
+}
+
+table clz_Torappu_SiracusaData_StoryBriefInfoData {
+    storyId: string; 
+    stageId: string; 
+    storyInfo: string; 
+}
+
+table dict__string__clz_Torappu_SiracusaData_StoryBriefInfoData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_StoryBriefInfoData;
+}
+
+table clz_Torappu_SiracusaData_OperaInfoData {
+    operaId: string; 
+    sortId: int; 
+    operaName: string; 
+    operaSubName: string; 
+    operaScore: string; 
+    unlockTime: long; 
+}
+
+table dict__string__clz_Torappu_SiracusaData_OperaInfoData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_OperaInfoData;
+}
+
+table clz_Torappu_SiracusaData_OperaCommentInfoData {
+    commentId: string; 
+    referenceOperaId: string; 
+    columnIndex: int; 
+    columnSortId: int; 
+    commentTitle: string; 
+    score: string; 
+    commentContent: string; 
+    commentCharId: string; 
+}
+
+table dict__string__clz_Torappu_SiracusaData_OperaCommentInfoData {
+    key: string(key);
+    value: clz_Torappu_SiracusaData_OperaCommentInfoData;
+}
+
+table clz_Torappu_SiracusaData_ConstData {
+    operaDailyNum: int; 
+    operaAllUnlockTime: long; 
+    defaultFocusArea: string; 
+}
+
+table clz_Torappu_SiracusaData {
+    areaDataMap: [dict__string__clz_Torappu_SiracusaData_AreaData]; 
+    pointDataMap: [dict__string__clz_Torappu_SiracusaData_PointData]; 
+    charCardMap: [dict__string__clz_Torappu_SiracusaData_CharCardData]; 
+    taskRingMap: [dict__string__clz_Torappu_SiracusaData_TaskRingData]; 
+    taskInfoMap: [dict__string__clz_Torappu_SiracusaData_TaskBasicInfoData]; 
+    battleTaskMap: [dict__string__clz_Torappu_SiracusaData_BattleTaskData]; 
+    avgTaskMap: [dict__string__clz_Torappu_SiracusaData_AVGTaskData]; 
+    itemInfoMap: [dict__string__clz_Torappu_SiracusaData_ItemInfoData]; 
+    itemCardInfoMap: [dict__string__clz_Torappu_SiracusaData_ItemCardInfoData]; 
+    navigationInfoMap: [dict__string__clz_Torappu_SiracusaData_NavigationInfoData]; 
+    optionInfoMap: [dict__string__clz_Torappu_SiracusaData_OptionInfoData]; 
+    stagePointList: [clz_Torappu_SiracusaData_StagePointInfoData]; 
+    storyBriefInfoDataMap: [dict__string__clz_Torappu_SiracusaData_StoryBriefInfoData]; 
+    operaInfoMap: [dict__string__clz_Torappu_SiracusaData_OperaInfoData]; 
+    operaCommentInfoMap: [dict__string__clz_Torappu_SiracusaData_OperaCommentInfoData]; 
+    constData: clz_Torappu_SiracusaData_ConstData; 
+}
+
+table clz_Torappu_KVSwitchInfo {
+    isDefault: bool; 
+    displayTime: long; 
+    zoneId: string; 
+}
+
+table dict__string__clz_Torappu_KVSwitchInfo {
+    key: string(key);
+    value: clz_Torappu_KVSwitchInfo;
+}
+
+table clz_Torappu_ActivityKVSwitchData {
+    kvSwitchInfo: [dict__string__clz_Torappu_KVSwitchInfo]; 
+}
+
+table dict__string__clz_Torappu_ActivityKVSwitchData {
+    key: string(key);
+    value: clz_Torappu_ActivityKVSwitchData;
+}
+
+table clz_Torappu_DynEntrySwitchInfo {
+    entryId: string; 
+    sortId: int; 
+    stageId: string; 
+}
+
+table dict__string__clz_Torappu_DynEntrySwitchInfo {
+    key: string(key);
+    value: clz_Torappu_DynEntrySwitchInfo;
+}
+
+table clz_Torappu_ActivityDynEntrySwitchData {
+    entrySwitchInfo: [dict__string__clz_Torappu_DynEntrySwitchInfo]; 
+}
+
+table dict__string__clz_Torappu_ActivityDynEntrySwitchData {
+    key: string(key);
+    value: clz_Torappu_ActivityDynEntrySwitchData;
+}
+
+table clz_Torappu_ActivityTable_ActivityHiddenStageUnlockConditionData {
+    unlockStageId: string; 
+    unlockTemplate: string; 
+    unlockParams: [string]; 
+    missionStageId: string; 
+    unlockedName: string; 
+    lockedName: string; 
+    lockCode: string; 
+    unlockedDes: string; 
+    templateDesc: string; 
+    desc: string; 
+    riddle: string; 
+}
+
+table clz_Torappu_ActivityTable_ActivityHiddenStageData {
+    stageId: string; 
+    encodedName: string; 
+    showStageId: string; 
+    rewardDiamond: bool; 
+    missions: [clz_Torappu_ActivityTable_ActivityHiddenStageUnlockConditionData]; 
+}
+
+table dict__string__list_dict__string__string {
+    key: string(key);
+    value: [dict__string__string];
+}
+
+table clz_Torappu_ActivityTable {
+    basicInfo: [dict__string__clz_Torappu_ActivityTable_BasicData]; 
+    homeActConfig: [dict__string__clz_Torappu_ActivityTable_HomeActivityConfig]; 
+    zoneToActivity: [dict__string__string]; 
+    missionData: [clz_Torappu_MissionData]; 
+    missionGroup: [clz_Torappu_MissionGroup]; 
+    replicateMissions: [dict__string__string]; 
+    activity: clz_Torappu_ActivityTable_ActivityDetailTable; 
+    activityItems: [dict__string__list_string]; 
+    syncPoints: [dict__string__list_long]; 
+    dynActs: [dict__string__hg__internal__JObject]; 
+    stageRewardsData: [dict__string__clz_Torappu_ActivityStageRewardData]; 
+    actThemes: [clz_Torappu_ActivityThemeData]; 
+    actFunData: clz_Torappu_AprilFoolTable; 
+    carData: clz_Torappu_CartData; 
+    siracusaData: clz_Torappu_SiracusaData; 
+    kvSwitchData: [dict__string__clz_Torappu_ActivityKVSwitchData]; 
+    dynEntrySwitchData: [dict__string__clz_Torappu_ActivityDynEntrySwitchData]; 
+    hiddenStageData: [clz_Torappu_ActivityTable_ActivityHiddenStageData]; 
+    stringRes: [dict__string__list_dict__string__string]; 
+}
+
+root_type clz_Torappu_ActivityTable;

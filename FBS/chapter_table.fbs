@@ -1,21 +1,20 @@
-table Torappu_ChapterData {
-    chapterId: string;
-    chapterName: string;
-    chapterName2: string;
-    chapterIndex: int;
-    preposedChapterId: string;
-    startZoneId: string;
-    endZoneId: string;
-    chapterEndStageId: string;
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table clz_Torappu_ChapterData {
+    chapterId: string; 
+    chapterName: string; 
+    chapterName2: string; 
+    chapterIndex: int; 
+    preposedChapterId: string; 
+    startZoneId: string; 
+    endZoneId: string; 
+    chapterEndStageId: string; 
 }
 
-table dict__string__Torappu_ChapterData {
-    key: string;
-    value: Torappu_ChapterData;
+table dict__string__clz_Torappu_ChapterData {
+    key: string(key);
+    value: clz_Torappu_ChapterData;
 }
-
-table Root_ChapterData {
-    chapters: [dict__string__Torappu_ChapterData];
+table clz_Torappu_SimpleKVTable_clz_Torappu_ChapterData {
+    chapters: [dict__string__clz_Torappu_ChapterData];
 }
-
-root_type Root_ChapterData;
+root_type clz_Torappu_SimpleKVTable_clz_Torappu_ChapterData;

@@ -1,9 +1,11 @@
-enum Torappu_RecommendItemTagTips : int {
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_RecommendItemTagTips : int {
     ONSALE = 0,
     DEADLINE = 1,
     NONE = 2,
 }
-enum Torappu_ShopRouteTarget : int {
+
+enum enum__Torappu_ShopRouteTarget : int {
     RECOMMENDSHOP = 0,
     CASHSHOP = 1,
     GIFTPACKAGE = 2,
@@ -19,104 +21,120 @@ enum Torappu_ShopRouteTarget : int {
     CLASSICSHOP = 12,
     NONE = 13,
 }
-table Torappu_ShopRecommendData {
-    imgId: string;
-    slotIndex: int;
-    cmd: Torappu_ShopRouteTarget;
-    param1: string;
-    param2: string;
-    skinId: string;
+
+table clz_Torappu_ShopRecommendData {
+    imgId: string; 
+    slotIndex: int; 
+    cmd: enum__Torappu_ShopRouteTarget; 
+    param1: string; 
+    param2: string; 
+    skinId: string; 
 }
-table Torappu_ShopRecommendGroup {
-    recommendGroup: [int];
-    dataList: [Torappu_ShopRecommendData];
+
+table clz_Torappu_ShopRecommendGroup {
+    recommendGroup: [int]; 
+    dataList: [clz_Torappu_ShopRecommendData]; 
 }
-table Torappu_ShopKeeperWord {
-    id: string;
-    text: string;
+
+table clz_Torappu_ShopKeeperWord {
+    id: string; 
+    text: string; 
 }
-table Torappu_ShopRecommendItem {
-    tagId: string;
-    displayType: string;
-    tagName: string;
-    itemTag: Torappu_RecommendItemTagTips;
-    orderNum: int;
-    startDatetime: long;
-    endDatetime: long;
-    groupList: [Torappu_ShopRecommendGroup];
-    tagWord: Torappu_ShopKeeperWord;
+
+table clz_Torappu_ShopRecommendItem {
+    tagId: string; 
+    displayType: string; 
+    tagName: string; 
+    itemTag: enum__Torappu_RecommendItemTagTips; 
+    orderNum: int; 
+    startDatetime: long; 
+    endDatetime: long; 
+    groupList: [clz_Torappu_ShopRecommendGroup]; 
+    tagWord: clz_Torappu_ShopKeeperWord; 
 }
-table Torappu_ShopCreditUnlockItem {
-    sortId: int;
-    unlockNum: int;
-    charId: string;
+
+table clz_Torappu_ShopCreditUnlockItem {
+    sortId: int; 
+    unlockNum: int; 
+    charId: string; 
 }
-table Torappu_ShopCreditUnlockGroup {
-    id: string;
-    index: string;
-    startDateTime: long;
-    charDict: [Torappu_ShopCreditUnlockItem];
+
+table clz_Torappu_ShopCreditUnlockGroup {
+    id: string; 
+    index: string; 
+    startDateTime: long; 
+    charDict: [clz_Torappu_ShopCreditUnlockItem]; 
 }
-table dict__string__Torappu_ShopCreditUnlockGroup {
-    key: string;
-    value: Torappu_ShopCreditUnlockGroup;
+
+table dict__string__clz_Torappu_ShopCreditUnlockGroup {
+    key: string(key);
+    value: clz_Torappu_ShopCreditUnlockGroup;
 }
-table Torappu_ShopClientData_ShopKeeperData {
-    welcomeWords: [Torappu_ShopKeeperWord];
-    clickWords: [Torappu_ShopKeeperWord];
+
+table clz_Torappu_ShopClientData_ShopKeeperData {
+    welcomeWords: [clz_Torappu_ShopKeeperWord]; 
+    clickWords: [clz_Torappu_ShopKeeperWord]; 
 }
-table Torappu_ShopCarouselData_Item {
-    spriteId: string;
-    startTime: long;
-    endTime: long;
-    cmd: Torappu_ShopRouteTarget;
-    param1: string;
-    skinId: string;
-    furniId: string;
+
+table clz_Torappu_ShopCarouselData_Item {
+    spriteId: string; 
+    startTime: long; 
+    endTime: long; 
+    cmd: enum__Torappu_ShopRouteTarget; 
+    param1: string; 
+    skinId: string; 
+    furniId: string; 
 }
-table Torappu_ShopCarouselData {
-    items: [Torappu_ShopCarouselData_Item];
+
+table clz_Torappu_ShopCarouselData {
+    items: [clz_Torappu_ShopCarouselData_Item]; 
 }
-table Torappu_ChooseShopRelation {
-    goodId: string;
-    optionList: [string];
+
+table clz_Torappu_ChooseShopRelation {
+    goodId: string; 
+    optionList: [string]; 
 }
-enum Torappu_ShopUnlockType : int {
+
+enum enum__Torappu_ShopUnlockType : int {
     ALWAYS_UNLOCK = 0,
     SKIN_UNLOCK = 1,
     FURN_UNLOCK = 2,
     BOTH_SKIN_FURN = 3,
 }
-table dict__string__Torappu_ShopUnlockType {
-    key: string;
-    value: Torappu_ShopUnlockType;
-}
-table Torappu_LMTGSShopSchedule {
-    gachaPoolId: string;
-    LMTGSId: string;
-    iconColor: string;
-    iconBackColor: string;
-    storeTextColor: string;
-    startTime: long;
-    endTime: long;
-}
-table Torappu_LMTGSShopOverlaySchedule {
-    gachaPoolId1: string;
-    gachaPoolId2: string;
-    picId: string;
-}
-table Torappu_ShopClientData {
-    recommendList: [Torappu_ShopRecommendItem];
-    creditUnlockGroup: [dict__string__Torappu_ShopCreditUnlockGroup];
-    shopKeeperData: Torappu_ShopClientData_ShopKeeperData;
-    carousels: [Torappu_ShopCarouselData];
-    chooseShopRelations: [Torappu_ChooseShopRelation];
-    shopUnlockDict: [dict__string__Torappu_ShopUnlockType];
-    extraQCShopRule: [string];
-    repQCShopRule: [string];
-    shopMonthlySubGoodId: string;
-    limitedShopSchedule: [Torappu_LMTGSShopSchedule];
-    overlaySchedule: [Torappu_LMTGSShopOverlaySchedule];
+
+table dict__string__enum__Torappu_ShopUnlockType {
+    key: string(key);
+    value: enum__Torappu_ShopUnlockType;
 }
 
-root_type Torappu_ShopClientData;
+table clz_Torappu_LMTGSShopSchedule {
+    gachaPoolId: string; 
+    LMTGSId: string; 
+    iconColor: string; 
+    iconBackColor: string; 
+    storeTextColor: string; 
+    startTime: long; 
+    endTime: long; 
+}
+
+table clz_Torappu_LMTGSShopOverlaySchedule {
+    gachaPoolId1: string; 
+    gachaPoolId2: string; 
+    picId: string; 
+}
+
+table clz_Torappu_ShopClientData {
+    recommendList: [clz_Torappu_ShopRecommendItem]; 
+    creditUnlockGroup: [dict__string__clz_Torappu_ShopCreditUnlockGroup]; 
+    shopKeeperData: clz_Torappu_ShopClientData_ShopKeeperData; 
+    carousels: [clz_Torappu_ShopCarouselData]; 
+    chooseShopRelations: [clz_Torappu_ChooseShopRelation]; 
+    shopUnlockDict: [dict__string__enum__Torappu_ShopUnlockType]; 
+    extraQCShopRule: [string]; 
+    repQCShopRule: [string]; 
+    shopMonthlySubGoodId: string; 
+    ls: [clz_Torappu_LMTGSShopSchedule]; // __prts__check_required__limitedShopSchedule__
+    os: [clz_Torappu_LMTGSShopOverlaySchedule]; // __prts__check_required__overlaySchedule__
+}
+
+root_type clz_Torappu_ShopClientData;

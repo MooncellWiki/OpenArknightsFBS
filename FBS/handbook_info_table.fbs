@@ -1,4 +1,5 @@
-enum Torappu_DataUnlockType : int {
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_DataUnlockType : int {
     DIRECT = 0,
     AWAKE = 1,
     FAVOR = 2,
@@ -8,18 +9,21 @@ enum Torappu_DataUnlockType : int {
     PATCH = 6,
     NONE = 7,
 }
-table Torappu_HandBookStoryViewData_StoryText {
-    storyText: string;
-    unLockType: Torappu_DataUnlockType;
-    unLockParam: string;
-    unLockString: string;
+
+table clz_Torappu_HandBookStoryViewData_StoryText {
+    storyText: string; 
+    unLockType: enum__Torappu_DataUnlockType; 
+    unLockParam: string; 
+    unLockString: string; 
 }
-table Torappu_HandBookStoryViewData {
-    stories: [Torappu_HandBookStoryViewData_StoryText];
-    storyTitle: string;
-    unLockorNot: bool;
+
+table clz_Torappu_HandBookStoryViewData {
+    stories: [clz_Torappu_HandBookStoryViewData_StoryText]; 
+    storyTitle: string; 
+    unLockorNot: bool; 
 }
-enum Torappu_ItemType : int {
+
+enum enum__Torappu_ItemType : int {
     NONE = 0,
     CHAR = 1,
     CARD_EXP = 2,
@@ -88,48 +92,55 @@ enum Torappu_ItemType : int {
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
 }
-table Torappu_ItemBundle {
-    id: string;
-    count: int;
-    type: Torappu_ItemType;
+
+table clz_Torappu_ItemBundle {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
 }
-table Torappu_HandbookUnlockParam {
-    unlockType: Torappu_DataUnlockType;
-    unlockParam1: string;
-    unlockParam2: string;
-    unlockParam3: string;
+
+table clz_Torappu_HandbookUnlockParam {
+    unlockType: enum__Torappu_DataUnlockType; 
+    unlockParam1: string; 
+    unlockParam2: string; 
+    unlockParam3: string; 
 }
-table Torappu_HandbookAvgData {
-    storyId: string;
-    storySetId: string;
-    storySort: int;
-    storyCanShow: bool;
-    storyIntro: string;
-    storyInfo: string;
-    storyTxt: string;
+
+table clz_Torappu_HandbookAvgData {
+    storyId: string; 
+    storySetId: string; 
+    storySort: int; 
+    storyCanShow: bool; 
+    storyIntro: string; 
+    storyInfo: string; 
+    storyTxt: string; 
 }
-table Torappu_HandbookAvgGroupData {
-    storySetId: string;
-    storySetName: string;
-    sortId: int;
-    storyGetTime: long;
-    rewardItem: [Torappu_ItemBundle];
-    unlockParam: [Torappu_HandbookUnlockParam];
-    avgList: [Torappu_HandbookAvgData];
-    charId: string;
+
+table clz_Torappu_HandbookAvgGroupData {
+    storySetId: string; 
+    storySetName: string; 
+    sortId: int; 
+    storyGetTime: long; 
+    rewardItem: [clz_Torappu_ItemBundle]; 
+    unlockParam: [clz_Torappu_HandbookUnlockParam]; 
+    avgList: [clz_Torappu_HandbookAvgData]; 
+    charId: string; 
 }
-table Torappu_HandbookInfoData {
-    charID: string;
-    infoName: string;
-    isLimited: bool;
-    storyTextAudio: [Torappu_HandBookStoryViewData];
-    handbookAvgList: [Torappu_HandbookAvgGroupData];
+
+table clz_Torappu_HandbookInfoData {
+    charID: string; 
+    infoName: string; 
+    isLimited: bool; 
+    storyTextAudio: [clz_Torappu_HandBookStoryViewData]; 
+    handbookAvgList: [clz_Torappu_HandbookAvgGroupData]; 
 }
-table dict__string__Torappu_HandbookInfoData {
-    key: string;
-    value: Torappu_HandbookInfoData;
+
+table dict__string__clz_Torappu_HandbookInfoData {
+    key: string(key);
+    value: clz_Torappu_HandbookInfoData;
 }
-enum Torappu_ProfessionCategory : int {
+
+enum enum__Torappu_ProfessionCategory : int {
     NONE = 0,
     WARRIOR = 1,
     SNIPER = 2,
@@ -142,96 +153,110 @@ enum Torappu_ProfessionCategory : int {
     TRAP = 256,
     PIONEER = 512,
 }
-enum Torappu_IllustNPCResType : int {
+
+enum enum__Torappu_IllustNPCResType : int {
     NONE = 0,
     NPC = 1,
     CHAR = 2,
 }
-table Torappu_NPCUnlock {
-    unLockType: Torappu_DataUnlockType;
-    unLockParam: string;
-    unLockString: string;
+
+table clz_Torappu_NPCUnlock {
+    unLockType: enum__Torappu_DataUnlockType; 
+    unLockParam: string; 
+    unLockString: string; 
 }
-table dict__string__Torappu_NPCUnlock {
-    key: string;
-    value: Torappu_NPCUnlock;
+
+table dict__string__clz_Torappu_NPCUnlock {
+    key: string(key);
+    value: clz_Torappu_NPCUnlock;
 }
-table Torappu_NPCData {
-    npcId: string;
-    name: string;
-    appellation: string;
-    profession: Torappu_ProfessionCategory;
-    illustList: [string];
-    designerList: [string];
-    cv: string;
-    displayNumber: string;
-    nationId: string;
-    groupId: string;
-    teamId: string;
-    resType: Torappu_IllustNPCResType;
-    npcShowAudioInfoFlag: bool;
-    unlockDict: [dict__string__Torappu_NPCUnlock];
+
+table clz_Torappu_NPCData {
+    npcId: string; 
+    name: string; 
+    appellation: string; 
+    profession: enum__Torappu_ProfessionCategory; 
+    illustList: [string]; 
+    designerList: [string]; 
+    cv: string; 
+    displayNumber: string; 
+    nationId: string; 
+    groupId: string; 
+    teamId: string; 
+    resType: enum__Torappu_IllustNPCResType; 
+    npcShowAudioInfoFlag: bool; 
+    unlockDict: [dict__string__clz_Torappu_NPCUnlock]; 
 }
-table dict__string__Torappu_NPCData {
-    key: string;
-    value: Torappu_NPCData;
+
+table dict__string__clz_Torappu_NPCData {
+    key: string(key);
+    value: clz_Torappu_NPCData;
 }
-table Torappu_HandbookTeamMission {
-    id: string;
-    sort: int;
-    powerId: string;
-    powerName: string;
-    item: Torappu_ItemBundle;
-    favorPoint: int;
+
+table clz_Torappu_HandbookTeamMission {
+    id: string; 
+    sort: int; 
+    powerId: string; 
+    powerName: string; 
+    item: clz_Torappu_ItemBundle; 
+    favorPoint: int; 
 }
-table dict__string__Torappu_HandbookTeamMission {
-    key: string;
-    value: Torappu_HandbookTeamMission;
+
+table dict__string__clz_Torappu_HandbookTeamMission {
+    key: string(key);
+    value: clz_Torappu_HandbookTeamMission;
 }
-enum Torappu_HandbookDisplayCondition_DisplayType : int {
+
+enum enum__Torappu_HandbookDisplayCondition_DisplayType : int {
     DISPLAY_IF_CHAREXIST = 0,
     INVISIBLE_IF_CHAREXIST = 1,
 }
-table Torappu_HandbookDisplayCondition {
-    charId: string;
-    conditionCharId: string;
-    type: Torappu_HandbookDisplayCondition_DisplayType;
-}
-table dict__string__Torappu_HandbookDisplayCondition {
-    key: string;
-    value: Torappu_HandbookDisplayCondition;
-}
-table Torappu_HandbookStoryStageData {
-    charId: string;
-    stageId: string;
-    levelId: string;
-    zoneId: string;
-    code: string;
-    name: string;
-    loadingPicId: string;
-    description: string;
-    unlockParam: [Torappu_HandbookUnlockParam];
-    rewardItem: [Torappu_ItemBundle];
-    stageNameForShow: string;
-    zoneNameForShow: string;
-    picId: string;
-    stageGetTime: long;
-}
-table dict__string__Torappu_HandbookStoryStageData {
-    key: string;
-    value: Torappu_HandbookStoryStageData;
-}
-table Torappu_HandbookStageTimeData {
-    timestamp: long;
-    charSet: [string];
-}
-table Torappu_HandbookInfoTable {
-    handbookDict: [dict__string__Torappu_HandbookInfoData];
-    npcDict: [dict__string__Torappu_NPCData];
-    teamMissionList: [dict__string__Torappu_HandbookTeamMission];
-    handbookDisplayConditionList: [dict__string__Torappu_HandbookDisplayCondition];
-    handbookStageData: [dict__string__Torappu_HandbookStoryStageData];
-    handbookStageTime: [Torappu_HandbookStageTimeData];
+
+table clz_Torappu_HandbookDisplayCondition {
+    charId: string; 
+    conditionCharId: string; 
+    type: enum__Torappu_HandbookDisplayCondition_DisplayType; 
 }
 
-root_type Torappu_HandbookInfoTable;
+table dict__string__clz_Torappu_HandbookDisplayCondition {
+    key: string(key);
+    value: clz_Torappu_HandbookDisplayCondition;
+}
+
+table clz_Torappu_HandbookStoryStageData {
+    charId: string; 
+    stageId: string; 
+    levelId: string; 
+    zoneId: string; 
+    code: string; 
+    name: string; 
+    loadingPicId: string; 
+    description: string; 
+    unlockParam: [clz_Torappu_HandbookUnlockParam]; 
+    rewardItem: [clz_Torappu_ItemBundle]; 
+    stageNameForShow: string; 
+    zoneNameForShow: string; 
+    picId: string; 
+    stageGetTime: long; 
+}
+
+table dict__string__clz_Torappu_HandbookStoryStageData {
+    key: string(key);
+    value: clz_Torappu_HandbookStoryStageData;
+}
+
+table clz_Torappu_HandbookStageTimeData {
+    timestamp: long; 
+    charSet: [string]; 
+}
+
+table clz_Torappu_HandbookInfoTable {
+    handbookDict: [dict__string__clz_Torappu_HandbookInfoData]; 
+    npcDict: [dict__string__clz_Torappu_NPCData]; 
+    teamMissionList: [dict__string__clz_Torappu_HandbookTeamMission]; 
+    handbookDisplayConditionList: [dict__string__clz_Torappu_HandbookDisplayCondition]; 
+    handbookStageData: [dict__string__clz_Torappu_HandbookStoryStageData]; 
+    handbookStageTime: [clz_Torappu_HandbookStageTimeData]; 
+}
+
+root_type clz_Torappu_HandbookInfoTable;

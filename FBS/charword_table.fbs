@@ -1,9 +1,11 @@
-enum Torappu_CharWordVoiceType : int {
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_CharWordVoiceType : int {
     ONLY_TEXT = 0,
     HAVE_CV = 1,
     ENUM = 2,
 }
-enum Torappu_DataUnlockType : int {
+
+enum enum__Torappu_DataUnlockType : int {
     DIRECT = 0,
     AWAKE = 1,
     FAVOR = 2,
@@ -13,11 +15,13 @@ enum Torappu_DataUnlockType : int {
     PATCH = 6,
     NONE = 7,
 }
-table Torappu_CharWordUnlockParam {
-    valueStr: string;
-    valueInt: int;
+
+table clz_Torappu_CharWordUnlockParam {
+    valueStr: string; 
+    valueInt: int; 
 }
-enum Torappu_CharWordShowType : int {
+
+enum enum__Torappu_CharWordShowType : int {
     HOME_SHOW = 0,
     HOME_PLACE = 1,
     HOME_WAIT = 2,
@@ -54,26 +58,29 @@ enum Torappu_CharWordShowType : int {
     UNUSED = 33,
     E_ALL = 34,
 }
-table Torappu_CharWordData {
-    charWordId: string;
-    wordKey: string;
-    charId: string;
-    voiceId: string;
-    voiceText: string;
-    voiceTitle: string;
-    voiceIndex: int;
-    voiceType: Torappu_CharWordVoiceType;
-    unlockType: Torappu_DataUnlockType;
-    unlockParam: [Torappu_CharWordUnlockParam];
-    lockDescription: string;
-    placeType: Torappu_CharWordShowType;
-    voiceAsset: string;
+
+table clz_Torappu_CharWordData {
+    charWordId: string; 
+    wordKey: string; 
+    charId: string; 
+    voiceId: string; 
+    voiceText: string; 
+    voiceTitle: string; 
+    voiceIndex: int; 
+    voiceType: enum__Torappu_CharWordVoiceType; 
+    unlockType: enum__Torappu_DataUnlockType; 
+    unlockParam: [clz_Torappu_CharWordUnlockParam]; 
+    lockDescription: string; 
+    placeType: enum__Torappu_CharWordShowType; 
+    voiceAsset: string; 
 }
-table dict__string__Torappu_CharWordData {
-    key: string;
-    value: Torappu_CharWordData;
+
+table dict__string__clz_Torappu_CharWordData {
+    key: string(key);
+    value: clz_Torappu_CharWordData;
 }
-enum Torappu_VoiceLangType : int {
+
+enum enum__Torappu_VoiceLangType : int {
     NONE = 0,
     JP = 1,
     CN_MANDARIN = 2,
@@ -83,26 +90,31 @@ enum Torappu_VoiceLangType : int {
     LINKAGE = 6,
     ITA = 7,
 }
-table Torappu_VoiceLangInfoData {
-    wordkey: string;
-    voiceLangType: Torappu_VoiceLangType;
-    cvName: [string];
-    voicePath: string;
+
+table clz_Torappu_VoiceLangInfoData {
+    wordkey: string; 
+    voiceLangType: enum__Torappu_VoiceLangType; 
+    cvName: [string]; 
+    voicePath: string; 
 }
-table dict__Torappu_VoiceLangType__Torappu_VoiceLangInfoData {
-    key: Torappu_VoiceLangType;
-    value: Torappu_VoiceLangInfoData;
+
+table dict__enum__Torappu_VoiceLangType__clz_Torappu_VoiceLangInfoData {
+    key: enum__Torappu_VoiceLangType(key);
+    value: clz_Torappu_VoiceLangInfoData;
 }
-table Torappu_VoiceLangData {
-    wordkeys: [string];
-    charId: string;
-    voiceLangInfoDataDict: [dict__Torappu_VoiceLangType__Torappu_VoiceLangInfoData];
+
+table clz_Torappu_VoiceLangData {
+    wordkeys: [string]; 
+    charId: string; 
+    dict: [dict__enum__Torappu_VoiceLangType__clz_Torappu_VoiceLangInfoData]; // __prts__check_required__voiceLangInfoDataDict__
 }
-table dict__string__Torappu_VoiceLangData {
-    key: string;
-    value: Torappu_VoiceLangData;
+
+table dict__string__clz_Torappu_VoiceLangData {
+    key: string(key);
+    value: clz_Torappu_VoiceLangData;
 }
-enum Torappu_VoiceLangGroupType : int {
+
+enum enum__Torappu_VoiceLangGroupType : int {
     NONE = 0,
     CN_MANDARIN = 1,
     JP = 2,
@@ -111,46 +123,54 @@ enum Torappu_VoiceLangGroupType : int {
     CUSTOM = 5,
     LINKAGE = 6,
 }
-table Torappu_VoiceLangTypeData {
-    name: string;
-    groupType: Torappu_VoiceLangGroupType;
-}
-table dict__Torappu_VoiceLangType__Torappu_VoiceLangTypeData {
-    key: Torappu_VoiceLangType;
-    value: Torappu_VoiceLangTypeData;
-}
-table Torappu_VoiceLangGroupData {
-    name: string;
-    members: [Torappu_VoiceLangType];
-}
-table dict__Torappu_VoiceLangGroupType__Torappu_VoiceLangGroupData {
-    key: Torappu_VoiceLangGroupType;
-    value: Torappu_VoiceLangGroupData;
-}
-table dict__string__Torappu_VoiceLangType {
-    key: string;
-    value: Torappu_VoiceLangType;
-}
-table Torappu_NewVoiceTimeData {
-    timestamp: long;
-    charSet: [string];
-}
-table dict__Torappu_VoiceLangType__list_Torappu_NewVoiceTimeData {
-    key: Torappu_VoiceLangType;
-    value: [Torappu_NewVoiceTimeData];
-}
-table Torappu_CharWordTable {
-    charWords: [dict__string__Torappu_CharWordData];
-    voiceLangDict: [dict__string__Torappu_VoiceLangData];
-    defaultLangType: Torappu_VoiceLangType;
-    newTagList: [string];
-    voiceLangTypeDict: [dict__Torappu_VoiceLangType__Torappu_VoiceLangTypeData];
-    voiceLangGroupTypeDict: [dict__Torappu_VoiceLangGroupType__Torappu_VoiceLangGroupData];
-    charDefaultTypeDict: [dict__string__Torappu_VoiceLangType];
-    startTimeWithTypeDict: [dict__Torappu_VoiceLangType__list_Torappu_NewVoiceTimeData];
-    displayGroupTypeList: [Torappu_VoiceLangGroupType];
-    displayTypeList: [Torappu_VoiceLangType];
-    playVoiceRange: Torappu_CharWordShowType;
+
+table clz_Torappu_VoiceLangTypeData {
+    name: string; 
+    groupType: enum__Torappu_VoiceLangGroupType; 
 }
 
-root_type Torappu_CharWordTable;
+table dict__enum__Torappu_VoiceLangType__clz_Torappu_VoiceLangTypeData {
+    key: enum__Torappu_VoiceLangType(key);
+    value: clz_Torappu_VoiceLangTypeData;
+}
+
+table clz_Torappu_VoiceLangGroupData {
+    name: string; 
+    members: [enum__Torappu_VoiceLangType]; 
+}
+
+table dict__enum__Torappu_VoiceLangGroupType__clz_Torappu_VoiceLangGroupData {
+    key: enum__Torappu_VoiceLangGroupType(key);
+    value: clz_Torappu_VoiceLangGroupData;
+}
+
+table dict__string__enum__Torappu_VoiceLangType {
+    key: string(key);
+    value: enum__Torappu_VoiceLangType;
+}
+
+table clz_Torappu_NewVoiceTimeData {
+    timestamp: long; 
+    charSet: [string]; 
+}
+
+table dict__enum__Torappu_VoiceLangType__list_clz_Torappu_NewVoiceTimeData {
+    key: enum__Torappu_VoiceLangType(key);
+    value: [clz_Torappu_NewVoiceTimeData];
+}
+
+table clz_Torappu_CharWordTable {
+    charWords: [dict__string__clz_Torappu_CharWordData]; 
+    voiceLangDict: [dict__string__clz_Torappu_VoiceLangData]; 
+    defaultLangType: enum__Torappu_VoiceLangType; 
+    newTagList: [string]; 
+    voiceLangTypeDict: [dict__enum__Torappu_VoiceLangType__clz_Torappu_VoiceLangTypeData]; 
+    voiceLangGroupTypeDict: [dict__enum__Torappu_VoiceLangGroupType__clz_Torappu_VoiceLangGroupData]; 
+    charDefaultTypeDict: [dict__string__enum__Torappu_VoiceLangType]; 
+    startTimeWithTypeDict: [dict__enum__Torappu_VoiceLangType__list_clz_Torappu_NewVoiceTimeData]; 
+    displayGroupTypeList: [enum__Torappu_VoiceLangGroupType]; 
+    displayTypeList: [enum__Torappu_VoiceLangType]; 
+    playVoiceRange: enum__Torappu_CharWordShowType; 
+}
+
+root_type clz_Torappu_CharWordTable;

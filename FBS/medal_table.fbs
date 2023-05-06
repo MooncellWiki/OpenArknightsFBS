@@ -1,4 +1,5 @@
-enum Torappu_MedalRarity : int {
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_MedalRarity : int {
     T1 = 0,
     T1D5 = 1,
     T2 = 2,
@@ -6,18 +7,21 @@ enum Torappu_MedalRarity : int {
     T3 = 4,
     T3D5 = 5,
 }
-enum Torappu_MedalExpireType : int {
+
+enum enum__Torappu_MedalExpireType : int {
     NONE = 0,
     INIT = 1,
     TEMP = 2,
     PERM = 3,
 }
-table Torappu_MedalExpireTime {
-    start: long;
-    end: long;
-    type: Torappu_MedalExpireType;
+
+table clz_Torappu_MedalExpireTime {
+    start: long; 
+    end: long; 
+    type: enum__Torappu_MedalExpireType; 
 }
-enum Torappu_ItemType : int {
+
+enum enum__Torappu_ItemType : int {
     NONE = 0,
     CHAR = 1,
     CARD_EXP = 2,
@@ -86,57 +90,64 @@ enum Torappu_ItemType : int {
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
 }
-table Torappu_ItemBundle {
-    id: string;
-    count: int;
-    type: Torappu_ItemType;
-}
-table Torappu_MedalRewardGroupData {
-    groupId: string;
-    slotId: int;
-    itemList: [Torappu_ItemBundle];
-}
-table Torappu_MedalPerData {
-    medalId: string;
-    medalName: string;
-    medalType: string;
-    slotId: int;
-    preMedalIdList: [string];
-    rarity: Torappu_MedalRarity;
-    template: string;
-    unlockParam: [string];
-    getMethod: string;
-    description: string;
-    advancedMedal: string;
-    originMedal: string;
-    displayTime: long;
-    expireTimes: [Torappu_MedalExpireTime];
-    medalRewardGroup: [Torappu_MedalRewardGroupData];
-    isHidden: bool;
-}
-table Torappu_MedalGroupData {
-    groupId: string;
-    groupName: string;
-    groupDesc: string;
-    medalId: [string];
-    sortId: int;
-    groupBackColor: string;
-    groupGetTime: long;
-    sharedExpireTimes: [Torappu_MedalExpireTime];
-}
-table Torappu_MedalTypeData {
-    medalGroupId: string;
-    sortId: int;
-    medalName: string;
-    groupData: [Torappu_MedalGroupData];
-}
-table dict__string__Torappu_MedalTypeData {
-    key: string;
-    value: Torappu_MedalTypeData;
-}
-table Torappu_MedalData {
-    medalList: [Torappu_MedalPerData];
-    medalTypeData: [dict__string__Torappu_MedalTypeData];
+
+table clz_Torappu_ItemBundle {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
 }
 
-root_type Torappu_MedalData;
+table clz_Torappu_MedalRewardGroupData {
+    groupId: string; 
+    slotId: int; 
+    itemList: [clz_Torappu_ItemBundle]; 
+}
+
+table clz_Torappu_MedalPerData {
+    medalId: string; 
+    medalName: string; 
+    medalType: string; 
+    slotId: int; 
+    preMedalIdList: [string]; 
+    rarity: enum__Torappu_MedalRarity; 
+    template: string; 
+    unlockParam: [string]; 
+    getMethod: string; 
+    description: string; 
+    advancedMedal: string; 
+    originMedal: string; 
+    displayTime: long; 
+    expireTimes: [clz_Torappu_MedalExpireTime]; 
+    medalRewardGroup: [clz_Torappu_MedalRewardGroupData]; 
+    isHidden: bool; 
+}
+
+table clz_Torappu_MedalGroupData {
+    groupId: string; 
+    groupName: string; 
+    groupDesc: string; 
+    medalId: [string]; 
+    sortId: int; 
+    groupBackColor: string; 
+    groupGetTime: long; 
+    sharedExpireTimes: [clz_Torappu_MedalExpireTime]; 
+}
+
+table clz_Torappu_MedalTypeData {
+    medalGroupId: string; 
+    sortId: int; 
+    medalName: string; 
+    groupData: [clz_Torappu_MedalGroupData]; 
+}
+
+table dict__string__clz_Torappu_MedalTypeData {
+    key: string(key);
+    value: clz_Torappu_MedalTypeData;
+}
+
+table clz_Torappu_MedalData {
+    medalList: [clz_Torappu_MedalPerData]; 
+    medalTypeData: [dict__string__clz_Torappu_MedalTypeData]; 
+}
+
+root_type clz_Torappu_MedalData;

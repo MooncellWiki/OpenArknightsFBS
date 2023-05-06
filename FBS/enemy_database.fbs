@@ -1,71 +1,75 @@
-table Undefinable_INT {
-    m_defined: bool;
-    m_value: int;
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table clz_Torappu_Undefinable_1_System_String_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: string; // __prts__check_required__m_value__
 }
 
-table Undefinable_FLOAT {
-    m_defined: bool;
-    m_value: float;
+table clz_Torappu_Undefinable_1_System_Int32_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: int; // __prts__check_required__m_value__
 }
 
-table Undefinable_BOOL {
-    m_defined: bool;
-    m_value: bool;
+table clz_Torappu_Undefinable_1_System_Single_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: float; // __prts__check_required__m_value__
 }
 
-table Undefinable_STRING {
-    m_defined: bool;
-    m_value: string;
+table clz_Torappu_Undefinable_1_System_Boolean_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: bool; // __prts__check_required__m_value__
 }
 
-table Torappu__AttributesData {
-    maxHp: Undefinable_INT;
-    atk: Undefinable_INT;
-    def: Undefinable_INT;
-    magicResistance: Undefinable_FLOAT;
-    cost: Undefinable_INT;
-    blockCnt: Undefinable_INT;
-    moveSpeed: Undefinable_FLOAT;
-    attackSpeed: Undefinable_FLOAT;
-    baseAttackTime: Undefinable_FLOAT;
-    respawnTime: Undefinable_INT;
-    hpRecoveryPerSec: Undefinable_FLOAT;
-    spRecoveryPerSec: Undefinable_FLOAT;
-    maxDeployCount: Undefinable_INT;
-    massLevel: Undefinable_INT;
-    baseForceLevel: Undefinable_INT;
-    tauntLevel: Undefinable_INT;
-    stunImmune: Undefinable_BOOL;
-    silenceImmune: Undefinable_BOOL;
-    sleepImmune: Undefinable_BOOL;
-    frozenImmune: Undefinable_BOOL;
-    levitateImmune: Undefinable_BOOL;
+table clz_Torappu_EnemyDatabase_AttributesData {
+    maxHp: clz_Torappu_Undefinable_1_System_Int32_; 
+    atk: clz_Torappu_Undefinable_1_System_Int32_; 
+    def: clz_Torappu_Undefinable_1_System_Int32_; 
+    magicResistance: clz_Torappu_Undefinable_1_System_Single_; 
+    cost: clz_Torappu_Undefinable_1_System_Int32_; 
+    blockCnt: clz_Torappu_Undefinable_1_System_Int32_; 
+    moveSpeed: clz_Torappu_Undefinable_1_System_Single_; 
+    attackSpeed: clz_Torappu_Undefinable_1_System_Single_; 
+    baseAttackTime: clz_Torappu_Undefinable_1_System_Single_; 
+    respawnTime: clz_Torappu_Undefinable_1_System_Int32_; 
+    hpRecoveryPerSec: clz_Torappu_Undefinable_1_System_Single_; 
+    spRecoveryPerSec: clz_Torappu_Undefinable_1_System_Single_; 
+    maxDeployCount: clz_Torappu_Undefinable_1_System_Int32_; 
+    massLevel: clz_Torappu_Undefinable_1_System_Int32_; 
+    baseForceLevel: clz_Torappu_Undefinable_1_System_Int32_; 
+    tauntLevel: clz_Torappu_Undefinable_1_System_Int32_; 
+    stunImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    silenceImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    sleepImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    frozenImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    levitateImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
 }
-enum Torappu__EnemyLevelType : int {
+
+enum enum__Torappu_EnemyLevelType : int {
     NORMAL = 0,
     ELITE = 1,
     BOSS = 2,
 }
 
-table Undefinable_Torappu__EnemyLevelType {
-    m_defined: bool;
-    m_value: Torappu__EnemyLevelType;
+table clz_Torappu_Undefinable_1_Torappu_EnemyLevelType_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: enum__Torappu_EnemyLevelType; // __prts__check_required__m_value__
 }
 
-table Torappu__DataPair {
-    key: string;
-    value: float;
-    valueStr: string;
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
 }
-table Torappu__LevelData_EnemyData_ESkillData {
-    prefabKey: string;
-    priority: int;
-    cooldown: float;
-    initCooldown: float;
-    spCost: int;
-    blackboard: [Torappu__DataPair];
+
+table clz_Torappu_LevelData_EnemyData_ESkillData {
+    prefabKey: string; 
+    priority: int; 
+    cooldown: float; 
+    initCooldown: float; 
+    spCost: int; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
 }
-enum Torappu__SpType : int {
+
+enum enum__Torappu_SpType : int {
     NONE = 0,
     INCREASE_WITH_TIME = 1,
     INCREASE_WHEN_ATTACK = 2,
@@ -73,39 +77,42 @@ enum Torappu__SpType : int {
     ATTACK_OR_DAMAGE = 6,
     ALL = 7,
 }
-table Torappu__LevelData_EnemyData_ESpData {
-    spType: Torappu__SpType;
-    maxSp: int;
-    initSp: int;
-    increment: float;
-}
-table Torappu__EnemyData {
-    name: Undefinable_STRING;
-    description: Undefinable_STRING;
-    prefabKey: Undefinable_STRING;
-    attributes: Torappu__AttributesData;
-    lifePointReduce: Undefinable_INT;
-    levelType: Undefinable_Torappu__EnemyLevelType;
-    rangeRadius: Undefinable_FLOAT;
-    numOfExtraDrops: Undefinable_INT;
-    viewRadius: Undefinable_FLOAT;
-    notCountInTotal: Undefinable_BOOL;
-    talentBlackboard: [Torappu__DataPair];
-    skills: [Torappu__LevelData_EnemyData_ESkillData];
-    spData: Torappu__LevelData_EnemyData_ESpData;
-}
-table Torappu__EnemyLevel {
-    level: int;
-    enemyData: Torappu__EnemyData;
+
+table clz_Torappu_LevelData_EnemyData_ESpData {
+    spType: enum__Torappu_SpType; 
+    maxSp: int; 
+    initSp: int; 
+    increment: float; 
 }
 
-table KV_Torappu__EnemyDatabase {
-    Key: string;
-    Value: [Torappu__EnemyLevel];
+table clz_Torappu_EnemyDatabase_EnemyData {
+    name: clz_Torappu_Undefinable_1_System_String_; 
+    description: clz_Torappu_Undefinable_1_System_String_; 
+    prefabKey: clz_Torappu_Undefinable_1_System_String_; 
+    attributes: clz_Torappu_EnemyDatabase_AttributesData; 
+    lifePointReduce: clz_Torappu_Undefinable_1_System_Int32_; 
+    levelType: clz_Torappu_Undefinable_1_Torappu_EnemyLevelType_; 
+    rangeRadius: clz_Torappu_Undefinable_1_System_Single_; 
+    numOfExtraDrops: clz_Torappu_Undefinable_1_System_Int32_; 
+    viewRadius: clz_Torappu_Undefinable_1_System_Single_; 
+    notCountInTotal: clz_Torappu_Undefinable_1_System_Boolean_; 
+    talentBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+    skills: [clz_Torappu_LevelData_EnemyData_ESkillData]; 
+    spData: clz_Torappu_LevelData_EnemyData_ESpData; 
 }
 
-table enemy_database {
-    enemies: [KV_Torappu__EnemyDatabase];
+table clz_Torappu_EnemyDatabase_EnemyLevel {
+    level: int; 
+    enemyData: clz_Torappu_EnemyDatabase_EnemyData; 
 }
 
-root_type enemy_database;
+table dict__string__list_clz_Torappu_EnemyDatabase_EnemyLevel {
+    Key: string(key);
+    Value: [clz_Torappu_EnemyDatabase_EnemyLevel];
+}
+
+table clz_Torappu_EnemyDatabase {
+    enemies: [dict__string__list_clz_Torappu_EnemyDatabase_EnemyLevel]; 
+}
+
+root_type clz_Torappu_EnemyDatabase;
