@@ -51,8 +51,8 @@ enum enum__Torappu_SourceApplyWay : int {
 }
 
 table clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_ {
-    prts____check_required____clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_____m_defined: bool; 
-    prts____check_required____clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_____m_value: enum__Torappu_SourceApplyWay; 
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: enum__Torappu_SourceApplyWay; // __prts__check_required__m_value__
 }
 
 enum enum__Torappu_MotionMode : int {
@@ -62,13 +62,13 @@ enum enum__Torappu_MotionMode : int {
 }
 
 table clz_Torappu_Undefinable_1_Torappu_MotionMode_ {
-    prts____check_required____clz_Torappu_Undefinable_1_Torappu_MotionMode_____m_defined: bool; 
-    prts____check_required____clz_Torappu_Undefinable_1_Torappu_MotionMode_____m_value: enum__Torappu_MotionMode; 
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: enum__Torappu_MotionMode; // __prts__check_required__m_value__
 }
 
 table clz_Torappu_Undefinable_1_System_String___ {
-    prts____check_required____clz_Torappu_Undefinable_1_System_String_______m_defined: bool; 
-    prts____check_required____clz_Torappu_Undefinable_1_System_String_______m_value: [string]; 
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: [string]; // __prts__check_required__m_value__
 }
 
 enum enum__Torappu_EnemyLevelType : int {

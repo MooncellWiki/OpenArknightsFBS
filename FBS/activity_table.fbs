@@ -2848,7 +2848,7 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; // __prts__check_required__defaultActivityData__
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; // __prts__check_required__defaultCheckinData__
     CHECKIN_ALL_PLAYER: [dict__string__clz_Torappu_AllPlayerCheckinData]; // __prts__check_required__allPlayerCheckinData__
-    prts____check_required____clz_Torappu_ActivityTable_ActivityDetailTable____versusCheckInData: [dict__string__clz_Torappu_VersusCheckInData]; 
+    CHECKIN_VS: [dict__string__clz_Torappu_VersusCheckInData]; // __prts__check_required__versusCheckInData__
     TYPE_ACT3D0: [dict__string__clz_Torappu_Act3D0Data]; // __prts__check_required__typeAct3d0Data__
     TYPE_ACT4D0: [dict__string__clz_Torappu_Act4D0Data]; // __prts__check_required__typeAct4d0Data__
     TYPE_ACT5D0: [dict__string__clz_Torappu_Act5D0Data]; // __prts__check_required__typeAct5d0Data__
@@ -2861,7 +2861,7 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     TYPE_ACT20SIDE: [dict__string__clz_Torappu_Act20SideData]; // __prts__check_required__typeAct20SideData__
     TYPE_ACT21SIDE: [dict__string__clz_Torappu_Act21SideData]; // __prts__check_required__typeAct21SideData__
     LOGIN_ONLY: [dict__string__clz_Torappu_ActivityLoginData]; // __prts__check_required__defaultLoginData__
-    prts____check_required____clz_Torappu_ActivityTable_ActivityDetailTable____switchCheckinData: [dict__string__clz_Torappu_ActivitySwitchCheckinData]; 
+    SWITCH_ONLY: [dict__string__clz_Torappu_ActivitySwitchCheckinData]; // __prts__check_required__switchCheckinData__
     MINISTORY: [dict__string__clz_Torappu_ActivityMiniStoryData]; // __prts__check_required__defaultMiniStoryData__
     ROGUELIKE: [dict__string__clz_Torappu_ActivityRoguelikeData]; // __prts__check_required__defaultRoguelikeData__
     MULTIPLAY: [dict__string__clz_Torappu_ActivityMultiplayData]; // __prts__check_required__defaultMultiplayData__
