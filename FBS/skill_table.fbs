@@ -6,12 +6,8 @@ enum enum__Torappu_SkillType : int {
 }
 
 enum enum__Torappu_SkillDurationType : int {
-    PASSIVE = 0,
-    INSTANT = 1,
-    LIMITED = 2,
-    INFINITY = 3,
-    SWITCHABLE = 4,
-    AMMO = 5,
+    NONE = 0,
+    AMMO = 1,
 }
 
 enum enum__Torappu_SpType : int {
