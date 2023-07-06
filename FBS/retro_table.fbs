@@ -814,8 +814,8 @@ table dict__string__clz_Torappu_ActivityCustomData_Act25sideCustomData {
 }
 
 table clz_Torappu_ActivityCustomData {
-    prts____check_required____clz_Torappu_ActivityCustomData____typeAct17sideData: [dict__string__clz_Torappu_Act17sideData]; 
-    prts____check_required____clz_Torappu_ActivityCustomData____typeAct25sideData: [dict__string__clz_Torappu_ActivityCustomData_Act25sideCustomData]; 
+    TYPE_ACT17SIDE: [dict__string__clz_Torappu_Act17sideData]; // __prts__check_required__typeAct17sideData__
+    TYPE_ACT25SIDE: [dict__string__clz_Torappu_ActivityCustomData_Act25sideCustomData]; // __prts__check_required__typeAct25sideData__
 }
 
 table clz_Torappu_RetroStageTable {

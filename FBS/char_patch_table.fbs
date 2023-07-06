@@ -1,7 +1,7 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 table clz_Torappu_CharPatchData_PatchInfo {
     tmplIds: [string]; 
-    prts____check_required____clz_Torappu_CharPatchData_PatchInfo____defaultPatch: string; 
+    default: string; // __prts__check_required__defaultPatch__
 }
 
 table dict__string__clz_Torappu_CharPatchData_PatchInfo {

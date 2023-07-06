@@ -41,15 +41,15 @@ table clz_Torappu_CharSkinData {
     skinId: string; 
     charId: string; 
     tokenSkinMap: [clz_Torappu_CharSkinData_TokenSkinInfo]; 
-    prts____check_required____clz_Torappu_CharSkinData____m_illustId: string; 
-    prts____check_required____clz_Torappu_CharSkinData____m_dynIllustId: string; 
-    prts____check_required____clz_Torappu_CharSkinData____m_avatarId: string; 
-    prts____check_required____clz_Torappu_CharSkinData____m_portraitId: string; 
-    prts____check_required____clz_Torappu_CharSkinData____m_dynPortraitId: string; 
-    prts____check_required____clz_Torappu_CharSkinData____m_dynEntranceId: string; 
-    prts____check_required____clz_Torappu_CharSkinData____m_buildingId: string; 
-    prts____check_required____clz_Torappu_CharSkinData____m_battleSkin: clz_Torappu_CharSkinData_BattleSkin; 
-    prts____check_required____clz_Torappu_CharSkinData____m_isBuyAble: bool; 
+    illustId: string; // __prts__check_required__m_illustId__
+    dynIllustId: string; // __prts__check_required__m_dynIllustId__
+    avatarId: string; // __prts__check_required__m_avatarId__
+    portraitId: string; // __prts__check_required__m_portraitId__
+    dynPortraitId: string; // __prts__check_required__m_dynPortraitId__
+    dynEntranceId: string; // __prts__check_required__m_dynEntranceId__
+    buildingId: string; // __prts__check_required__m_buildingId__
+    battleSkin: clz_Torappu_CharSkinData_BattleSkin; // __prts__check_required__m_battleSkin__
+    isBuySkin: bool; // __prts__check_required__m_isBuyAble__
     tmplId: string; 
     voiceId: string; 
     voiceType: enum__Torappu_SkinVoiceType; 
