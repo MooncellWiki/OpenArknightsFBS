@@ -1,0 +1,582 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_BattleFunctionDisableMask : int {
+    NONE = 0,
+    CARD_LIST = 1,
+    CHARACTER_MENU = 2,
+    CHARACTER_INFO = 4,
+    SYSTEM_MENU = 8,
+    PAUSE_BUTTON = 16,
+    SPEED_SWITCHER_BUTTON = 32,
+    BATTLE_STATUS = 64,
+    COST_PANEL = 128,
+    SLOW_MOTION = 256,
+    ALL = 511,
+}
+
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
+}
+
+table clz_Torappu_LevelData_Options {
+    characterLimit: int; 
+    maxLifePoint: int; 
+    initialCost: int; 
+    maxCost: int; 
+    costIncreaseTime: float; 
+    moveMultiplier: float; 
+    steeringEnabled: bool; 
+    isTrainingLevel: bool; 
+    isHardTrainingLevel: bool; 
+    isPredefinedCardsSelectable: bool; 
+    maxPlayTime: float; 
+    functionDisableMask: enum__Torappu_BattleFunctionDisableMask; 
+    configBlackBoard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table hg__internal__MapData {
+    row_size: int;
+    column_size: int;
+    matrix_data: [short];
+}
+
+enum enum__Torappu_TileData_HeightType : int {
+    LOWLAND = 0,
+    HIGHLAND = 1,
+    E_NUM = 2,
+}
+
+enum enum__Torappu_BuildableType : int {
+    NONE = 0,
+    MELEE = 1,
+    RANGED = 2,
+    ALL = 3,
+}
+
+enum enum__Torappu_MotionMask : int {
+    NONE = 0,
+    WALK_ONLY = 1,
+    FLY_ONLY = 2,
+    ALL = 3,
+}
+
+enum enum__Torappu_PlayerSideMask : int {
+    ALL = 0,
+    SIDE_A = 1,
+    SIDE_B = 2,
+    NONE = 3,
+}
+
+enum enum__Torappu_Battle_AdvancedBuildableMask : int {
+    NONE = 0,
+    DEFAULT = 1,
+    DEEP_SEA = 2,
+    TIDE_SEA = 4,
+    NIGHT = 8,
+    HIDE = 16,
+    WOODRD_HOLE = 32,
+}
+
+table clz_UnityEngine_Vector3 {
+    x: float; 
+    y: float; 
+    z: float; 
+}
+
+enum enum__Torappu_SharedConsts_Direction : int {
+    UP = 0,
+    RIGHT = 1,
+    DOWN = 2,
+    LEFT = 3,
+    E_NUM = 4,
+    INVALID = 4,
+}
+
+table clz_Torappu_MapEffectData {
+    key: string; 
+    offset: clz_UnityEngine_Vector3; 
+    direction: enum__Torappu_SharedConsts_Direction; 
+}
+
+table clz_Torappu_TileData {
+    tileKey: string; 
+    heightType: enum__Torappu_TileData_HeightType; 
+    buildableType: enum__Torappu_BuildableType; 
+    passableMask: enum__Torappu_MotionMask; 
+    playerSideMask: enum__Torappu_PlayerSideMask; 
+    advancedBuildableMask: enum__Torappu_Battle_AdvancedBuildableMask; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+    effects: [clz_Torappu_MapEffectData]; 
+}
+
+table clz_Torappu_GridPosition {
+    row: int; 
+    col: int; 
+}
+
+table clz_Torappu_MapData_Edge {
+    pos: clz_Torappu_GridPosition; 
+    direction: enum__Torappu_SharedConsts_Direction; 
+    blockMask: enum__Torappu_MotionMask; 
+}
+
+table clz_Torappu_MapData {
+    map: hg__internal__MapData; 
+    tiles: [clz_Torappu_TileData]; 
+    blockEdges: [clz_Torappu_MapData_Edge]; 
+    tags: [string]; 
+    effects: [clz_Torappu_MapEffectData]; 
+    layerRects: [string]; 
+}
+
+enum enum__Torappu_LevelData_Difficulty : int {
+    NONE = 0,
+    NORMAL = 1,
+    FOUR_STAR = 2,
+    EASY = 4,
+    ALL = 7,
+}
+
+enum enum__Torappu_ProfessionCategory : int {
+    NONE = 0,
+    WARRIOR = 1,
+    SNIPER = 2,
+    TANK = 4,
+    MEDIC = 8,
+    SUPPORT = 16,
+    CASTER = 32,
+    SPECIAL = 64,
+    TOKEN = 128,
+    TRAP = 256,
+    PIONEER = 512,
+}
+
+table clz_Torappu_LegacyInLevelRuneData {
+    difficultyMask: enum__Torappu_LevelData_Difficulty; 
+    key: string; 
+    professionMask: enum__Torappu_ProfessionCategory; 
+    buildableMask: enum__Torappu_BuildableType; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table clz_Torappu_LevelData_GlobalBuffData {
+    prefabKey: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+    overrideCameraEffect: string; 
+    passProfessionMaskFlag: bool; 
+    professionMask: enum__Torappu_ProfessionCategory; 
+    useExtraData: bool; 
+}
+
+enum enum__Torappu_MotionMode : int {
+    WALK = 0,
+    FLY = 1,
+    E_NUM = 2,
+}
+
+table clz_UnityEngine_Vector2 {
+    x: float; 
+    y: float; 
+}
+
+enum enum__Torappu_CheckpointType : int {
+    MOVE = 0,
+    WAIT_FOR_SECONDS = 1,
+    WAIT_FOR_PLAY_TIME = 2,
+    WAIT_CURRENT_FRAGMENT_TIME = 3,
+    WAIT_CURRENT_WAVE_TIME = 4,
+    DISAPPEAR = 5,
+    APPEAR_AT_POS = 6,
+    ALERT = 7,
+    PATROL_MOVE = 8,
+    INVALID = 9,
+}
+
+table clz_Torappu_RouteData_CheckpointData {
+    type: enum__Torappu_CheckpointType; 
+    time: float; 
+    position: clz_Torappu_GridPosition; 
+    reachOffset: clz_UnityEngine_Vector2; 
+    randomizeReachOffset: bool; 
+    reachDistance: float; 
+}
+
+table clz_Torappu_RouteData {
+    motionMode: enum__Torappu_MotionMode; 
+    startPosition: clz_Torappu_GridPosition; 
+    endPosition: clz_Torappu_GridPosition; 
+    spawnRandomRange: clz_UnityEngine_Vector2; 
+    spawnOffset: clz_UnityEngine_Vector2; 
+    checkpoints: [clz_Torappu_RouteData_CheckpointData]; 
+    allowDiagonalMove: bool; 
+    visitEveryTileCenter: bool; 
+    visitEveryNodeCenter: bool; 
+    visitEveryCheckPoint: bool; 
+}
+
+table clz_Torappu_AttributesData {
+    maxHp: int; 
+    atk: int; 
+    def: int; 
+    magicResistance: float; 
+    cost: int; 
+    blockCnt: int; 
+    moveSpeed: float; 
+    attackSpeed: float; 
+    baseAttackTime: float; 
+    respawnTime: int; 
+    hpRecoveryPerSec: float; 
+    spRecoveryPerSec: float; 
+    maxDeployCount: int; 
+    maxDeckStackCnt: int; 
+    tauntLevel: int; 
+    massLevel: int; 
+    baseForceLevel: int; 
+    stunImmune: bool; 
+    silenceImmune: bool; 
+    sleepImmune: bool; 
+    frozenImmune: bool; 
+    levitateImmune: bool; 
+}
+
+enum enum__Torappu_SourceApplyWay : int {
+    NONE = 0,
+    MELEE = 1,
+    RANGED = 2,
+    ALL = 3,
+}
+
+enum enum__Torappu_EnemyLevelType : int {
+    NORMAL = 0,
+    ELITE = 1,
+    BOSS = 2,
+}
+
+table clz_Torappu_LevelData_EnemyData_ESkillData {
+    prefabKey: string; 
+    priority: int; 
+    cooldown: float; 
+    initCooldown: float; 
+    spCost: int; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+enum enum__Torappu_SpType : int {
+    NONE = 0,
+    INCREASE_WITH_TIME = 1,
+    INCREASE_WHEN_ATTACK = 2,
+    INCREASE_WHEN_TAKEN_DAMAGE = 4,
+    ATTACK_OR_DAMAGE = 6,
+    ALL = 7,
+}
+
+table clz_Torappu_LevelData_EnemyData_ESpData {
+    spType: enum__Torappu_SpType; 
+    maxSp: int; 
+    initSp: int; 
+    increment: float; 
+}
+
+table clz_Torappu_DynamicAbilityData {
+    atRoot: bool; 
+    prefabKey: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table clz_Torappu_LevelData_EnemyData_RuntimeData {
+    dynamicAbilities: [clz_Torappu_DynamicAbilityData]; 
+    skinData: [string]; 
+}
+
+table clz_Torappu_LevelData_EnemyData {
+    name: string; 
+    description: string; 
+    key: string; 
+    attributes: clz_Torappu_AttributesData; 
+    applyWay: enum__Torappu_SourceApplyWay; 
+    motion: enum__Torappu_MotionMode; 
+    enemyTags: [string]; 
+    notCountInTotal: bool; 
+    alias: string; 
+    lifePointReduce: int; 
+    rangeRadius: float; 
+    numOfExtraDrops: int; 
+    viewRadius: float; 
+    levelType: enum__Torappu_EnemyLevelType; 
+    talentBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+    skills: [clz_Torappu_LevelData_EnemyData_ESkillData]; 
+    spData: clz_Torappu_LevelData_EnemyData_ESpData; 
+    m_runtimeData: clz_Torappu_LevelData_EnemyData_RuntimeData; 
+}
+
+table clz_Torappu_Undefinable_1_System_String_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: string; // __prts__check_required__m_value__
+}
+
+table clz_Torappu_Undefinable_1_System_Int32_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: int; // __prts__check_required__m_value__
+}
+
+table clz_Torappu_Undefinable_1_System_Single_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: float; // __prts__check_required__m_value__
+}
+
+table clz_Torappu_Undefinable_1_System_Boolean_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: bool; // __prts__check_required__m_value__
+}
+
+table clz_Torappu_EnemyDatabase_AttributesData {
+    maxHp: clz_Torappu_Undefinable_1_System_Int32_; 
+    atk: clz_Torappu_Undefinable_1_System_Int32_; 
+    def: clz_Torappu_Undefinable_1_System_Int32_; 
+    magicResistance: clz_Torappu_Undefinable_1_System_Single_; 
+    cost: clz_Torappu_Undefinable_1_System_Int32_; 
+    blockCnt: clz_Torappu_Undefinable_1_System_Int32_; 
+    moveSpeed: clz_Torappu_Undefinable_1_System_Single_; 
+    attackSpeed: clz_Torappu_Undefinable_1_System_Single_; 
+    baseAttackTime: clz_Torappu_Undefinable_1_System_Single_; 
+    respawnTime: clz_Torappu_Undefinable_1_System_Int32_; 
+    hpRecoveryPerSec: clz_Torappu_Undefinable_1_System_Single_; 
+    spRecoveryPerSec: clz_Torappu_Undefinable_1_System_Single_; 
+    maxDeployCount: clz_Torappu_Undefinable_1_System_Int32_; 
+    massLevel: clz_Torappu_Undefinable_1_System_Int32_; 
+    baseForceLevel: clz_Torappu_Undefinable_1_System_Int32_; 
+    tauntLevel: clz_Torappu_Undefinable_1_System_Int32_; 
+    epDamageResistance: clz_Torappu_Undefinable_1_System_Single_; 
+    epResistance: clz_Torappu_Undefinable_1_System_Single_; 
+    stunImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    silenceImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    sleepImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    frozenImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    levitateImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+}
+
+table clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: enum__Torappu_SourceApplyWay; // __prts__check_required__m_value__
+}
+
+table clz_Torappu_Undefinable_1_Torappu_MotionMode_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: enum__Torappu_MotionMode; // __prts__check_required__m_value__
+}
+
+table clz_Torappu_Undefinable_1_System_String___ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: [string]; // __prts__check_required__m_value__
+}
+
+table clz_Torappu_Undefinable_1_Torappu_EnemyLevelType_ {
+    m_defined: bool; // __prts__check_required__m_defined__
+    m_value: enum__Torappu_EnemyLevelType; // __prts__check_required__m_value__
+}
+
+table clz_Torappu_EnemyDatabase_EnemyData {
+    name: clz_Torappu_Undefinable_1_System_String_; 
+    description: clz_Torappu_Undefinable_1_System_String_; 
+    prefabKey: clz_Torappu_Undefinable_1_System_String_; 
+    attributes: clz_Torappu_EnemyDatabase_AttributesData; 
+    applyWay: clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_; 
+    motion: clz_Torappu_Undefinable_1_Torappu_MotionMode_; 
+    enemyTags: clz_Torappu_Undefinable_1_System_String___; 
+    lifePointReduce: clz_Torappu_Undefinable_1_System_Int32_; 
+    levelType: clz_Torappu_Undefinable_1_Torappu_EnemyLevelType_; 
+    rangeRadius: clz_Torappu_Undefinable_1_System_Single_; 
+    numOfExtraDrops: clz_Torappu_Undefinable_1_System_Int32_; 
+    viewRadius: clz_Torappu_Undefinable_1_System_Single_; 
+    notCountInTotal: clz_Torappu_Undefinable_1_System_Boolean_; 
+    talentBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+    skills: [clz_Torappu_LevelData_EnemyData_ESkillData]; 
+    spData: clz_Torappu_LevelData_EnemyData_ESpData; 
+}
+
+table clz_Torappu_LevelData_EnemyDataDbReference {
+    useDb: bool; 
+    id: string; 
+    level: int; 
+    overwrittenData: clz_Torappu_EnemyDatabase_EnemyData; 
+}
+
+enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_ActionType : int {
+    SPAWN = 0,
+    PREVIEW_CURSOR = 1,
+    STORY = 2,
+    TUTORIAL = 3,
+    PLAY_BGM = 4,
+    DISPLAY_ENEMY_INFO = 5,
+    ACTIVATE_PREDEFINED = 6,
+    PLAY_OPERA = 7,
+    TRIGGER_PREDEFINED = 8,
+    BATTLE_EVENTS = 9,
+    WITHDRAW_PREDEFINED = 10,
+    E_NUM = 11,
+}
+
+enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RandomType : int {
+    ALWAYS = 0,
+    PER_DAY = 1,
+    PER_FULLGAME = 2,
+}
+
+table clz_System_Object {
+}
+
+table clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
+    actionType: enum__Torappu_LevelData_WaveData_FragmentData_ActionData_ActionType; 
+    managedByScheduler: bool; 
+    key: string; 
+    count: int; 
+    preDelay: float; 
+    interval: float; 
+    useExtraRoute: bool; 
+    routeIndex: int; 
+    blockFragment: bool; 
+    autoPreviewRoute: bool; 
+    autoDisplayEnemyInfo: bool; 
+    isUnharmfulAndAlwaysCountAsKilled: bool; 
+    hiddenGroup: string; 
+    randomSpawnGroupKey: string; 
+    randomSpawnGroupPackKey: string; 
+    randomType: enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RandomType; 
+    weight: int; 
+    dontBlockWave: bool; 
+    isValid: bool; 
+    extraMeta: clz_System_Object; 
+}
+
+table clz_Torappu_LevelData_WaveData_FragmentData {
+    preDelay: float; 
+    actions: [clz_Torappu_LevelData_WaveData_FragmentData_ActionData]; 
+}
+
+table clz_Torappu_LevelData_WaveData {
+    preDelay: float; 
+    postDelay: float; 
+    maxTimeWaitingForNextWave: float; 
+    fragments: [clz_Torappu_LevelData_WaveData_FragmentData]; 
+    advancedWaveTag: string; 
+}
+
+table dict__string__list_clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
+    key: string(key);
+    value: [clz_Torappu_LevelData_WaveData_FragmentData_ActionData];
+}
+
+table clz_Torappu_LevelData_BranchData_PhaseData {
+    preDelay: float; 
+    actions: [clz_Torappu_LevelData_WaveData_FragmentData_ActionData]; 
+    m_randomActionGroups: [dict__string__list_clz_Torappu_LevelData_WaveData_FragmentData_ActionData]; 
+    m_actionWithRandomSpawn: [clz_Torappu_LevelData_WaveData_FragmentData_ActionData]; 
+    m_validActionPackKeys: [string]; 
+}
+
+table clz_Torappu_LevelData_BranchData {
+    phases: [clz_Torappu_LevelData_BranchData_PhaseData]; 
+}
+
+table dict__string__clz_Torappu_LevelData_BranchData {
+    key: string(key);
+    value: clz_Torappu_LevelData_BranchData;
+}
+
+table clz_Torappu_CharacterData_UniqueEquipPair {
+    key: string; 
+    level: int; 
+}
+
+enum enum__Torappu_EvolvePhase : int {
+    PHASE_0 = 0,
+    PHASE_1 = 1,
+    PHASE_2 = 2,
+    PHASE_3 = 3,
+    E_NUM = 4,
+}
+
+table clz_Torappu_CharacterInst_Metadata {
+    characterKey: string; 
+    level: int; 
+    phase: enum__Torappu_EvolvePhase; 
+    favorPoint: int; // __prts__check_required__favorBattlePhase__
+    potentialRank: int; 
+}
+
+table clz_Torappu_LevelData_PredefinedData_PredefinedCharacter {
+    position: clz_Torappu_GridPosition; 
+    direction: enum__Torappu_SharedConsts_Direction; 
+    hidden: bool; 
+    alias: string; 
+    uniEquipIds: [clz_Torappu_CharacterData_UniqueEquipPair]; 
+    inst: clz_Torappu_CharacterInst_Metadata; 
+    skillIndex: int; 
+    mainSkillLvl: int; 
+    skinId: string; 
+    tmplId: string; 
+    overrideSkillBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table clz_Torappu_LevelData_PredefinedData_PredefinedCard {
+    hidden: bool; 
+    alias: string; 
+    uniEquipIds: [clz_Torappu_CharacterData_UniqueEquipPair]; 
+    inst: clz_Torappu_CharacterInst_Metadata; 
+    skillIndex: int; 
+    mainSkillLvl: int; 
+    skinId: string; 
+    tmplId: string; 
+    overrideSkillBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table clz_Torappu_LevelData_PredefinedData_PredefinedTokenCard {
+    initialCnt: int; 
+    hidden: bool; 
+    alias: string; 
+    uniEquipIds: [clz_Torappu_CharacterData_UniqueEquipPair]; 
+    inst: clz_Torappu_CharacterInst_Metadata; 
+    skillIndex: int; 
+    mainSkillLvl: int; 
+    skinId: string; 
+    tmplId: string; 
+    overrideSkillBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table clz_Torappu_LevelData_PredefinedData {
+    characterInsts: [clz_Torappu_LevelData_PredefinedData_PredefinedCharacter]; 
+    tokenInsts: [clz_Torappu_LevelData_PredefinedData_PredefinedCharacter]; 
+    characterCards: [clz_Torappu_LevelData_PredefinedData_PredefinedCard]; 
+    tokenCards: [clz_Torappu_LevelData_PredefinedData_PredefinedTokenCard]; 
+}
+
+table clz_Torappu_LevelData_RuntimeData {
+    extraLoadEnemies: [clz_Torappu_LevelData_EnemyDataDbReference]; 
+}
+
+table clz_Torappu_LevelData {
+    options: clz_Torappu_LevelData_Options; 
+    levelId: string; 
+    mapId: string; 
+    bgmEvent: string; 
+    environmentSe: string; 
+    mapData: clz_Torappu_MapData; 
+    tilesDisallowToLocate: [clz_Torappu_GridPosition]; 
+    runes: [clz_Torappu_LegacyInLevelRuneData]; 
+    globalBuffs: [clz_Torappu_LevelData_GlobalBuffData]; 
+    routes: [clz_Torappu_RouteData]; 
+    extraRoutes: [clz_Torappu_RouteData]; 
+    enemies: [clz_Torappu_LevelData_EnemyData]; 
+    enemyDbRefs: [clz_Torappu_LevelData_EnemyDataDbReference]; 
+    waves: [clz_Torappu_LevelData_WaveData]; 
+    branches: [dict__string__clz_Torappu_LevelData_BranchData]; 
+    predefines: clz_Torappu_LevelData_PredefinedData; 
+    hardPredefines: clz_Torappu_LevelData_PredefinedData; 
+    excludeCharIdList: [string]; 
+    randomSeed: int; 
+    operaConfig: string; 
+    runtimeData: clz_Torappu_LevelData_RuntimeData; 
+}
+
+root_type clz_Torappu_LevelData;
