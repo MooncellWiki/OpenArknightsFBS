@@ -2,6 +2,8 @@
 
 本仓库包含了简中版 2.0.01 版本开始使用的 FlatBuffers 二进制数据格式对应的 Schema 文件。
 
+目前所有 Schema 定义均为从游戏内部结构解析生成。
+
 ### 共建指南
 
 感谢您为 OpenArknightsFBS 贡献内容，在您编写或修改对应的 FBS 文件前，请阅读以下的共建指南。
@@ -13,15 +15,24 @@
 ```
 - 3.请验证您编写的 FBS 中的字段名和数量是否与官方 JSON 一致。`JsonPropertyAttribute` `JsonIgnoreAttribute`
 
-目前版本(CN 2.0.01)有 15 个数据文件使用 FlatBuffers 格式：
+目前版本(CN 2.0.40)有以下数据文件使用 FlatBuffers 格式：
 
+**/**
+- buff_table
+
+**/excel/**
 - activity_table
 - building_data
 - campaign_table
 - chapter_table
+- char_meta_table
+- chat_patch_table
 - character_table
+- charm_table
 - charword_table
-- enemy_database
+- checkin_table
+- climb_tower_table
+- enemy_handbook_table
 - handbook_info_table
 - medal_table
 - open_server_table
@@ -30,3 +41,9 @@
 - shop_client_table
 - skill_table
 - stage_table
+
+**/levels/enemydata/**
+- enemy_database
+
+**/battle/**
+- ep_breakbuff_table
