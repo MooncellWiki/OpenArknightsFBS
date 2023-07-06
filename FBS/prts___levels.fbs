@@ -61,7 +61,7 @@ enum enum__Torappu_MotionMask : int {
     ALL = 3,
 }
 
-enum enum__Torappu_PlayerSideMask : int {
+enum enum__Torappu_PlayerSideMask : ubyte {
     ALL = 0,
     SIDE_A = 1,
     SIDE_B = 2,
