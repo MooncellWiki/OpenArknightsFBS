@@ -1739,6 +1739,11 @@ table dict__string__clz_Torappu_RoguelikeTopicDevToken {
 }
 
 table clz_Torappu_RL01EndingText {
+    summaryVariation: string; 
+    summaryDefeatBoss: string; 
+    summaryAccidentMeet: string; 
+    summaryCapsule: string; 
+    summaryActiveTool: string; 
     summaryActor: string; 
     summaryTop: string; 
     summaryZone: string; 
@@ -1754,7 +1759,6 @@ table clz_Torappu_RL01EndingText {
     summaryUpgrade: string; 
     summaryCompleteEnding: string; 
     summaryEachZone: string; 
-    summaryVariation: string; 
     summaryPerfectBattle: string; 
     summaryMeetBattle: string; 
     summaryMeetEvent: string; 
@@ -1765,10 +1769,6 @@ table clz_Torappu_RL01EndingText {
     summaryGet: string; 
     summaryRelic: string; 
     summarySafeHouse: string; 
-    summaryDefeatBoss: string; 
-    summaryAccidentMeet: string; 
-    summaryCapsule: string; 
-    summaryActiveTool: string; 
     summaryFailEnd: string; 
 }
 
@@ -1926,6 +1926,23 @@ table dict__string__clz_Torappu_RL03DevDifficultyNodeInfo {
 }
 
 table clz_Torappu_RL03EndingText {
+    summaryGetTotem: string; 
+    summaryDemoPointUp: string; 
+    summaryDemoPointDown: string; 
+    summaryDemoGradeUp: string; 
+    summaryDemoGradeDown: string; 
+    summaryVisionPointUp: string; 
+    summaryVisionPointDown: string; 
+    summaryVisionGradeUp: string; 
+    summaryVisionGradeDown: string; 
+    summaryMeetTrade: string; 
+    summaryFightWin: string; 
+    summaryFightFail: string; 
+    summaryExchangeTotem: string; 
+    summaryExchangeRelic: string; 
+    summaryMeetSecretpath: string; 
+    summaryUseTotem: string; 
+    summaryVisionGrade: string; 
     summaryActor: string; 
     summaryTop: string; 
     summaryZone: string; 
@@ -1952,23 +1969,6 @@ table clz_Torappu_RL03EndingText {
     summaryRelic: string; 
     summarySafeHouse: string; 
     summaryFailEnd: string; 
-    summaryGetTotem: string; 
-    summaryDemoPointUp: string; 
-    summaryDemoPointDown: string; 
-    summaryDemoGradeUp: string; 
-    summaryDemoGradeDown: string; 
-    summaryVisionPointUp: string; 
-    summaryVisionPointDown: string; 
-    summaryVisionGradeUp: string; 
-    summaryVisionGradeDown: string; 
-    summaryMeetTrade: string; 
-    summaryFightWin: string; 
-    summaryFightFail: string; 
-    summaryExchangeTotem: string; 
-    summaryExchangeRelic: string; 
-    summaryMeetSecretpath: string; 
-    summaryUseTotem: string; 
-    summaryVisionGrade: string; 
 }
 
 table clz_Torappu_RL03DifficultyExt {
