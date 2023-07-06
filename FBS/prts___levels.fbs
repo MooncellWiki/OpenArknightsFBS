@@ -105,7 +105,7 @@ table clz_Torappu_TileData {
     buildableType: enum__Torappu_BuildableType; 
     passableMask: enum__Torappu_MotionMask; 
     playerSideMask: enum__Torappu_PlayerSideMask; 
-    advancedBuildableMask: enum__Torappu_Battle_AdvancedBuildableMask; 
+    // advancedBuildableMask: enum__Torappu_Battle_AdvancedBuildableMask; 
     blackboard: [clz_Torappu_Blackboard_DataPair]; 
     effects: [clz_Torappu_MapEffectData]; 
 }
