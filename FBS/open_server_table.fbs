@@ -88,6 +88,9 @@ enum enum__Torappu_ItemType : int {
     LIMITED_BUFF = 64,
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
+    RETURN_PROGRESS = 67,
+    NEW_PROGRESS = 68,
+    MCARD_VOUCHER = 69,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -238,11 +241,156 @@ table clz_Torappu_ReturnData {
     checkinRewardList: [clz_Torappu_ReturnCheckinData]; 
 }
 
+table clz_Torappu_ReturnV2Const {
+    startTime: long; 
+    unlockLv: int; 
+    unlockStage: string; 
+    permMissionTime: int; 
+    pointId: string; 
+    returnPriceDesc: string; 
+    dailySupplyDesc: string; 
+}
+
+table clz_Torappu_ReturnV2ItemData {
+    id: string; 
+    type: enum__Torappu_ItemType; 
+    count: int; 
+    sortId: int; 
+}
+
+table clz_Torappu_ReturnV2OnceRewardData {
+    groupId: string; 
+    startTime: long; 
+    endTime: long; 
+    rewardList: [clz_Torappu_ReturnV2ItemData]; 
+}
+
+table clz_Torappu_ReturnV2CheckInRewardItemData {
+    sortId: int; 
+    isImportant: bool; 
+    rewardList: [clz_Torappu_ItemBundle]; 
+}
+
+table clz_Torappu_ReturnV2CheckInRewardData {
+    groupId: string; 
+    startTime: long; 
+    endTime: long; 
+    rewardList: [clz_Torappu_ReturnV2CheckInRewardItemData]; 
+}
+
+table clz_Torappu_ReturnV2PriceRewardData {
+    contentId: string; 
+    sortId: int; 
+    pointRequire: int; 
+    desc: string; 
+    iconId: string; 
+    topIconId: string; 
+    rewardList: [clz_Torappu_ReturnV2ItemData]; 
+}
+
+table clz_Torappu_ReturnV2PriceRewardGroupData {
+    groupId: string; 
+    startTime: long; 
+    endTime: long; 
+    contentList: [clz_Torappu_ReturnV2PriceRewardData]; 
+}
+
+enum enum__Torappu_ReturnV2JumpType : int {
+    NONE = 0,
+    ZONE_GROUP = 1,
+    ROGUE = 2,
+    CLIMB_TOWER = 3,
+    CAMPAIGN = 4,
+    BUILDING = 5,
+    RECRUIT_BUILD = 6,
+    DAILY_MISSION = 7,
+}
+
+table clz_Torappu_ReturnV2MissionItemData {
+    missionId: string; 
+    groupId: string; 
+    sortId: int; 
+    jumpType: enum__Torappu_ReturnV2JumpType; 
+    jumpParam: string; 
+    desc: string; 
+    rewardList: [clz_Torappu_ItemBundle]; 
+}
+
+table clz_Torappu_ReturnV2MissionGroupData {
+    groupId: string; 
+    sortId: int; 
+    tabTitle: string; 
+    title: string; 
+    desc: string; 
+    diffMissionCount: int; 
+    startTime: long; 
+    endTime: long; 
+    imageId: string; 
+    iconId: string; 
+    missionList: [clz_Torappu_ReturnV2MissionItemData]; 
+}
+
+table clz_Torappu_ReturnV2DailySupplyData {
+    groupId: string; 
+    startTime: long; 
+    endTime: long; 
+    rewardList: [clz_Torappu_ItemBundle]; 
+}
+
+table dict__int__list_clz_Torappu_ReturnV2ItemData {
+    key: int(key);
+    value: [clz_Torappu_ReturnV2ItemData];
+}
+
+table clz_Torappu_ReturnV2PackageCheckInRewardData {
+    groupId: string; 
+    startTime: long; 
+    endTime: long; 
+    getTime: int; 
+    bindGPGoodId: string; 
+    totalCheckInDay: int; 
+    iconId: string; 
+    rewardDict: [dict__int__list_clz_Torappu_ReturnV2ItemData]; 
+}
+
+table clz_Torappu_ReturnV2Data {
+    constData: clz_Torappu_ReturnV2Const; 
+    onceRewardData: [clz_Torappu_ReturnV2OnceRewardData]; 
+    checkInRewardData: [clz_Torappu_ReturnV2CheckInRewardData]; 
+    priceRewardData: [clz_Torappu_ReturnV2PriceRewardGroupData]; 
+    missionGroupData: [clz_Torappu_ReturnV2MissionGroupData]; 
+    dailySupplyData: [clz_Torappu_ReturnV2DailySupplyData]; 
+    packageCheckInRewardData: [clz_Torappu_ReturnV2PackageCheckInRewardData]; 
+}
+
+table clz_Torappu_NewbieCheckInPackageRewardData {
+    orderNum: int; 
+    itemBundle: clz_Torappu_ItemBundle; 
+}
+
+table dict__int__list_clz_Torappu_NewbieCheckInPackageRewardData {
+    key: int(key);
+    value: [clz_Torappu_NewbieCheckInPackageRewardData];
+}
+
+table clz_Torappu_NewbieCheckInPackageData {
+    groupId: string; 
+    startTime: long; 
+    endTime: long; 
+    bindGPGoodId: string; 
+    checkInDuration: int; 
+    totalCheckInDay: int; 
+    iconId: string; 
+    checkInRewardDict: [dict__int__list_clz_Torappu_NewbieCheckInPackageRewardData]; 
+}
+
 table clz_Torappu_OpenServerSchedule {
     schedule: [clz_Torappu_OpenServerScheduleItem]; 
     dataMap: [dict__string__clz_Torappu_OpenServerData]; 
     constant: clz_Torappu_OpenServerConst; 
     playerReturn: clz_Torappu_ReturnData; 
+    playerReturnV2: clz_Torappu_ReturnV2Data; 
+    newbieCheckInPackageList: [clz_Torappu_NewbieCheckInPackageData]; 
 }
 
 root_type clz_Torappu_OpenServerSchedule;

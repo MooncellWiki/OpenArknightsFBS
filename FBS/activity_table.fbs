@@ -172,6 +172,9 @@ enum enum__Torappu_ItemType : int {
     LIMITED_BUFF = 64,
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
+    RETURN_PROGRESS = 67,
+    NEW_PROGRESS = 68,
+    MCARD_VOUCHER = 69,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -1255,6 +1258,8 @@ enum enum__Torappu_ActArchiveType : int {
     DYNAMIC_PIC = 16,
     ENDBOOK = 17,
     DYNAMIC_STORY = 18,
+    TOTEM = 19,
+    CHAOS = 20,
 }
 
 enum enum__Torappu_Act13SideData_UnlockCondition : int {

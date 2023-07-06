@@ -10,6 +10,9 @@ enum enum__Torappu_RoguelikeModuleType : int {
     NONE = 0,
     SANCHECK = 1,
     DICE = 2,
+    CHAOS = 3,
+    TOTEMBUFF = 4,
+    VISION = 5,
 }
 
 enum enum__Torappu_RoguelikeMonthChatTrigType : int {
@@ -22,6 +25,8 @@ table clz_Torappu_RoguelikeTopicConfig {
     loadCharCardPlugin: bool; 
     webBusType: string; 
     monthChatTrigType: enum__Torappu_RoguelikeMonthChatTrigType; 
+    loadRewardHpDecoPlugin: bool; 
+    loadRewardExtraInfoPlugin: bool; 
 }
 
 table clz_Torappu_RoguelikeTopicBasicData {
@@ -166,6 +171,9 @@ enum enum__Torappu_ItemType : int {
     LIMITED_BUFF = 64,
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
+    RETURN_PROGRESS = 67,
+    NEW_PROGRESS = 68,
+    MCARD_VOUCHER = 69,
 }
 
 table clz_Torappu_RoguelikeTopicBP {
@@ -231,10 +239,13 @@ table clz_Torappu_ItemBundle {
 table clz_Torappu_RoguelikeTopicMonthSquad {
     id: string; 
     teamName: string; 
+    teamSubName: string; 
+    teamFlavorDesc: string; 
     teamDes: string; 
     teamColor: string; 
     teamMonth: string; 
     teamYear: string; 
+    teamIndex: string; 
     teamChars: [string]; 
     zoneId: string; 
     chatId: string; 
@@ -242,6 +253,7 @@ table clz_Torappu_RoguelikeTopicMonthSquad {
     items: [clz_Torappu_ItemBundle]; 
     startTime: long; 
     endTime: long; 
+    taskDes: string; 
 }
 
 table dict__string__clz_Torappu_RoguelikeTopicMonthSquad {
@@ -296,12 +308,14 @@ table clz_Torappu_RoguelikeTopicDifficulty {
     failImageId: string; 
     failForceDesc: string; 
     sortId: int; 
+    equivalentGrade: int; 
     color: string; 
     bpValue: int; 
     bossValue: int; 
     addDesc: string; 
     isHard: bool; 
     unlockText: string; 
+    displayIconId: string; 
 }
 
 enum enum__Torappu_RoguelikeTopicBankRewardType : int {
@@ -393,6 +407,8 @@ table clz_Torappu_ActArchiveChatData {
 table clz_Torappu_ActArchiveEndbookItemData {
     endBookId: string; 
     sortId: int; 
+    enrollId: string; 
+    isLast: bool; 
     endbookName: string; 
     unlockDesc: string; 
     textId: string; 
@@ -440,6 +456,44 @@ table clz_Torappu_ActArchiveBuffData {
     buff: [dict__string__clz_Torappu_ActArchiveBuffItemData]; 
 }
 
+enum enum__Torappu_ActArchiveTotemType : int {
+    LOCATION = 0,
+    EFFECT = 1,
+    AFFIX = 2,
+}
+
+table clz_Torappu_ActArchiveTotemItemData {
+    id: string; 
+    type: enum__Torappu_ActArchiveTotemType; 
+    enrollConditionId: string; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_ActArchiveTotemItemData {
+    key: string(key);
+    value: clz_Torappu_ActArchiveTotemItemData;
+}
+
+table clz_Torappu_ActArchiveTotemData {
+    totem: [dict__string__clz_Torappu_ActArchiveTotemItemData]; 
+}
+
+table clz_Torappu_ActArchiveChaosItemData {
+    id: string; 
+    isHidden: bool; 
+    enrollId: string; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_ActArchiveChaosItemData {
+    key: string(key);
+    value: clz_Torappu_ActArchiveChaosItemData;
+}
+
+table clz_Torappu_ActArchiveChaosData {
+    chaos: [dict__string__clz_Torappu_ActArchiveChaosItemData]; 
+}
+
 table clz_Torappu_RoguelikeArchiveComponentData {
     relic: clz_Torappu_ActArchiveRelicData; 
     capsule: clz_Torappu_ActArchiveCapsuleData; 
@@ -447,6 +501,8 @@ table clz_Torappu_RoguelikeArchiveComponentData {
     chat: clz_Torappu_ActArchiveChatData; 
     endbook: clz_Torappu_ActArchiveEndbookData; 
     buff: clz_Torappu_ActArchiveBuffData; 
+    totem: clz_Torappu_ActArchiveTotemData; 
+    chaos: clz_Torappu_ActArchiveChaosData; 
 }
 
 enum enum__Torappu_ActArchiveType : int {
@@ -469,6 +525,8 @@ enum enum__Torappu_ActArchiveType : int {
     DYNAMIC_PIC = 16,
     ENDBOOK = 17,
     DYNAMIC_STORY = 18,
+    TOTEM = 19,
+    CHAOS = 20,
 }
 
 table clz_Torappu_RoguelikeArchiveUnlockCondDesc {
@@ -528,9 +586,15 @@ table dict__int__clz_Torappu_RoguelikeTopicDetailConst_CharUpgradeData {
     value: clz_Torappu_RoguelikeTopicDetailConst_CharUpgradeData;
 }
 
+table dict__int__string {
+    key: int(key);
+    value: string;
+}
+
 table clz_Torappu_RoguelikeTopicDetailConst {
     playerLevelTable: [dict__int__clz_Torappu_RoguelikeTopicDetailConst_PlayerLevelData]; 
     charUpgradeTable: [dict__int__clz_Torappu_RoguelikeTopicDetailConst_CharUpgradeData]; 
+    difficultyUpgradeRelicDescTable: [dict__int__string]; 
     tokenBpId: string; 
     tokenOuterBuffId: string; 
     previewedRewardsAccordingUpdateId: string; 
@@ -556,6 +620,8 @@ table clz_Torappu_RoguelikeTopicDetailConst {
     challengeTaskModeName: string; 
     challengeTaskName: string; 
     outerBuffTokenSum: int; 
+    needAllFrontNode: bool; 
+    showBlurBack: bool; 
 }
 
 table clz_Torappu_RoguelikeGameInitData {
@@ -613,7 +679,7 @@ table clz_Torappu_RoguelikeGameZoneData {
     description: string; 
     endingDescription: string; 
     backgroundId: string; 
-    subIconId: string; 
+    zoneIconId: string; 
     isHiddenZone: bool; 
 }
 
@@ -804,6 +870,7 @@ enum enum__Torappu_RoguelikeGameChoiceType : int {
     EXPEDITION = 8,
     WISH = 9,
     TRADE_PROB_SHOW = 10,
+    SACRIFICE_TOTEM = 11,
 }
 
 enum enum__Torappu_RoguelikeChoiceLeftDecoType : int {
@@ -811,6 +878,7 @@ enum enum__Torappu_RoguelikeChoiceLeftDecoType : int {
     TASK = 1,
     TASK_REWARD = 2,
     DICE = 3,
+    VISION = 4,
 }
 
 enum enum__Torappu_RoguelikeChoiceDisplayType : int {
@@ -820,10 +888,23 @@ enum enum__Torappu_RoguelikeChoiceDisplayType : int {
     TASK = 3,
 }
 
+enum enum__Torappu_RoguelikeChoiceHintType : int {
+    NONE = 0,
+    ITEM = 1,
+    SACRIFICE = 2,
+    SACRIFICE_TOTEM = 3,
+    EXPEDITION = 4,
+    VISION = 5,
+    CHAOS = 6,
+}
+
 table clz_Torappu_RoguelikeChoiceDisplayData {
     type: enum__Torappu_RoguelikeChoiceDisplayType; 
+    costHintType: enum__Torappu_RoguelikeChoiceHintType; 
+    effectHintType: enum__Torappu_RoguelikeChoiceHintType; 
     funcIconId: string; 
     itemId: string; 
+    difficultyUpgradeRelicGroupId: string; 
     taskId: string; 
 }
 
@@ -837,6 +918,7 @@ table clz_Torappu_RoguelikeGameChoiceData {
     nextSceneId: string; 
     icon: string; 
     displayData: clz_Torappu_RoguelikeChoiceDisplayData; 
+    forceShowWhenOnlyLeave: bool; 
 }
 
 table dict__string__clz_Torappu_RoguelikeGameChoiceData {
@@ -850,6 +932,7 @@ table clz_Torappu_RoguelikeGameChoiceSceneData {
     description: string; 
     background: string; 
     titleIcon: string; 
+    subTypeId: int; 
     useHiddenMusic: bool; 
 }
 
@@ -879,6 +962,8 @@ enum enum__Torappu_RoguelikeEventType : int {
     CHOICES = 28400,
     EVENTS = 32504,
     ALL = 32511,
+    STORY = 32768,
+    STORY_HIDDEN = 65536,
 }
 
 table clz_Torappu_RoguelikeGameNodeTypeData {
@@ -889,6 +974,14 @@ table clz_Torappu_RoguelikeGameNodeTypeData {
 table dict__enum__Torappu_RoguelikeEventType__clz_Torappu_RoguelikeGameNodeTypeData {
     key: enum__Torappu_RoguelikeEventType(key);
     value: clz_Torappu_RoguelikeGameNodeTypeData;
+}
+
+table clz_Torappu_RoguelikeGameNodeSubTypeData {
+    eventType: enum__Torappu_RoguelikeEventType; 
+    subTypeId: int; 
+    iconId: string; 
+    name: string; 
+    description: string; 
 }
 
 enum enum__Torappu_RoguelikeGameVariationType : int {
@@ -963,6 +1056,17 @@ table dict__string__clz_Torappu_RoguelikeTaskData {
     value: clz_Torappu_RoguelikeTaskData;
 }
 
+enum enum__Torappu_RoguelikeRewardExDropTagSrcType : int {
+    NONE = 0,
+    TREASURE = 1,
+    TOTEM = 2,
+}
+
+table dict__enum__Torappu_RoguelikeRewardExDropTagSrcType__string {
+    key: enum__Torappu_RoguelikeRewardExDropTagSrcType(key);
+    value: string;
+}
+
 table clz_Torappu_RoguelikeGameConst {
     initSceneName: string; 
     failSceneName: string; 
@@ -974,6 +1078,7 @@ table clz_Torappu_RoguelikeGameConst {
     bankMaxGold: int; 
     bankCostId: string; 
     bankDrawCount: int; 
+    bankDrawLimit: int; 
     mimicEnemyIds: [string]; 
     bossIds: [string]; 
     goldChestTrapId: string; 
@@ -983,8 +1088,6 @@ table clz_Torappu_RoguelikeGameConst {
     maxHpItemId: string; 
     shieldItemId: string; 
     keyItemId: string; 
-    sanItemId: string; 
-    diceItemId: string; 
     chestKeyCnt: int; 
     chestKeyItemId: string; 
     keyColorId: string; 
@@ -993,6 +1096,26 @@ table clz_Torappu_RoguelikeGameConst {
     overflowUsageSquadBuff: string; 
     specialTrapId: string; 
     trapRewardRelicId: string; 
+    unlockRouteItemId: string; 
+    hideBattleNodeName: string; 
+    hideBattleNodeDescription: string; 
+    hideNonBattleNodeName: string; 
+    hideNonBattleNodeDescription: string; 
+    charSelectExpeditionConflictToast: string; 
+    itemDropTagDict: [dict__enum__Torappu_RoguelikeRewardExDropTagSrcType__string]; 
+    expeditionReturnDescCureUpgrade: string; 
+    expeditionReturnDescUpgrade: string; 
+    expeditionReturnDescCure: string; 
+    expeditionReturnDesc: string; 
+    expeditionReturnDescItem: string; 
+    expeditionReturnRewardBlackList: [string]; 
+    gainBuffDiffGrade: int; 
+    dsPredictTips: string; 
+    dsBuffActiveTips: string; 
+    totemDesc: string; 
+    relicDesc: string; 
+    buffDesc: string; 
+    portalZones: [string]; 
 }
 
 enum enum__Torappu_RoguelikeGameShopDialogType : int {
@@ -1009,6 +1132,8 @@ enum enum__Torappu_RoguelikeGameShopDialogType : int {
     OUTER_NORMAL = 10,
     OUTER_REWARD = 11,
     FIGHT_BOSS = 12,
+    TOTEM = 13,
+    VISION = 14,
 }
 
 table dict__enum__Torappu_RoguelikeGameShopDialogType__list_string {
@@ -1027,12 +1152,18 @@ table dict__string__clz_Torappu_RoguelikeTopicCapsule {
     value: clz_Torappu_RoguelikeTopicCapsule;
 }
 
+table clz_Torappu_RoguelikeGameEndingData_LevelIcon {
+    level: int; 
+    iconId: string; 
+}
+
 table clz_Torappu_RoguelikeGameEndingData {
     id: string; 
+    familyId: int; 
     name: string; 
     desc: string; 
     bgId: string; 
-    iconId: string; 
+    icons: [clz_Torappu_RoguelikeGameEndingData_LevelIcon]; 
     priority: int; 
     changeEndingDesc: string; 
     bossIconId: string; 
@@ -1094,12 +1225,21 @@ enum enum__Torappu_RoguelikeGameItemType : int {
     SHIELD = 22,
     LOCKED_TREASURE = 23,
     CUSTOM_TICKET = 24,
+    TOTEM = 25,
+    TOTEM_EFFECT = 26,
+    FEATURE = 27,
+    VISION = 28,
+    CHAOS = 29,
+    CHAOS_PURIFY = 30,
+    CHAOS_LEVEL = 31,
 }
 
 enum enum__Torappu_RoguelikeGameItemSubType : int {
     NONE = 0,
     CURSE = 1,
     TEMP_TICKET = 2,
+    TOTEM_UPPER = 4,
+    TOTEM_LOWER = 8,
 }
 
 enum enum__Torappu_RoguelikeGameItemRarity : int {
@@ -1185,6 +1325,20 @@ table dict__string__list_clz_Torappu_RoguelikeGameTreasureData {
     value: [clz_Torappu_RoguelikeGameTreasureData];
 }
 
+table clz_Torappu_RoguelikeDifficultyUpgradeRelicData {
+    relicId: string; 
+    equivalentGrade: int; 
+}
+
+table clz_Torappu_RoguelikeDifficultyUpgradeRelicGroupData {
+    relicData: [clz_Torappu_RoguelikeDifficultyUpgradeRelicData]; 
+}
+
+table dict__string__clz_Torappu_RoguelikeDifficultyUpgradeRelicGroupData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeDifficultyUpgradeRelicGroupData;
+}
+
 table clz_Torappu_RoguelikeTopicDetail {
     updates: [clz_Torappu_RoguelikeTopicUpdate]; 
     enrolls: [dict__string__clz_Torappu_RoguelikeTopicEnroll]; 
@@ -1213,6 +1367,7 @@ table clz_Torappu_RoguelikeTopicDetail {
     choices: [dict__string__clz_Torappu_RoguelikeGameChoiceData]; 
     choiceScenes: [dict__string__clz_Torappu_RoguelikeGameChoiceSceneData]; 
     nodeTypeData: [dict__enum__Torappu_RoguelikeEventType__clz_Torappu_RoguelikeGameNodeTypeData]; 
+    subTypeData: [clz_Torappu_RoguelikeGameNodeSubTypeData]; 
     variationData: [dict__string__clz_Torappu_RoguelikeGameVariationData]; 
     charBuffData: [dict__string__clz_Torappu_RoguelikeGameCharBuffData]; 
     squadBuffData: [dict__string__clz_Torappu_RoguelikeGameSquadBuffData]; 
@@ -1227,6 +1382,7 @@ table clz_Torappu_RoguelikeTopicDetail {
     bandRef: [dict__string__clz_Torappu_RoguelikeBandRefData]; 
     endingDetailList: [clz_Torappu_RoguelikeEndingDetailText]; 
     treasures: [dict__string__list_clz_Torappu_RoguelikeGameTreasureData]; 
+    difficultyUpgradeRelicGroups: [dict__string__clz_Torappu_RoguelikeDifficultyUpgradeRelicGroupData]; 
 }
 
 table dict__string__clz_Torappu_RoguelikeTopicDetail {
@@ -1336,10 +1492,197 @@ table clz_Torappu_RoguelikeDiceModuleData {
     dicePredefines: [clz_Torappu_RoguelikeDicePredefineData]; 
 }
 
+table clz_Torappu_RoguelikeChaosData {
+    chaosId: string; 
+    level: int; 
+    nextChaosId: string; 
+    prevChaosId: string; 
+    iconId: string; 
+    name: string; 
+    functionDesc: string; 
+    desc: string; 
+    sound: string; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_RoguelikeChaosData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeChaosData;
+}
+
+enum enum__Torappu_ChaosEffectRank : int {
+    CHAOS_EFFECT_0 = 0,
+    CHAOS_EFFECT_1 = 1,
+    CHAOS_EFFECT_2 = 2,
+}
+
+table clz_Torappu_RoguelikeChaosRangeData {
+    chaosMax: int; 
+    chaosDungeonEffect: enum__Torappu_ChaosEffectRank; 
+}
+
+table clz_Torappu_RoguelikeChaosPredefineLevelInfo {
+    chaosLevelBeginNum: int; 
+    chaosLevelEndNum: int; 
+}
+
+table dict__int__clz_Torappu_RoguelikeChaosPredefineLevelInfo {
+    key: int(key);
+    value: clz_Torappu_RoguelikeChaosPredefineLevelInfo;
+}
+
+table dict__string__list_dict__int__clz_Torappu_RoguelikeChaosPredefineLevelInfo {
+    key: string(key);
+    value: [dict__int__clz_Torappu_RoguelikeChaosPredefineLevelInfo];
+}
+
+table clz_Torappu_RoguelikeChaosModuleConsts {
+    maxChaosLevel: int; 
+    maxChaosSlot: int; 
+    chaosNotMaxDescription: string; 
+    chaosMaxDescription: string; 
+    chaosPredictDescription: string; 
+}
+
+table clz_Torappu_RoguelikeChaosModuleData {
+    chaosDatas: [dict__string__clz_Torappu_RoguelikeChaosData]; 
+    chaosRanges: [clz_Torappu_RoguelikeChaosRangeData]; 
+    levelInfoDict: [dict__string__list_dict__int__clz_Torappu_RoguelikeChaosPredefineLevelInfo]; 
+    moduleConsts: clz_Torappu_RoguelikeChaosModuleConsts; 
+}
+
+enum enum__Torappu_RoguelikeTotemColorType : int {
+    NONE = 0,
+    RED = 1,
+    GREEN = 2,
+    BLUE = 3,
+}
+
+enum enum__Torappu_RoguelikeTotemPosType : int {
+    LOCATION = 0,
+    EFFECT = 1,
+}
+
+enum enum__Torappu_RoguelikeTotemBlurNodeType : int {
+    NONE = 0,
+    BATTLE = 1,
+    NO_BATTLE = 2,
+}
+
+table clz_Torappu_RoguelikeTotemLinkedNodeTypeData {
+    effectiveNodeTypes: [enum__Torappu_RoguelikeEventType]; 
+    blurNodeTypes: [enum__Torappu_RoguelikeTotemBlurNodeType]; 
+}
+
+table clz_Torappu_RoguelikeTotemBuffData {
+    totemId: string; 
+    color: enum__Torappu_RoguelikeTotemColorType; 
+    pos: enum__Torappu_RoguelikeTotemPosType; 
+    rhythm: string; 
+    normalDesc: string; 
+    synergyDesc: string; 
+    archiveDesc: string; 
+    combineGroupName: string; 
+    bgIconId: string; 
+    isManual: bool; 
+    linkedNodeTypeData: clz_Torappu_RoguelikeTotemLinkedNodeTypeData; 
+    distanceMin: int; 
+    distanceMax: int; 
+    vertPassable: bool; 
+    expandLength: int; 
+    onlyForVert: bool; 
+    portalLinkedNodeTypeData: clz_Torappu_RoguelikeTotemLinkedNodeTypeData; 
+}
+
+table dict__string__clz_Torappu_RoguelikeTotemBuffData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeTotemBuffData;
+}
+
+table clz_Torappu_RoguelikeTotemSubBuffData {
+    subBuffId: string; 
+    name: string; 
+    desc: string; 
+    combinedDesc: string; 
+    info: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeTotemSubBuffData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeTotemSubBuffData;
+}
+
+table dict__enum__Torappu_RoguelikeTotemColorType__string {
+    key: enum__Torappu_RoguelikeTotemColorType(key);
+    value: string;
+}
+
+table clz_Torappu_RoguelikeTotemModuleConsts {
+    totemPredictDescription: string; 
+    colorCombineDesc: [dict__enum__Torappu_RoguelikeTotemColorType__string]; 
+    bossCombineDesc: string; 
+    battleNoPredictDescription: string; 
+    shopNoGoodsDescription: string; 
+}
+
+table clz_Torappu_RoguelikeTotemBuffModuleData {
+    totemBuffDatas: [dict__string__clz_Torappu_RoguelikeTotemBuffData]; 
+    subBuffs: [dict__string__clz_Torappu_RoguelikeTotemSubBuffData]; 
+    moduleConsts: clz_Torappu_RoguelikeTotemModuleConsts; 
+}
+
+table clz_Torappu_RoguelikeVisionData {
+    sightNum: int; 
+    level: int; 
+    canForesee: bool; 
+    dividedDis: int; 
+    status: string; 
+    clr: string; 
+    desc1: string; 
+    desc2: string; 
+    icon: string; 
+}
+
+table dict__int__clz_Torappu_RoguelikeVisionData {
+    key: int(key);
+    value: clz_Torappu_RoguelikeVisionData;
+}
+
+enum enum__Torappu_RoguelikeVisionModuleData_VisionChoiceCheckType : int {
+    LOWER = 0,
+    UPPER = 1,
+}
+
+table clz_Torappu_RoguelikeVisionModuleData_VisionChoiceConfig {
+    value: int; 
+    type: enum__Torappu_RoguelikeVisionModuleData_VisionChoiceCheckType; 
+}
+
+table dict__string__clz_Torappu_RoguelikeVisionModuleData_VisionChoiceConfig {
+    key: string(key);
+    value: clz_Torappu_RoguelikeVisionModuleData_VisionChoiceConfig;
+}
+
+table clz_Torappu_RoguelikeVisionModuleConsts {
+    maxVision: int; 
+    totemBottomDescription: string; 
+    chestBottomDescription: string; 
+    goodsBottomDescription: string; 
+}
+
+table clz_Torappu_RoguelikeVisionModuleData {
+    visionDatas: [dict__int__clz_Torappu_RoguelikeVisionData]; 
+    visionChoices: [dict__string__clz_Torappu_RoguelikeVisionModuleData_VisionChoiceConfig]; 
+    moduleConsts: clz_Torappu_RoguelikeVisionModuleConsts; 
+}
+
 table clz_Torappu_RoguelikeModule {
     moduleTypes: [enum__Torappu_RoguelikeModuleType]; 
     sanCheck: clz_Torappu_RoguelikeSanCheckModuleData; 
     dice: clz_Torappu_RoguelikeDiceModuleData; 
+    chaos: clz_Torappu_RoguelikeChaosModuleData; 
+    totemBuff: clz_Torappu_RoguelikeTotemBuffModuleData; 
+    vision: clz_Torappu_RoguelikeVisionModuleData; 
 }
 
 table dict__string__clz_Torappu_RoguelikeModule {
@@ -1396,37 +1739,37 @@ table dict__string__clz_Torappu_RoguelikeTopicDevToken {
 }
 
 table clz_Torappu_RL01EndingText {
-    summaryActor: string; 
-    summaryTop: string; 
-    summaryZone: string; 
-    summaryEnding: string; 
-    summaryMode: string; 
-    summaryGroup: string; 
-    summaryNormalRecruit: string; 
-    summaryDirectRecruit: string; 
-    summaryFriendRecruit: string; 
-    summaryFreeRecruit: string; 
-    summaryMonthRecruit: string; 
-    summaryEachZone: string; 
+    <summaryActor>k__BackingField: string; 
+    <summaryTop>k__BackingField: string; 
+    <summaryZone>k__BackingField: string; 
+    <summaryEnding>k__BackingField: string; 
+    <summaryMode>k__BackingField: string; 
+    <summaryGroup>k__BackingField: string; 
+    <summarySupport>k__BackingField: string; 
+    <summaryNormalRecruit>k__BackingField: string; 
+    <summaryDirectRecruit>k__BackingField: string; 
+    <summaryFriendRecruit>k__BackingField: string; 
+    <summaryFreeRecruit>k__BackingField: string; 
+    <summaryMonthRecruit>k__BackingField: string; 
+    <summaryUpgrade>k__BackingField: string; 
+    <summaryCompleteEnding>k__BackingField: string; 
+    <summaryEachZone>k__BackingField: string; 
     summaryVariation: string; 
-    summaryPerfectBattle: string; 
-    summaryMeetBattle: string; 
-    summaryMeetEvent: string; 
-    summaryMeetShop: string; 
-    summaryMeetTreasure: string; 
+    <summaryPerfectBattle>k__BackingField: string; 
+    <summaryMeetBattle>k__BackingField: string; 
+    <summaryMeetEvent>k__BackingField: string; 
+    <summaryMeetShop>k__BackingField: string; 
+    <summaryMeetTreasure>k__BackingField: string; 
+    <summaryBuy>k__BackingField: string; 
+    <summaryInvest>k__BackingField: string; 
+    <summaryGet>k__BackingField: string; 
+    <summaryRelic>k__BackingField: string; 
+    <summarySafeHouse>k__BackingField: string; 
     summaryDefeatBoss: string; 
-    summaryCompleteEnding: string; 
-    summarySupport: string; 
-    summaryUpgrade: string; 
     summaryAccidentMeet: string; 
-    summaryRelic: string; 
     summaryCapsule: string; 
     summaryActiveTool: string; 
-    summarySafeHouse: string; 
-    summaryBuy: string; 
-    summaryInvest: string; 
-    summaryGet: string; 
-    summaryFailEnd: string; 
+    <summaryFailEnd>k__BackingField: string; 
 }
 
 table clz_Torappu_RL01CustomizeData {
@@ -1524,9 +1867,132 @@ table clz_Torappu_RL02CustomizeData {
     endingText: clz_Torappu_RL02EndingText; 
 }
 
+enum enum__Torappu_RL03DevelopmentNodeType : int {
+    NONE = 0,
+    NORMAL = 1,
+    KEY = 2,
+    DIFFICULTY = 3,
+}
+
+enum enum__Torappu_RL03DevelopmentEffectType : int {
+    BUFF = 0,
+    RAW_TEXT_EFFECT = 1,
+    RAW_TEXT_BAND = 2,
+}
+
+table clz_Torappu_RL03Development {
+    buffId: string; 
+    nodeType: enum__Torappu_RL03DevelopmentNodeType; 
+    frontNodeId: [string]; 
+    nextNodeId: [string]; 
+    positionRow: int; 
+    positionOrder: int; 
+    tokenCost: int; 
+    buffName: string; 
+    buffIconId: string; 
+    effectType: enum__Torappu_RL03DevelopmentEffectType; 
+    rawDesc: [string]; 
+    buffDisplayInfo: [clz_Torappu_RoguelikeTopicDisplayItem]; 
+    groupId: string; 
+    enrollId: string; 
+}
+
+table dict__string__clz_Torappu_RL03Development {
+    key: string(key);
+    value: clz_Torappu_RL03Development;
+}
+
+table clz_Torappu_RL03DevRawTextBuffGroup {
+    nodeIdList: [string]; 
+    useLevelMark: bool; 
+    groupIconId: string; 
+    sortId: int; 
+}
+
+table clz_Torappu_RL03DevDifficultyNodePairInfo {
+    frontNode: string; 
+    nextNode: string; 
+}
+
+table clz_Torappu_RL03DevDifficultyNodeInfo {
+    buffId: string; 
+    nodeMap: [clz_Torappu_RL03DevDifficultyNodePairInfo]; 
+    enableGrade: int; 
+}
+
+table dict__string__clz_Torappu_RL03DevDifficultyNodeInfo {
+    key: string(key);
+    value: clz_Torappu_RL03DevDifficultyNodeInfo;
+}
+
+table clz_Torappu_RL03EndingText {
+    <summaryActor>k__BackingField: string; 
+    <summaryTop>k__BackingField: string; 
+    <summaryZone>k__BackingField: string; 
+    <summaryEnding>k__BackingField: string; 
+    <summaryMode>k__BackingField: string; 
+    <summaryGroup>k__BackingField: string; 
+    <summarySupport>k__BackingField: string; 
+    <summaryNormalRecruit>k__BackingField: string; 
+    <summaryDirectRecruit>k__BackingField: string; 
+    <summaryFriendRecruit>k__BackingField: string; 
+    <summaryFreeRecruit>k__BackingField: string; 
+    <summaryMonthRecruit>k__BackingField: string; 
+    <summaryUpgrade>k__BackingField: string; 
+    <summaryCompleteEnding>k__BackingField: string; 
+    <summaryEachZone>k__BackingField: string; 
+    <summaryPerfectBattle>k__BackingField: string; 
+    <summaryMeetBattle>k__BackingField: string; 
+    <summaryMeetEvent>k__BackingField: string; 
+    <summaryMeetShop>k__BackingField: string; 
+    <summaryMeetTreasure>k__BackingField: string; 
+    <summaryBuy>k__BackingField: string; 
+    <summaryInvest>k__BackingField: string; 
+    <summaryGet>k__BackingField: string; 
+    <summaryRelic>k__BackingField: string; 
+    <summarySafeHouse>k__BackingField: string; 
+    <summaryFailEnd>k__BackingField: string; 
+    summaryGetTotem: string; 
+    summaryDemoPointUp: string; 
+    summaryDemoPointDown: string; 
+    summaryDemoGradeUp: string; 
+    summaryDemoGradeDown: string; 
+    summaryVisionPointUp: string; 
+    summaryVisionPointDown: string; 
+    summaryVisionGradeUp: string; 
+    summaryVisionGradeDown: string; 
+    summaryMeetTrade: string; 
+    summaryFightWin: string; 
+    summaryFightFail: string; 
+    summaryExchangeTotem: string; 
+    summaryExchangeRelic: string; 
+    summaryMeetSecretpath: string; 
+    summaryUseTotem: string; 
+    summaryVisionGrade: string; 
+}
+
+table clz_Torappu_RL03DifficultyExt {
+    modeDifficulty: enum__Torappu_RoguelikeTopicMode; 
+    grade: int; 
+    totemProb: float; 
+    relicDevLevel: string; 
+    buffs: [string]; 
+    buffDesc: [string]; 
+}
+
+table clz_Torappu_RL03CustomizeData {
+    developments: [dict__string__clz_Torappu_RL03Development]; 
+    developmentsTokens: [dict__string__clz_Torappu_RoguelikeTopicDevToken]; 
+    developmentRawTextGroup: [clz_Torappu_RL03DevRawTextBuffGroup]; 
+    developmentsDifficultyNodeInfos: [dict__string__clz_Torappu_RL03DevDifficultyNodeInfo]; 
+    endingText: clz_Torappu_RL03EndingText; 
+    difficulties: [clz_Torappu_RL03DifficultyExt]; 
+}
+
 table clz_Torappu_RoguelikeTopicCustomizeData {
     rogue_1: clz_Torappu_RL01CustomizeData; // __prts__check_required__rl01__
     rogue_2: clz_Torappu_RL02CustomizeData; // __prts__check_required__rl02__
+    prts____check_required____clz_Torappu_RoguelikeTopicCustomizeData____rl03: clz_Torappu_RL03CustomizeData; 
 }
 
 table clz_Torappu_RoguelikeTopicTable {

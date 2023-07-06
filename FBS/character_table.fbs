@@ -160,6 +160,9 @@ enum enum__Torappu_ItemType : int {
     LIMITED_BUFF = 64,
     CLASSIC_FES_PICK_TIER_5 = 65,
     CLASSIC_FES_PICK_TIER_6 = 66,
+    RETURN_PROGRESS = 67,
+    NEW_PROGRESS = 68,
+    MCARD_VOUCHER = 69,
 }
 
 table clz_Torappu_ItemBundle {
@@ -280,7 +283,9 @@ enum enum__Torappu_AttributeType : int {
     MAX_EP = 28,
     EP_RECOVERY_PER_SEC = 29,
     SP_RECOVER_RATIO = 30,
-    E_NUM = 31,
+    EP_DAMAGE_RESISTANCE = 31,
+    EP_RESISTANCE = 32,
+    E_NUM = 33,
 }
 
 enum enum__Torappu_AttributeModifierData_AttributeModifier_FormulaItemType : int {

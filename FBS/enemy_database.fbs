@@ -36,6 +36,8 @@ table clz_Torappu_EnemyDatabase_AttributesData {
     massLevel: clz_Torappu_Undefinable_1_System_Int32_; 
     baseForceLevel: clz_Torappu_Undefinable_1_System_Int32_; 
     tauntLevel: clz_Torappu_Undefinable_1_System_Int32_; 
+    epDamageResistance: clz_Torappu_Undefinable_1_System_Single_; 
+    epResistance: clz_Torappu_Undefinable_1_System_Single_; 
     stunImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     silenceImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     sleepImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
