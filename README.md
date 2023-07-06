@@ -33,17 +33,33 @@
 - checkin_table
 - climb_tower_table
 - enemy_handbook_table
+- favor_table
+- gacha_table
+- gamedata_const
 - handbook_info_table
+- item_table
 - medal_table
+- mission_table
 - open_server_table
+- replicate_table
+- retro_table
 - roguelike_topic_table
 - sandbox_table
 - shop_client_table
 - skill_table
+- skin_table
 - stage_table
+- story_review_meta_table
+- story_review_table
+- story_table
+- token_table
+- uniequip_table
+- zone_table
 
 **/levels/enemydata/**
 - enemy_database
 
 **/battle/**
 - ep_breakbuff_table
+- extra_battlelog_table
+- 
