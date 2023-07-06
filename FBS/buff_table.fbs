@@ -1,0 +1,179 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_AbnormalFlag : int {
+    STUNNED = 0,
+    SP_RECOVER_STOPPED = 1,
+    TARGET_FREE = 2,
+    BLOCK_FREE = 3,
+    HIDDEN = 4,
+    INVINCIBLE = 5,
+    UNDEADABLE = 6,
+    HEAL_FREE = 7,
+    UNBALANCE_IMMUNE = 8,
+    INVISIBLE = 9,
+    UNUSED_PLACEHOLDER_1 = 10,
+    DISARMED = 11,
+    SILENCED = 12,
+    UNMOVABLE = 13,
+    UNUSED_PLACEHOLDER_2 = 14,
+    ALLY_TARGET_FREE = 15,
+    FROZEN = 16,
+    CAMOUFLAGE = 17,
+    FORCE_DISARMED = 18,
+    STUNNED_NO_AMPLIFY_DAMAGE = 19,
+    DISABLE_COMBAT = 20,
+    ELEMENT_FREE_ALL = 21,
+    UNMOVABLE_PRIVATE = 22,
+    COLD = 23,
+    SKILL_NOT_ACTIVATABLE = 24,
+    LEVITATE = 25,
+    DURANCE = 26,
+    NOT_WITHDRAWABLE = 27,
+    OUT_OF_GROUND = 28,
+    E_NUM = 29,
+}
+
+enum enum__Torappu_AbnormalCombo : int {
+    SLEEPING = 0,
+    SHELTERING = 1,
+    E_NUM = 2,
+}
+
+enum enum__Torappu_AttributeType : int {
+    MAX_HP = 0,
+    ATK = 1,
+    DEF = 2,
+    MAGIC_RESISTANCE = 3,
+    COST = 4,
+    BLOCK_CNT = 5,
+    MOVE_SPEED = 6,
+    ATTACK_SPEED = 7,
+    BASE_ATTACK_TIME = 8,
+    RESERVED_0 = 9,
+    RESERVED_1 = 10,
+    RESERVED_2 = 11,
+    RESERVED_3 = 12,
+    HP_RECOVERY_PER_SEC = 13,
+    SP_RECOVERY_PER_SEC = 14,
+    ABILITY_RANGE_FORWARD_EXTEND = 15,
+    MAX_DEPLOY_COUNT = 16,
+    DEF_PENETRATE = 17,
+    MAGIC_RESIST_PENETRATE = 18,
+    HP_RECOVERY_PER_SEC_BY_MAX_HP_RATIO = 19,
+    TAUNT_LEVEL = 20,
+    RESPAWN_TIME = 21,
+    MAX_DECK_STACK_CNT = 22,
+    MASS_LEVEL = 23,
+    BASE_FORCE_LEVEL = 24,
+    DEF_PENETRATE_FIXED = 25,
+    ONE_MINUS_STATUS_RESISTANCE = 26,
+    MAGIC_RESIST_PENETRATE_FIXED = 27,
+    MAX_EP = 28,
+    EP_RECOVERY_PER_SEC = 29,
+    SP_RECOVER_RATIO = 30,
+    EP_DAMAGE_RESISTANCE = 31,
+    EP_RESISTANCE = 32,
+    E_NUM = 33,
+}
+
+enum enum__Torappu_AttributeModifierData_AttributeModifier_FormulaItemType : int {
+    ADDITION = 0,
+    MULTIPLIER = 1,
+    FINAL_ADDITION = 2,
+    FINAL_SCALER = 3,
+}
+
+table clz_Torappu_AttributeModifierData_AttributeModifier {
+    attributeType: enum__Torappu_AttributeType; 
+    formulaItem: enum__Torappu_AttributeModifierData_AttributeModifier_FormulaItemType; 
+    value: float; 
+    loadFromBlackboard: bool; 
+    fetchBaseValueFromSourceEntity: bool; 
+}
+
+table clz_Torappu_AttributeModifierData {
+    abnormalFlags: [enum__Torappu_AbnormalFlag]; 
+    abnormalImmunes: [enum__Torappu_AbnormalFlag]; 
+    abnormalAntis: [enum__Torappu_AbnormalFlag]; 
+    abnormalCombos: [enum__Torappu_AbnormalCombo]; 
+    abnormalComboImmunes: [enum__Torappu_AbnormalCombo]; 
+    attributeModifiers: [clz_Torappu_AttributeModifierData_AttributeModifier]; 
+}
+
+enum enum__Torappu_BuffData_StatusResistable : int {
+    NO = 0,
+    YES = 1,
+    AUTOMATIC = 2,
+}
+
+enum enum__Torappu_BuffData_OverrideType : int {
+    DEFAULT = 0,
+    STACK = 1,
+    UNIQUE = 2,
+    EXTEND = 3,
+    EXTEND_TIME = 4,
+}
+
+enum enum__Torappu_BuffData_OnEventPriority : int {
+    DEFAULT = 0,
+    HIGH_PRIORITY = 1000,
+    HIGHER_PRIORITY = 2000,
+    LOWEST_PRIORITY = -3000,
+    LOWER_PRIORITY = -2000,
+    LOW_PRIORITY = -1000,
+}
+
+enum enum__Torappu_LifeType : int {
+    IMMEDIATELY = 0,
+    LIMITED = 1,
+    INFINITY = 2,
+}
+
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
+}
+
+table clz_Torappu_BuffData {
+    attributes: clz_Torappu_AttributeModifierData; 
+    buffKey: string; 
+    loadFromDB: bool; 
+    isDurableBuff: bool; 
+    isSilenceable: bool; 
+    isStunnable: bool; 
+    isFreezable: bool; 
+    isLevitatable: bool; 
+    statusResistable: enum__Torappu_BuffData_StatusResistable; 
+    templateKey: string; 
+    disableOverride: bool; 
+    overrideKey: string; 
+    overrideType: enum__Torappu_BuffData_OverrideType; 
+    maxStackCnt: int; 
+    maxValidStackCnt: int; 
+    overrideEffectKey: string; 
+    overrideOnEventPriority: bool; 
+    onEventPriority: enum__Torappu_BuffData_OnEventPriority; 
+    audioSignal: string; 
+    lifeTimeType: enum__Torappu_LifeType; 
+    takeSnapshotWhenExtend: bool; 
+    durationKey: string; 
+    lifeTime: float; 
+    triggerLifeType: enum__Torappu_LifeType; 
+    triggerCnt: int; 
+    triggerInterval: float; 
+    waitFirstTriggerInterval: bool; 
+    firstTriggerInterval: float; 
+    priority: int; 
+    priorityBBKeys: [string]; 
+    stripBlackboardParamsWithBuffKey: bool; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table dict__string__clz_Torappu_BuffData {
+    key: string(key);
+    value: clz_Torappu_BuffData;
+}
+table clz_Torappu_SimpleKVTable_clz_Torappu_BuffData {
+    buffs: [dict__string__clz_Torappu_BuffData];
+}
+root_type clz_Torappu_SimpleKVTable_clz_Torappu_BuffData;

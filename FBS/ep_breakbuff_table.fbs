@@ -1,0 +1,14 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table clz_Torappu_EPBreakBuffData {
+    elementBreakDuration: float; 
+    elementBuffs: [string]; 
+}
+
+table dict__string__clz_Torappu_EPBreakBuffData {
+    key: string(key);
+    value: clz_Torappu_EPBreakBuffData;
+}
+table clz_Torappu_SimpleKVTable_clz_Torappu_EPBreakBuffData {
+    ep_breakbuffs: [dict__string__clz_Torappu_EPBreakBuffData];
+}
+root_type clz_Torappu_SimpleKVTable_clz_Torappu_EPBreakBuffData;

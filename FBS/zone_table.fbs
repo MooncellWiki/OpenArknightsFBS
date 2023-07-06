@@ -1,0 +1,259 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_ZoneType : int {
+    NONE = 0,
+    MAINLINE = 1,
+    WEEKLY = 2,
+    ACTIVITY = 3,
+    GUIDE = 4,
+    TRAINING = 5,
+    CAMPAIGN = 6,
+    SIDESTORY = 7,
+    BRANCHLINE = 8,
+    ROGUELIKE = 9,
+    CLIMB_TOWER = 10,
+}
+
+table clz_Torappu_ZoneData {
+    zoneID: string; 
+    zoneIndex: int; 
+    type: enum__Torappu_ZoneType; 
+    zoneNameFirst: string; 
+    zoneNameSecond: string; 
+    zoneNameTitleCurrent: string; 
+    zoneNameTitleUnCurrent: string; 
+    zoneNameTitleEx: string; 
+    zoneNameThird: string; 
+    lockedText: string; 
+    canPreview: bool; 
+}
+
+table dict__string__clz_Torappu_ZoneData {
+    key: string(key);
+    value: clz_Torappu_ZoneData;
+}
+
+enum enum__Torappu_WeeklyType : int {
+    NONE = 0,
+    MATERIAL = 1,
+    SPECIAL = 2,
+    EVOLVE = 3,
+}
+
+table clz_Torappu_WeeklyZoneData {
+    daysOfWeek: [int]; 
+    type: enum__Torappu_WeeklyType; 
+}
+
+table dict__string__clz_Torappu_WeeklyZoneData {
+    key: string(key);
+    value: clz_Torappu_WeeklyZoneData;
+}
+
+table clz_Torappu_ZoneValidInfo {
+    startTs: long; 
+    endTs: long; 
+}
+
+table dict__string__clz_Torappu_ZoneValidInfo {
+    key: string(key);
+    value: clz_Torappu_ZoneValidInfo;
+}
+
+enum enum__Torappu_MainlineZoneData_ZoneReplayBtnType : int {
+    NONE = 0,
+    RECAP = 1,
+    REPLAY = 2,
+}
+
+enum enum__Torappu_StageDiffGroup : int {
+    NONE = 0,
+    EASY = 1,
+    NORMAL = 2,
+    TOUGH = 4,
+    ALL = 7,
+}
+
+table clz_Torappu_MainlineZoneData {
+    zoneId: string; 
+    chapterId: string; 
+    preposedZoneId: string; 
+    zoneIndex: int; 
+    startStageId: string; 
+    endStageId: string; 
+    mainlneBgName: string; 
+    recapId: string; 
+    recapPreStageId: string; 
+    buttonName: string; 
+    buttonStyle: enum__Torappu_MainlineZoneData_ZoneReplayBtnType; 
+    spoilAlert: bool; 
+    zoneOpenTime: long; 
+    diffGroup: [enum__Torappu_StageDiffGroup]; 
+}
+
+table dict__string__clz_Torappu_MainlineZoneData {
+    key: string(key);
+    value: clz_Torappu_MainlineZoneData;
+}
+
+enum enum__Torappu_RecordRewardStageDiff : int {
+    NONE = 0,
+    EASY = 1,
+    NORMAL = 2,
+    TOUGH = 3,
+    PREDEFINED = 4,
+    HARD = 5,
+}
+
+enum enum__Torappu_ItemType : int {
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_5 = 40,
+    VOUCHER_ELITE_II_6 = 41,
+    VOUCHER_SKIN = 42,
+    RETRO_COIN = 43,
+    PLAYER_AVATAR = 44,
+    UNI_COLLECTION = 45,
+    VOUCHER_FULL_POTENTIAL = 46,
+    RL_COIN = 47,
+    RETURN_CREDIT = 48,
+    MEDAL = 49,
+    CHARM = 50,
+    HOME_BACKGROUND = 51,
+    EXTERMINATION_AGENT = 52,
+    OPTIONAL_VOUCHER_PICK = 53,
+    ACT_CART_COMPONENT = 54,
+    VOUCHER_LEVELMAX_6 = 55,
+    VOUCHER_LEVELMAX_5 = 56,
+    ACTIVITY_POTENTIAL = 57,
+    ITEM_PACK = 58,
+    SANDBOX = 59,
+    FAVOR_ADD_ITEM = 60,
+    CLASSIC_SHD = 61,
+    CLASSIC_TKT_GACHA = 62,
+    CLASSIC_TKT_GACHA_10 = 63,
+    LIMITED_BUFF = 64,
+    CLASSIC_FES_PICK_TIER_5 = 65,
+    CLASSIC_FES_PICK_TIER_6 = 66,
+    RETURN_PROGRESS = 67,
+    NEW_PROGRESS = 68,
+    MCARD_VOUCHER = 69,
+}
+
+table clz_Torappu_ItemBundle {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
+}
+
+table clz_Torappu_RecordRewardInfo {
+    bindStageId: string; 
+    stageDiff1: enum__Torappu_RecordRewardStageDiff; 
+    stageDiff: enum__Torappu_StageDiffGroup; 
+    picRes: string; 
+    textPath: string; 
+    textDesc: string; 
+    recordReward: [clz_Torappu_ItemBundle]; 
+}
+
+table clz_Torappu_ZoneRecordData {
+    recordId: string; 
+    zoneId: string; 
+    recordTitleName: string; 
+    preRecordId: string; 
+    nodeTitle1: string; 
+    nodeTitle2: string; 
+    rewards: [clz_Torappu_RecordRewardInfo]; 
+}
+
+table clz_Torappu_ZoneRecordUnlockData {
+    noteId: string; 
+    zoneId: string; 
+    initialName: string; 
+    finalName: string; 
+    accordingExposeId: string; 
+    initialDes: string; 
+    finalDes: string; 
+    remindDes: string; 
+}
+
+table clz_Torappu_ZoneRecordGroupData {
+    zoneId: string; 
+    records: [clz_Torappu_ZoneRecordData]; 
+    unlockData: clz_Torappu_ZoneRecordUnlockData; 
+}
+
+table dict__string__clz_Torappu_ZoneRecordGroupData {
+    key: string(key);
+    value: clz_Torappu_ZoneRecordGroupData;
+}
+
+table dict__string__list_string {
+    key: string(key);
+    value: [string];
+}
+
+table clz_Torappu_ZoneRecordMissionData {
+    missionId: string; 
+    recordStageId: string; 
+    templateDesc: string; 
+    desc: string; 
+}
+
+table dict__string__clz_Torappu_ZoneRecordMissionData {
+    key: string(key);
+    value: clz_Torappu_ZoneRecordMissionData;
+}
+
+table clz_Torappu_ZoneMetaData {
+    ZoneRecordMissionData: [dict__string__clz_Torappu_ZoneRecordMissionData]; 
+}
+
+table clz_Torappu_ZoneTable {
+    zones: [dict__string__clz_Torappu_ZoneData]; 
+    weeklyAdditionInfo: [dict__string__clz_Torappu_WeeklyZoneData]; 
+    zoneValidInfo: [dict__string__clz_Torappu_ZoneValidInfo]; 
+    mainlineAdditionInfo: [dict__string__clz_Torappu_MainlineZoneData]; 
+    zoneRecordGroupedData: [dict__string__clz_Torappu_ZoneRecordGroupData]; 
+    zoneRecordRewardData: [dict__string__list_string]; 
+    zoneMetaData: clz_Torappu_ZoneMetaData; 
+}
+
+root_type clz_Torappu_ZoneTable;

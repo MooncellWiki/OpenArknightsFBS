@@ -1,0 +1,84 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_CharmRarity : int {
+    NONE = 0,
+    LOW = 1,
+    MEDIUM = 2,
+    HIGH = 3,
+}
+
+enum enum__Torappu_ProfessionCategory : int {
+    NONE = 0,
+    WARRIOR = 1,
+    SNIPER = 2,
+    TANK = 4,
+    MEDIC = 8,
+    SUPPORT = 16,
+    CASTER = 32,
+    SPECIAL = 64,
+    TOKEN = 128,
+    TRAP = 256,
+    PIONEER = 512,
+}
+
+enum enum__Torappu_BuildableType : int {
+    NONE = 0,
+    MELEE = 1,
+    RANGED = 2,
+    ALL = 3,
+}
+
+table clz_Torappu_RuneData_Selector {
+    professionMask: enum__Torappu_ProfessionCategory; 
+    buildableMask: enum__Torappu_BuildableType; 
+    charIdFilter: [string]; 
+    enemyIdFilter: [string]; 
+    enemyIdExcludeFilter: [string]; 
+    skillIdFilter: [string]; 
+    tileKeyFilter: [string]; 
+    groupTagFilter: [string]; 
+    filterTagFilter: [string]; 
+}
+
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
+}
+
+table clz_Torappu_RuneData {
+    key: string; 
+    selector: clz_Torappu_RuneData_Selector; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table clz_Torappu_RuneTable_PackedRuneData {
+    id: string; 
+    points: float; 
+    mutexGroupKey: string; 
+    description: string; 
+    runes: [clz_Torappu_RuneData]; 
+}
+
+table clz_Torappu_CharmItemData {
+    id: string; 
+    sort: int; 
+    name: string; 
+    icon: string; 
+    itemUsage: string; 
+    itemDesc: string; 
+    itemObtainApproach: string; 
+    rarity: enum__Torappu_CharmRarity; 
+    desc: string; 
+    price: int; 
+    specialObtainApproach: string; 
+    charmType: string; 
+    obtainInRandom: bool; 
+    dropStages: [string]; 
+    runeData: clz_Torappu_RuneTable_PackedRuneData; 
+}
+
+table clz_Torappu_CharmData {
+    charmList: [clz_Torappu_CharmItemData]; 
+}
+
+root_type clz_Torappu_CharmData;

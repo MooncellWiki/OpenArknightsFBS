@@ -1,0 +1,18 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table clz_Torappu_FavorData {
+    favorPoint: int; 
+    percent: int; 
+    battlePhase: int; 
+}
+
+table clz_Torappu_KeyFrames_2_KeyFrame_Torappu_FavorData_Torappu_FavorData_ {
+    level: int; 
+    data: clz_Torappu_FavorData; 
+}
+
+table clz_Torappu_FavorTable {
+    maxFavor: int; 
+    favorFrames: [clz_Torappu_KeyFrames_2_KeyFrame_Torappu_FavorData_Torappu_FavorData_]; 
+}
+
+root_type clz_Torappu_FavorTable;

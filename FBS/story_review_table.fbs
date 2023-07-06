@@ -1,0 +1,163 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_StoryReviewEntryType : int {
+    NONE = 0,
+    ACTIVITY = 1,
+    MINI_ACTIVITY = 2,
+    MAINLINE = 3,
+}
+
+enum enum__Torappu_StoryReviewType : int {
+    NONE = 0,
+    ACTIVITY_STORY = 1,
+    MINI_STORY = 2,
+    MAIN_STORY = 3,
+}
+
+enum enum__Torappu_ItemType : int {
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_5 = 40,
+    VOUCHER_ELITE_II_6 = 41,
+    VOUCHER_SKIN = 42,
+    RETRO_COIN = 43,
+    PLAYER_AVATAR = 44,
+    UNI_COLLECTION = 45,
+    VOUCHER_FULL_POTENTIAL = 46,
+    RL_COIN = 47,
+    RETURN_CREDIT = 48,
+    MEDAL = 49,
+    CHARM = 50,
+    HOME_BACKGROUND = 51,
+    EXTERMINATION_AGENT = 52,
+    OPTIONAL_VOUCHER_PICK = 53,
+    ACT_CART_COMPONENT = 54,
+    VOUCHER_LEVELMAX_6 = 55,
+    VOUCHER_LEVELMAX_5 = 56,
+    ACTIVITY_POTENTIAL = 57,
+    ITEM_PACK = 58,
+    SANDBOX = 59,
+    FAVOR_ADD_ITEM = 60,
+    CLASSIC_SHD = 61,
+    CLASSIC_TKT_GACHA = 62,
+    CLASSIC_TKT_GACHA_10 = 63,
+    LIMITED_BUFF = 64,
+    CLASSIC_FES_PICK_TIER_5 = 65,
+    CLASSIC_FES_PICK_TIER_6 = 66,
+    RETURN_PROGRESS = 67,
+    NEW_PROGRESS = 68,
+    MCARD_VOUCHER = 69,
+}
+
+table clz_Torappu_ItemBundle {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
+}
+
+enum enum__Torappu_StoryReviewUnlockType : int {
+    STAGE_CLEAR = 0,
+    USE_ITEM = 1,
+    NOTHING = 2,
+}
+
+enum enum__Torappu_PlayerStageState : int {
+    UNLOCKED = 0,
+    PLAYED = 1,
+    PASS = 2,
+    COMPLETE = 3,
+}
+
+table clz_Torappu_StoryData_Condition_StageCondition {
+    stageId: string; 
+    minState: enum__Torappu_PlayerStageState; 
+    maxState: enum__Torappu_PlayerStageState; 
+}
+
+table clz_Torappu_StoryReviewInfoClientData {
+    storyReviewType: enum__Torappu_StoryReviewType; 
+    storyId: string; 
+    storyGroup: string; 
+    storySort: int; 
+    storyDependence: string; 
+    storyCanShow: int; 
+    storyCode: string; 
+    storyName: string; 
+    storyPic: string; 
+    storyInfo: string; 
+    storyCanEnter: int; 
+    storyTxt: string; 
+    avgTag: string; 
+    unLockType: enum__Torappu_StoryReviewUnlockType; 
+    costItemType: enum__Torappu_ItemType; 
+    costItemId: string; 
+    costItemCount: int; 
+    stageCount: int; 
+    requiredStages: [clz_Torappu_StoryData_Condition_StageCondition]; 
+}
+
+table clz_Torappu_StoryReviewGroupClientData {
+    id: string; 
+    name: string; 
+    entryType: enum__Torappu_StoryReviewEntryType; 
+    actType: enum__Torappu_StoryReviewType; 
+    startTime: long; 
+    endTime: long; 
+    startShowTime: long; 
+    endShowTime: long; 
+    remakeStartTime: long; 
+    remakeEndTime: long; 
+    storyEntryPicId: string; 
+    storyPicId: string; 
+    storyMainColor: string; 
+    customType: int; 
+    storyCompleteMedalId: string; 
+    rewards: [clz_Torappu_ItemBundle]; 
+    infoUnlockDatas: [clz_Torappu_StoryReviewInfoClientData]; 
+}
+
+table dict__string__clz_Torappu_StoryReviewGroupClientData {
+    key: string(key);
+    value: clz_Torappu_StoryReviewGroupClientData;
+}
+table clz_Torappu_SimpleKVTable_clz_Torappu_StoryReviewGroupClientData {
+    story_reviews: [dict__string__clz_Torappu_StoryReviewGroupClientData];
+}
+root_type clz_Torappu_SimpleKVTable_clz_Torappu_StoryReviewGroupClientData;
