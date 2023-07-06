@@ -62,4 +62,6 @@
 **/battle/**
 - ep_breakbuff_table
 - extra_battlelog_table
-- 
+
+**/levels/**
+- *
