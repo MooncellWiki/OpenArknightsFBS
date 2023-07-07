@@ -64,4 +64,4 @@
 - extra_battlelog_table
 
 **/levels/**
-- *
+- \*
