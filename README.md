@@ -26,7 +26,7 @@
 - campaign_table
 - chapter_table
 - char_meta_table
-- chat_patch_table
+- char_patch_table
 - character_table
 - charm_table
 - charword_table
