@@ -36,7 +36,8 @@ enum enum__Torappu_ActivityType : int {
     TYPE_ACT38D1 = 33,
     CHECKIN_VS = 34,
     SWITCH_ONLY = 35,
-    ENUM = 36,
+    TYPE_ACT27SIDE = 36,
+    ENUM = 37,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -175,6 +176,7 @@ enum enum__Torappu_ItemType : int {
     RETURN_PROGRESS = 67,
     NEW_PROGRESS = 68,
     MCARD_VOUCHER = 69,
+    MATERIAL_ISSUE_VOUCHER = 70,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -2849,6 +2851,114 @@ table dict__string__clz_Torappu_Act38D1Data {
     value: clz_Torappu_Act38D1Data;
 }
 
+table clz_Torappu_Act27SideData_Act27SideGoodData {
+    id: string; 
+    name: string; 
+    typeDesc: string; 
+    iconId: string; 
+    launchIconId: string; 
+    purchasePrice: [int]; 
+    sellingPriceList: [int]; 
+    sellShopList: [string]; 
+    isPermanent: bool; 
+}
+
+table dict__string__clz_Torappu_Act27SideData_Act27SideGoodData {
+    key: string(key);
+    value: clz_Torappu_Act27SideData_Act27SideGoodData;
+}
+
+table clz_Torappu_Act27SideData_Act27SideMileStoneData {
+    mileStoneId: string; 
+    mileStoneLvl: int; 
+    needPointCnt: int; 
+    rewardItem: clz_Torappu_ItemBundle; 
+}
+
+table clz_Torappu_Act27SideData_Act27SideGoodLaunchData {
+    groupId: string; 
+    startTime: long; 
+    stageId: string; 
+    code: string; 
+    drinkId: string; 
+    foodId: string; 
+    souvenirId: string; 
+}
+
+table clz_Torappu_Act27SideData_Act27SideShopData {
+    shopId: string; 
+    sortId: int; 
+    name: string; 
+    iconId: string; 
+}
+
+table dict__string__clz_Torappu_Act27SideData_Act27SideShopData {
+    key: string(key);
+    value: clz_Torappu_Act27SideData_Act27SideShopData;
+}
+
+table clz_Torappu_Act27SideData_Act27SideInquireData {
+    mileStonePt: int; 
+    inquireCount: int; 
+}
+
+table clz_Torappu_Act27SideData_Act27SideDynEntrySwitchData {
+    entryId: string; 
+    startHour: int; 
+    signalId: string; 
+}
+
+table clz_Torappu_Act27SideData_Act27sideZoneAdditionData {
+    zoneId: string; 
+    unlockText: string; 
+    displayTime: string; 
+}
+
+table dict__string__clz_Torappu_Act27SideData_Act27sideZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act27SideData_Act27sideZoneAdditionData;
+}
+
+table clz_Torappu_Act27SideData_Act27SideMileStoneFurniRewardData {
+    furniId: string; 
+    pointNum: int; 
+}
+
+table clz_Torappu_Act27SideData_Act27SideConstData {
+    stageId: string; 
+    stageCode: string; 
+    purchasePriceName: [string]; 
+    furniRewardList: [clz_Torappu_Act27SideData_Act27SideMileStoneFurniRewardData]; 
+    prizeText: string; 
+    playerShopId: string; 
+    milestonePointName: string; 
+    inquirePanelTitle: string; 
+    inquirePanelDesc: string; 
+    gain123: [float]; 
+    gain113: [float]; 
+    gain122: [float]; 
+    gain111: [float]; 
+    gain11None: [float]; 
+    gain12None: [float]; 
+    campaignEnemyCnt: int; 
+}
+
+table clz_Torappu_Act27SideData {
+    goodDataMap: [dict__string__clz_Torappu_Act27SideData_Act27SideGoodData]; 
+    mileStoneList: [clz_Torappu_Act27SideData_Act27SideMileStoneData]; 
+    goodLaunchDataList: [clz_Torappu_Act27SideData_Act27SideGoodLaunchData]; 
+    shopDataMap: [dict__string__clz_Torappu_Act27SideData_Act27SideShopData]; 
+    inquireDataList: [clz_Torappu_Act27SideData_Act27SideInquireData]; 
+    dynEntrySwitchData: [clz_Torappu_Act27SideData_Act27SideDynEntrySwitchData]; 
+    zoneAdditionDataMap: [dict__string__clz_Torappu_Act27SideData_Act27sideZoneAdditionData]; 
+    constData: clz_Torappu_Act27SideData_Act27SideConstData; 
+}
+
+table dict__string__clz_Torappu_Act27SideData {
+    key: string(key);
+    value: clz_Torappu_Act27SideData;
+}
+
 table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; // __prts__check_required__defaultActivityData__
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; // __prts__check_required__defaultCheckinData__
@@ -2878,6 +2988,7 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     TYPE_ACT24SIDE: [dict__string__clz_Torappu_Act24SideData]; // __prts__check_required__typeAct24SideData__
     TYPE_ACT25SIDE: [dict__string__clz_Torappu_Act25SideData]; // __prts__check_required__typeAct25SideData__
     TYPE_ACT38D1: [dict__string__clz_Torappu_Act38D1Data]; // __prts__check_required__typeAct38d1Data__
+    prts____check_required____clz_Torappu_ActivityTable_ActivityDetailTable____typeAct27SideData: [dict__string__clz_Torappu_Act27SideData]; 
 }
 
 table dict__string__list_long {

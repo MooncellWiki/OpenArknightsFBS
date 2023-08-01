@@ -163,6 +163,7 @@ enum enum__Torappu_ItemType : int {
     RETURN_PROGRESS = 67,
     NEW_PROGRESS = 68,
     MCARD_VOUCHER = 69,
+    MATERIAL_ISSUE_VOUCHER = 70,
 }
 
 table clz_Torappu_ItemBundle {
@@ -193,6 +194,11 @@ table clz_Torappu_CharacterData_MainSkill {
     unlockCond: clz_Torappu_CharacterData_UnlockCondition; // __prts__check_required__initialUnlockCond__
 }
 
+table dict__string__bool {
+    key: string(key);
+    value: bool;
+}
+
 table clz_Torappu_TalentData {
     unlockCondition: clz_Torappu_CharacterData_UnlockCondition; 
     requiredPotentialRank: int; 
@@ -201,6 +207,7 @@ table clz_Torappu_TalentData {
     description: string; 
     rangeId: string; 
     blackboard: [clz_Torappu_Blackboard_DataPair]; 
+    tokenKey: string; 
 }
 
 table clz_Torappu_CharacterData_TalentDataBundle {
@@ -242,7 +249,8 @@ enum enum__Torappu_AbnormalFlag : int {
     DURANCE = 26,
     NOT_WITHDRAWABLE = 27,
     OUT_OF_GROUND = 28,
-    E_NUM = 29,
+    SP_MODIFY_STOPPED = 29,
+    E_NUM = 30,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
@@ -370,7 +378,6 @@ table clz_Torappu_CharacterData {
     groupId: string; 
     teamId: string; 
     displayNumber: string; 
-    tokenKey: string; 
     appellation: string; 
     position: enum__Torappu_BuildableType; 
     tagList: [string]; 
@@ -386,6 +393,7 @@ table clz_Torappu_CharacterData {
     trait: clz_Torappu_CharacterData_TraitDataBundle; 
     phases: [clz_Torappu_CharacterData_PhaseData]; 
     skills: [clz_Torappu_CharacterData_MainSkill]; 
+    displayTokenDict: [dict__string__bool]; 
     talents: [clz_Torappu_CharacterData_TalentDataBundle]; 
     potentialRanks: [clz_Torappu_CharacterData_PotentialRank]; 
     favorKeyFrames: [clz_Torappu_KeyFrames_2_KeyFrame_Torappu_AttributesDeltaData_Torappu_AttributesData_]; 

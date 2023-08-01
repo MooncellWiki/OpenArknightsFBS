@@ -174,6 +174,7 @@ enum enum__Torappu_ItemType : int {
     RETURN_PROGRESS = 67,
     NEW_PROGRESS = 68,
     MCARD_VOUCHER = 69,
+    MATERIAL_ISSUE_VOUCHER = 70,
 }
 
 table clz_Torappu_RoguelikeTopicBP {
@@ -959,11 +960,11 @@ enum enum__Torappu_RoguelikeEventType : int {
     BATTLE_SHOP = 4096,
     PORTAL = 8192,
     MISSION = 16384,
-    CHOICES = 28400,
-    EVENTS = 32504,
-    ALL = 32511,
     STORY = 32768,
     STORY_HIDDEN = 65536,
+    CHOICES = 126704,
+    EVENTS = 130808,
+    ALL = 130815,
 }
 
 table clz_Torappu_RoguelikeGameNodeTypeData {
@@ -1075,6 +1076,7 @@ table clz_Torappu_RoguelikeGameConst {
     populationItemId: string; 
     squadCapacityItemId: string; 
     expItemId: string; 
+    initialBandShowGradeFlag: bool; 
     bankMaxGold: int; 
     bankCostId: string; 
     bankDrawCount: int; 

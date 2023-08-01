@@ -90,6 +90,7 @@ enum enum__Torappu_ItemType : int {
     RETURN_PROGRESS = 67,
     NEW_PROGRESS = 68,
     MCARD_VOUCHER = 69,
+    MATERIAL_ISSUE_VOUCHER = 70,
 }
 
 table clz_Torappu_ItemBundle {

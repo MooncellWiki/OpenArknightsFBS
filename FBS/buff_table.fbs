@@ -29,7 +29,8 @@ enum enum__Torappu_AbnormalFlag : int {
     DURANCE = 26,
     NOT_WITHDRAWABLE = 27,
     OUT_OF_GROUND = 28,
-    E_NUM = 29,
+    SP_MODIFY_STOPPED = 29,
+    E_NUM = 30,
 }
 
 enum enum__Torappu_AbnormalCombo : int {

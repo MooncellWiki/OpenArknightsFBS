@@ -81,13 +81,24 @@ table dict__string__list_dict__string__string {
     value: [dict__string__string];
 }
 
+table clz_Torappu_CharSkinGroupInfo {
+    skinGroupId: string; 
+    publishTime: long; 
+}
+
+table clz_Torappu_CharSkinKvImgInfo {
+    kvImgId: string; 
+    linkedSkinGroupId: string; 
+}
+
 table clz_Torappu_CharSkinBrandInfo {
     brandId: string; 
-    groupList: [string]; 
-    kvImgIdList: [string]; 
+    groupList: [clz_Torappu_CharSkinGroupInfo]; 
+    kvImgIdList: [clz_Torappu_CharSkinKvImgInfo]; 
     brandName: string; 
     brandCapitalName: string; 
     description: string; 
+    publishTime: long; 
     sortId: int; 
 }
 
