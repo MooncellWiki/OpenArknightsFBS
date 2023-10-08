@@ -129,6 +129,11 @@ table clz_Torappu_ItemData_BuildingProductInfo {
     formulaId: string; 
 }
 
+table clz_Torappu_ItemData_VoucherRelateInfo {
+    voucherId: string; 
+    voucherItemType: enum__Torappu_ItemType; 
+}
+
 table clz_Torappu_ItemData {
     itemId: string; 
     name: string; 
@@ -145,6 +150,7 @@ table clz_Torappu_ItemData {
     itemType: enum__Torappu_ItemType; 
     stageDropList: [clz_Torappu_ItemData_StageDropInfo]; 
     buildingProductList: [clz_Torappu_ItemData_BuildingProductInfo]; 
+    voucherRelateList: [clz_Torappu_ItemData_VoucherRelateInfo]; 
 }
 
 table dict__string__clz_Torappu_ItemData {

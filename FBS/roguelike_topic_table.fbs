@@ -262,6 +262,18 @@ table dict__string__clz_Torappu_RoguelikeTopicMonthSquad {
     value: clz_Torappu_RoguelikeTopicMonthSquad;
 }
 
+table clz_Torappu_RoguelikeTopicChallengeTask {
+    taskId: string; 
+    taskDes: string; 
+    completionClass: string; 
+    completionParams: [string]; 
+}
+
+table dict__string__clz_Torappu_RoguelikeTopicChallengeTask {
+    key: string(key);
+    value: clz_Torappu_RoguelikeTopicChallengeTask;
+}
+
 table clz_Torappu_RoguelikeTopicChallenge {
     challengeId: string; 
     sortId: int; 
@@ -273,9 +285,8 @@ table clz_Torappu_RoguelikeTopicChallenge {
     challengeUnlockToastDesc: string; 
     challengeDes: string; 
     challengeConditionDes: [string]; 
-    taskDes: string; 
-    completionClass: string; 
-    completionParams: [string]; 
+    challengeTasks: [dict__string__clz_Torappu_RoguelikeTopicChallengeTask]; 
+    defaultTaskId: string; 
     rewards: [clz_Torappu_ItemBundle]; 
 }
 
@@ -317,6 +328,7 @@ table clz_Torappu_RoguelikeTopicDifficulty {
     isHard: bool; 
     unlockText: string; 
     displayIconId: string; 
+    hideEndingStory: bool; 
 }
 
 enum enum__Torappu_RoguelikeTopicBankRewardType : int {
@@ -495,6 +507,23 @@ table clz_Torappu_ActArchiveChaosData {
     chaos: [dict__string__clz_Torappu_ActArchiveChaosItemData]; 
 }
 
+table clz_Torappu_ActArchiveChallengeBookItemData {
+    storyId: string; 
+    challengeId: string; 
+    storyName: string; 
+    textId: string; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_ActArchiveChallengeBookItemData {
+    key: string(key);
+    value: clz_Torappu_ActArchiveChallengeBookItemData;
+}
+
+table clz_Torappu_ActArchiveChallengeBookData {
+    stories: [dict__string__clz_Torappu_ActArchiveChallengeBookItemData]; 
+}
+
 table clz_Torappu_RoguelikeArchiveComponentData {
     relic: clz_Torappu_ActArchiveRelicData; 
     capsule: clz_Torappu_ActArchiveCapsuleData; 
@@ -504,6 +533,7 @@ table clz_Torappu_RoguelikeArchiveComponentData {
     buff: clz_Torappu_ActArchiveBuffData; 
     totem: clz_Torappu_ActArchiveTotemData; 
     chaos: clz_Torappu_ActArchiveChaosData; 
+    challengeBook: clz_Torappu_ActArchiveChallengeBookData; 
 }
 
 enum enum__Torappu_ActArchiveType : int {
@@ -528,6 +558,7 @@ enum enum__Torappu_ActArchiveType : int {
     DYNAMIC_STORY = 18,
     TOTEM = 19,
     CHAOS = 20,
+    CHALLENGE_BOOK = 21,
 }
 
 table clz_Torappu_RoguelikeArchiveUnlockCondDesc {
@@ -592,10 +623,20 @@ table dict__int__string {
     value: string;
 }
 
+table clz_Torappu_RoguelikeTopicDetailConst_PredefinedPlayerLevelData {
+    levels: [dict__int__clz_Torappu_RoguelikeTopicDetailConst_PlayerLevelData]; 
+}
+
+table dict__string__clz_Torappu_RoguelikeTopicDetailConst_PredefinedPlayerLevelData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeTopicDetailConst_PredefinedPlayerLevelData;
+}
+
 table clz_Torappu_RoguelikeTopicDetailConst {
     playerLevelTable: [dict__int__clz_Torappu_RoguelikeTopicDetailConst_PlayerLevelData]; 
     charUpgradeTable: [dict__int__clz_Torappu_RoguelikeTopicDetailConst_CharUpgradeData]; 
     difficultyUpgradeRelicDescTable: [dict__int__string]; 
+    predefinedLevelTable: [dict__string__clz_Torappu_RoguelikeTopicDetailConst_PredefinedPlayerLevelData]; 
     tokenBpId: string; 
     tokenOuterBuffId: string; 
     previewedRewardsAccordingUpdateId: string; 
@@ -629,6 +670,7 @@ table clz_Torappu_RoguelikeGameInitData {
     modeId: enum__Torappu_RoguelikeTopicMode; 
     modeGrade: int; 
     predefinedId: string; 
+    predefinedStyle: string; 
     initialBandRelic: [string]; 
     initialRecruitGroup: [string]; 
     initialHp: int; 
@@ -1061,6 +1103,7 @@ enum enum__Torappu_RoguelikeRewardExDropTagSrcType : int {
     NONE = 0,
     TREASURE = 1,
     TOTEM = 2,
+    EXPLORE_TOOL = 3,
 }
 
 table dict__enum__Torappu_RoguelikeRewardExDropTagSrcType__string {
@@ -1118,6 +1161,7 @@ table clz_Torappu_RoguelikeGameConst {
     relicDesc: string; 
     buffDesc: string; 
     portalZones: [string]; 
+    exploreExpOnKill: string; 
 }
 
 enum enum__Torappu_RoguelikeGameShopDialogType : int {
@@ -1234,6 +1278,7 @@ enum enum__Torappu_RoguelikeGameItemType : int {
     CHAOS = 29,
     CHAOS_PURIFY = 30,
     CHAOS_LEVEL = 31,
+    EXPLORE_TOOL = 32,
 }
 
 enum enum__Torappu_RoguelikeGameItemSubType : int {
@@ -1341,6 +1386,44 @@ table dict__string__clz_Torappu_RoguelikeDifficultyUpgradeRelicGroupData {
     value: clz_Torappu_RoguelikeDifficultyUpgradeRelicGroupData;
 }
 
+table clz_Torappu_RoguelikePredefinedStyleData {
+    styleId: string; 
+    styleConfig: int; 
+}
+
+table dict__string__clz_Torappu_RoguelikePredefinedStyleData {
+    key: string(key);
+    value: clz_Torappu_RoguelikePredefinedStyleData;
+}
+
+enum enum__Torappu_RoguelikeExpStyleConfigParam : int {
+    BATTLE_END_HP_LOSE_TEXT = 0,
+}
+
+table dict__enum__Torappu_RoguelikeExpStyleConfigParam__string {
+    key: enum__Torappu_RoguelikeExpStyleConfigParam(key);
+    value: string;
+}
+
+table clz_Torappu_RoguelikePredefinedExpStyleConfigData {
+    paramDict: [dict__enum__Torappu_RoguelikeExpStyleConfigParam__string]; 
+}
+
+table clz_Torappu_RoguelikePredefinedConstStyleData {
+    expStyleConfig: clz_Torappu_RoguelikePredefinedExpStyleConfigData; 
+}
+
+table clz_Torappu_RoguelikeGameExploreToolData {
+    itemId: string; 
+    trapId: string; 
+    trapDesc: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeGameExploreToolData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeGameExploreToolData;
+}
+
 table clz_Torappu_RoguelikeTopicDetail {
     updates: [clz_Torappu_RoguelikeTopicUpdate]; 
     enrolls: [dict__string__clz_Torappu_RoguelikeTopicEnroll]; 
@@ -1385,6 +1468,9 @@ table clz_Torappu_RoguelikeTopicDetail {
     endingDetailList: [clz_Torappu_RoguelikeEndingDetailText]; 
     treasures: [dict__string__list_clz_Torappu_RoguelikeGameTreasureData]; 
     difficultyUpgradeRelicGroups: [dict__string__clz_Torappu_RoguelikeDifficultyUpgradeRelicGroupData]; 
+    styles: [dict__string__clz_Torappu_RoguelikePredefinedStyleData]; 
+    styleConfig: clz_Torappu_RoguelikePredefinedConstStyleData; 
+    exploreTools: [dict__string__clz_Torappu_RoguelikeGameExploreToolData]; 
 }
 
 table dict__string__clz_Torappu_RoguelikeTopicDetail {

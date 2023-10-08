@@ -609,6 +609,7 @@ enum enum__Torappu_ActArchiveType : int {
     DYNAMIC_STORY = 18,
     TOTEM = 19,
     CHAOS = 20,
+    CHALLENGE_BOOK = 21,
 }
 
 enum enum__Torappu_Act17sideData_ArchiveItemUnlockCondition : int {
@@ -839,10 +840,37 @@ table dict__string__clz_Torappu_Act20SideData {
     value: clz_Torappu_Act20SideData;
 }
 
+table clz_Torappu_Act21SideData_ZoneAddtionData {
+    zoneId: string; 
+    unlockText: string; 
+    stageUnlockText: string; 
+    entryId: string; 
+}
+
+table dict__string__clz_Torappu_Act21SideData_ZoneAddtionData {
+    key: string(key);
+    value: clz_Torappu_Act21SideData_ZoneAddtionData;
+}
+
+table clz_Torappu_Act21SideData_ConstData {
+    lineConnectZone: string; 
+}
+
+table clz_Torappu_Act21SideData {
+    zoneAdditionDataMap: [dict__string__clz_Torappu_Act21SideData_ZoneAddtionData]; 
+    constData: clz_Torappu_Act21SideData_ConstData; 
+}
+
+table dict__string__clz_Torappu_Act21SideData {
+    key: string(key);
+    value: clz_Torappu_Act21SideData;
+}
+
 table clz_Torappu_ActivityCustomData {
     TYPE_ACT17SIDE: [dict__string__clz_Torappu_Act17sideData]; // __prts__check_required__typeAct17sideData__
     TYPE_ACT25SIDE: [dict__string__clz_Torappu_ActivityCustomData_Act25sideCustomData]; // __prts__check_required__typeAct25sideData__
     TYPE_ACT20SIDE: [dict__string__clz_Torappu_Act20SideData]; // __prts__check_required__typeAct20sideData__
+    TYPE_ACT21SIDE: [dict__string__clz_Torappu_Act21SideData]; // __prts__check_required__typeAct21sideData__
 }
 
 table clz_Torappu_RetroStageTable {

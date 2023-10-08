@@ -20,6 +20,7 @@ enum enum__Torappu_EnemyLevelType : int {
     NORMAL = 0,
     ELITE = 1,
     BOSS = 2,
+    E_NUM = 3,
 }
 
 table dict__string__int {
