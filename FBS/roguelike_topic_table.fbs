@@ -307,6 +307,11 @@ enum enum__Torappu_RoguelikeTopicMode : int {
     CHALLENGE = 6,
 }
 
+table clz_Torappu_RoguelikeTopicDifficulty_RuleDescReplacement {
+    enrollId: string; 
+    ruleDesc: string; 
+}
+
 table clz_Torappu_RoguelikeTopicDifficulty {
     modeDifficulty: enum__Torappu_RoguelikeTopicMode; 
     grade: int; 
@@ -318,6 +323,7 @@ table clz_Torappu_RoguelikeTopicDifficulty {
     canUnlockItem: bool; 
     doMonthTask: bool; 
     ruleDesc: string; 
+    ruleDescReplacements: [clz_Torappu_RoguelikeTopicDifficulty_RuleDescReplacement]; 
     failTitle: string; 
     failImageId: string; 
     failForceDesc: string; 
@@ -648,6 +654,8 @@ table clz_Torappu_RoguelikeTopicDetailConst {
     outerBuffTokenSum: int; 
     needAllFrontNode: bool; 
     showBlurBack: bool; 
+    endingIconBorderDifficulty: int; 
+    endingIconBorderCount: int; 
 }
 
 table clz_Torappu_RoguelikeGameInitData {
@@ -704,6 +712,7 @@ table clz_Torappu_RoguelikeGameZoneData {
     clockPerformance: string; 
     displayTime: string; 
     description: string; 
+    buffDescription: string; 
     endingDescription: string; 
     backgroundId: string; 
     zoneIconId: string; 
@@ -1628,6 +1637,7 @@ enum enum__Torappu_RoguelikeTotemColorType : int {
     RED = 1,
     GREEN = 2,
     BLUE = 3,
+    ALL = 4,
 }
 
 enum enum__Torappu_RoguelikeTotemPosType : int {
