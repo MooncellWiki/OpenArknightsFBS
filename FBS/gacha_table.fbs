@@ -215,6 +215,11 @@ table clz_Torappu_GachaData_LinkageTenGachaTkt {
     gachaPoolId: string; 
 }
 
+table dict__string__string {
+    key: string(key);
+    value: string;
+}
+
 table clz_Torappu_GachaData_FesGachaPoolRelateItem {
     rarityRank5ItemId: string; 
     rarityRank6ItemId: string; 
@@ -223,11 +228,6 @@ table clz_Torappu_GachaData_FesGachaPoolRelateItem {
 table dict__string__clz_Torappu_GachaData_FesGachaPoolRelateItem {
     key: string(key);
     value: clz_Torappu_GachaData_FesGachaPoolRelateItem;
-}
-
-table dict__string__string {
-    key: string(key);
-    value: string;
 }
 
 table clz_Torappu_GachaData {
@@ -245,8 +245,8 @@ table clz_Torappu_GachaData {
     freeGacha: [clz_Torappu_GachaData_FreeLimitGachaData]; 
     limitTenGachaItem: [clz_Torappu_GachaData_LimitTenGachaTkt]; 
     linkageTenGachaItem: [clz_Torappu_GachaData_LinkageTenGachaTkt]; 
-    fesGachaPoolRelateItem: [dict__string__clz_Torappu_GachaData_FesGachaPoolRelateItem]; 
     dicRecruit6StarHint: [dict__string__string]; 
+    fesGachaPoolRelateItem: [dict__string__clz_Torappu_GachaData_FesGachaPoolRelateItem]; 
 }
 
 root_type clz_Torappu_GachaData;
