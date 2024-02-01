@@ -10,7 +10,8 @@ enum enum__Torappu_BattleFunctionDisableMask : int {
     BATTLE_STATUS = 64,
     COST_PANEL = 128,
     SLOW_MOTION = 256,
-    ALL = 511,
+    PAUSE_BUTTON_INTERACT = 512,
+    ALL = 1023,
 }
 
 table clz_Torappu_Blackboard_DataPair {
@@ -76,6 +77,7 @@ enum enum__Torappu_Battle_AdvancedBuildableMask : int {
     NIGHT = 8,
     HIDE = 16,
     WOODRD_HOLE = 32,
+    RIDGE_FIELD = 64,
 }
 
 table clz_UnityEngine_Vector3 {
@@ -424,10 +426,26 @@ enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_ActionType : int {
 enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RandomType : int {
     ALWAYS = 0,
     PER_DAY = 1,
-    PER_FULLGAME = 2,
+    NEVER = 2,
+    PER_SETTLE_DAY = 3,
+    PER_SEASON = 4,
+}
+
+enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RefreshType : int {
+    ALWAYS = 0,
+    PER_DAY = 1,
+    NEVER = 2,
+    PER_SETTLE_DAY = 3,
+    PER_SEASON = 4,
 }
 
 table clz_System_Object {
+}
+
+table clz_Torappu_LevelData_ActionID {
+    waveI: int; 
+    fragI: int; 
+    actionI: int; 
 }
 
 table clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
@@ -447,10 +465,12 @@ table clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
     randomSpawnGroupKey: string; 
     randomSpawnGroupPackKey: string; 
     randomType: enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RandomType; 
+    refreshType: enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RefreshType; 
     weight: int; 
     dontBlockWave: bool; 
     isValid: bool; 
     extraMeta: clz_System_Object; 
+    actionId: clz_Torappu_LevelData_ActionID; 
 }
 
 table clz_Torappu_LevelData_WaveData_FragmentData {
