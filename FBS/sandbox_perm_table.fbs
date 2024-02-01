@@ -1030,7 +1030,7 @@ table clz_Torappu_SandboxV2ExpeditionData {
     costDrink: int; 
     charCnt: int; 
     profession: enum__Torappu_ProfessionCategory; 
-    prts____check_required____clz_Torappu_SandboxV2ExpeditionData____professions: [enum__Torappu_ProfessionID]; 
+    professions: [enum__Torappu_ProfessionID]; 
     minEliteRank: int; 
     duration: int; 
 }
@@ -1540,7 +1540,7 @@ table dict__string__clz_Torappu_SandboxV2Data {
 }
 
 table clz_Torappu_SandboxPermDetailData {
-    prts____check_required____clz_Torappu_SandboxPermDetailData____sandboxV2TemplateData: [dict__string__clz_Torappu_SandboxV2Data]; 
+    SANDBOX_V2: [dict__string__clz_Torappu_SandboxV2Data]; 
 }
 
 table clz_Torappu_SandboxPermItemData {
