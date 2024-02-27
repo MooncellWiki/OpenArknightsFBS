@@ -1,4 +1,5 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 table clz_Torappu_EnemyHandbookLevelInfoData_RangePair {
     min: float; 
     max: float; 
@@ -20,6 +21,7 @@ enum enum__Torappu_EnemyLevelType : int {
     NORMAL = 0,
     ELITE = 1,
     BOSS = 2,
+    E_NUM = 3,
 }
 
 table dict__string__int {
@@ -58,6 +60,7 @@ table clz_Torappu_EnemyHandBookData {
     isInvalidKilled: bool; 
     overrideKillCntInfos: [dict__string__int]; 
     hideInHandbook: bool; 
+    hideInStage: bool; 
     abilityList: [clz_Torappu_EnemyHandBookData_Abilty]; 
     linkEnemies: [string]; 
     damageType: [enum__Torappu_EnemyHandBookDamageType]; 

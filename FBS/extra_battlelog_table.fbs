@@ -1,4 +1,5 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 table clz_Torappu_ExtraBattleLogDataKey {
     description: string; 
     sourceId: string; 

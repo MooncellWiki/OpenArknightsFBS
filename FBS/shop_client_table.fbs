@@ -1,4 +1,5 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_RecommendItemTagTips : int {
     ONSALE = 0,
     DEADLINE = 1,
@@ -41,6 +42,60 @@ table clz_Torappu_ShopKeeperWord {
     text: string; 
 }
 
+enum enum__Torappu_ShopRecommendTemplateType : int {
+    DEFAULT = 0,
+    NORSKIN = 1,
+    RETURNSKIN = 2,
+    NORFURN = 3,
+    NORGIFT = 4,
+}
+
+table clz_Torappu_ShopRecommendTemplateNormalGiftParam {
+    showStartTs: long; 
+    showEndTs: long; 
+    goodId: string; 
+    giftPackageName: string; 
+    price: int; 
+    logoId: string; 
+    color: string; 
+    haveMark: bool; 
+}
+
+table clz_Torappu_ShopRecommendTemplateNormalSkinParam {
+    showStartTs: long; 
+    showEndTs: long; 
+    skinIds: [string]; 
+    skinGroupName: string; 
+    brandIconId: string; 
+    colorBack: string; 
+    colorText: string; 
+    text: string; 
+}
+
+table clz_Torappu_ShopRecommendTemplateNormalFurnParam {
+    showStartTs: long; 
+    showEndTs: long; 
+    furnPackId: string; 
+    isNew: bool; 
+    isPackSell: bool; 
+    count: int; 
+    colorBack: string; 
+    colorText: string; 
+    actId: string; 
+}
+
+table clz_Torappu_ShopRecommendTemplateReturnSkinParam {
+    showStartTs: long; 
+    showEndTs: long; 
+}
+
+table clz_Torappu_ShopRecommendTemplateParam {
+    normalGiftParam: clz_Torappu_ShopRecommendTemplateNormalGiftParam; 
+    normalSkinParam: clz_Torappu_ShopRecommendTemplateNormalSkinParam; 
+    normalFurnParam: clz_Torappu_ShopRecommendTemplateNormalFurnParam; 
+    returnSkinParam: clz_Torappu_ShopRecommendTemplateReturnSkinParam; 
+}
+
 table clz_Torappu_ShopRecommendItem {
     tagId: string; 
     displayType: string; 
@@ -51,6 +106,8 @@ table clz_Torappu_ShopRecommendItem {
     endDatetime: long; 
     groupList: [clz_Torappu_ShopRecommendGroup]; 
     tagWord: clz_Torappu_ShopKeeperWord; 
+    templateType: enum__Torappu_ShopRecommendTemplateType; 
+    templateParam: clz_Torappu_ShopRecommendTemplateParam; 
 }
 
 table clz_Torappu_ShopCreditUnlockItem {

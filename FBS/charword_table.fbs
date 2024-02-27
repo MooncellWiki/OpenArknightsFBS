@@ -1,4 +1,5 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_CharWordVoiceType : int {
     ONLY_TEXT = 0,
     HAVE_CV = 1,
