@@ -99,6 +99,8 @@ enum enum__Torappu_ItemType : int {
     HOME_THEME = 72,
     SANDBOX_PERM = 73,
     SANDBOX_TOKEN = 74,
+    TEMPLATE_TRAP = 75,
+    NAME_CARD_SKIN = 76,
 }
 
 table clz_Torappu_ItemBundle {
