@@ -155,6 +155,8 @@ table clz_Torappu_BuffData {
     overrideKey: string; 
     overrideType: enum__Torappu_BuffData_OverrideType; 
     maxStackCnt: int; 
+    refreshRemainingTimeWhenStackMax: bool; 
+    clearAllStackCntWhenTimeUp: bool; 
     maxValidStackCnt: int; 
     overrideEffectKey: string; 
     overrideOnEventPriority: bool; 

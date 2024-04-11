@@ -226,6 +226,8 @@ enum enum__Torappu_SandboxPermItemType : int {
     PLACEHOLDER = 11,
     STAMINAPOT = 12,
     ANIMAL = 13,
+    INSECT = 14,
+    SLUGITEM = 15,
 }
 
 table clz_Torappu_SandboxV2DrinkMatData {
@@ -308,6 +310,8 @@ enum enum__Torappu_SandboxV2NodeType : int {
     MARKET = 13,
     HOME_PORTABLE = 14,
     HOME_PORTABLE_RIFT = 15,
+    SELECTION = 16,
+    RACING = 17,
 }
 
 table clz_Torappu_SandboxV2NodeTypeData {
@@ -455,6 +459,7 @@ enum enum__Torappu_SandboxV2EnemyRushType : int {
     RALLY = 4,
     THIEF = 5,
     MESSENGER = 6,
+    INSECT = 7,
 }
 
 table clz_Torappu_SandboxV2EnemyRushTypeData {
@@ -501,6 +506,7 @@ enum enum__Torappu_SandboxV2SeasonType : int {
     NONE = 0,
     DRY = 1,
     RAINY = 2,
+    CHALLENGE = 3,
 }
 
 table clz_Torappu_SandboxV2GameConst {
@@ -516,6 +522,7 @@ table clz_Torappu_SandboxV2GameConst {
     portableConstructUnlockLevel: int; 
     outpostConstructUnlockLevel: int; 
     maxEnemyCountSameTimeInRush: int; 
+    maxPreDelayTimeInRush: float; 
     maxSaveCnt: int; 
     firstSeasonDuration: int; 
     seasonTransitionLoop: [enum__Torappu_SandboxV2SeasonType]; 
@@ -621,12 +628,19 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 74,
     TEMPLATE_TRAP = 75,
     NAME_CARD_SKIN = 76,
+    EXCLUSIVE_TKT_GACHA = 77,
+    EXCLUSIVE_TKT_GACHA_10 = 78,
 }
 
 table clz_Torappu_ItemBundle {
     id: string; 
     count: int; 
     type: enum__Torappu_ItemType; 
+}
+
+table dict__string__string {
+    key: string(key);
+    value: string;
 }
 
 table clz_Torappu_SandboxV2BasicConst {
@@ -677,6 +691,11 @@ table clz_Torappu_SandboxV2BasicConst {
     imgLoadingNormalName: string; 
     imgLoadingBaseName: string; 
     imgUnloadingBaseName: string; 
+    isChallengeOpen: bool; 
+    isRacingOpen: bool; 
+    hasExploreMode: bool; 
+    exploreModeBuffDescs: [string]; 
+    stringRes: [dict__string__string]; 
 }
 
 table clz_Torappu_SandboxV2RiftConst {
@@ -909,11 +928,6 @@ table clz_Torappu_SandboxV2QuestLineData {
 table dict__string__clz_Torappu_SandboxV2QuestLineData {
     key: string(key);
     value: clz_Torappu_SandboxV2QuestLineData;
-}
-
-table dict__string__string {
-    key: string(key);
-    value: string;
 }
 
 table clz_Torappu_SandboxV2GuideQuestData {
@@ -1330,6 +1344,7 @@ enum enum__Torappu_SandboxV2BaseUnlockFuncType : int {
     REAR = 5,
     BUILD = 6,
     SHOP = 7,
+    RACING = 8,
 }
 
 enum enum__Torappu_SandboxV2BaseUnlockFuncDisplayType : int {
@@ -1464,6 +1479,170 @@ table clz_Torappu_SandboxV2TutorialData {
     basicConst: clz_Torappu_SandboxV2TutorialBasicConst; 
 }
 
+table clz_Torappu_SandboxV2RacerBasicInfo {
+    racerId: string; 
+    sortId: int; 
+    prts____check_required____clz_Torappu_SandboxV2RacerBasicInfo____racerTypeName: string; 
+    itemId: string; 
+    attributeMaxValue: [int]; 
+}
+
+table dict__string__clz_Torappu_SandboxV2RacerBasicInfo {
+    key: string(key);
+    value: clz_Torappu_SandboxV2RacerBasicInfo;
+}
+
+enum enum__Torappu_SandboxV2RacerTalentType : int {
+    BORN = 0,
+    LEARNED = 1,
+}
+
+table clz_Torappu_SandboxV2RacerTalentInfo {
+    talentId: string; 
+    talentType: enum__Torappu_SandboxV2RacerTalentType; 
+    talentIconId: string; 
+    desc: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV2RacerTalentInfo {
+    key: string(key);
+    value: clz_Torappu_SandboxV2RacerTalentInfo;
+}
+
+enum enum__Torappu_SandboxV2RacerNameType : int {
+    PREFIX = 0,
+    SUFFIX = 1,
+}
+
+table clz_Torappu_SandboxV2RacerNameInfo {
+    nameId: string; 
+    nameType: enum__Torappu_SandboxV2RacerNameType; 
+    nameDesc: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV2RacerNameInfo {
+    key: string(key);
+    value: clz_Torappu_SandboxV2RacerNameInfo;
+}
+
+table clz_Torappu_SandboxV2RacerMedalInfo {
+    medalId: string; 
+    sortId: int; 
+    name: string; 
+    desc: string; 
+    iconId: string; 
+    smallIconId: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV2RacerMedalInfo {
+    key: string(key);
+    value: clz_Torappu_SandboxV2RacerMedalInfo;
+}
+
+table clz_Torappu_SandboxV2RacingItemInfo {
+    racerItemId: string; 
+    name: string; 
+    iconId: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table dict__string__clz_Torappu_SandboxV2RacingItemInfo {
+    key: string(key);
+    value: clz_Torappu_SandboxV2RacingItemInfo;
+}
+
+table clz_Torappu_SandboxV2RacingConstData {
+    attributeNameList: [string]; 
+    racerMaxValue: [int]; 
+    bagFullHintPercent: float; 
+    tempBagFullHintPercent: float; 
+    bagName: string; 
+    tempBagName: string; 
+    bagEmptyLeftDesc: string; 
+    bagEmptyRightDesc: string; 
+    tempBagEmptyLeftDesc: string; 
+    tempBagEmptyRightDesc: string; 
+    bornTalentIconId: string; 
+    bornTalentTitle: string; 
+    learnedTalentIconId: string; 
+    learnedTalentTitle: string; 
+    talentEmptyDesc: string; 
+    slugItemId: string; 
+    racingHpFactor: float; 
+    racingSpeedFactor: float; 
+    racingAccelerationFactor: float; 
+    recoverMoveSpeed: float; 
+    recoverHpFactor: float; 
+    bleedingFactor: float; 
+    maxSteeringFactor: float; 
+    steeringMassLevelFactor: float; 
+    steeringMoveSpeedFactor: float; 
+    safeAngleCos: float; 
+    safeCollisionForceLevel: float; 
+    tileCollisionFactor: float; 
+    collisionForceSector: [float]; 
+    collisionForceLevel: [float]; 
+    collisionSpeedLoss: [float]; 
+    collisionHpLoss: [float]; 
+    tileCollisionSpeedLoss: [float]; 
+    tileCollisionHpLoss: [float]; 
+    autoUseItemTimeRange: [float]; 
+    recoverAcceleration: float; 
+}
+
+table clz_Torappu_SandboxV2RacingData {
+    racerBasicInfo: [dict__string__clz_Torappu_SandboxV2RacerBasicInfo]; 
+    racerTalentInfo: [dict__string__clz_Torappu_SandboxV2RacerTalentInfo]; 
+    racerNameInfo: [dict__string__clz_Torappu_SandboxV2RacerNameInfo]; 
+    racerMedalInfo: [dict__string__clz_Torappu_SandboxV2RacerMedalInfo]; 
+    enemyItemMap: [dict__string__string]; 
+    racingItemInfo: [dict__string__clz_Torappu_SandboxV2RacingItemInfo]; 
+    constData: clz_Torappu_SandboxV2RacingConstData; 
+}
+
+table clz_Torappu_SandboxV2ChallengeConst {
+    challengeModeDesc: string; 
+    dailyTitleDesc: string; 
+    debuffCountdownDesc: string; 
+    gainAllDebuffDesc: string; 
+    dailyUpAttributeDesc: string; 
+}
+
+table clz_Torappu_SandboxV2ChallengeModeUnlockData {
+    unlockId: string; 
+    sortId: int; 
+    conditionDesc: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV2ChallengeModeUnlockData {
+    key: string(key);
+    value: clz_Torappu_SandboxV2ChallengeModeUnlockData;
+}
+
+table clz_Torappu_SandboxV2ChallengeModeRewardData {
+    rewardId: string; 
+    sortId: int; 
+    rewardDay: int; 
+    rewardItemList: [clz_Torappu_ItemBundle]; 
+}
+
+table dict__string__clz_Torappu_SandboxV2ChallengeModeRewardData {
+    key: string(key);
+    value: clz_Torappu_SandboxV2ChallengeModeRewardData;
+}
+
+table clz_Torappu_SandboxV2ChallengeModeDifficultyData {
+    challengeDay: int; 
+    diffDesc: string; 
+}
+
+table clz_Torappu_SandboxV2ChallengeModeData {
+    challengeConst: clz_Torappu_SandboxV2ChallengeConst; 
+    challengeModeUnlockData: [dict__string__clz_Torappu_SandboxV2ChallengeModeUnlockData]; 
+    challengeModeRewardData: [dict__string__clz_Torappu_SandboxV2ChallengeModeRewardData]; 
+    challengeModeDifficultyData: [clz_Torappu_SandboxV2ChallengeModeDifficultyData]; 
+}
+
 table clz_Torappu_SandboxV2Data {
     mapData: [dict__string__clz_Torappu_SandboxV2MapData]; 
     itemTrapData: [dict__string__clz_Torappu_SandboxV2ItemTrapData]; 
@@ -1534,6 +1713,8 @@ table clz_Torappu_SandboxV2Data {
     confirmIconData: [clz_Torappu_SandboxV2ConfirmIconData]; 
     shopUpdateTimeData: [long]; 
     tutorialData: clz_Torappu_SandboxV2TutorialData; 
+    racingData: clz_Torappu_SandboxV2RacingData; 
+    challengeModeData: clz_Torappu_SandboxV2ChallengeModeData; 
 }
 
 table dict__string__clz_Torappu_SandboxV2Data {

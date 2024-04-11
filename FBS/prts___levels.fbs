@@ -422,7 +422,8 @@ enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_ActionType : int {
     TRIGGER_PREDEFINED = 8,
     BATTLE_EVENTS = 9,
     WITHDRAW_PREDEFINED = 10,
-    E_NUM = 11,
+    DIALOG = 11,
+    E_NUM = 12,
 }
 
 enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RandomType : int {

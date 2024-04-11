@@ -40,7 +40,8 @@ enum enum__Torappu_ActivityType : int {
     TYPE_ACT42D0 = 37,
     TYPE_ACT29SIDE = 38,
     BLESS_ONLY = 39,
-    ENUM = 40,
+    CHECKIN_ACCESS = 40,
+    ENUM = 41,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -187,6 +188,8 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 74,
     TEMPLATE_TRAP = 75,
     NAME_CARD_SKIN = 76,
+    EXCLUSIVE_TKT_GACHA = 77,
+    EXCLUSIVE_TKT_GACHA_10 = 78,
 }
 
 table clz_Torappu_MissionDisplayRewards {
