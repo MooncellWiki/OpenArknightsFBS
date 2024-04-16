@@ -31,7 +31,8 @@ enum enum__Torappu_AbnormalFlag : int {
     NOT_WITHDRAWABLE = 27,
     OUT_OF_GROUND = 28,
     SP_MODIFY_STOPPED = 29,
-    E_NUM = 30,
+    ANTI_STATUS_RESISTABLE = 30,
+    E_NUM = 31,
 }
 
 enum enum__Torappu_AbnormalCombo : int {

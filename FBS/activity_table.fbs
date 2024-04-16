@@ -34,13 +34,13 @@ enum enum__Torappu_ActivityType : int {
     TYPE_ACT24SIDE = 30,
     FLIP_ONLY = 31,
     TYPE_ACT25SIDE = 32,
-    TYPE_ACT38D1 = 33,
-    CHECKIN_VS = 34,
-    SWITCH_ONLY = 35,
-    TYPE_ACT27SIDE = 36,
-    UNIQUE_ONLY = 37,
-    MAINLINE_BP = 38,
-    TYPE_ACT42D0 = 39,
+    CHECKIN_VS = 33,
+    SWITCH_ONLY = 34,
+    TYPE_ACT27SIDE = 35,
+    UNIQUE_ONLY = 36,
+    MAINLINE_BP = 37,
+    TYPE_ACT42D0 = 38,
+    TYPE_ACT29SIDE = 39,
     ENUM = 40,
 }
 
@@ -181,7 +181,8 @@ enum enum__Torappu_ItemType : int {
     NEW_PROGRESS = 68,
     MCARD_VOUCHER = 69,
     MATERIAL_ISSUE_VOUCHER = 70,
-    HOME_THEME = 71,
+    CRS_SHOP_COIN_V2 = 71,
+    HOME_THEME = 72,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -1965,6 +1966,7 @@ table clz_Torappu_SharedCharData {
     level: int; 
     favorPoint: int; 
     crisisRecord: [dict__string__int]; 
+    crisisV2Record: [dict__string__int]; 
     currentTmpl: string; 
     tmpl: [dict__string__clz_Torappu_SharedCharData_TmplData]; 
 }
@@ -2202,6 +2204,7 @@ table dict__string__clz_Torappu_ActivityBossRushData {
 
 table clz_Torappu_ActivityFloatParadeData_ConstData {
     cityName: string; 
+    cityNamePic: string; 
     lowStandard: float; 
     variationTitle: string; 
     ruleDesc: string; 
@@ -2745,119 +2748,6 @@ table dict__string__clz_Torappu_Act25SideData {
     value: clz_Torappu_Act25SideData;
 }
 
-enum enum__Torappu_Act38D1Data_Act38D1AppraiseType : int {
-    RANK_D = 0,
-    RANK_C = 1,
-    RANK_B = 2,
-    RANK_A = 3,
-    RANK_S = 4,
-    RANK_SS = 5,
-    RANK_SSS = 6,
-}
-
-table dict__int__enum__Torappu_Act38D1Data_Act38D1AppraiseType {
-    key: int(key);
-    value: enum__Torappu_Act38D1Data_Act38D1AppraiseType;
-}
-
-table clz_Torappu_Act38D1Data_Act38D1NodeData {
-    slotId: string; 
-    groupId: string; 
-    isUpper: bool; 
-    adjacentSlotList: [string]; 
-}
-
-table dict__string__clz_Torappu_Act38D1Data_Act38D1NodeData {
-    key: string(key);
-    value: clz_Torappu_Act38D1Data_Act38D1NodeData;
-}
-
-table clz_Torappu_Act38D1Data_Act38D1RoadData {
-    roadId: string; 
-    startSlotId: string; 
-    endSlotId: string; 
-}
-
-table dict__string__clz_Torappu_Act38D1Data_Act38D1RoadData {
-    key: string(key);
-    value: clz_Torappu_Act38D1Data_Act38D1RoadData;
-}
-
-table clz_Torappu_Act38D1Data_Act38D1RewardBoxData {
-    rewardBoxId: string; 
-    roadId: string; 
-}
-
-table dict__string__clz_Torappu_Act38D1Data_Act38D1RewardBoxData {
-    key: string(key);
-    value: clz_Torappu_Act38D1Data_Act38D1RewardBoxData;
-}
-
-table clz_Torappu_Act38D1Data_Act38D1ExclusionGroupData {
-    groupId: string; 
-    slotIdList: [string]; 
-}
-
-table dict__string__clz_Torappu_Act38D1Data_Act38D1ExclusionGroupData {
-    key: string(key);
-    value: clz_Torappu_Act38D1Data_Act38D1ExclusionGroupData;
-}
-
-table clz_Torappu_Act38D1Data_Act38D1DimensionItemData {
-    desc: string; 
-    maxScore: int; 
-}
-
-table clz_Torappu_Act38D1Data_Act38D1CommentData {
-    id: string; 
-    sortId: int; 
-    desc: string; 
-}
-
-table dict__string__clz_Torappu_Act38D1Data_Act38D1CommentData {
-    key: string(key);
-    value: clz_Torappu_Act38D1Data_Act38D1CommentData;
-}
-
-table clz_Torappu_Act38D1Data_Act38D1StageDetailData {
-    nodeDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1NodeData]; 
-    roadDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1RoadData]; 
-    rewardBoxDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1RewardBoxData]; 
-    exclusionGroupDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1ExclusionGroupData]; 
-    dimensionItemList: [clz_Torappu_Act38D1Data_Act38D1DimensionItemData]; 
-    commentDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1CommentData]; 
-}
-
-table dict__string__clz_Torappu_Act38D1Data_Act38D1StageDetailData {
-    key: string(key);
-    value: clz_Torappu_Act38D1Data_Act38D1StageDetailData;
-}
-
-table clz_Torappu_Act38D1Data_Act38D1ConstData {
-    redScoreThreshold: int; 
-    detailBkgRedThreshold: int; 
-    voiceGrade: int; 
-    stageInfoTitle: string; 
-    missionListReceiveRewardText: string; 
-    missionListChangeMapText: string; 
-    missionListCompleteTagText: string; 
-    mapStartBattleText: string; 
-    mapJumpDailyMapText: string; 
-    mapRewardReceivedText: string; 
-}
-
-table clz_Torappu_Act38D1Data {
-    scoreLevelToAppraiseDataMap: [dict__int__enum__Torappu_Act38D1Data_Act38D1AppraiseType]; 
-    detailDataMap: [dict__string__clz_Torappu_Act38D1Data_Act38D1StageDetailData]; 
-    constData: clz_Torappu_Act38D1Data_Act38D1ConstData; 
-    trackPointPeriodData: [long]; 
-}
-
-table dict__string__clz_Torappu_Act38D1Data {
-    key: string(key);
-    value: clz_Torappu_Act38D1Data;
-}
-
 table clz_Torappu_Act27SideData_Act27SideGoodData {
     id: string; 
     name: string; 
@@ -3115,6 +3005,200 @@ table dict__string__clz_Torappu_Act42D0Data {
     value: clz_Torappu_Act42D0Data;
 }
 
+table clz_Torappu_Act29SideData_Act29SideFragData {
+    fragId: string; 
+    sortId: int; 
+    fragName: string; 
+    fragIcon: string; 
+    fragStoreIcon: string; 
+}
+
+table dict__string__clz_Torappu_Act29SideData_Act29SideFragData {
+    key: string(key);
+    value: clz_Torappu_Act29SideData_Act29SideFragData;
+}
+
+enum enum__Torappu_Act29SideData_Act29SideOrcheType : int {
+    ORCHE_1 = 0,
+    ORCHE_2 = 1,
+    ORCHE_3 = 2,
+    ENUM = 3,
+}
+
+table clz_Torappu_Act29SideData_Act29SideOrcheData {
+    id: string; 
+    name: string; 
+    desc: string; 
+    icon: string; 
+    sortId: int; 
+    orcheType: enum__Torappu_Act29SideData_Act29SideOrcheType; 
+}
+
+table dict__string__clz_Torappu_Act29SideData_Act29SideOrcheData {
+    key: string(key);
+    value: clz_Torappu_Act29SideData_Act29SideOrcheData;
+}
+
+enum enum__Torappu_Act29SideData_Act29SideProductType : int {
+    PRODUCT_TYPE_1 = 0,
+    PRODUCT_TYPE_2 = 1,
+    PRODUCT_TYPE_3 = 2,
+    PRODUCT_TYPE_4 = 3,
+    PRODUCT_TYPE_5 = 4,
+    ENUM = 5,
+}
+
+table clz_Torappu_Act29SideData_Act29SideProductGroupData {
+    groupId: string; 
+    groupName: string; 
+    groupIcon: string; 
+    groupDesc: string; 
+    defaultBgmSignal: string; 
+    productList: [string]; 
+    groupEngName: string; 
+    groupSmallName: string; 
+    groupTypeIcon: string; 
+    groupStoreIconId: string; 
+    groupTypeBasePic: string; 
+    groupTypeEyeIcon: string; 
+    groupSortId: int; 
+    formList: [string]; 
+    sheetId: string; 
+    sheetNum: int; 
+    sheetRotateSpd: float; 
+    productType: enum__Torappu_Act29SideData_Act29SideProductType; 
+    productDescColor: string; 
+    playTintColor: string; 
+    confirmTintColor: string; 
+    confirmDescColor: string; 
+    bagThemeColor: string; 
+}
+
+table dict__string__clz_Torappu_Act29SideData_Act29SideProductGroupData {
+    key: string(key);
+    value: clz_Torappu_Act29SideData_Act29SideProductGroupData;
+}
+
+table clz_Torappu_Act29SideData_Act29SideProductData {
+    id: string; 
+    orcheId: string; 
+    groupId: string; 
+    formId: string; 
+    musicId: string; 
+}
+
+table dict__string__clz_Torappu_Act29SideData_Act29SideProductData {
+    key: string(key);
+    value: clz_Torappu_Act29SideData_Act29SideProductData;
+}
+
+table clz_Torappu_Act29SideData_Act29SideFormData {
+    formId: string; 
+    fragIdList: [string]; 
+    formDesc: string; 
+    productIdDict: [dict__string__string]; 
+    withoutOrcheProductId: string; 
+    groupId: string; 
+    formSortId: int; 
+}
+
+table dict__string__clz_Torappu_Act29SideData_Act29SideFormData {
+    key: string(key);
+    value: clz_Torappu_Act29SideData_Act29SideFormData;
+}
+
+table clz_Torappu_Act29SideData_Act29SideInvestResultData {
+    resultId: string; 
+    resultTitle: string; 
+    resultDesc1: string; 
+    resultDesc2: string; 
+}
+
+table dict__string__clz_Torappu_Act29SideData_Act29SideInvestResultData {
+    key: string(key);
+    value: clz_Torappu_Act29SideData_Act29SideInvestResultData;
+}
+
+enum enum__Torappu_Act29SideData_Act29SideInvestType : int {
+    MAJOR = 0,
+    RARE = 1,
+    NORMAL = 2,
+}
+
+table clz_Torappu_Act29SideData_Act29SideInvestData {
+    investId: string; 
+    investType: enum__Torappu_Act29SideData_Act29SideInvestType; 
+    investNpcName: string; 
+    storyId: string; 
+    investNpcPic: string; 
+    investNpcAvatarPic: string; 
+    majorNpcPic: string; 
+    majorNpcBlackPic: string; 
+    reward: clz_Torappu_ItemBundle; 
+    investSucResultId: string; 
+    investFailResultId: string; 
+    investRareResultId: string; 
+}
+
+table dict__string__clz_Torappu_Act29SideData_Act29SideInvestData {
+    key: string(key);
+    value: clz_Torappu_Act29SideData_Act29SideInvestData;
+}
+
+table clz_Torappu_Act29SideData_Act29SideConstData {
+    majorInvestUnlockItemName: string; 
+    wrongTipsTriggerTime: int; 
+    majorInvestCompleteImgId: string; 
+    majorInvestUnknownAvatarId: string; 
+    majorInvestDetailDesc1: string; 
+    majorInvestDetailDesc2: string; 
+    majorInvestDetailDesc3: string; 
+    majorInvestDetailDesc4: string; 
+    hiddenInvestImgId: string; 
+    hiddenInvestHeadImgId: string; 
+    hiddenInvestNpcName: string; 
+    unlockLevelId: string; 
+    investResultHint: string; 
+    investUnlockText: string; 
+    noOrcheDesc: string; 
+}
+
+table clz_Torappu_Act29SideData_Act29SideZoneAdditionData {
+    zoneId: string; 
+    unlockText: string; 
+}
+
+table dict__string__clz_Torappu_Act29SideData_Act29SideZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act29SideData_Act29SideZoneAdditionData;
+}
+
+table clz_Torappu_Act29SideData_Act29SideMusicData {
+    groupId: string; 
+    orcheId: string; 
+    musicId: string; 
+}
+
+table clz_Torappu_Act29SideData {
+    fragDataMap: [dict__string__clz_Torappu_Act29SideData_Act29SideFragData]; 
+    orcheDataMap: [dict__string__clz_Torappu_Act29SideData_Act29SideOrcheData]; 
+    productGroupDataMap: [dict__string__clz_Torappu_Act29SideData_Act29SideProductGroupData]; 
+    productDataMap: [dict__string__clz_Torappu_Act29SideData_Act29SideProductData]; 
+    formDataMap: [dict__string__clz_Torappu_Act29SideData_Act29SideFormData]; 
+    investResultDataMap: [dict__string__clz_Torappu_Act29SideData_Act29SideInvestResultData]; 
+    investDataMap: [dict__string__clz_Torappu_Act29SideData_Act29SideInvestData]; 
+    majorInvestIdList: [string]; 
+    rareInvestIdList: [string]; 
+    constData: clz_Torappu_Act29SideData_Act29SideConstData; 
+    zoneAdditionDataMap: [dict__string__clz_Torappu_Act29SideData_Act29SideZoneAdditionData]; 
+    musicDataMap: [clz_Torappu_Act29SideData_Act29SideMusicData]; 
+}
+
+table dict__string__clz_Torappu_Act29SideData {
+    key: string(key);
+    value: clz_Torappu_Act29SideData;
+}
+
 table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; // __prts__check_required__defaultActivityData__
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; // __prts__check_required__defaultCheckinData__
@@ -3143,9 +3227,9 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     MAIN_BUFF: [dict__string__clz_Torappu_ActivityMainlineBuffData]; // __prts__check_required__mainlineBuffData__
     TYPE_ACT24SIDE: [dict__string__clz_Torappu_Act24SideData]; // __prts__check_required__typeAct24SideData__
     TYPE_ACT25SIDE: [dict__string__clz_Torappu_Act25SideData]; // __prts__check_required__typeAct25SideData__
-    TYPE_ACT38D1: [dict__string__clz_Torappu_Act38D1Data]; // __prts__check_required__typeAct38d1Data__
     TYPE_ACT27SIDE: [dict__string__clz_Torappu_Act27SideData]; // __prts__check_required__typeAct27SideData__
     TYPE_ACT42D0: [dict__string__clz_Torappu_Act42D0Data]; // __prts__check_required__typeAct42D0Data__
+    TYPE_ACT29SIDE: [dict__string__clz_Torappu_Act29SideData]; // __prts__check_required__typeAct29SideData__
 }
 
 table clz_Torappu_ActMainlineBpExtraData_ActMainlineBpExtraPeriodData {
@@ -3201,6 +3285,7 @@ enum enum__Torappu_ActivityThemeType : int {
     CRISIS = 2,
     MAINLINE = 3,
     ROGUELIKE = 4,
+    CRISISV2 = 5,
 }
 
 table clz_Torappu_ActivityThemeData_TimeNode {
