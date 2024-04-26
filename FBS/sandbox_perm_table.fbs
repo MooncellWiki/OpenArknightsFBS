@@ -1482,7 +1482,7 @@ table clz_Torappu_SandboxV2TutorialData {
 table clz_Torappu_SandboxV2RacerBasicInfo {
     racerId: string; 
     sortId: int; 
-    prts____check_required____clz_Torappu_SandboxV2RacerBasicInfo____racerTypeName: string; 
+    racerName: string; // __prts__check_required__racerTypeName__
     itemId: string; 
     attributeMaxValue: [int]; 
 }
