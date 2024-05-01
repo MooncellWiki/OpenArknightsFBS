@@ -1,0 +1,75 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_ProfessionCategory : int {
+    NONE = 0,
+    WARRIOR = 1,
+    SNIPER = 2,
+    TANK = 4,
+    MEDIC = 8,
+    SUPPORT = 16,
+    CASTER = 32,
+    SPECIAL = 64,
+    TOKEN = 128,
+    TRAP = 256,
+    PIONEER = 512,
+}
+
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
+}
+
+table clz_Torappu_Battle_Cooperate_CooperateProfessionBuffBlackBoard {
+    key: string; 
+    buffId: string; 
+    atRoot: bool; 
+    title: string; 
+    description: string; 
+    Blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table dict__enum__Torappu_ProfessionCategory__clz_Torappu_Battle_Cooperate_CooperateProfessionBuffBlackBoard {
+    key: enum__Torappu_ProfessionCategory(key);
+    value: clz_Torappu_Battle_Cooperate_CooperateProfessionBuffBlackBoard;
+}
+
+table clz_Torappu_Battle_Cooperate_CooperateBonusData {
+    key: string; 
+    fail: bool; 
+    weight: int; 
+    description: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table dict__string__clz_Torappu_Battle_Cooperate_CooperateBonusData {
+    key: string(key);
+    value: clz_Torappu_Battle_Cooperate_CooperateBonusData;
+}
+
+enum enum__Torappu_Battle_Cooperate_EndTileType : int {
+    NONE = 0,
+    MY_SIDE = 1,
+    MATE_SIDE = 2,
+    SHARED = 3,
+}
+
+table clz_Torappu_Battle_Cooperate_CooperateEndTileInfo {
+    name: string; 
+    description: string; 
+}
+
+table dict__enum__Torappu_Battle_Cooperate_EndTileType__clz_Torappu_Battle_Cooperate_CooperateEndTileInfo {
+    key: enum__Torappu_Battle_Cooperate_EndTileType(key);
+    value: clz_Torappu_Battle_Cooperate_CooperateEndTileInfo;
+}
+
+table clz_Torappu_Battle_Cooperate_CooperateModeBattleData {
+    costTransferred: int; 
+    costTransferredExtra: int; 
+    getMaxMsgCntInOneUpdate: int; 
+    buffList: [dict__enum__Torappu_ProfessionCategory__clz_Torappu_Battle_Cooperate_CooperateProfessionBuffBlackBoard]; 
+    cooperateBonusMap: [dict__string__clz_Torappu_Battle_Cooperate_CooperateBonusData]; 
+    endTileInfo: [dict__enum__Torappu_Battle_Cooperate_EndTileType__clz_Torappu_Battle_Cooperate_CooperateEndTileInfo]; 
+}
+
+root_type clz_Torappu_Battle_Cooperate_CooperateModeBattleData;
