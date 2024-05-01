@@ -228,6 +228,7 @@ table clz_Torappu_StageData_SpecialStoryInfo {
     stageId: string; 
     rewards: [clz_Torappu_ItemBundle]; 
     progressInfo: clz_Torappu_StageData_SpecialProgressInfo; 
+    imageId: string; 
 }
 
 table clz_Torappu_StageData {
@@ -360,6 +361,7 @@ table clz_Torappu_TimelyDropTimeInfo {
     entranceUpPicId: string; 
     timelyGroupId: string; 
     weeklyPicId: string; 
+    isReplace: bool; 
     apSupplyOutOfDateDict: [dict__string__long]; 
 }
 
@@ -392,6 +394,23 @@ table clz_Torappu_OverrideDropInfo {
 table dict__string__clz_Torappu_OverrideDropInfo {
     key: string(key);
     value: clz_Torappu_OverrideDropInfo;
+}
+
+table dict__string__list_clz_Torappu_StageData_ConditionDesc {
+    key: string(key);
+    value: [clz_Torappu_StageData_ConditionDesc];
+}
+
+table clz_Torappu_OverrideUnlockInfo {
+    groupId: string; 
+    startTime: long; 
+    endTime: long; 
+    unlockDict: [dict__string__list_clz_Torappu_StageData_ConditionDesc]; 
+}
+
+table dict__string__clz_Torappu_OverrideUnlockInfo {
+    key: string(key);
+    value: clz_Torappu_OverrideUnlockInfo;
 }
 
 table clz_Torappu_TimelyDropInfo {
@@ -523,6 +542,11 @@ table dict__string__clz_Torappu_ApProtectZoneInfo {
     value: clz_Torappu_ApProtectZoneInfo;
 }
 
+table dict__string__string {
+    key: string(key);
+    value: string;
+}
+
 enum enum__Torappu_OverrideGameMode : int {
     NONE = 0,
     ACT27SIDE = 1,
@@ -545,6 +569,7 @@ table clz_Torappu_StageTable {
     forceOpenTable: [dict__string__clz_Torappu_WeeklyForceOpenTable]; 
     timelyStageDropInfo: [dict__string__clz_Torappu_TimelyDropTimeInfo]; 
     overrideDropInfo: [dict__string__clz_Torappu_OverrideDropInfo]; 
+    overrideUnlockInfo: [dict__string__clz_Torappu_OverrideUnlockInfo]; 
     timelyTable: [dict__string__clz_Torappu_TimelyDropInfo]; 
     stageValidInfo: [dict__string__clz_Torappu_StageValidInfo]; 
     stageFogInfo: [dict__string__clz_Torappu_StageFogInfo]; 
@@ -554,6 +579,7 @@ table clz_Torappu_StageTable {
     specialBattleFinishStageData: [dict__string__clz_Torappu_SpecialBattleFinishStageData]; 
     recordRewardData: [dict__string__clz_Torappu_RecordRewardServerData]; 
     apProtectZoneInfo: [dict__string__clz_Torappu_ApProtectZoneInfo]; 
+    antiSpoilerDict: [dict__string__string]; 
     actCustomStageDatas: [dict__string__clz_Torappu_ActCustomStageData]; 
     spNormalStageIdFor4StarList: [string]; 
 }

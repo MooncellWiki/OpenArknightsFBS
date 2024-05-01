@@ -203,29 +203,31 @@ enum enum__Torappu_ActivityType : int {
     ROGUELIKE = 16,
     PRAY_ONLY = 17,
     MULTIPLAY = 18,
-    TYPE_ACT17D7 = 19,
-    GRID_GACHA = 20,
-    GRID_GACHA_V2 = 21,
-    INTERLOCK = 22,
-    APRIL_FOOL = 23,
-    BOSS_RUSH = 24,
-    TYPE_ACT20SIDE = 25,
-    FLOAT_PARADE = 26,
-    TYPE_ACT21SIDE = 27,
-    MAIN_BUFF = 28,
-    TYPE_ACT24SIDE = 29,
-    FLIP_ONLY = 30,
-    TYPE_ACT25SIDE = 31,
-    CHECKIN_VS = 32,
-    SWITCH_ONLY = 33,
-    TYPE_ACT27SIDE = 34,
-    UNIQUE_ONLY = 35,
-    MAINLINE_BP = 36,
-    TYPE_ACT42D0 = 37,
-    TYPE_ACT29SIDE = 38,
-    BLESS_ONLY = 39,
-    CHECKIN_ACCESS = 40,
-    ENUM = 41,
+    MULTIPLAY_VERIFY2 = 19,
+    TYPE_ACT17D7 = 20,
+    GRID_GACHA = 21,
+    GRID_GACHA_V2 = 22,
+    INTERLOCK = 23,
+    APRIL_FOOL = 24,
+    BOSS_RUSH = 25,
+    TYPE_ACT20SIDE = 26,
+    FLOAT_PARADE = 27,
+    TYPE_ACT21SIDE = 28,
+    MAIN_BUFF = 29,
+    TYPE_ACT24SIDE = 30,
+    FLIP_ONLY = 31,
+    TYPE_ACT25SIDE = 32,
+    CHECKIN_VS = 33,
+    SWITCH_ONLY = 34,
+    TYPE_ACT27SIDE = 35,
+    UNIQUE_ONLY = 36,
+    MAINLINE_BP = 37,
+    TYPE_ACT42D0 = 38,
+    TYPE_ACT29SIDE = 39,
+    BLESS_ONLY = 40,
+    CHECKIN_ACCESS = 41,
+    YEAR_5_GENERAL = 42,
+    ENUM = 43,
 }
 
 table clz_Torappu_RetroActData {
@@ -351,6 +353,7 @@ table clz_Torappu_StageData_SpecialStoryInfo {
     stageId: string; 
     rewards: [clz_Torappu_ItemBundle]; 
     progressInfo: clz_Torappu_StageData_SpecialProgressInfo; 
+    imageId: string; 
 }
 
 table clz_Torappu_StageData {
@@ -685,9 +688,17 @@ enum enum__Torappu_BuildableType : int {
     ALL = 3,
 }
 
+enum enum__Torappu_PlayerSideMask : ubyte {
+    ALL = 0,
+    SIDE_A = 1,
+    SIDE_B = 2,
+    NONE = 3,
+}
+
 table clz_Torappu_RuneData_Selector {
     professionMask: enum__Torappu_ProfessionCategory; 
     buildableMask: enum__Torappu_BuildableType; 
+    playerSideMask: enum__Torappu_PlayerSideMask; 
     charIdFilter: [string]; 
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 

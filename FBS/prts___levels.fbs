@@ -423,7 +423,8 @@ enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_ActionType : int {
     BATTLE_EVENTS = 9,
     WITHDRAW_PREDEFINED = 10,
     DIALOG = 11,
-    E_NUM = 12,
+    SHOW_ALL_HIDDEN_CARDS = 12,
+    E_NUM = 13,
 }
 
 enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RandomType : int {

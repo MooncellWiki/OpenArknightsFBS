@@ -27,10 +27,12 @@ table clz_Torappu_GachaPoolClientData {
     LMTGSID: string; 
     CDPrimColor: string; 
     CDSecColor: string; 
+    freeBackColor: string; 
     gachaRuleType: enum__Torappu_GachaRuleType; 
     dynMeta: hg__internal__JObject; 
     linkageRuleId: string; 
     linkageParam: hg__internal__JObject; 
+    limitParam: hg__internal__JObject; 
 }
 
 table clz_Torappu_NewbeeGachaPoolClientData {

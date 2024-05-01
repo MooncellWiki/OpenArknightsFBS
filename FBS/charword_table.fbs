@@ -55,8 +55,9 @@ enum enum__Torappu_CharWordShowType : int {
     HALLOWEEN_DAY = 30,
     CHRISMATS_DAY = 31,
     GREETING = 32,
-    UNUSED = 33,
-    E_ALL = 34,
+    ANNIVERSARY = 33,
+    UNUSED = 34,
+    E_ALL = 35,
 }
 
 table clz_Torappu_CharWordData {
@@ -78,6 +79,18 @@ table clz_Torappu_CharWordData {
 table dict__string__clz_Torappu_CharWordData {
     key: string(key);
     value: clz_Torappu_CharWordData;
+}
+
+table clz_Torappu_CharExtraWordData {
+    wordKey: string; 
+    charId: string; 
+    voiceId: string; 
+    voiceText: string; 
+}
+
+table dict__string__clz_Torappu_CharExtraWordData {
+    key: string(key);
+    value: clz_Torappu_CharExtraWordData;
 }
 
 enum enum__Torappu_VoiceLangType : int {
@@ -161,8 +174,35 @@ table dict__enum__Torappu_VoiceLangType__list_clz_Torappu_NewVoiceTimeData {
     value: [clz_Torappu_NewVoiceTimeData];
 }
 
+table clz_Torappu_FestivalVoiceData {
+    showType: enum__Torappu_CharWordShowType; 
+    startTs: long; 
+    endTs: long; 
+}
+
+table clz_Torappu_FestivalVoiceWeightData {
+    showType: enum__Torappu_CharWordShowType; 
+    weight: float; 
+}
+
+table dict__string__clz_Torappu_FestivalVoiceWeightData {
+    key: string(key);
+    value: clz_Torappu_FestivalVoiceWeightData;
+}
+
+table clz_Torappu_ExtraVoiceConfigData {
+    voiceId: string; 
+    validVoiceLang: [enum__Torappu_VoiceLangType]; 
+}
+
+table dict__string__clz_Torappu_ExtraVoiceConfigData {
+    key: string(key);
+    value: clz_Torappu_ExtraVoiceConfigData;
+}
+
 table clz_Torappu_CharWordTable {
     charWords: [dict__string__clz_Torappu_CharWordData]; 
+    charExtraWords: [dict__string__clz_Torappu_CharExtraWordData]; 
     voiceLangDict: [dict__string__clz_Torappu_VoiceLangData]; 
     defaultLangType: enum__Torappu_VoiceLangType; 
     newTagList: [string]; 
@@ -173,6 +213,9 @@ table clz_Torappu_CharWordTable {
     displayGroupTypeList: [enum__Torappu_VoiceLangGroupType]; 
     displayTypeList: [enum__Torappu_VoiceLangType]; 
     playVoiceRange: enum__Torappu_CharWordShowType; 
+    fesVoiceData: [clz_Torappu_FestivalVoiceData]; 
+    fesVoiceWeight: [dict__string__clz_Torappu_FestivalVoiceWeightData]; 
+    extraVoiceConfigData: [dict__string__clz_Torappu_ExtraVoiceConfigData]; 
 }
 
 root_type clz_Torappu_CharWordTable;
