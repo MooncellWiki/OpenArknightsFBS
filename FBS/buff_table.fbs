@@ -32,7 +32,8 @@ enum enum__Torappu_AbnormalFlag : int {
     SP_MODIFY_STOPPED = 29,
     ANTI_STATUS_RESISTABLE = 30,
     DISARMED_COMBAT = 31,
-    E_NUM = 32,
+    TOWER_TARGET_FREE = 32,
+    E_NUM = 33,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
