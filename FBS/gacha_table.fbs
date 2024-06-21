@@ -8,6 +8,7 @@ enum enum__Torappu_GachaRuleType : int {
     CLASSIC = 4,
     SINGLE = 5,
     FESCLASSIC = 6,
+    CLASSIC_ATTAIN = 7,
 }
 
 table hg__internal__JObject {
