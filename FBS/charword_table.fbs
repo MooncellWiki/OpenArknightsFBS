@@ -174,10 +174,29 @@ table dict__enum__Torappu_VoiceLangType__list_clz_Torappu_NewVoiceTimeData {
     value: [clz_Torappu_NewVoiceTimeData];
 }
 
-table clz_Torappu_FestivalVoiceData {
-    showType: enum__Torappu_CharWordShowType; 
+enum enum__Torappu_FestivalVoiceTimeType : int {
+    NONE = 0,
+    FESTIVAL = 1,
+}
+
+table clz_Torappu_FestivalTimeInterval {
     startTs: long; 
     endTs: long; 
+}
+
+table clz_Torappu_FestivalTimeData {
+    timeType: enum__Torappu_FestivalVoiceTimeType; 
+    interval: clz_Torappu_FestivalTimeInterval; 
+}
+
+table clz_Torappu_FestivalVoiceData {
+    showType: enum__Torappu_CharWordShowType; 
+    timeData: [clz_Torappu_FestivalTimeData]; 
+}
+
+table dict__string__clz_Torappu_FestivalVoiceData {
+    key: string(key);
+    value: clz_Torappu_FestivalVoiceData;
 }
 
 table clz_Torappu_FestivalVoiceWeightData {
@@ -213,7 +232,7 @@ table clz_Torappu_CharWordTable {
     displayGroupTypeList: [enum__Torappu_VoiceLangGroupType]; 
     displayTypeList: [enum__Torappu_VoiceLangType]; 
     playVoiceRange: enum__Torappu_CharWordShowType; 
-    fesVoiceData: [clz_Torappu_FestivalVoiceData]; 
+    fesVoiceData: [dict__string__clz_Torappu_FestivalVoiceData]; 
     fesVoiceWeight: [dict__string__clz_Torappu_FestivalVoiceWeightData]; 
     extraVoiceConfigData: [dict__string__clz_Torappu_ExtraVoiceConfigData]; 
 }

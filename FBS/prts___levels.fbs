@@ -244,6 +244,7 @@ table clz_Torappu_AttributesData {
     frozenImmune: bool; 
     levitateImmune: bool; 
     disarmedCombatImmune: bool; 
+    fearedImmune: bool; 
 }
 
 enum enum__Torappu_SourceApplyWay : int {
@@ -364,6 +365,7 @@ table clz_Torappu_EnemyDatabase_AttributesData {
     frozenImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     levitateImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     disarmedCombatImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    fearedImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
 }
 
 table clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_ {

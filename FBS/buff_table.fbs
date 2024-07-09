@@ -33,7 +33,8 @@ enum enum__Torappu_AbnormalFlag : int {
     ANTI_STATUS_RESISTABLE = 30,
     DISARMED_COMBAT = 31,
     TOWER_TARGET_FREE = 32,
-    E_NUM = 33,
+    FEARED = 33,
+    E_NUM = 34,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
