@@ -2483,7 +2483,7 @@ table clz_Torappu_RoguelikeTopicCustomizeData {
     rogue_1: clz_Torappu_RL01CustomizeData; // __prts__check_required__rl01__
     rogue_2: clz_Torappu_RL02CustomizeData; // __prts__check_required__rl02__
     rogue_3: clz_Torappu_RL03CustomizeData; // __prts__check_required__rl03__
-    prts____check_required____clz_Torappu_RoguelikeTopicCustomizeData____rl04: clz_Torappu_RL04CustomizeData; 
+    rogue_4: clz_Torappu_RL04CustomizeData; // __prts__check_required__rl04__
 }
 
 table clz_Torappu_RoguelikeTopicTable {
