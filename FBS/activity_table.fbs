@@ -29,18 +29,18 @@ enum enum__Torappu_ActivityType : int {
     TYPE_ACT20SIDE = 25,
     FLOAT_PARADE = 26,
     TYPE_ACT21SIDE = 27,
-    SANDBOX = 28,
-    MAIN_BUFF = 29,
-    TYPE_ACT24SIDE = 30,
-    FLIP_ONLY = 31,
-    TYPE_ACT25SIDE = 32,
-    CHECKIN_VS = 33,
-    SWITCH_ONLY = 34,
-    TYPE_ACT27SIDE = 35,
-    UNIQUE_ONLY = 36,
-    MAINLINE_BP = 37,
-    TYPE_ACT42D0 = 38,
-    TYPE_ACT29SIDE = 39,
+    MAIN_BUFF = 28,
+    TYPE_ACT24SIDE = 29,
+    FLIP_ONLY = 30,
+    TYPE_ACT25SIDE = 31,
+    CHECKIN_VS = 32,
+    SWITCH_ONLY = 33,
+    TYPE_ACT27SIDE = 34,
+    UNIQUE_ONLY = 35,
+    MAINLINE_BP = 36,
+    TYPE_ACT42D0 = 37,
+    TYPE_ACT29SIDE = 38,
+    BLESS_ONLY = 39,
     ENUM = 40,
 }
 
@@ -66,6 +66,7 @@ table clz_Torappu_ActivityTable_BasicData {
     ungroupedMedalIds: [string]; 
     isReplicate: bool; 
     needFixedSync: bool; 
+    trapDomainId: string; 
 }
 
 table dict__string__clz_Torappu_ActivityTable_BasicData {
@@ -183,6 +184,10 @@ enum enum__Torappu_ItemType : int {
     MATERIAL_ISSUE_VOUCHER = 70,
     CRS_SHOP_COIN_V2 = 71,
     HOME_THEME = 72,
+    SANDBOX_PERM = 73,
+    SANDBOX_TOKEN = 74,
+    TEMPLATE_TRAP = 75,
+    NAME_CARD_SKIN = 76,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -846,11 +851,14 @@ table clz_Torappu_RuneData_Selector {
     charIdFilter: [string]; 
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 
+    enemyLevelTypeFilter: [string]; 
     skillIdFilter: [string]; 
     tileKeyFilter: [string]; 
     groupTagFilter: [string]; 
     filterTagFilter: [string]; 
+    filterTagExcludeFilter: [string]; 
     subProfessionExcludeFilter: [string]; 
+    mapTagFilter: [string]; 
 }
 
 table clz_Torappu_Blackboard_DataPair {
@@ -1005,6 +1013,11 @@ table dict__string__clz_Torappu_Act9D0Data_ActivityNewsServerInfo {
     value: clz_Torappu_Act9D0Data_ActivityNewsServerInfo;
 }
 
+table clz_Torappu_Act9D0Data_Act9D0ConstData {
+    campaignEnemyCnt: int; 
+    campaignStageId: string; 
+}
+
 table clz_Torappu_Act9D0Data {
     tokenItemId: string; 
     zoneDescList: [dict__string__clz_Torappu_Act9D0Data_ZoneDescInfo]; 
@@ -1015,6 +1028,7 @@ table clz_Torappu_Act9D0Data {
     newsInfoList: [dict__string__clz_Torappu_Act9D0Data_ActivityNewsInfo]; 
     newsServerInfoList: [dict__string__clz_Torappu_Act9D0Data_ActivityNewsServerInfo]; 
     miscHub: [dict__string__string]; 
+    constData: clz_Torappu_Act9D0Data_Act9D0ConstData; 
 }
 
 table dict__string__clz_Torappu_Act9D0Data {
@@ -1270,6 +1284,8 @@ enum enum__Torappu_ActArchiveType : int {
     TOTEM = 19,
     CHAOS = 20,
     CHALLENGE_BOOK = 21,
+    ACHIEVEMENT = 22,
+    QUEST = 23,
 }
 
 enum enum__Torappu_Act13SideData_UnlockCondition : int {
@@ -2279,25 +2295,6 @@ table dict__string__clz_Torappu_ActivityFloatParadeData {
     value: clz_Torappu_ActivityFloatParadeData;
 }
 
-table clz_Torappu_ActSandboxData_MilestoneData {
-    milestoneId: string; 
-    orderId: int; 
-    tokenId: string; 
-    tokenNum: int; 
-    item: clz_Torappu_ItemBundle; 
-    isPrecious: bool; 
-}
-
-table clz_Torappu_ActSandboxData {
-    milestoneDataList: [clz_Torappu_ActSandboxData_MilestoneData]; 
-    milestoneTokenId: string; 
-}
-
-table dict__string__clz_Torappu_ActSandboxData {
-    key: string(key);
-    value: clz_Torappu_ActSandboxData;
-}
-
 table clz_Torappu_ActivityMainlineBuffData_MissionGroupData {
     id: string; 
     bindBanner: string; 
@@ -3223,7 +3220,6 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     INTERLOCK: [dict__string__clz_Torappu_ActivityInterlockData]; // __prts__check_required__defaultInterlockData__
     BOSS_RUSH: [dict__string__clz_Torappu_ActivityBossRushData]; // __prts__check_required__defaultBossRushData__
     FLOAT_PARADE: [dict__string__clz_Torappu_ActivityFloatParadeData]; // __prts__check_required__floatParadeData__
-    SANDBOX: [dict__string__clz_Torappu_ActSandboxData]; // __prts__check_required__typeSandboxData__
     MAIN_BUFF: [dict__string__clz_Torappu_ActivityMainlineBuffData]; // __prts__check_required__mainlineBuffData__
     TYPE_ACT24SIDE: [dict__string__clz_Torappu_Act24SideData]; // __prts__check_required__typeAct24SideData__
     TYPE_ACT25SIDE: [dict__string__clz_Torappu_Act25SideData]; // __prts__check_required__typeAct25SideData__
@@ -3286,6 +3282,7 @@ enum enum__Torappu_ActivityThemeType : int {
     MAINLINE = 3,
     ROGUELIKE = 4,
     CRISISV2 = 5,
+    SANDBOX_PERM = 6,
 }
 
 table clz_Torappu_ActivityThemeData_TimeNode {
@@ -3610,11 +3607,159 @@ table clz_Torappu_Act4funData {
     randomUserIconId: [string]; 
 }
 
+table clz_Torappu_Act5funConst {
+    storyStageId: string; 
+    betStageId: string; 
+    storyRoundnumber: int; 
+    betRoundnumber: int; 
+    initialFundStory: int; 
+    initialFundBet: int; 
+    minFundDrop: int; 
+    maxFund: long; 
+    selectTime: float; 
+    npcCountInRound: int; 
+    selectDescription: string; 
+    selectLeftDescription: string; 
+    selectRightDescription: string; 
+    fundDescription: string; 
+    confirmDescription: string; 
+    loadingDescription: string; 
+}
+
+table clz_Torappu_Act5FunRoundData {
+    roundId: string; 
+    stageId: string; 
+    enemyPredefined: bool; 
+    round: int; 
+    enemyPoint: float; 
+    enemyScoreRandom: float; 
+    minType: int; 
+    maxType: int; 
+    choiceCount: int; 
+    choiceId1: string; 
+    choiceId2: string; 
+    choiceId3: string; 
+    choiceId4: string; 
+    enableSideTarget: bool; 
+}
+
+table dict__string__clz_Torappu_Act5FunRoundData {
+    key: string(key);
+    value: clz_Torappu_Act5FunRoundData;
+}
+
+enum enum__Torappu_NpcStrategy : int {
+    DEFAULT = 0,
+    CHOOSE_WIN = 1,
+    CHOOSE_ODD = 2,
+    FOLLOW_FEWER = 3,
+    FOLLOW_MORE = 4,
+}
+
+table clz_Torappu_Act5FunNpcData {
+    npcId: string; 
+    avatarId: string; 
+    name: string; 
+    priority: float; 
+    specialStrategy: enum__Torappu_NpcStrategy; 
+    npcProb: float; 
+    defaultEnemyScore: float; 
+}
+
+table dict__string__clz_Torappu_Act5FunNpcData {
+    key: string(key);
+    value: clz_Torappu_Act5FunNpcData;
+}
+
+table clz_Torappu_Act5FunNpcSelectorData {
+    npcId: string; 
+    enemyId: string; 
+    score: float; 
+}
+
+table clz_Torappu_Act5FunChoiceRewardData {
+    choiceId: string; 
+    name: string; 
+    percentage: float; 
+    isSpecialStyle: bool; 
+}
+
+table dict__string__clz_Torappu_Act5FunChoiceRewardData {
+    key: string(key);
+    value: clz_Torappu_Act5FunChoiceRewardData;
+}
+
+table clz_Torappu_Act5FunEnemyIdMappingData {
+    enemyId: string; 
+    originalEnemyId: string; 
+}
+
+table dict__string__clz_Torappu_Act5FunEnemyIdMappingData {
+    key: string(key);
+    value: clz_Torappu_Act5FunEnemyIdMappingData;
+}
+
+table clz_Torappu_Act5FunData_BattleData {
+    battleConstData: clz_Torappu_Act5funConst; 
+    roundData: [dict__string__clz_Torappu_Act5FunRoundData]; 
+    npcData: [dict__string__clz_Torappu_Act5FunNpcData]; 
+    npcSelectorData: [clz_Torappu_Act5FunNpcSelectorData]; 
+    choiceRewardData: [dict__string__clz_Torappu_Act5FunChoiceRewardData]; 
+    enemyIdMappingData: [dict__string__clz_Torappu_Act5FunEnemyIdMappingData]; 
+    battleStreak: [float]; 
+}
+
+table clz_Torappu_Act5funBasicConst {
+    storyStageId: string; 
+    betStageId: string; 
+    storyRoundNumber: int; 
+    betRoundNumber: int; 
+    minFundDrop: int; 
+    maxFund: int; 
+}
+
+table clz_Torappu_Act5FunBasicNpcData {
+    npcId: string; 
+    avatarId: string; 
+    name: string; 
+}
+
+table dict__string__clz_Torappu_Act5FunBasicNpcData {
+    key: string(key);
+    value: clz_Torappu_Act5FunBasicNpcData;
+}
+
+table clz_Torappu_Act5FunSettleRatingData {
+    minRating: int; 
+    maxRating: int; 
+    ratingDesc: string; 
+}
+
+table clz_Torappu_Act5FunSettleStreakData {
+    count: int; 
+    desc: string; 
+}
+
+table clz_Torappu_Act5FunSettleSuccessData {
+    count: int; 
+    desc: string; 
+}
+
+table clz_Torappu_Act5FunData {
+    battleData: clz_Torappu_Act5FunData_BattleData; 
+    constData: clz_Torappu_Act5funBasicConst; 
+    npcData: [dict__string__clz_Torappu_Act5FunBasicNpcData]; 
+    ratingData: [clz_Torappu_Act5FunSettleRatingData]; 
+    streakData: [clz_Torappu_Act5FunSettleStreakData]; 
+    successData: [clz_Torappu_Act5FunSettleSuccessData]; 
+}
+
 table clz_Torappu_AprilFoolTable {
     stages: [dict__string__clz_Torappu_AprilFoolStageData]; 
     scoreDict: [dict__string__list_clz_Torappu_AprilFoolScoreData]; 
     constant: clz_Torappu_AprilFoolConst; 
     act4FunData: clz_Torappu_Act4funData; 
+    act5FunData: clz_Torappu_Act5FunData; 
 }
 
 enum enum__Torappu_CartComponents_CartAccessoryType : int {
@@ -4017,6 +4162,59 @@ table dict__string__list_dict__string__string {
     value: [dict__string__string];
 }
 
+table clz_Torappu_ActivityTable_TemplateTrapData {
+    trapId: string; 
+    sortId: int; 
+    trapName: string; 
+    trapDesc: string; 
+    trapText: string; 
+    trapTaskId: string; 
+    trapUnlockDesc: string; 
+    trapBuffId: string; 
+}
+
+table dict__string__clz_Torappu_ActivityTable_TemplateTrapData {
+    key: string(key);
+    value: clz_Torappu_ActivityTable_TemplateTrapData;
+}
+
+table clz_Torappu_ActivityTable_ActivityTrapConstData {
+    stageUnlockTrapDesc: string; 
+    trapMaximum: int; 
+    stageCanNotUseTrap: [string]; 
+}
+
+table clz_Torappu_ActivityTable_ActivityTrapsData {
+    templateTraps: [dict__string__clz_Torappu_ActivityTable_TemplateTrapData]; 
+    trapConstData: clz_Torappu_ActivityTable_ActivityTrapConstData; 
+}
+
+table dict__string__clz_Torappu_ActivityTable_ActivityTrapsData {
+    key: string(key);
+    value: clz_Torappu_ActivityTable_ActivityTrapsData;
+}
+
+table clz_Torappu_ActivityTable_TrapMissionData {
+    id: string; 
+    description: string; 
+    type: enum__Torappu_MissionType; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+}
+
+table dict__string__clz_Torappu_ActivityTable_TrapMissionData {
+    key: string(key);
+    value: clz_Torappu_ActivityTable_TrapMissionData;
+}
+
+table clz_Torappu_ActivityTable_ActivityTrapMissionsData {
+    trapMissions: [dict__string__clz_Torappu_ActivityTable_TrapMissionData]; 
+}
+
+table dict__string__clz_Torappu_ActivityTable_ActivityTrapMissionsData {
+    key: string(key);
+    value: clz_Torappu_ActivityTable_ActivityTrapMissionsData;
+}
+
 table clz_Torappu_ActivityTable {
     basicInfo: [dict__string__clz_Torappu_ActivityTable_BasicData]; 
     homeActConfig: [dict__string__clz_Torappu_ActivityTable_HomeActivityConfig]; 
@@ -4038,6 +4236,9 @@ table clz_Torappu_ActivityTable {
     dynEntrySwitchData: [dict__string__clz_Torappu_ActivityDynEntrySwitchData]; 
     hiddenStageData: [clz_Torappu_ActivityTable_ActivityHiddenStageData]; 
     stringRes: [dict__string__list_dict__string__string]; 
+    activityTraps: [dict__string__clz_Torappu_ActivityTable_ActivityTrapsData]; 
+    activityTrapMissions: [dict__string__clz_Torappu_ActivityTable_ActivityTrapMissionsData]; 
+    trapRuneDataDict: [dict__string__clz_Torappu_RuneTable_PackedRuneData]; 
 }
 
 root_type clz_Torappu_ActivityTable;
