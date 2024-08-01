@@ -43,7 +43,8 @@ enum enum__Torappu_ActivityType : int {
     BLESS_ONLY = 40,
     CHECKIN_ACCESS = 41,
     YEAR_5_GENERAL = 42,
-    ENUM = 43,
+    TYPE_ACT35SIDE = 43,
+    ENUM = 44,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -3515,6 +3516,183 @@ table dict__string__clz_Torappu_ActivityYear5GeneralData {
     value: clz_Torappu_ActivityYear5GeneralData;
 }
 
+table clz_Torappu_Act35SideData_Act35SideChallengeData {
+    challengeId: string; 
+    challengeName: string; 
+    challengeDesc: string; 
+    sortId: int; 
+    challengePicId: string; 
+    challengeIconId: string; 
+    openTime: long; 
+    preposedChallengeId: string; 
+    passRound: int; 
+    passRoundScore: int; 
+    roundIdList: [string]; 
+}
+
+table dict__string__clz_Torappu_Act35SideData_Act35SideChallengeData {
+    key: string(key);
+    value: clz_Torappu_Act35SideData_Act35SideChallengeData;
+}
+
+table clz_Torappu_Act35SideData_Act35SideRoundData {
+    roundId: string; 
+    challengeId: string; 
+    round: int; 
+    roundPassRating: int; 
+    isMaterialRandom: bool; 
+    fixedMaterialList: [dict__string__int]; 
+    passRoundCoin: int; 
+}
+
+table dict__string__clz_Torappu_Act35SideData_Act35SideRoundData {
+    key: string(key);
+    value: clz_Torappu_Act35SideData_Act35SideRoundData;
+}
+
+table clz_Torappu_Act35SideData_Act35SideChallengeTaskData {
+    taskId: string; 
+    taskDesc: string; 
+    materialId: string; 
+    materialNum: int; 
+    passTaskCoin: int; 
+}
+
+table dict__string__clz_Torappu_Act35SideData_Act35SideChallengeTaskData {
+    key: string(key);
+    value: clz_Torappu_Act35SideData_Act35SideChallengeTaskData;
+}
+
+table clz_Torappu_Act35SideData_Act35sideCardMaterialData {
+    materialId: string; 
+    count: int; 
+}
+
+table clz_Torappu_Act35SideData_Act35SideCardLevelData {
+    cardLevel: int; 
+    cardName: string; 
+    cardDesc: string; 
+    inputMaterialList: [clz_Torappu_Act35SideData_Act35sideCardMaterialData]; 
+    outputMaterialList: [clz_Torappu_Act35SideData_Act35sideCardMaterialData]; 
+}
+
+table clz_Torappu_Act35SideData_Act35SideCardData {
+    cardId: string; 
+    sortId: int; 
+    rank: int; 
+    cardFace: string; 
+    cardPic: string; 
+    levelDataList: [clz_Torappu_Act35SideData_Act35SideCardLevelData]; 
+}
+
+table dict__string__clz_Torappu_Act35SideData_Act35SideCardData {
+    key: string(key);
+    value: clz_Torappu_Act35SideData_Act35SideCardData;
+}
+
+table clz_Torappu_Act35SideData_Act35SideMaterialData {
+    materialId: string; 
+    sortId: int; 
+    materialIcon: string; 
+    materialName: string; 
+    materialRating: int; 
+}
+
+table dict__string__clz_Torappu_Act35SideData_Act35SideMaterialData {
+    key: string(key);
+    value: clz_Torappu_Act35SideData_Act35SideMaterialData;
+}
+
+enum enum__Torappu_Act35SideData_DialogueType : int {
+    NONE = 0,
+    ENTRY = 1,
+    BONUS = 2,
+    BUY = 3,
+    PROCESS = 4,
+}
+
+enum enum__Torappu_Act35SideData_DialogueNameBgType : int {
+    NONE = 0,
+    GREEN = 1,
+    BLUE = 2,
+}
+
+table clz_Torappu_Act35SideData_Act35SideDialogueData {
+    sortId: int; 
+    iconId: string; 
+    name: string; 
+    content: string; 
+    bgType: enum__Torappu_Act35SideData_DialogueNameBgType; 
+}
+
+table clz_Torappu_Act35SideData_Act35SideDialogueGroupData {
+    type: enum__Torappu_Act35SideData_DialogueType; 
+    dialogDataList: [clz_Torappu_Act35SideData_Act35SideDialogueData]; 
+}
+
+table dict__string__clz_Torappu_Act35SideData_Act35SideDialogueGroupData {
+    key: string(key);
+    value: clz_Torappu_Act35SideData_Act35SideDialogueGroupData;
+}
+
+table clz_Torappu_Act35SideData_Act35SideMileStoneGrandRewardInfo {
+    itemName: string; 
+    level: int; 
+}
+
+table clz_Torappu_Act35SideData_Act35SideConstData {
+    campaignStageId: string; 
+    campaignEnemyCnt: int; 
+    milestoneGrandRewardInfoList: [clz_Torappu_Act35SideData_Act35SideMileStoneGrandRewardInfo]; 
+    unlockLevelId: string; 
+    birdSpineLowRate: float; 
+    birdSpineHighRate: float; 
+    cardMaxLevel: int; 
+    maxSlotCnt: int; 
+    cardRefreshNum: int; 
+    initSlotCnt: int; 
+    bonusMaterialId: string; 
+    introRoundIdList: [string]; 
+    challengeUnlockText: string; 
+    slotUnlockText: string; 
+    estimateRatio: int; 
+    carvingUnlockToastText: string; 
+}
+
+table clz_Torappu_Act35SideData_Act35SideMileStoneData {
+    mileStoneId: string; 
+    mileStoneLvl: int; 
+    needPointCnt: int; 
+    rewardItem: clz_Torappu_ItemBundle; 
+}
+
+table clz_Torappu_Act35SideData_Act35SideZoneAdditionData {
+    zoneId: string; 
+    unlockText: string; 
+}
+
+table dict__string__clz_Torappu_Act35SideData_Act35SideZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act35SideData_Act35SideZoneAdditionData;
+}
+
+table clz_Torappu_Act35SideData {
+    challengeDataMap: [dict__string__clz_Torappu_Act35SideData_Act35SideChallengeData]; 
+    roundDataMap: [dict__string__clz_Torappu_Act35SideData_Act35SideRoundData]; 
+    taskDataMap: [dict__string__clz_Torappu_Act35SideData_Act35SideChallengeTaskData]; 
+    cardDataMap: [dict__string__clz_Torappu_Act35SideData_Act35SideCardData]; 
+    materialDataMap: [dict__string__clz_Torappu_Act35SideData_Act35SideMaterialData]; 
+    dialogueGroupDataMap: [dict__string__clz_Torappu_Act35SideData_Act35SideDialogueGroupData]; 
+    constData: clz_Torappu_Act35SideData_Act35SideConstData; 
+    mileStoneList: [clz_Torappu_Act35SideData_Act35SideMileStoneData]; 
+    zoneAdditionDataMap: [dict__string__clz_Torappu_Act35SideData_Act35SideZoneAdditionData]; 
+}
+
+table dict__string__clz_Torappu_Act35SideData {
+    key: string(key);
+    value: clz_Torappu_Act35SideData;
+}
+
 table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; // __prts__check_required__defaultActivityData__
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; // __prts__check_required__defaultCheckinData__
@@ -3546,6 +3724,7 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     TYPE_ACT42D0: [dict__string__clz_Torappu_Act42D0Data]; // __prts__check_required__typeAct42D0Data__
     TYPE_ACT29SIDE: [dict__string__clz_Torappu_Act29SideData]; // __prts__check_required__typeAct29SideData__
     YEAR_5_GENERAL: [dict__string__clz_Torappu_ActivityYear5GeneralData]; // __prts__check_required__year5GeneralData__
+    TYPE_ACT35SIDE: [dict__string__clz_Torappu_Act35SideData]; // __prts__check_required__typeAct35SideData__
 }
 
 table clz_Torappu_ActMainlineBpExtraData_ActMainlineBpExtraPeriodData {

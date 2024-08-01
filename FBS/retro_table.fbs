@@ -232,7 +232,8 @@ enum enum__Torappu_ActivityType : int {
     BLESS_ONLY = 40,
     CHECKIN_ACCESS = 41,
     YEAR_5_GENERAL = 42,
-    ENUM = 43,
+    TYPE_ACT35SIDE = 43,
+    ENUM = 44,
 }
 
 table clz_Torappu_RetroActData {
@@ -247,6 +248,8 @@ table clz_Torappu_RetroActData {
     haveTrail: bool; 
     customActId: string; 
     customActType: enum__Torappu_ActivityType; 
+    isRecommend: bool; 
+    recommendTagRemoveStage: string; 
 }
 
 table dict__string__clz_Torappu_RetroActData {

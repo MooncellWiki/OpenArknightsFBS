@@ -423,10 +423,46 @@ table clz_Torappu_ActArchiveComponentTable {
     components: [dict__string__clz_Torappu_ActArchiveComponentData]; 
 }
 
+table clz_Torappu_TrainingCampStageData {
+    stageId: string; 
+    stageIconId: string; 
+    sortId: int; 
+    levelId: string; 
+    code: string; 
+    name: string; 
+    loadingPicId: string; 
+    description: string; 
+    endCharId: string; 
+    updateTs: long; 
+}
+
+table dict__string__clz_Torappu_TrainingCampStageData {
+    key: string(key);
+    value: clz_Torappu_TrainingCampStageData;
+}
+
+table clz_Torappu_NewTrainingCampStageData {
+    updateTs: long; 
+    stages: [string]; 
+}
+
+table clz_Torappu_TrainingCampConsts {
+    unlockStageId: string; 
+    updateDesc: string; 
+    rewardItem: clz_Torappu_ItemBundle; 
+}
+
+table clz_Torappu_TrainingCampData {
+    stageData: [dict__string__clz_Torappu_TrainingCampStageData]; 
+    newTrainingCampStages: [clz_Torappu_NewTrainingCampStageData]; 
+    consts: clz_Torappu_TrainingCampConsts; 
+}
+
 table clz_Torappu_StoryReviewMetaTable {
     miniActTrialData: clz_Torappu_MiniActTrialData; 
     actArchiveResData: clz_Torappu_ActArchiveResData; 
     actArchiveData: clz_Torappu_ActArchiveComponentTable; 
+    trainingCampData: clz_Torappu_TrainingCampData; 
 }
 
 root_type clz_Torappu_StoryReviewMetaTable;

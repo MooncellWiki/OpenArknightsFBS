@@ -1,6 +1,7 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 table clz_Torappu_OpenServerScheduleItem {
     id: string; 
+    versionId: string; 
     startTs: int; 
     endTs: int; 
     totalCheckinDescption: string; 
@@ -156,6 +157,7 @@ table clz_Torappu_OpenServerItemData {
     itemId: string; 
     itemType: enum__Torappu_ItemType; 
     count: int; 
+    name: string; 
 }
 
 table clz_Torappu_TotalCheckinData {
@@ -175,6 +177,8 @@ table clz_Torappu_OpenServerData {
     openServerMissionData: [clz_Torappu_MissionData]; 
     checkInData: [clz_Torappu_TotalCheckinData]; 
     chainLoginData: [clz_Torappu_ChainLoginData]; 
+    totalCheckinCharData: [string]; 
+    chainLoginCharData: [string]; 
 }
 
 table dict__string__clz_Torappu_OpenServerData {
@@ -185,6 +189,12 @@ table dict__string__clz_Torappu_OpenServerData {
 table clz_Torappu_OpenServerConst {
     firstDiamondShardMailCount: int; 
     initApMailEndTs: long; 
+    resFullOpenUnlockStageId: string; 
+    resFullOpenDuration: int; 
+    resFullOpenTitle: string; 
+    resFullOpenDesc: string; 
+    resFullOpenGuideGroupThreshold: string; 
+    resFullOpenStartTime: long; 
 }
 
 table clz_Torappu_ReturnConst {

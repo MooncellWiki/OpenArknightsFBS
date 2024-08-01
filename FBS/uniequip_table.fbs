@@ -7,6 +7,11 @@ enum enum__Torappu_EvolvePhase : int {
     E_NUM = 4,
 }
 
+table dict__string__int {
+    key: string(key);
+    value: int;
+}
+
 enum enum__Torappu_ItemType : int {
     NONE = 0,
     CHAR = 1,
@@ -125,12 +130,16 @@ table clz_Torappu_UniEquipData {
     tmplId: string; 
     showLevel: int; 
     unlockLevel: int; 
-    unlockFavorPoint: int; 
     missionList: [string]; 
+    unlockFavors: [dict__string__int]; 
     itemCost: [dict__int__list_clz_Torappu_ItemBundle]; 
     type: enum__Torappu_UniEquipType; 
     uniEquipGetTime: long; 
     charEquipOrder: int; 
+    hasUnlockMission: bool; 
+    isSpecialEquip: bool; 
+    specialEquipDesc: string; 
+    specialEquipColor: string; 
 }
 
 table dict__string__clz_Torappu_UniEquipData {

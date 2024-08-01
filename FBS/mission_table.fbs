@@ -227,6 +227,18 @@ table clz_Torappu_CrossAppShareMissionConst {
     nameCardShareMissionId: string; 
 }
 
+table clz_Torappu_GuideMissionGroupInfo {
+    groupId: string; 
+    sortId: int; 
+    shortName: string; 
+    unlockDesc: string; 
+}
+
+table dict__string__clz_Torappu_GuideMissionGroupInfo {
+    key: string(key);
+    value: clz_Torappu_GuideMissionGroupInfo;
+}
+
 table clz_Torappu_MissionTable {
     missions: [dict__string__clz_Torappu_MissionData]; 
     missionGroups: [dict__string__clz_Torappu_MissionGroup]; 
@@ -236,6 +248,7 @@ table clz_Torappu_MissionTable {
     dailyMissionPeriodInfo: [clz_Torappu_DailyMissionGroupInfo]; 
     crossAppShareMissions: [dict__string__clz_Torappu_CrossAppShareMission]; 
     crossAppShareMissionConst: clz_Torappu_CrossAppShareMissionConst; 
+    guideMissionGroupInfo: [dict__string__clz_Torappu_GuideMissionGroupInfo]; 
 }
 
 root_type clz_Torappu_MissionTable;

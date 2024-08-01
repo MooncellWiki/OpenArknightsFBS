@@ -116,6 +116,7 @@ table clz_Torappu_SandboxV2ItemTrapData {
     baseItemName: string; 
     itemType: enum__Torappu_SandboxV2TrapItemType; 
     itemTag: enum__Torappu_SandboxV2ItemTrapTag; 
+    buffId: string; 
 }
 
 table dict__string__clz_Torappu_SandboxV2ItemTrapData {
@@ -162,6 +163,7 @@ table clz_Torappu_SandboxV2CraftItemData {
     buildingUnlockDesc: string; 
     materialItems: [dict__string__int]; 
     upgradeItems: [dict__string__int]; 
+    outputRatio: int; 
     withdrawRatio: int; 
     repairCost: int; 
     isHidden: bool; 
@@ -178,6 +180,7 @@ table clz_Torappu_SandboxV2LivestockData {
     livestockItemId: string; 
     shinyLivestockItemId: string; 
     livestockEnemyId: string; 
+    targetFenceId: string; 
 }
 
 table dict__string__clz_Torappu_SandboxV2LivestockData {
@@ -257,10 +260,19 @@ enum enum__Torappu_SandboxV2FoodAttribute : int {
     ENHANCED = 7,
 }
 
+enum enum__Torappu_SandboxV2FoodVariantType : int {
+    NONE = 0,
+    ALPHA = 1,
+    BETA = 2,
+    GAMMA = 3,
+}
+
 table clz_Torappu_SandboxV2FoodMatData {
     id: string; 
     type: enum__Torappu_SandboxV2FoodMatType; 
     attribute: enum__Torappu_SandboxV2FoodAttribute; 
+    variantType: enum__Torappu_SandboxV2FoodVariantType; 
+    bonusDuration: int; 
     buffDesc: string; 
     sortId: int; 
 }
@@ -275,16 +287,18 @@ table clz_Torappu_SandboxV2FoodRecipeData {
     mats: [string]; 
 }
 
+table clz_Torappu_SandboxV2FoodVariantData {
+    type: enum__Torappu_SandboxV2FoodVariantType; 
+    name: string; 
+    usage: string; 
+}
+
 table clz_Torappu_SandboxV2FoodData {
     id: string; 
     attributes: [enum__Torappu_SandboxV2FoodAttribute]; 
     recipes: [clz_Torappu_SandboxV2FoodRecipeData]; 
+    variants: [clz_Torappu_SandboxV2FoodVariantData]; 
     duration: int; 
-    itemName: string; 
-    generalName: string; 
-    enhancedName: string; 
-    itemUsage: string; 
-    enhancedUsage: string; 
     sortId: int; 
 }
 
@@ -548,6 +562,7 @@ table clz_Torappu_SandboxV2GameConst {
     riftBaseDesc: string; 
     riftBaseRushedDesc: string; 
     dungeonTriggeredGuideQuestList: [string]; 
+    noLogInEnemyStatsEnemyId: [string]; 
 }
 
 enum enum__Torappu_ItemType : int {
@@ -648,6 +663,14 @@ table dict__string__string {
     value: string;
 }
 
+table clz_Torappu_SandboxV2DiffModeData {
+    title: string; 
+    desc: string; 
+    buffList: [string]; 
+    detailList: string; 
+    sortId: int; 
+}
+
 table clz_Torappu_SandboxV2BasicConst {
     staminaItemId: string; 
     goldItemId: string; 
@@ -660,8 +683,6 @@ table clz_Torappu_SandboxV2BasicConst {
     drinkCostOnce: int; 
     drinkMakeLimit: int; 
     specialMatWater: string; 
-    enhancedSubFoodmat: string; 
-    enhancedDuration: int; 
     workbenchMakeLimit: int; 
     logisticsPosLimit: int; 
     logisticsUnlockLevel: int; 
@@ -671,8 +692,10 @@ table clz_Torappu_SandboxV2BasicConst {
     baseRepairCost: int; 
     portRepairCost: int; 
     unitFenceLimit: int; 
+    unitRareFenceLimit: int; 
     cageId: string; 
     fenceId: string; 
+    rareFenceId: string; 
     monthlyRushEntryText1: string; 
     monthlyEntryUnlockText: string; 
     monthlyEntryRiftText: string; 
@@ -700,16 +723,23 @@ table clz_Torappu_SandboxV2BasicConst {
     isRacingOpen: bool; 
     hasExploreMode: bool; 
     exploreModeBuffDescs: [string]; 
+    modeSelectTips: string; 
     stringRes: [dict__string__string]; 
+    diffList: [clz_Torappu_SandboxV2DiffModeData]; 
+    battlePreloadEnemies: [string]; 
+    battleExcludedTrapsInRush: [string]; 
 }
 
 table clz_Torappu_SandboxV2RiftConst {
     refreshRate: int; 
     randomDungeonId: string; 
+    huntDungeonId: string; 
     subTargetRewardId: string; 
+    preyQuestRewardId: string; 
     dungeonSeasonId: enum__Torappu_SandboxV2SeasonType; 
     fixedDungeonTypeName: string; 
     randomDungeonTypeName: string; 
+    preyDungeonTypeName: string; 
     noTeamDescription: string; 
     noTeamName: string; 
     noTeamBackgroundId: string; 
@@ -869,6 +899,7 @@ enum enum__Torappu_SandboxV2NpcType : int {
     NORMAL = 0,
     FIXED_RIFT = 1,
     RANDOM_RIFT = 2,
+    PREY_RIFT = 3,
 }
 
 enum enum__Torappu_BattleDialogType : int {
@@ -1182,6 +1213,7 @@ enum enum__Torappu_SandboxV2RiftMainTargetType : int {
     PROTECT = 4,
     FIGHT = 5,
     CATCH_THIEF = 6,
+    PREY_HUNT = 7,
 }
 
 table clz_Torappu_SandboxV2RiftMainTargetData {
@@ -1239,6 +1271,7 @@ table dict__string__list_clz_Torappu_SandboxV2RiftTeamBuffData {
 
 table clz_Torappu_SandboxV2RiftDifficultyData {
     id: string; 
+    riftId: string; 
     desc: string; 
     difficultyLevel: int; 
     rewardGroupId: string; 
