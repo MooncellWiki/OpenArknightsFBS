@@ -252,9 +252,6 @@ table clz_Torappu_HandbookStoryStageData {
     description: string; 
     unlockParam: [clz_Torappu_HandbookUnlockParam]; 
     rewardItem: [clz_Torappu_ItemBundle]; 
-    stageNameForShow: string; 
-    zoneNameForShow: string; 
-    picId: string; 
     stageGetTime: long; 
 }
 

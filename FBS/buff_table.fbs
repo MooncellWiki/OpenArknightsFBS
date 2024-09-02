@@ -161,6 +161,7 @@ table clz_Torappu_BuffData {
     refreshRemainingTimeWhenStackMax: bool; 
     clearAllStackCntWhenTimeUp: bool; 
     maxValidStackCnt: int; 
+    independentCharacterSource: bool; 
     overrideEffectKey: string; 
     overrideOnEventPriority: bool; 
     onEventPriority: enum__Torappu_BuffData_OnEventPriority; 

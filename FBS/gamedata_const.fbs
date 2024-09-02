@@ -163,6 +163,7 @@ table clz_Torappu_GameDataConsts {
     instFinDmdShdCost: int; 
     easyCrystalBonus: int; 
     diamondMaterialToShardExchangeRatio: int; 
+    diamondHandbookStageGain: int; 
     apBuyCost: int; 
     apBuyThreshold: int; 
     creditLimit: int; 
@@ -216,6 +217,7 @@ table clz_Torappu_GameDataConsts {
     isRoguelikeAvgAchieveFuncEnabled: bool; 
     isClassicPotentialItemFuncEnabled: bool; 
     isClassicGachaPoolFuncEnabled: bool; 
+    isSpecialGachaPoolFuncEnabled: bool; 
     isVoucherClassicItemDistinguishable: bool; 
     voucherSkinRedeem: int; 
     voucherSkinDesc: string; 

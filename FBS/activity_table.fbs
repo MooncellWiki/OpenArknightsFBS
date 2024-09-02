@@ -44,7 +44,9 @@ enum enum__Torappu_ActivityType : int {
     CHECKIN_ACCESS = 41,
     YEAR_5_GENERAL = 42,
     TYPE_ACT35SIDE = 43,
-    ENUM = 44,
+    VEC_BREAK = 44,
+    TYPE_ACT36SIDE = 45,
+    ENUM = 46,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -3693,6 +3695,171 @@ table dict__string__clz_Torappu_Act35SideData {
     value: clz_Torappu_Act35SideData;
 }
 
+table clz_Torappu_ActVecBreakOffenseBossData {
+    enemyId: string; 
+    name: string; 
+    desc: string; 
+    level: int; 
+    iconId: string; 
+}
+
+enum enum__Torappu_ActVecBreakParticleType : int {
+    NONE = 0,
+    NORMAL = 1,
+    HARD = 2,
+}
+
+table clz_Torappu_ActVecBreakOffenseStageData {
+    stageId: string; 
+    level: int; 
+    storyDesc: string; 
+    bossData: clz_Torappu_ActVecBreakOffenseBossData; 
+    particleType: enum__Torappu_ActVecBreakParticleType; 
+    firstReward: clz_Torappu_ItemBundle; 
+    commonReward: clz_Torappu_ItemBundle; 
+}
+
+table dict__string__clz_Torappu_ActVecBreakOffenseStageData {
+    key: string(key);
+    value: clz_Torappu_ActVecBreakOffenseStageData;
+}
+
+table clz_Torappu_ActVecBreakDefenseStageData {
+    stageId: string; 
+    sortId: int; 
+    buffId: string; 
+    defenseCharLimit: int; 
+    bossIconId: string; 
+    reward: clz_Torappu_ItemBundle; 
+}
+
+table dict__string__clz_Torappu_ActVecBreakDefenseStageData {
+    key: string(key);
+    value: clz_Torappu_ActVecBreakDefenseStageData;
+}
+
+table clz_Torappu_ActVecBreakMilestoneItemData {
+    milestoneId: string; 
+    orderId: int; 
+    tokenNum: int; 
+    reward: clz_Torappu_ItemBundle; 
+    availTime: long; 
+}
+
+table clz_Torappu_ActVecBreakBattleBuffData {
+    buffId: string; 
+    openTime: long; 
+    name: string; 
+    desc: string; 
+    iconId: string; 
+    runeData: clz_Torappu_RuneTable_PackedRuneData; 
+}
+
+table dict__string__clz_Torappu_ActVecBreakBattleBuffData {
+    key: string(key);
+    value: clz_Torappu_ActVecBreakBattleBuffData;
+}
+
+table clz_Torappu_ActVecBreakConstData {
+    defenceDesc: string; 
+    milestoneName: string; 
+    milestoneItemId: string; 
+    bossDescTitle: string; 
+    defenseUnlockRequireStageId: string; 
+    defenseUnlockHint: string; 
+    defenceRetreatText: string; 
+    setDefendDialogText: string; 
+    defenceActivateToast: string; 
+    defenceRetreatToast: string; 
+    offenseNavLockToastStr: string; 
+}
+
+table clz_Torappu_ActVecBreakData_ZoneData {
+    zoneId: string; 
+    zoneName: string; 
+    startTs: long; 
+    isOffence: bool; 
+}
+
+table dict__string__clz_Torappu_ActVecBreakData_ZoneData {
+    key: string(key);
+    value: clz_Torappu_ActVecBreakData_ZoneData;
+}
+
+table clz_Torappu_ActVecBreakZoneData {
+    offenseZoneDict: [dict__string__clz_Torappu_ActVecBreakData_ZoneData]; 
+    defenseZoneDict: [dict__string__clz_Torappu_ActVecBreakData_ZoneData]; 
+}
+
+table clz_Torappu_ActVecBreakData {
+    offenseStageDict: [dict__string__clz_Torappu_ActVecBreakOffenseStageData]; 
+    defenseStageDict: [dict__string__clz_Torappu_ActVecBreakDefenseStageData]; 
+    milestoneList: [clz_Torappu_ActVecBreakMilestoneItemData]; 
+    battleBuffDict: [dict__string__clz_Torappu_ActVecBreakBattleBuffData]; 
+    constData: clz_Torappu_ActVecBreakConstData; 
+    actZoneData: clz_Torappu_ActVecBreakZoneData; 
+}
+
+table dict__string__clz_Torappu_ActVecBreakData {
+    key: string(key);
+    value: clz_Torappu_ActVecBreakData;
+}
+
+table clz_Torappu_Act36SideData_Act36SideZoneAdditionData {
+    zoneId: string; 
+    zoneIconId: string; 
+    unlockText: string; 
+    displayTime: long; 
+}
+
+table dict__string__clz_Torappu_Act36SideData_Act36SideZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act36SideData_Act36SideZoneAdditionData;
+}
+
+table clz_Torappu_Act36SideData_Act36SideEnemyHandbookData {
+    enemyHandbookId: string; 
+    spriteId: string; 
+    sortId: int; 
+    foodTypeId: string; 
+    foodAmountId: string; 
+}
+
+table dict__string__clz_Torappu_Act36SideData_Act36SideEnemyHandbookData {
+    key: string(key);
+    value: clz_Torappu_Act36SideData_Act36SideEnemyHandbookData;
+}
+
+table clz_Torappu_Act36SideData_Act36SideTokenHandbookData {
+    tokenHandbookId: string; 
+    spriteId: string; 
+    sortId: int; 
+    tokenAbility: string; 
+    tokenDescrption: string; 
+}
+
+table dict__string__clz_Torappu_Act36SideData_Act36SideTokenHandbookData {
+    key: string(key);
+    value: clz_Torappu_Act36SideData_Act36SideTokenHandbookData;
+}
+
+table clz_Torappu_Act36SideData_Act36SideConstData {
+    rewardFailed: string; 
+    rewardReceiveNumber: int; 
+}
+
+table clz_Torappu_Act36SideData {
+    zoneAdditionData: [dict__string__clz_Torappu_Act36SideData_Act36SideZoneAdditionData]; 
+    enemyHandbookData: [dict__string__clz_Torappu_Act36SideData_Act36SideEnemyHandbookData]; 
+    tokenHandbookData: [dict__string__clz_Torappu_Act36SideData_Act36SideTokenHandbookData]; 
+    constData: clz_Torappu_Act36SideData_Act36SideConstData; 
+}
+
+table dict__string__clz_Torappu_Act36SideData {
+    key: string(key);
+    value: clz_Torappu_Act36SideData;
+}
+
 table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; // __prts__check_required__defaultActivityData__
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; // __prts__check_required__defaultCheckinData__
@@ -3725,6 +3892,8 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     TYPE_ACT29SIDE: [dict__string__clz_Torappu_Act29SideData]; // __prts__check_required__typeAct29SideData__
     YEAR_5_GENERAL: [dict__string__clz_Torappu_ActivityYear5GeneralData]; // __prts__check_required__year5GeneralData__
     TYPE_ACT35SIDE: [dict__string__clz_Torappu_Act35SideData]; // __prts__check_required__typeAct35SideData__
+    VEC_BREAK: [dict__string__clz_Torappu_ActVecBreakData]; // __prts__check_required__typeActVecBreakData__
+    TYPE_ACT36SIDE: [dict__string__clz_Torappu_Act36SideData]; // __prts__check_required__typeAct36SideData__
 }
 
 table clz_Torappu_ActMainlineBpExtraData_ActMainlineBpExtraPeriodData {
