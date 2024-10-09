@@ -182,6 +182,35 @@ table dict__string__clz_Torappu_ShopClientGPData {
     value: clz_Torappu_ShopClientGPData;
 }
 
+enum enum__Torappu_ShopGPTabType : int {
+    DEFAULT_ALL = 0,
+    MONTH_CARD = 1,
+    PERM = 2,
+    NEWBIE = 3,
+    RETURN = 4,
+    RECOMMOND = 5,
+    TIMELY = 6,
+}
+
+table clz_Torappu_ShopGPTabDisplayData {
+    tabId: string; 
+    tabName: string; 
+    tabType: enum__Torappu_ShopGPTabType; 
+    recomDisplayNum: int; 
+    tabPicId: string; 
+    tabPicOnColor: string; 
+    tabPicOffColor: string; 
+    sortId: int; 
+    tabStartTime: long; 
+    tabEndTime: long; 
+    markerPicId: string; 
+}
+
+table dict__string__clz_Torappu_ShopGPTabDisplayData {
+    key: string(key);
+    value: clz_Torappu_ShopGPTabDisplayData;
+}
+
 table clz_Torappu_LMTGSShopSchedule {
     gachaPoolId: string; 
     LMTGSId: string; 
@@ -208,6 +237,7 @@ table clz_Torappu_ShopClientData {
     extraQCShopRule: [string]; 
     repQCShopRule: [string]; 
     shopGPDataDict: [dict__string__clz_Torappu_ShopClientGPData]; 
+    tabDisplayData: [dict__string__clz_Torappu_ShopGPTabDisplayData]; 
     shopMonthlySubGoodId: string; 
     ls: [clz_Torappu_LMTGSShopSchedule]; // __prts__check_required__limitedShopSchedule__
     os: [clz_Torappu_LMTGSShopOverlaySchedule]; // __prts__check_required__overlaySchedule__

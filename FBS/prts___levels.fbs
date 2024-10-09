@@ -476,6 +476,7 @@ table clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
     refreshType: enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RefreshType; 
     weight: int; 
     dontBlockWave: bool; 
+    forceBlockWaveInBranch: bool; 
     isValid: bool; 
     extraMeta: clz_System_Object; 
     actionId: clz_Torappu_LevelData_ActionID; 
@@ -608,6 +609,7 @@ table clz_Torappu_LevelData {
     excludeCharIdList: [string]; 
     randomSeed: int; 
     operaConfig: string; 
+    cameraPlugin: string; 
     runtimeData: clz_Torappu_LevelData_RuntimeData; 
 }
 
