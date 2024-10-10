@@ -16,6 +16,7 @@ table clz_Torappu_HandBookStoryViewData_StoryText {
     unLockType: enum__Torappu_DataUnlockType; 
     unLockParam: string; 
     unLockString: string; 
+    patchIdList: [string]; 
 }
 
 table clz_Torappu_HandBookStoryViewData {
@@ -102,6 +103,8 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 74,
     TEMPLATE_TRAP = 75,
     NAME_CARD_SKIN = 76,
+    EXCLUSIVE_TKT_GACHA = 77,
+    EXCLUSIVE_TKT_GACHA_10 = 78,
 }
 
 table clz_Torappu_ItemBundle {
