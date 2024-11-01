@@ -1,0 +1,30 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_TipData_Category : int {
+    NONE = 0,
+    BATTLE = 1,
+    UI = 2,
+    BUILDING = 4,
+    GACHA = 8,
+    MISC = 16,
+    ALL = 31,
+}
+
+table clz_Torappu_TipData {
+    tip: string; 
+    weight: float; 
+    category: enum__Torappu_TipData_Category; 
+}
+
+table clz_Torappu_WorldViewTip {
+    title: string; 
+    description: string; 
+    backgroundPicId: string; 
+    weight: float; 
+}
+
+table clz_Torappu_TipTable {
+    tips: [clz_Torappu_TipData]; 
+    worldViewTips: [clz_Torappu_WorldViewTip]; 
+}
+
+root_type clz_Torappu_TipTable;
