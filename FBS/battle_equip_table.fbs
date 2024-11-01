@@ -1,0 +1,108 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_UniEquipTarget : int {
+    NONE = 0,
+    TRAIT = 1,
+    TRAIT_DATA_ONLY = 2,
+    TALENT = 3,
+    TALENT_DATA_ONLY = 4,
+    DISPLAY = 5,
+    OVERWRITE_BATTLE_DATA = 6,
+}
+
+enum enum__Torappu_EvolvePhase : int {
+    PHASE_0 = 0,
+    PHASE_1 = 1,
+    PHASE_2 = 2,
+    PHASE_3 = 3,
+    E_NUM = 4,
+}
+
+table clz_Torappu_CharacterData_UnlockCondition {
+    phase: enum__Torappu_EvolvePhase; 
+    level: int; 
+}
+
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
+}
+
+table clz_Torappu_EquipTalentData {
+    displayRangeId: bool; 
+    upgradeDescription: string; 
+    talentIndex: int; 
+    unlockCondition: clz_Torappu_CharacterData_UnlockCondition; 
+    requiredPotentialRank: int; 
+    prefabKey: string; 
+    name: string; 
+    description: string; 
+    rangeId: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+    tokenKey: string; 
+    isHideTalent: bool; 
+}
+
+table clz_Torappu_TalentData {
+    unlockCondition: clz_Torappu_CharacterData_UnlockCondition; 
+    requiredPotentialRank: int; 
+    prefabKey: string; 
+    name: string; 
+    description: string; 
+    rangeId: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+    tokenKey: string; 
+    isHideTalent: bool; 
+}
+
+table clz_Torappu_CharacterData_EquipTalentDataBundle {
+    candidates: [clz_Torappu_EquipTalentData]; 
+    // candidates: [clz_Torappu_TalentData]; 
+}
+
+table clz_Torappu_CharacterData_EquipTraitData {
+    additionalDescription: string; 
+    unlockCondition: clz_Torappu_CharacterData_UnlockCondition; 
+    requiredPotentialRank: int; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+    overrideDescripton: string; 
+    prefabKey: string; 
+    rangeId: string; 
+}
+
+table clz_Torappu_CharacterData_EquipTraitDataBundle {
+    candidates: [clz_Torappu_CharacterData_EquipTraitData]; 
+}
+
+table clz_Torappu_BattleUniEquipData {
+    resKey: string; 
+    target: enum__Torappu_UniEquipTarget; 
+    isToken: bool; 
+    addOrOverrideTalentDataBundle: clz_Torappu_CharacterData_EquipTalentDataBundle; 
+    overrideTraitDataBundle: clz_Torappu_CharacterData_EquipTraitDataBundle; 
+}
+
+table dict__string__list_clz_Torappu_Blackboard_DataPair {
+    key: string(key);
+    value: [clz_Torappu_Blackboard_DataPair];
+}
+
+table clz_Torappu_BattleEquipPerLevelPack {
+    equipLevel: int; 
+    parts: [clz_Torappu_BattleUniEquipData]; 
+    attributeBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+    tokenAttributeBlackboard: [dict__string__list_clz_Torappu_Blackboard_DataPair]; 
+}
+
+table clz_Torappu_BattleEquipPack {
+    phases: [clz_Torappu_BattleEquipPerLevelPack]; 
+}
+
+table dict__string__clz_Torappu_BattleEquipPack {
+    key: string(key);
+    value: clz_Torappu_BattleEquipPack;
+}
+table clz_Torappu_SimpleKVTable_clz_Torappu_BattleEquipPack {
+    equips: [dict__string__clz_Torappu_BattleEquipPack];
+}
+root_type clz_Torappu_SimpleKVTable_clz_Torappu_BattleEquipPack;
