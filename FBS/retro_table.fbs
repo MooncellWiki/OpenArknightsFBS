@@ -235,7 +235,9 @@ enum enum__Torappu_ActivityType : int {
     TYPE_ACT35SIDE = 43,
     VEC_BREAK = 44,
     TYPE_ACT36SIDE = 45,
-    ENUM = 46,
+    TYPE_ACT38SIDE = 46,
+    AUTOCHESS_VERIFY1 = 47,
+    ENUM = 48,
 }
 
 table clz_Torappu_RetroActData {
@@ -414,6 +416,7 @@ table clz_Torappu_StageData {
     canUseTech: bool; 
     canUseTrapTool: bool; 
     canUseBattlePerformance: bool; 
+    canUseFirework: bool; 
     canContinuousBattle: bool; 
     startButtonOverrideId: string; 
     isStagePatch: bool; 
@@ -715,6 +718,7 @@ table clz_Torappu_RuneData_Selector {
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 
     enemyLevelTypeFilter: [string]; 
+    enemyActionHiddenGroupFilter: [string]; 
     skillIdFilter: [string]; 
     tileKeyFilter: [string]; 
     groupTagFilter: [string]; 

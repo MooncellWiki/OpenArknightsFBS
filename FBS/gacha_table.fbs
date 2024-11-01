@@ -270,6 +270,7 @@ table clz_Torappu_GachaData {
     recruitRarityTable: [dict__int__clz_Torappu_GachaData_RecruitRange]; 
     specialTagRarityTable: [dict__int__list_int]; 
     recruitDetail: string; 
+    showGachaLogEntry: bool; 
     carousel: [clz_Torappu_GachaData_CarouselData]; 
     freeGacha: [clz_Torappu_GachaData_FreeLimitGachaData]; 
     limitTenGachaItem: [clz_Torappu_GachaData_LimitTenGachaTkt]; 

@@ -806,6 +806,7 @@ table clz_Torappu_RuneData_Selector {
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 
     enemyLevelTypeFilter: [string]; 
+    enemyActionHiddenGroupFilter: [string]; 
     skillIdFilter: [string]; 
     tileKeyFilter: [string]; 
     groupTagFilter: [string]; 
@@ -960,11 +961,18 @@ enum enum__Torappu_SandboxV2QuestLineBadgeType : int {
     RIFT = 4,
 }
 
+enum enum__Torappu_SandboxV2QuestLineScopeType : int {
+    MAIN = 0,
+    RIFT = 1,
+    ALL = 2,
+}
+
 table clz_Torappu_SandboxV2QuestLineData {
     questLineId: string; 
     questLineTitle: string; 
     questLineType: enum__Torappu_SandboxV2QuestLineType; 
     questLineBadgeType: enum__Torappu_SandboxV2QuestLineBadgeType; 
+    questLineScopeType: enum__Torappu_SandboxV2QuestLineScopeType; 
     questLineDesc: string; 
     sortId: int; 
 }

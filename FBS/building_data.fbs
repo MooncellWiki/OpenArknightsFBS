@@ -783,6 +783,65 @@ table clz_Torappu_BuildingData_CreditFormula {
     passive: [dict__int__clz_Torappu_BuildingData_CreditFormula_ValueModel]; 
 }
 
+enum enum__Torappu_ItemRarity : int {
+    TIER_1 = 0,
+    TIER_2 = 1,
+    TIER_3 = 2,
+    TIER_4 = 3,
+    TIER_5 = 4,
+    TIER_6 = 5,
+    E_NUM = 6,
+}
+
+table clz_Torappu_BuildingData_WorkshopRarityInfo {
+    name: string; 
+    order: int; 
+    rarityList: [enum__Torappu_ItemRarity]; 
+    color: string; 
+}
+
+table clz_Torappu_BuildingData_SlotPrequeData {
+    roomType: enum__Torappu_BuildingData_RoomType; 
+    name: string; 
+    typeSortId: int; 
+    isPreque: bool; 
+    prequeNum: int; 
+}
+
+table dict__string__clz_Torappu_BuildingData_SlotPrequeData {
+    key: string(key);
+    value: clz_Torappu_BuildingData_SlotPrequeData;
+}
+
+table clz_Torappu_BuildingData_DormitoryPrequeData {
+    roomType: enum__Torappu_BuildingData_RoomType; 
+    name: string; 
+}
+
+table dict__string__clz_Torappu_BuildingData_DormitoryPrequeData {
+    key: string(key);
+    value: clz_Torappu_BuildingData_DormitoryPrequeData;
+}
+
+table dict__string__string {
+    key: string(key);
+    value: string;
+}
+
+table clz_Torappu_BuildingData_StationManageConstData {
+    cantWorkToastNoTiredChar: string; 
+    cantWorkToastNoAvailQueue: string; 
+    cantRestToastNoTiredChar: string; 
+    cantRestToastNoAvailDorm: string; 
+    workBatchToast: string; 
+    restBatchToast: string; 
+    roomNoAvailQueueToast: string; 
+    cantUseNoPerson: string; 
+    cantUseWorking: string; 
+    queueCleared: string; 
+    updateTime: long; 
+}
+
 table clz_Torappu_BuildingData {
     controlSlotId: string; 
     meetingSlotId: string; 
@@ -846,6 +905,13 @@ table clz_Torappu_BuildingData {
     creditFormula: clz_Torappu_BuildingData_CreditFormula; 
     goldItems: [dict__string__int]; 
     assistantUnlock: [int]; 
+    workshopRarities: [clz_Torappu_BuildingData_WorkshopRarityInfo]; 
+    todoItemSortPriorityDict: [dict__string__int]; 
+    slotPrequeDatas: [dict__string__clz_Torappu_BuildingData_SlotPrequeData]; 
+    dormitoryPrequeDatas: [dict__string__clz_Torappu_BuildingData_DormitoryPrequeData]; 
+    workshopTargetDesDict: [dict__string__string]; 
+    tradingOrderDesDict: [dict__string__string]; 
+    stationManageConstData: clz_Torappu_BuildingData_StationManageConstData; 
 }
 
 root_type clz_Torappu_BuildingData;

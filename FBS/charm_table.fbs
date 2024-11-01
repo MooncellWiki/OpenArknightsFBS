@@ -42,6 +42,7 @@ table clz_Torappu_RuneData_Selector {
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 
     enemyLevelTypeFilter: [string]; 
+    enemyActionHiddenGroupFilter: [string]; 
     skillIdFilter: [string]; 
     tileKeyFilter: [string]; 
     groupTagFilter: [string]; 

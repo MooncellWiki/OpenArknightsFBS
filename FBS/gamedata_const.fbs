@@ -175,6 +175,7 @@ table clz_Torappu_GameDataConsts {
     mainlineNormalDesc: string; 
     rejectSpCharMission: long; 
     addedRewardDisplayZone: string; 
+    oneDiamondAp: int; 
     richTextStyles: [dict__string__string]; 
     charAssistRefreshTime: [clz_Torappu_GameDataConsts_CharAssistRefreshTimeState]; 
     normalRecruitLockedString: [string]; 
@@ -227,6 +228,8 @@ table clz_Torappu_GameDataConsts {
     dataVersion: string; 
     resPrefVersion: string; 
     announceWebBusType: string; 
+    videoPlayerWebBusType: string; 
+    gachaLogBusType: string; 
     defaultMinContinuousBattleTimes: int; 
     defaultMaxContinuousBattleTimes: int; 
     continuousActionOpen: bool; 
