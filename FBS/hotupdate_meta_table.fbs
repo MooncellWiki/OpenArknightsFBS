@@ -1,0 +1,31 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_HotUpdateMetaPicData_PicType : int {
+    NONE = 0,
+    SKIN = 1,
+}
+
+table clz_Torappu_HotUpdateMetaPicData {
+    picId: string; 
+    groupId: int; 
+    sortId: int; 
+    startTime: long; 
+    endTime: long; 
+    textList: [string]; 
+    picType: enum__Torappu_HotUpdateMetaPicData_PicType; 
+    logoId: string; 
+    color: string; 
+}
+
+table clz_Torappu_HotUpdateMetaMovieData {
+    videoId: string; 
+    videoPath: string; 
+    endTime: long; 
+    sortId: int; 
+}
+
+table clz_Torappu_HotUpdateMetaTable {
+    picList: [clz_Torappu_HotUpdateMetaPicData]; 
+    movieInfo: clz_Torappu_HotUpdateMetaMovieData; 
+}
+
+root_type clz_Torappu_HotUpdateMetaTable;
