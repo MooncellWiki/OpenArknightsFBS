@@ -1,0 +1,163 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
+table clz_Torappu_Audio_Middleware_Data_BGMBank {
+    intro: string; 
+    loop: string; 
+    volume: float; 
+    crossfade: float; 
+    delay: float; 
+    fadeStyleId: string; 
+    name: string; 
+}
+
+table clz_Torappu_Audio_Middleware_Data_SoundFXBank_SoundFX {
+    asset: string; 
+    weight: float; 
+    important: bool; 
+    is2D: bool; 
+    delay: float; 
+    minPitch: float; 
+    maxPitch: float; 
+    minVolume: float; 
+    maxVolume: float; 
+    ignoreTimeScale: bool; 
+}
+
+enum enum__Torappu_AudioManager_FXCategory : int {
+    FX_UI = 0,
+    FX_BATTLE = 1,
+}
+
+table clz_Torappu_Audio_Middleware_Data_SoundFXBank {
+    sounds: [clz_Torappu_Audio_Middleware_Data_SoundFXBank_SoundFX]; 
+    maxSoundAllowed: int; 
+    popOldest: bool; 
+    customMixerGroup: string; 
+    loop: bool; 
+    m_totalWeight: float; 
+    m_fxCategory: enum__Torappu_AudioManager_FXCategory; 
+    name: string; 
+}
+
+table clz_Torappu_Audio_Middleware_Data_Bank {
+    name: string; 
+}
+
+table clz_Torappu_Audio_Middleware_Data_SoundFXCtrlBank {
+    targetBank: string; 
+    ctrlStop: bool; 
+    ctrlStopFadetime: float; 
+    m_targetBank: clz_Torappu_Audio_Middleware_Data_Bank; 
+    name: string; 
+}
+
+table clz_Torappu_Audio_Middleware_Data_SnapshotBank {
+    targetSnapshot: string; 
+    hookSoundFxBank: string; 
+    delay: float; 
+    duration: float; 
+    targetFxBank: clz_Torappu_Audio_Middleware_Data_Bank; 
+    name: string; 
+}
+
+enum enum__Torappu_BattleVoiceOption_BattleVoiceType : int {
+    BATTLE_START = 0,
+    ENCOUNTER_ENEMY = 1,
+    PLACE_CHAR = 2,
+    FOCUS_CHAR = 3,
+    SKILL_ACTIVE = 4,
+    SKILL_PASSIVE_IMP = 5,
+    SKILL_PASSIVE_NOR = 6,
+    NORMAL_ATTACK = 7,
+    E_NUM = 8,
+}
+
+table clz_Torappu_BattleVoiceOption {
+    voiceType: enum__Torappu_BattleVoiceOption_BattleVoiceType; 
+    priority: int; 
+    overlapIfSamePriority: bool; 
+    cooldown: float; 
+    delay: float; 
+}
+
+table clz_Torappu_BattleVoiceData {
+    crossfade: float; 
+    minTimeDeltaForEnemyEncounter: float; 
+    minSpCostForImportantPassiveSkill: int; 
+    voiceTypeOptions: [clz_Torappu_BattleVoiceOption]; 
+}
+
+table clz_Torappu_Audio_Middleware_Data_MusicData {
+    id: string; 
+    name: string; 
+    bank: string; 
+}
+
+table clz_Torappu_Audio_Middleware_Data_DuckingData {
+    bank: string; 
+    volume: float; 
+    fadeTime: float; 
+    delay: float; 
+    fadeStyleId: string; 
+}
+
+enum enum__Torappu_Audio_Middleware_Data_AudioFadeType : int {
+    LINEAR = 0,
+    CONCAVE = 1,
+}
+
+table clz_Torappu_Audio_Middleware_Data_FadeStyleData {
+    styleName: string; 
+    fadeinTime: float; 
+    fadeoutTime: float; 
+    fadeinType: enum__Torappu_Audio_Middleware_Data_AudioFadeType; 
+    fadeoutType: enum__Torappu_Audio_Middleware_Data_AudioFadeType; 
+}
+
+enum enum__Torappu_VoiceLangType : int {
+    NONE = 0,
+    JP = 1,
+    CN_MANDARIN = 2,
+    EN = 3,
+    KR = 4,
+    CN_TOPOLECT = 5,
+    LINKAGE = 6,
+    ITA = 7,
+    GER = 8,
+    RUS = 9,
+}
+
+table dict__enum__Torappu_VoiceLangType__string {
+    key: enum__Torappu_VoiceLangType(key);
+    value: string;
+}
+
+table dict__string__list_dict__enum__Torappu_VoiceLangType__string {
+    key: string(key);
+    value: [dict__enum__Torappu_VoiceLangType__string];
+}
+
+table dict__string__list_dict__string__list_dict__enum__Torappu_VoiceLangType__string {
+    key: string(key);
+    value: [dict__string__list_dict__enum__Torappu_VoiceLangType__string];
+}
+
+table dict__string__string {
+    key: string(key);
+    value: string;
+}
+
+table clz_Torappu_Audio_Middleware_Data_TorappuAudioData {
+    bgmBanks: [clz_Torappu_Audio_Middleware_Data_BGMBank]; 
+    soundFXBanks: [clz_Torappu_Audio_Middleware_Data_SoundFXBank]; 
+    soundFXCtrlBanks: [clz_Torappu_Audio_Middleware_Data_SoundFXCtrlBank]; 
+    snapshotBanks: [clz_Torappu_Audio_Middleware_Data_SnapshotBank]; 
+    battleVoice: clz_Torappu_BattleVoiceData; 
+    musics: [clz_Torappu_Audio_Middleware_Data_MusicData]; 
+    duckings: [clz_Torappu_Audio_Middleware_Data_DuckingData]; 
+    fadeStyles: [clz_Torappu_Audio_Middleware_Data_FadeStyleData]; 
+    soundFxVoiceLang: [dict__string__list_dict__string__list_dict__enum__Torappu_VoiceLangType__string]; 
+    bankAlias: [dict__string__string]; 
+}
+
+root_type clz_Torappu_Audio_Middleware_Data_TorappuAudioData;
