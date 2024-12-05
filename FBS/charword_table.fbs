@@ -177,6 +177,7 @@ table dict__enum__Torappu_VoiceLangType__list_clz_Torappu_NewVoiceTimeData {
 enum enum__Torappu_FestivalVoiceTimeType : int {
     NONE = 0,
     FESTIVAL = 1,
+    BIRTHDAY = 2,
 }
 
 table clz_Torappu_FestivalTimeInterval {
@@ -202,6 +203,7 @@ table dict__string__clz_Torappu_FestivalVoiceData {
 table clz_Torappu_FestivalVoiceWeightData {
     showType: enum__Torappu_CharWordShowType; 
     weight: float; 
+    priority: int; 
 }
 
 table dict__string__clz_Torappu_FestivalVoiceWeightData {

@@ -136,6 +136,7 @@ enum enum__Torappu_LifeType : ubyte {
     IMMEDIATELY = 0,
     LIMITED = 1,
     INFINITY = 2,
+    CUSTOM = 3,
 }
 
 table clz_Torappu_Blackboard_DataPair {

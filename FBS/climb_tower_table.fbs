@@ -360,11 +360,12 @@ table dict__string__clz_Torappu_ClimbTowerCurseCardData {
 table clz_Torappu_ClimbTowerSeasonInfoData {
     id: string; 
     name: string; 
+    seasonNum: int; 
     startTs: long; 
     endTs: long; 
     towers: [string]; 
     seasonCards: [string]; 
-    seasonColor: string; 
+    replicatedTowers: [string]; 
 }
 
 table dict__string__clz_Torappu_ClimbTowerSeasonInfoData {
@@ -387,6 +388,11 @@ table clz_Torappu_ClimbTowerDetailConst {
     firstClearTaskDesc: string; 
     subCardObtainDesc: string; 
     subGodCardUnlockDesc: string; 
+    sweepStartTime: long; 
+    sweepOpenOrdinaryLayer: int; 
+    sweepOpenDifficultLayer: int; 
+    sweepCostCount: int; 
+    squadMemStartTime: long; 
 }
 
 table clz_Torappu_ClimbTowerRewardInfo {
@@ -421,7 +427,7 @@ table clz_Torappu_MissionDisplayRewards {
 
 table clz_Torappu_ClimbTowerMissionData {
     bindGodCardId: string; 
-    missionBkg: string; 
+    bindTowerId: string; 
     id: string; 
     sortId: int; 
     description: string; 
@@ -474,6 +480,7 @@ table clz_Torappu_ClimbTowerTable {
     seasonInfos: [dict__string__clz_Torappu_ClimbTowerSeasonInfoData]; 
     detailConst: clz_Torappu_ClimbTowerDetailConst; 
     rewardInfoList: [clz_Torappu_ClimbTowerRewardInfo]; 
+    rewardInfoListHardMode: [clz_Torappu_ClimbTowerRewardInfo]; 
     missionData: [dict__string__clz_Torappu_ClimbTowerMissionData]; 
     missionGroup: [dict__string__clz_Torappu_MissionGroup]; 
 }
