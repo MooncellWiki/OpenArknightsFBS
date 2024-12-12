@@ -55,7 +55,6 @@ table clz_Torappu_Audio_Middleware_Data_SnapshotBank {
     hookSoundFxBank: string; 
     delay: float; 
     duration: float; 
-    // targetFxBank: clz_Torappu_Audio_Middleware_Data_Bank; 
     name: string; 
 }
 
