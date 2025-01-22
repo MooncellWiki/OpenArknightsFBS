@@ -135,11 +135,13 @@ table clz_Torappu_UniEquipData {
     itemCost: [dict__int__list_clz_Torappu_ItemBundle]; 
     type: enum__Torappu_UniEquipType; 
     uniEquipGetTime: long; 
+    uniEquipShowEnd: long; 
     charEquipOrder: int; 
     hasUnlockMission: bool; 
     isSpecialEquip: bool; 
     specialEquipDesc: string; 
     specialEquipColor: string; 
+    charColor: string; 
 }
 
 table dict__string__clz_Torappu_UniEquipData {
@@ -178,9 +180,18 @@ table dict__string__list_string {
     value: [string];
 }
 
+table clz_Torappu_UniEquipTypeInfo {
+    uniEquipTypeName: string; 
+    sortId: int; 
+    isSpecial: bool; 
+    isInitial: bool; 
+}
+
 table clz_Torappu_UniEquipTrack {
     charId: string; 
     equipId: string; 
+    type: enum__Torappu_UniEquipType; 
+    archiveShowTimeEnd: long; 
 }
 
 table clz_Torappu_UniEquipTimeInfo {
@@ -192,7 +203,9 @@ table clz_Torappu_UniEquipTable {
     equipDict: [dict__string__clz_Torappu_UniEquipData]; 
     missionList: [dict__string__clz_Torappu_UniEquipMissionData]; 
     subProfDict: [dict__string__clz_Torappu_SubProfessionData]; 
+    subProfToProfDict: [dict__string__int]; 
     charEquip: [dict__string__list_string]; 
+    equipTypeInfos: [clz_Torappu_UniEquipTypeInfo]; 
     equipTrackDict: [clz_Torappu_UniEquipTimeInfo]; 
 }
 

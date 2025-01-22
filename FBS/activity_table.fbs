@@ -84,6 +84,7 @@ table clz_Torappu_ActivityTable_BasicData {
     trapDomainId: string; 
     recType: enum__Torappu_ActivityCompleteType; 
     isPageEntry: bool; 
+    isMagnify: bool; 
 }
 
 table dict__string__clz_Torappu_ActivityTable_BasicData {
@@ -2073,6 +2074,7 @@ enum enum__Torappu_PlayerAvatarGroupType : int {
     DEFAULT = 2,
     SPECIAL = 3,
     ACTIVITY = 4,
+    DYNAMIC = 5,
 }
 
 table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiConstData {
@@ -4539,7 +4541,6 @@ table clz_Torappu_ActArcadeData_ArcadeConstData {
     rewardAvatarText: string; 
     badgeCollectionName: string; 
     collectionEntryRelatedBadge: string; 
-    zoneEntryUnlockText: string; 
     zoneEntryUnlockToast: string; 
     zoneEntryEndText: string; 
     zoneEntryEndToast: string; 

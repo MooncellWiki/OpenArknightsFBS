@@ -201,6 +201,11 @@ table dict__string__clz_Torappu_DailyMissionGroupInfo {
     value: clz_Torappu_DailyMissionGroupInfo;
 }
 
+table clz_Torappu_MainlineMissionEndImageData {
+    imageId: string; 
+    priority: int; 
+}
+
 enum enum__Torappu_CrossAppShareMissionType : int {
     NORMAL = 0,
     ACTIVITY = 1,
@@ -246,6 +251,7 @@ table clz_Torappu_MissionTable {
     weeklyRewards: [dict__string__clz_Torappu_MissionWeeklyRewardConf]; 
     dailyMissionGroupInfo: [dict__string__clz_Torappu_DailyMissionGroupInfo]; 
     dailyMissionPeriodInfo: [clz_Torappu_DailyMissionGroupInfo]; 
+    mainlineMissionEndImageDataList: [clz_Torappu_MainlineMissionEndImageData]; 
     crossAppShareMissions: [dict__string__clz_Torappu_CrossAppShareMission]; 
     crossAppShareMissionConst: clz_Torappu_CrossAppShareMissionConst; 
     guideMissionGroupInfo: [dict__string__clz_Torappu_GuideMissionGroupInfo]; 

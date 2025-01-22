@@ -96,9 +96,17 @@ table clz_Torappu_RoguelikeTopicUpdate {
     topicEndTime: long; 
 }
 
+enum enum__Torappu_RoguelikeEnrollType : int {
+    DLC = 0,
+    REVIEW = 1,
+    NONE = -1,
+}
+
 table clz_Torappu_RoguelikeTopicEnroll {
     enrollId: string; 
     enrollTime: long; 
+    enrollType: enum__Torappu_RoguelikeEnrollType; 
+    enrollNoticeEndTime: long; 
 }
 
 table dict__string__clz_Torappu_RoguelikeTopicEnroll {
@@ -430,15 +438,15 @@ table clz_Torappu_ActArchiveTrapData {
 }
 
 table clz_Torappu_ActArchiveChatItemData {
-    chatFloor: int; 
+    floor: int; 
+    chatZoneId: string; 
     chatDesc: string; 
     chatStoryId: string; 
 }
 
 table clz_Torappu_ActArchiveChatGroupData {
     sortId: int; 
-    numChat: int; 
-    clientChatItemData: [clz_Torappu_ActArchiveChatItemData]; 
+    chatItemList: [clz_Torappu_ActArchiveChatItemData]; 
 }
 
 table dict__string__clz_Torappu_ActArchiveChatGroupData {
@@ -701,7 +709,8 @@ table clz_Torappu_RoguelikeTopicDetailConst {
     bpPurchaseActiveEnroll: string; 
     defaultSacrificeDesc: string; 
     defaultExpeditionSelectDesc: string; 
-    gotCharBuffToast: string; 
+    gotCharMutationBuffToast: string; 
+    gotCharEvolutionBuffToast: string; 
     gotSquadBuffToast: string; 
     loseCharBuffToast: string; 
     monthTeamSystemName: string; 
@@ -1120,8 +1129,15 @@ table dict__string__clz_Torappu_RoguelikeGameVariationData {
     value: clz_Torappu_RoguelikeGameVariationData;
 }
 
+enum enum__Torappu_RoguelikeGameCharBuffType : int {
+    NONE = 0,
+    MUTATION = 1,
+    EVOLUTION = 2,
+}
+
 table clz_Torappu_RoguelikeGameCharBuffData {
     id: string; 
+    buffType: enum__Torappu_RoguelikeGameCharBuffType; 
     iconId: string; 
     outerName: string; 
     innerName: string; 
@@ -1378,6 +1394,8 @@ enum enum__Torappu_RoguelikeGameItemType : int {
     DISASTER = 35,
     DISASTER_TYPE = 36,
     ABSTRACT_DISASTER = 37,
+    PILL = 38,
+    BIGPILL = 39,
 }
 
 enum enum__Torappu_RoguelikeGameItemSubType : int {
@@ -2308,12 +2326,19 @@ table clz_Torappu_RL02EndingText {
     summaryPracticeLowDesc: string; 
 }
 
+table clz_Torappu_RL02DifficultyExt {
+    modeDifficulty: enum__Torappu_RoguelikeTopicMode; 
+    grade: int; 
+    buffDesc: [string]; 
+}
+
 table clz_Torappu_RL02CustomizeData {
     developments: [dict__string__clz_Torappu_RL02Development]; 
     developmentTokens: [dict__string__clz_Torappu_RoguelikeTopicDevToken]; 
     developmentRawTextGroup: [clz_Torappu_RL02DevRawTextBuffGroup]; 
     developmentLines: [clz_Torappu_RL02DevelopmentLine]; 
     endingText: clz_Torappu_RL02EndingText; 
+    difficulties: [clz_Torappu_RL02DifficultyExt]; 
 }
 
 enum enum__Torappu_RL03DevelopmentNodeType : int {
