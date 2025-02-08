@@ -72,17 +72,6 @@ enum enum__Torappu_PlayerSideMask : ubyte {
     NONE = 3,
 }
 
-enum enum__Torappu_Battle_AdvancedBuildableMask : int {
-    NONE = 0,
-    DEFAULT = 1,
-    DEEP_SEA = 2,
-    TIDE_SEA = 4,
-    NIGHT = 8,
-    HIDE = 16,
-    WOODRD_HOLE = 32,
-    RIDGE_FIELD = 64,
-}
-
 table clz_UnityEngine_Vector3 {
     x: float; 
     y: float; 
@@ -110,7 +99,6 @@ table clz_Torappu_TileData {
     buildableType: enum__Torappu_BuildableType; 
     passableMask: enum__Torappu_MotionMask; 
     playerSideMask: enum__Torappu_PlayerSideMask; 
-    // advancedBuildableMask: enum__Torappu_Battle_AdvancedBuildableMask; 
     blackboard: [clz_Torappu_Blackboard_DataPair]; 
     effects: [clz_Torappu_MapEffectData]; 
 }
@@ -171,7 +159,6 @@ table clz_Torappu_LevelData_GlobalBuffData {
     overrideCameraEffect: string; 
     passProfessionMaskFlag: bool; 
     professionMask: enum__Torappu_ProfessionCategory; 
-    useExtraData: bool; 
 }
 
 enum enum__Torappu_MotionMode : int {
@@ -448,15 +435,6 @@ enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RefreshType : int 
     PER_SEASON = 4,
 }
 
-table clz_System_Object {
-}
-
-table clz_Torappu_LevelData_ActionID {
-    waveI: int; 
-    fragI: int; 
-    actionI: int; 
-}
-
 table clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
     actionType: enum__Torappu_LevelData_WaveData_FragmentData_ActionData_ActionType; 
     managedByScheduler: bool; 
@@ -464,7 +442,6 @@ table clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
     count: int; 
     preDelay: float; 
     interval: float; 
-    // useExtraRoute: bool; 
     routeIndex: int; 
     blockFragment: bool; 
     autoPreviewRoute: bool; 
@@ -477,9 +454,6 @@ table clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
     refreshType: enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RefreshType; 
     weight: int; 
     dontBlockWave: bool; 
-    isValid: bool; 
-    extraMeta: clz_System_Object; 
-    actionId: clz_Torappu_LevelData_ActionID; 
 }
 
 table clz_Torappu_LevelData_WaveData_FragmentData {
@@ -495,17 +469,9 @@ table clz_Torappu_LevelData_WaveData {
     advancedWaveTag: string; 
 }
 
-table dict__string__list_clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
-    key: string(key);
-    value: [clz_Torappu_LevelData_WaveData_FragmentData_ActionData];
-}
-
 table clz_Torappu_LevelData_BranchData_PhaseData {
     preDelay: float; 
     actions: [clz_Torappu_LevelData_WaveData_FragmentData_ActionData]; 
-    m_randomActionGroups: [dict__string__list_clz_Torappu_LevelData_WaveData_FragmentData_ActionData]; 
-    m_actionWithRandomSpawn: [clz_Torappu_LevelData_WaveData_FragmentData_ActionData]; 
-    m_validActionPackKeys: [string]; 
 }
 
 table clz_Torappu_LevelData_BranchData {
@@ -584,10 +550,6 @@ table clz_Torappu_LevelData_PredefinedData {
     tokenCards: [clz_Torappu_LevelData_PredefinedData_PredefinedTokenCard]; 
 }
 
-table clz_Torappu_LevelData_RuntimeData {
-    extraLoadEnemies: [clz_Torappu_LevelData_EnemyDataDbReference]; 
-}
-
 table clz_Torappu_LevelData {
     options: clz_Torappu_LevelData_Options; 
     levelId: string; 
@@ -609,7 +571,6 @@ table clz_Torappu_LevelData {
     excludeCharIdList: [string]; 
     randomSeed: int; 
     operaConfig: string; 
-    runtimeData: clz_Torappu_LevelData_RuntimeData; 
 }
 
 root_type clz_Torappu_LevelData;
