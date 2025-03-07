@@ -9,6 +9,8 @@ enum enum__Torappu_GachaRuleType : int {
     FESCLASSIC = 6,
     CLASSIC_ATTAIN = 7,
     SPECIAL = 8,
+    DOUBLE = 9,
+    CLASSIC_DOUBLE = 10,
 }
 
 table hg__internal__JObject {
@@ -23,6 +25,7 @@ table clz_Torappu_GachaPoolClientData {
     gachaPoolName: string; 
     gachaPoolSummary: string; 
     gachaPoolDetail: string; 
+    guaranteeName: string; 
     guarantee5Avail: int; 
     guarantee5Count: int; 
     LMTGSID: string; 
@@ -129,8 +132,9 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EXCLUSIVE_TKT_GACHA = 82,
-    EXCLUSIVE_TKT_GACHA_10 = 83,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
 }
 
 table clz_Torappu_ItemBundle {

@@ -99,7 +99,6 @@ table clz_Torappu_RoguelikeTopicUpdate {
 enum enum__Torappu_RoguelikeEnrollType : int {
     DLC = 0,
     REVIEW = 1,
-    NONE = -1,
 }
 
 table clz_Torappu_RoguelikeTopicEnroll {
@@ -197,8 +196,9 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EXCLUSIVE_TKT_GACHA = 82,
-    EXCLUSIVE_TKT_GACHA_10 = 83,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
 }
 
 table clz_Torappu_RoguelikeTopicBP {

@@ -1,51 +1,4 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-enum enum__Torappu_ProfessionCategory : int {
-    NONE = 0,
-    WARRIOR = 1,
-    SNIPER = 2,
-    TANK = 4,
-    MEDIC = 8,
-    SUPPORT = 16,
-    CASTER = 32,
-    SPECIAL = 64,
-    TOKEN = 128,
-    TRAP = 256,
-    PIONEER = 512,
-}
-
-table clz_Torappu_Blackboard_DataPair {
-    key: string; 
-    value: float; 
-    valueStr: string; 
-}
-
-table clz_Torappu_Battle_Cooperate_CooperateProfessionBuffBlackBoard {
-    key: string; 
-    buffId: string; 
-    atRoot: bool; 
-    title: string; 
-    description: string; 
-    Blackboard: [clz_Torappu_Blackboard_DataPair]; 
-}
-
-table dict__enum__Torappu_ProfessionCategory__clz_Torappu_Battle_Cooperate_CooperateProfessionBuffBlackBoard {
-    key: enum__Torappu_ProfessionCategory(key);
-    value: clz_Torappu_Battle_Cooperate_CooperateProfessionBuffBlackBoard;
-}
-
-table clz_Torappu_Battle_Cooperate_CooperateBonusData {
-    key: string; 
-    fail: bool; 
-    weight: int; 
-    description: string; 
-    blackboard: [clz_Torappu_Blackboard_DataPair]; 
-}
-
-table dict__string__clz_Torappu_Battle_Cooperate_CooperateBonusData {
-    key: string(key);
-    value: clz_Torappu_Battle_Cooperate_CooperateBonusData;
-}
-
 enum enum__Torappu_Battle_Cooperate_EndTileType : int {
     NONE = 0,
     MY_SIDE = 1,
@@ -63,13 +16,63 @@ table dict__enum__Torappu_Battle_Cooperate_EndTileType__clz_Torappu_Battle_Coope
     value: clz_Torappu_Battle_Cooperate_CooperateEndTileInfo;
 }
 
+table clz_Torappu_Battle_Cooperate_CooperateAheadGoalData {
+    aheadCnt: int; 
+    level: int; 
+}
+
+enum enum__Torappu_Battle_Cooperate_LASTROUNDRESULT : int {
+    GOAL = 0,
+    LOST = 1,
+}
+
+table dict__enum__Torappu_Battle_Cooperate_LASTROUNDRESULT__int {
+    key: enum__Torappu_Battle_Cooperate_LASTROUNDRESULT(key);
+    value: int;
+}
+
+table clz_Torappu_Battle_Cooperate_CooperateWaveWeight {
+    wave: int; 
+    weight: int; 
+}
+
+table dict__int__list_clz_Torappu_Battle_Cooperate_CooperateWaveWeight {
+    key: int(key);
+    value: [clz_Torappu_Battle_Cooperate_CooperateWaveWeight];
+}
+
+table clz_Torappu_Battle_Cooperate_CooperateTeamWeight {
+    teamName: string; 
+    weight: int; 
+}
+
+table clz_Torappu_Battle_Cooperate_CooperateTeamPlayer {
+    forward: string; 
+    goalkeeper: string; 
+    muscleman: string; 
+}
+
+table dict__string__clz_Torappu_Battle_Cooperate_CooperateTeamPlayer {
+    key: string(key);
+    value: clz_Torappu_Battle_Cooperate_CooperateTeamPlayer;
+}
+
+table dict__string__string {
+    key: string(key);
+    value: string;
+}
+
 table clz_Torappu_Battle_Cooperate_CooperateModeBattleData {
     costTransferred: int; 
-    costTransferredExtra: int; 
     getMaxMsgCntInOneUpdate: int; 
-    buffList: [dict__enum__Torappu_ProfessionCategory__clz_Torappu_Battle_Cooperate_CooperateProfessionBuffBlackBoard]; 
-    cooperateBonusMap: [dict__string__clz_Torappu_Battle_Cooperate_CooperateBonusData]; 
     endTileInfo: [dict__enum__Torappu_Battle_Cooperate_EndTileType__clz_Torappu_Battle_Cooperate_CooperateEndTileInfo]; 
+    footballAheadGoalCntFactor: [clz_Torappu_Battle_Cooperate_CooperateAheadGoalData]; 
+    footballHardTypeFactor: int; 
+    footballLastRoundResultFactor: [dict__enum__Torappu_Battle_Cooperate_LASTROUNDRESULT__int]; 
+    footballLevelOfWaveFactor: [dict__int__list_clz_Torappu_Battle_Cooperate_CooperateWaveWeight]; 
+    footballTeamWeights: [clz_Torappu_Battle_Cooperate_CooperateTeamWeight]; 
+    footballTeamPlayers: [dict__string__clz_Torappu_Battle_Cooperate_CooperateTeamPlayer]; 
+    footballPlayersName: [dict__string__string]; 
 }
 
 root_type clz_Torappu_Battle_Cooperate_CooperateModeBattleData;

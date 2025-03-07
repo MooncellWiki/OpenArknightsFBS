@@ -50,7 +50,8 @@ enum enum__Torappu_ActivityType : int {
     AUTOCHESS_VERIFY1 = 47,
     CHECKIN_VIDEO = 48,
     ARCADE = 49,
-    ENUM = 50,
+    MULTIPLAY_V3 = 50,
+    ENUM = 51,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -211,8 +212,9 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EXCLUSIVE_TKT_GACHA = 82,
-    EXCLUSIVE_TKT_GACHA_10 = 83,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -1882,346 +1884,6 @@ table clz_Torappu_ActivityRoguelikeData {
 table dict__string__clz_Torappu_ActivityRoguelikeData {
     key: string(key);
     value: clz_Torappu_ActivityRoguelikeData;
-}
-
-enum enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiRoomStepType : int {
-    NONE = 0,
-    STAGE_CHOOSE = 1,
-    ENTRANCE = 2,
-    CHAR_PICK = 3,
-    SYS_ALLOC = 4,
-    SQUAD_CHECK = 5,
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiSelectStepData {
-    stepType: enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiRoomStepType; 
-    sortId: int; 
-    time: int; 
-    hintTime: int; 
-    title: string; 
-    desc: string; 
-}
-
-enum enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiIdentityType : int {
-    NONE = 0,
-    HIGH = 1,
-    LOW = 2,
-    TEMPORARY = 3,
-    ALL = 4,
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiIdentityData {
-    id: string; 
-    sortId: int; 
-    picId: string; 
-    type: enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiIdentityType; 
-    maxNum: int; 
-    color: string; 
-}
-
-enum enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapType : int {
-    NORMAL = 0,
-    FOOTBALL = 1,
-    DEFENCE = 2,
-}
-
-enum enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapDifficultyType : int {
-    TRAINING = 0,
-    ORDINARY = 1,
-    DIFFICULTY = 2,
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapTypeData {
-    type: enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapType; 
-    difficulty: enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapDifficultyType; 
-    squadMax: int; 
-    matchUnlockModeId: string; 
-    matchUnlockParam: int; 
-    stageIdInModeList: [string]; 
-    modeIconId: string; 
-}
-
-table dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapTypeData {
-    key: string(key);
-    value: clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapTypeData;
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapData {
-    stageId: string; 
-    modeId: string; 
-    sortId: int; 
-    missionIdList: [string]; 
-    stageSmallPreviewId: string; 
-    stageBigPreviewId: string; 
-    displayEnemyIdList: [string]; 
-}
-
-table dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapData {
-    key: string(key);
-    value: clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapData;
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiTargetMissionData {
-    id: string; 
-    sortId: int; 
-    title: string; 
-    battleDesc: string; 
-    description: string; 
-    starNum: int; 
-}
-
-table dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiTargetMissionData {
-    key: string(key);
-    value: clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiTargetMissionData;
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMilestoneData {
-    mileStoneId: string; 
-    mileStoneLvl: int; 
-    needPointCnt: int; 
-    rewardItem: clz_Torappu_ItemBundle; 
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiStarRewardData {
-    starNum: int; 
-    rewards: [clz_Torappu_ItemBundle]; 
-    dailyMissionPoint: int; 
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiStageStarRewardData {
-    starRewardDatas: [clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiStarRewardData]; 
-}
-
-table dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiStageStarRewardData {
-    key: string(key);
-    value: clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiStageStarRewardData;
-}
-
-enum enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiEmojiChatSceneType : int {
-    NONE = 0,
-    ROOM = 1,
-    PICK = 2,
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiEmojiChatData {
-    id: string; 
-    type: enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiEmojiChatSceneType; 
-    sortId: int; 
-    picId: string; 
-    desc: string; 
-}
-
-table dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiEmojiChatData {
-    key: string(key);
-    value: clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiEmojiChatData;
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiCommentData {
-    id: string; 
-    type: enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapType; 
-    priorityId: int; 
-    picId: string; 
-    txt: string; 
-    template: string; 
-    paramList: [string]; 
-}
-
-table dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiCommentData {
-    key: string(key);
-    value: clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiCommentData;
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiTipsData {
-    id: string; 
-    txt: string; 
-    weight: int; 
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiReportData {
-    id: string; 
-    sortId: int; 
-    txt: string; 
-    desc: string; 
-}
-
-enum enum__Torappu_EvolvePhase : int {
-    PHASE_0 = 0,
-    PHASE_1 = 1,
-    PHASE_2 = 2,
-    PHASE_3 = 3,
-    E_NUM = 4,
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiTempCharData {
-    charId: string; 
-    level: int; 
-    evolvePhase: enum__Torappu_EvolvePhase; 
-    mainSkillLevel: int; 
-    specializeLevel: int; 
-    potentialRank: int; 
-    favorPoint: int; 
-    skinId: string; 
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiConstData_PingCond {
-    cond: int; 
-    txt: string; 
-}
-
-enum enum__Torappu_PlayerAvatarGroupType : int {
-    NONE = 0,
-    ASSISTANT = 1,
-    DEFAULT = 2,
-    SPECIAL = 3,
-    ACTIVITY = 4,
-    DYNAMIC = 5,
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiConstData {
-    milestoneId: string; 
-    maxUnlockNum: int; 
-    roomNumCopyDesc: string; 
-    noMapRoomNumCopyDesc: string; 
-    randomMapRoomNumCopyDesc: string; 
-    targetCd: int; 
-    squadMinNum: int; 
-    squadMaxNum: int; 
-    defenseTraMax: int; 
-    defenseOrdMax: int; 
-    defenseDifMax: int; 
-    stageChooseAnimRandomStageIdList: [string]; 
-    mapUnlockDesc1: string; 
-    mapUnlockDesc2: string; 
-    mapUnlockDesc3: string; 
-    mapUnlockDesc4: string; 
-    mapUnlockDesc5: string; 
-    mapUnlockDesc6: string; 
-    mapUnlockDesc7: string; 
-    difUnlockCond: int; 
-    ordRewardStageId: string; 
-    difRewardStageId: string; 
-    maxMatchTime: int; 
-    tipsSwitchTime: float; 
-    pingConds: [clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiConstData_PingCond]; 
-    chatCd: int; 
-    chatTime: int; 
-    markCd: int; 
-    markCond1: int; 
-    markCond2: int; 
-    dailyMissionParam: int; 
-    dailyMissionName: string; 
-    dailyMissionDesc: string; 
-    dailyMissionRule: string; 
-    missionDesc: string; 
-    dailyMissionRewardItem: clz_Torappu_ItemBundle; 
-    normalGreatVoiceStar: int; 
-    footballGreatVoiceNum: int; 
-    defenceGreatVoiceWave: int; 
-    reportMaxNum: int; 
-    reportText: string; 
-    rewardCardId: string; 
-    rewardCardText: string; 
-    rewardSkinId: string; 
-    rewardSkinText: string; 
-    maxRetryTimeInTeamRoom: int; 
-    maxRetryTimeInMatchRoom: int; 
-    maxRetryTimeInBattle: int; 
-    maxOperatorDelay: double; 
-    maxPlaySpeed: int; 
-    delayTimeNeedTip: int; 
-    settleRetryTime: int; 
-    modeNormalUnlockModeId: string; 
-    modeNormalUnlockParam: int; 
-    modeDefenceUnlockModeId: string; 
-    modeDefenceUnlockParam: int; 
-    modeFootballUnlockModeId: string; 
-    modeFootballUnlockParam: int; 
-    tutorialEntryStoryId: string; 
-    tutorialSquadStoryId: string; 
-    teamUnlockStageId: string; 
-    teamUnlockParam: int; 
-    trainPartnerCharId: string; 
-    trainPartnerCharSkinId: string; 
-    trainPartnerPlayerName: string; 
-    trainPartnerPlayerLevel: int; 
-    trainPartnerBuffId: string; 
-    trainPartnerAvatarGroupType: enum__Torappu_PlayerAvatarGroupType; 
-    trainPartnerAvatarId: string; 
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiConstToastData {
-    noRoom: string; 
-    fullRoom: string; 
-    roomIdFormatError: string; 
-    roomIdCopySuccess: string; 
-    banned: string; 
-    serverOverload: string; 
-    matchAliveFailed: string; 
-    createRoomAliveFailed: string; 
-    joinRoomAliveFailed: string; 
-    roomOwnerReviseTarget: string; 
-    roomCollaboratorReviseTarget: string; 
-    roomOwnerReviseMap: string; 
-    roomCollaboratorReviseMap: string; 
-    roomCollaboratorJoinRoom: string; 
-    roomCollaboratorExitRoom: string; 
-    continuousClicks: string; 
-    matchNoProject: string; 
-    reportNoProject: string; 
-    otherModeTrainingLock: string; 
-    teamLock: string; 
-    mentorLockTips: string; 
-    unlockNewModeInMatch: string; 
-    unlockNewStageInTeam: string; 
-    unlockMentorInMatch: string; 
-    teamFullLow: string; 
-    teamFullHigh: string; 
-    difficultUnlock: string; 
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapTypeNameData {
-    mapType: enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapType; 
-    typeName: string; 
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapDifficultyNameData {
-    difficulty: enum__Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapDifficultyType; 
-    difficultyName: string; 
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiBuffIconData {
-    buffId: string; 
-    iconId: string; 
-}
-
-table dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiBuffIconData {
-    key: string(key);
-    value: clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiBuffIconData;
-}
-
-table clz_Torappu_ActivityMultiplayVerify2Data {
-    selectStepDataList: [clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiSelectStepData]; 
-    identityDataList: [clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiIdentityData]; 
-    mapTypeDatas: [dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapTypeData]; 
-    mapDatas: [dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapData]; 
-    targetMissionDatas: [dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiTargetMissionData]; 
-    mileStoneList: [clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMilestoneData]; 
-    stageStarRewardDatas: [dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiStageStarRewardData]; 
-    emojiChatDatas: [dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiEmojiChatData]; 
-    commentDatas: [dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiCommentData]; 
-    tipsDataList: [clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiTipsData]; 
-    reportDataList: [clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiReportData]; 
-    tempCharDataList: [clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiTempCharData]; 
-    constData: clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiConstData; 
-    constToastData: clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiConstToastData; 
-    mapTypeNameDataList: [clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapTypeNameData]; 
-    difficultyNameDataList: [clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiMapDifficultyNameData]; 
-    buffIconDatas: [dict__string__clz_Torappu_ActivityMultiplayVerify2Data_Act2VMultiBuffIconData]; 
-}
-
-table dict__string__clz_Torappu_ActivityMultiplayVerify2Data {
-    key: string(key);
-    value: clz_Torappu_ActivityMultiplayVerify2Data;
 }
 
 enum enum__Torappu_ActivityInterlockData_InterlockStageType : int {
@@ -4132,6 +3794,14 @@ table dict__string__clz_Torappu_ActivityAutoChessVerify1Data_Act1VAutoChessEffec
     value: clz_Torappu_ActivityAutoChessVerify1Data_Act1VAutoChessEffectInfoData;
 }
 
+enum enum__Torappu_EvolvePhase : int {
+    PHASE_0 = 0,
+    PHASE_1 = 1,
+    PHASE_2 = 2,
+    PHASE_3 = 3,
+    E_NUM = 4,
+}
+
 table clz_Torappu_ActivityAutoChessVerify1Data_Act1VAutoChessCultivateRelationData {
     cultivateNum: int; 
     effectId: string; 
@@ -4566,6 +4236,438 @@ table dict__string__clz_Torappu_ActArcadeData {
     value: clz_Torappu_ActArcadeData;
 }
 
+enum enum__Torappu_ActMultiV3PrepareStepType : int {
+    NONE = 0,
+    STAGE_CHOOSE = 1,
+    ENTRANCE = 2,
+    CHAR_PICK = 3,
+    SYS_ALLOC = 4,
+    SQUAD_CHECK = 5,
+}
+
+table clz_Torappu_ActMultiV3SelectStepData {
+    stepType: enum__Torappu_ActMultiV3PrepareStepType; 
+    sortId: int; 
+    time: int; 
+    hintTime: int; 
+    title: string; 
+    desc: string; 
+}
+
+enum enum__Torappu_ActMultiV3MapModeType : int {
+    NONE = 0,
+    NORMAL = 1,
+    FOOTBALL = 2,
+    DEFENCE = 3,
+}
+
+table clz_Torappu_ActMultiV3SquadInfoData {
+    id: string; 
+    sortId: int; 
+    name: string; 
+    modeType: enum__Torappu_ActMultiV3MapModeType; 
+}
+
+enum enum__Torappu_ActMultiV3IdentityType : int {
+    NONE = 0,
+    HIGH = 1,
+    LOW = 2,
+    TEMPORARY = 3,
+    ALL = 4,
+}
+
+table clz_Torappu_ActMultiV3IdentityData {
+    id: string; 
+    sortId: int; 
+    picId: string; 
+    type: enum__Torappu_ActMultiV3IdentityType; 
+    maxNum: int; 
+    color: string; 
+}
+
+table clz_Torappu_ActMultiV3SquadEffectData_Token {
+    name: string; 
+    desc: string; 
+    iconId: string; 
+}
+
+table clz_Torappu_ActMultiV3SquadEffectData {
+    id: string; 
+    iconId: string; 
+    sortId: int; 
+    name: string; 
+    themeColor: string; 
+    buffDesc: string; 
+    debuffDesc: string; 
+    token: clz_Torappu_ActMultiV3SquadEffectData_Token; 
+    unlockKeyNum: int; 
+    runeData: clz_Torappu_RuneTable_PackedRuneData; 
+}
+
+table clz_Torappu_ActMultiV3TargetMissionData {
+    id: string; 
+    sortId: int; 
+    title: string; 
+    battleDesc: string; 
+    description: string; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3TargetMissionData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3TargetMissionData;
+}
+
+enum enum__Torappu_ActMultiV3MapDiffType : int {
+    NONE = 0,
+    TRAINING = 1,
+    ORDINARY = 2,
+    DIFFICULTY = 3,
+    EXTREMELY = 4,
+}
+
+table clz_Torappu_ActMultiV3MapTypeData {
+    modeId: string; 
+    mode: enum__Torappu_ActMultiV3MapModeType; 
+    difficulty: enum__Torappu_ActMultiV3MapDiffType; 
+    isDefaultSelectInQuickMatch: bool; 
+    squadMax: int; 
+    matchUnlockModeId: string; 
+    matchUnlockParam: int; 
+    stageIdInModeList: [string]; 
+    unlockHint: string; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3MapTypeData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3MapTypeData;
+}
+
+table clz_Torappu_ActMultiV3MapData {
+    stageId: string; 
+    modeId: string; 
+    sortId: int; 
+    missionIdList: [string]; 
+    displayEnemyIdList: [string]; 
+    previewIconId: string; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3MapData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3MapData;
+}
+
+table clz_Torappu_ActMultiV3MapModeData {
+    modeType: enum__Torappu_ActMultiV3MapModeType; 
+    name: string; 
+    iconId: string; 
+    color: string; 
+    quickMatchSortId: int; 
+    stageOverviewSortId: int; 
+    unlockTs: long; 
+    unlockPageTitle: string; 
+    unlockPageDesc: string; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3MapModeData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3MapModeData;
+}
+
+table clz_Torappu_ActMultiV3MapDiffData {
+    diffType: enum__Torappu_ActMultiV3MapDiffType; 
+    name: string; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3MapDiffData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3MapDiffData;
+}
+
+table clz_Torappu_ActMultiV3TitleData {
+    order: int; 
+    titleDesc: string; 
+    isBack: bool; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3TitleData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3TitleData;
+}
+
+table clz_Torappu_ActMultiV3PhotoSlotData {
+    slotPosX: float; 
+    slotPosY: float; 
+    slotRotZ: int; 
+    slotScale: float; 
+    slotAnimName: string; 
+}
+
+table clz_Torappu_ActMultiV3PhotoTypeData {
+    photoTypeName: string; 
+    sortId: int; 
+    background: string; 
+    photoDesc: string; 
+    slots: [clz_Torappu_ActMultiV3PhotoSlotData]; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3PhotoTypeData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3PhotoTypeData;
+}
+
+table clz_Torappu_ActMultiV3WeeklyPhotoRewardData {
+    order: int; 
+    titleDesc: string; 
+    unlockTime: long; 
+    rewards: [clz_Torappu_ItemBundle]; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3WeeklyPhotoRewardData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3WeeklyPhotoRewardData;
+}
+
+enum enum__Torappu_ActMultiV3MatchPosType : int {
+    NORMAL = 0,
+    COACH = 1,
+    STUDENT = 2,
+}
+
+table clz_Torappu_ActMultiV3MatchPosUnlockCond {
+    diff: enum__Torappu_ActMultiV3MapDiffType; 
+    completeMapCount: int; 
+    requireMapStar: int; 
+    unlockHint: string; 
+}
+
+table clz_Torappu_ActMultiV3MatchPosData {
+    matchPos: enum__Torappu_ActMultiV3MatchPosType; 
+    sortId: int; 
+    name: string; 
+    desc: string; 
+    posToast: string; 
+    matchDesc: string; 
+    unlockCond: clz_Torappu_ActMultiV3MatchPosUnlockCond; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3MatchPosData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3MatchPosData;
+}
+
+table clz_Torappu_ActMultiV3StarRewardData {
+    starNum: int; 
+    rewards: [clz_Torappu_ItemBundle]; 
+    dailyMissionPoint: int; 
+}
+
+table clz_Torappu_ActMultiV3DiffStarRewardData {
+    diffType: enum__Torappu_ActMultiV3MapDiffType; 
+    starRewardDatas: [clz_Torappu_ActMultiV3StarRewardData]; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3DiffStarRewardData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3DiffStarRewardData;
+}
+
+table clz_Torappu_ActMultiV3MilestoneData {
+    id: string; 
+    level: int; 
+    needPointCnt: int; 
+    rewardItem: clz_Torappu_ItemBundle; 
+    availTime: long; 
+}
+
+table clz_Torappu_ActMultiV3TipsData {
+    id: string; 
+    txt: string; 
+    weight: int; 
+}
+
+table clz_Torappu_ActMultiV3ReportData {
+    id: string; 
+    sortId: int; 
+    txt: string; 
+    desc: string; 
+}
+
+table clz_Torappu_ActMultiV3TempCharData {
+    charId: string; 
+    level: int; 
+    evolvePhase: enum__Torappu_EvolvePhase; 
+    mainSkillLevel: int; 
+    specializeLevel: int; 
+    potentialRank: int; 
+    favorPoint: int; 
+    skinId: string; 
+}
+
+table clz_Torappu_ActMultiV3ConstToastData {
+    noRoom: string; 
+    fullRoom: string; 
+    roomIdFormatError: string; 
+    roomIdCopySuccess: string; 
+    banned: string; 
+    serverOverload: string; 
+    matchAliveFailed: string; 
+    createRoomAliveFailed: string; 
+    joinRoomAliveFailed: string; 
+    roomOwnerReviseMap: string; 
+    roomCollaboratorReviseMap: string; 
+    roomCollaboratorJoinRoom: string; 
+    roomCollaboratorExitRoom: string; 
+    roomOwnerReviseMode: string; 
+    roomCollaboratorReviseMode: string; 
+    continuousClicks: string; 
+    matchNoProject: string; 
+    reportNoProject: string; 
+    otherModeTrainingLock: string; 
+    teamLock: string; 
+    mentorLockTips: string; 
+    unlockMentorInMatch: string; 
+    unlockInverseMode: string; 
+    unlockNewMapType: string; 
+    teamFullLow: string; 
+    teamFullHigh: string; 
+    difficultUnlock: string; 
+    weeklyAlbumTimeUnlock: string; 
+    weeklyAlbumCommitUnlock: string; 
+    squadLockHint: string; 
+    squadEffectEditHint: string; 
+    inverseModeUnlockHint: string; 
+    noPhotoInTemplateHint: string; 
+    cannotResubmitHint: string; 
+    cannotSaveTitleChange: string; 
+    matchPrepareRoomClose: string; 
+    stageListViewTimeLockToast: string; 
+}
+
+table clz_Torappu_ActMultiV3ConstData_PingCond {
+    cond: int; 
+    txt: string; 
+}
+
+table clz_Torappu_ActMultiV3InverseUnlockCond {
+    diff: enum__Torappu_ActMultiV3MapDiffType; 
+    requireStarCnt: int; 
+}
+
+enum enum__Torappu_PlayerAvatarGroupType : int {
+    NONE = 0,
+    ASSISTANT = 1,
+    DEFAULT = 2,
+    SPECIAL = 3,
+    ACTIVITY = 4,
+    DYNAMIC = 5,
+}
+
+table clz_Torappu_ActMultiV3ConstData {
+    milestoneId: string; 
+    roomNumCopyDesc: string; 
+    noMapRoomNumCopyDesc: string; 
+    randomMapRoomNumCopyDesc: string; 
+    targetCd: int; 
+    squadMinNum: int; 
+    squadMaxNum: int; 
+    defenseTraMax: int; 
+    defenseOrdMax: int; 
+    defenseDifMax: int; 
+    stageChooseAnimRandomStageIdList: [string]; 
+    requireStarsPerBuffKey: int; 
+    maxUnlockNum: int; 
+    mapUnlockDesc1: string; 
+    mapUnlockDesc2: string; 
+    mapUnlockDesc3: string; 
+    mapUnlockDesc4: string; 
+    mapUnlockDesc5: string; 
+    mapUnlockDesc6: string; 
+    mapUnlockDesc7: string; 
+    difUnlockCond: int; 
+    ordRewardStageId: string; 
+    difRewardStageId: string; 
+    maxMatchTime: int; 
+    tipsSwitchTime: int; 
+    pingConds: [clz_Torappu_ActMultiV3ConstData_PingCond]; 
+    chatCd: int; 
+    chatTime: int; 
+    markCd: int; 
+    markCond1: int; 
+    markCond2: int; 
+    dailyMissionParam: int; 
+    dailyMissionName: string; 
+    dailyMissionDesc: string; 
+    dailyMissionRule: string; 
+    missionDesc: string; 
+    dailyMissionRewardItem: clz_Torappu_ItemBundle; 
+    normalGreatVoiceStar: int; 
+    footballGreatVoiceNum: int; 
+    defenceGreatVoiceWave: int; 
+    reportMaxNum: int; 
+    reportText: string; 
+    reward1Id: string; 
+    reward1Text: string; 
+    reward2Id: string; 
+    reward2Text: string; 
+    maxRetryTimeInTeamRoom: int; 
+    maxRetryTimeInMatchRoom: int; 
+    maxRetryTimeInBattle: int; 
+    maxOperatorDelay: double; 
+    maxPlaySpeed: int; 
+    delayTimeNeedTip: int; 
+    settleRetryTime: int; 
+    playerDisplayTimeMax: float; 
+    isMatchDefaultInverse: bool; 
+    inverseUnlockCond: clz_Torappu_ActMultiV3InverseUnlockCond; 
+    inverseModeHint: string; 
+    teamUnlockStageId: string; 
+    teamUnlockParam: int; 
+    trainPartnerCharId: string; 
+    trainPartnerCharSkinId: string; 
+    trainPartnerPlayerName: string; 
+    trainPartnerPlayerLevel: int; 
+    trainPartnerBuffId: string; 
+    trainPartnerAvatarGroupType: enum__Torappu_PlayerAvatarGroupType; 
+    trainPartnerAvatarId: string; 
+    trainPartnerTitleList: [string]; 
+    trainPartnerNameCardSkinId: string; 
+    maxPhotoPerType: int; 
+    checkFriendStateTime: int; 
+    photoCharacterDefaultAct: string; 
+    trainingStageConfirmDesc: string; 
+    joinRoomLongTimeThreshold: double; 
+}
+
+table clz_Torappu_ActMultiV3Data {
+    selectStepDataList: [clz_Torappu_ActMultiV3SelectStepData]; 
+    squadInfoList: [clz_Torappu_ActMultiV3SquadInfoData]; 
+    identityDataList: [clz_Torappu_ActMultiV3IdentityData]; 
+    squadEffectList: [clz_Torappu_ActMultiV3SquadEffectData]; 
+    targetMissionDataDict: [dict__string__clz_Torappu_ActMultiV3TargetMissionData]; 
+    mapTypeDataDict: [dict__string__clz_Torappu_ActMultiV3MapTypeData]; 
+    mapDataDict: [dict__string__clz_Torappu_ActMultiV3MapData]; 
+    mapModeDataDict: [dict__string__clz_Torappu_ActMultiV3MapModeData]; 
+    mapDiffDataDict: [dict__string__clz_Torappu_ActMultiV3MapDiffData]; 
+    missionTitleDict: [dict__string__string]; 
+    titleDataDict: [dict__string__clz_Torappu_ActMultiV3TitleData]; 
+    photoTypeDataDict: [dict__string__clz_Torappu_ActMultiV3PhotoTypeData]; 
+    photoWeeklyRewardDataDict: [dict__string__clz_Torappu_ActMultiV3WeeklyPhotoRewardData]; 
+    matchPosDataDict: [dict__string__clz_Torappu_ActMultiV3MatchPosData]; 
+    enabledEmoticonThemeIdList: [string]; 
+    diffStarRewardDict: [dict__string__clz_Torappu_ActMultiV3DiffStarRewardData]; 
+    milestoneList: [clz_Torappu_ActMultiV3MilestoneData]; 
+    tipsDataList: [clz_Torappu_ActMultiV3TipsData]; 
+    reportDataList: [clz_Torappu_ActMultiV3ReportData]; 
+    tempCharDataList: [clz_Torappu_ActMultiV3TempCharData]; 
+    constToastData: clz_Torappu_ActMultiV3ConstToastData; 
+    constData: clz_Torappu_ActMultiV3ConstData; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3Data {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3Data;
+}
+
 table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; // __prts__check_required__defaultActivityData__
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; // __prts__check_required__defaultCheckinData__
@@ -4586,7 +4688,6 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     SWITCH_ONLY: [dict__string__clz_Torappu_ActivitySwitchCheckinData]; // __prts__check_required__switchCheckinData__
     MINISTORY: [dict__string__clz_Torappu_ActivityMiniStoryData]; // __prts__check_required__defaultMiniStoryData__
     ROGUELIKE: [dict__string__clz_Torappu_ActivityRoguelikeData]; // __prts__check_required__defaultRoguelikeData__
-    MULTIPLAY_VERIFY2: [dict__string__clz_Torappu_ActivityMultiplayVerify2Data]; // __prts__check_required__defaultMultiplayV2Data__
     INTERLOCK: [dict__string__clz_Torappu_ActivityInterlockData]; // __prts__check_required__defaultInterlockData__
     BOSS_RUSH: [dict__string__clz_Torappu_ActivityBossRushData]; // __prts__check_required__defaultBossRushData__
     FLOAT_PARADE: [dict__string__clz_Torappu_ActivityFloatParadeData]; // __prts__check_required__floatParadeData__
@@ -4603,6 +4704,7 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     TYPE_ACT38SIDE: [dict__string__clz_Torappu_Act38SideData]; // __prts__check_required__typeAct38SideData__
     AUTOCHESS_VERIFY1: [dict__string__clz_Torappu_ActivityAutoChessVerify1Data]; // __prts__check_required__defaultAutoChessV1Data__
     ARCADE: [dict__string__clz_Torappu_ActArcadeData]; // __prts__check_required__typeActArcadeData__
+    MULTIPLAY_V3: [dict__string__clz_Torappu_ActMultiV3Data]; // __prts__check_required__typeActMultiV3Data__
 }
 
 table clz_Torappu_ActMainlineBpExtraData_ActMainlineBpExtraPeriodData {
@@ -5131,12 +5233,70 @@ table clz_Torappu_Act5FunData {
     successData: [clz_Torappu_Act5FunSettleSuccessData]; 
 }
 
+table clz_Torappu_Act6FunStageAdditionData {
+    description: string; 
+    npcDialogText: string; 
+    previewCharPicId: string; 
+    feverCoinNum: int; 
+    isHiddenStage: bool; 
+}
+
+table dict__string__clz_Torappu_Act6FunStageAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act6FunStageAdditionData;
+}
+
+enum enum__Torappu_Act6FunAchievementType : int {
+    NORMAL = 0,
+    EX = 1,
+}
+
+table clz_Torappu_Act6FunAchievementData {
+    achievementId: string; 
+    sortId: int; 
+    achievementType: enum__Torappu_Act6FunAchievementType; 
+    description: string; 
+    coverDesc: string; 
+}
+
+table dict__string__list_clz_Torappu_Act6FunAchievementData {
+    key: string(key);
+    value: [clz_Torappu_Act6FunAchievementData];
+}
+
+table clz_Torappu_Act6FunAchievementRewardData {
+    reward: clz_Torappu_ItemBundle; 
+    sortId: int; 
+    achievementCount: int; 
+}
+
+table dict__string__clz_Torappu_Act6FunAchievementRewardData {
+    key: string(key);
+    value: clz_Torappu_Act6FunAchievementRewardData;
+}
+
+table clz_Torappu_Act6FunConst {
+    defaultStage: string; 
+    achievementMaxNumber: int; 
+    specialNumber: int; 
+    characterTipToast: string; 
+    functionToastList: [string]; 
+}
+
+table clz_Torappu_Act6FunData {
+    stageAdditionMap: [dict__string__clz_Torappu_Act6FunStageAdditionData]; 
+    stageAchievementMap: [dict__string__list_clz_Torappu_Act6FunAchievementData]; 
+    achievementRewardList: [dict__string__clz_Torappu_Act6FunAchievementRewardData]; 
+    constData: clz_Torappu_Act6FunConst; 
+}
+
 table clz_Torappu_AprilFoolTable {
     stages: [dict__string__clz_Torappu_AprilFoolStageData]; 
     scoreDict: [dict__string__list_clz_Torappu_AprilFoolScoreData]; 
     constant: clz_Torappu_AprilFoolConst; 
     act4FunData: clz_Torappu_Act4funData; 
     act5FunData: clz_Torappu_Act5FunData; 
+    act6FunData: clz_Torappu_Act6FunData; 
 }
 
 enum enum__Torappu_CartComponents_CartAccessoryType : int {
