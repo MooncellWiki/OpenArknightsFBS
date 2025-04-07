@@ -1,0 +1,20 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table clz_Torappu_HandbookTeamData {
+    powerId: string; 
+    orderNum: int; 
+    powerLevel: int; 
+    powerName: string; 
+    powerCode: string; 
+    color: string; 
+    isLimited: bool; 
+    isRaw: bool; 
+}
+
+table dict__string__clz_Torappu_HandbookTeamData {
+    key: string(key);
+    value: clz_Torappu_HandbookTeamData;
+}
+table clz_Torappu_SimpleKVTable_clz_Torappu_HandbookTeamData {
+    handbook_teams: [dict__string__clz_Torappu_HandbookTeamData];
+}
+root_type clz_Torappu_SimpleKVTable_clz_Torappu_HandbookTeamData;

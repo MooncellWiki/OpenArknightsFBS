@@ -1,0 +1,49 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table clz_Torappu_MeetingClueData_ClueData {
+    clueId: string; 
+    clueName: string; 
+    clueType: string; 
+    number: int; 
+}
+
+table clz_Torappu_MeetingClueData_ClueTypeData {
+    clueType: string; 
+    clueNumber: int; 
+}
+
+table clz_Torappu_MeetingClueData_ReceiveTimeBonus {
+    receiveTimes: int; 
+    receiveBonus: int; 
+}
+
+table clz_Torappu_MeetingClueData_MessageLeaveBoardConstData {
+    visitorBonus: int; 
+    visitorBonusLimit: int; 
+    visitorToWeek: int; 
+    visitorPreWeek: int; 
+    bonusToast: string; 
+    bonusLimitText: string; 
+    recordsTextBonus: string; 
+    recordsTextTip: string; 
+}
+
+table clz_Torappu_MeetingClueData {
+    clues: [clz_Torappu_MeetingClueData_ClueData]; 
+    clueTypes: [clz_Torappu_MeetingClueData_ClueTypeData]; 
+    receiveTimeBonus: [clz_Torappu_MeetingClueData_ReceiveTimeBonus]; 
+    messageLeaveBoardConstData: clz_Torappu_MeetingClueData_MessageLeaveBoardConstData; 
+    inventoryLimit: int; 
+    outputBasicBonus: int; 
+    outputOperatorsBonus: int; 
+    cluePointLimit: int; 
+    expiredDays: int; 
+    transferBonus: int; 
+    recycleBonus: int; 
+    expiredBonus: int; 
+    communicationDuration: int; 
+    initiatorBonus: int; 
+    participantsBonus: int; 
+    commuFoldDuration: float; 
+}
+
+root_type clz_Torappu_MeetingClueData;
