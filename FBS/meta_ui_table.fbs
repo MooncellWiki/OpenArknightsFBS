@@ -1,0 +1,107 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_CommonUnlockType : int {
+    STAGECLEAR = 0,
+    HASCHAR = 1,
+    NONE = 2,
+}
+
+table clz_Torappu_StageUnlockParam {
+    stageId: string; 
+}
+
+table clz_Torappu_CharUnlockParam {
+    charId: string; 
+}
+
+table clz_Torappu_CommonAvailCheck {
+    startTs: long; 
+    endTs: long; 
+    type: enum__Torappu_CommonUnlockType; 
+    rate: float; 
+    stageUnlockParam: clz_Torappu_StageUnlockParam; 
+    charUnlockParam: clz_Torappu_CharUnlockParam; 
+}
+
+enum enum__Torappu_TipData_Category : int {
+    NONE = 0,
+    BATTLE = 1,
+    UI = 2,
+    BUILDING = 4,
+    GACHA = 8,
+    MISC = 16,
+    ALL = 31,
+}
+
+table clz_Torappu_TipData {
+    tip: string; 
+    weight: float; 
+    category: enum__Torappu_TipData_Category; 
+}
+
+table clz_Torappu_TipsMetaDisplayItem {
+    tipsId: string; 
+    loadingPic: string; 
+    availCheck: clz_Torappu_CommonAvailCheck; 
+    relateActId: string; 
+    isAllStageActive: bool; 
+    stageIdList: [string]; 
+    zoneIdList: [string]; 
+    tips: [clz_Torappu_TipData]; 
+}
+
+table clz_Torappu_FlashAlertAfterStageDisplayMetaItem {
+    flashAlertId: string; 
+    availCheck: clz_Torappu_CommonAvailCheck; 
+    isAllStageActive: bool; 
+    stageIdList: [string]; 
+    relateActId: string; 
+    detailText: string; 
+    isBasicInfo: bool; 
+    times: int; 
+}
+
+table clz_Torappu_MapPreviewDisplayMetaItem {
+    mapPreviewPicId: string; 
+    availCheck: clz_Torappu_CommonAvailCheck; 
+    relateActId: string; 
+    isAllStageActive: bool; 
+    stageIdList: [string]; 
+}
+
+table clz_Torappu_BattleFinishDisplayMetaItem {
+    battleFinishDisplayKey: string; 
+    isAllStageActive: bool; 
+    stageIdList: [string]; 
+    availCheck: clz_Torappu_CommonAvailCheck; 
+    relateActId: string; 
+    overrideStageName: string; 
+    signal: string; 
+    overrideCharWord: string; 
+}
+
+table clz_Torappu_BattleLoadingDisplayMetaItem {
+    isAllStageActive: bool; 
+    stageIdList: [string]; 
+    battleLoadingPicId: string; 
+    relateActId: string; 
+    availCheck: clz_Torappu_CommonAvailCheck; 
+}
+
+table clz_Torappu_BattleAutoBattleMetaItem {
+    battleAutoBattleDisplayKey: string; 
+    isAllStageActive: bool; 
+    relateActId: string; 
+    stageIdList: [string]; 
+    availCheck: clz_Torappu_CommonAvailCheck; 
+}
+
+table clz_Torappu_MetaUIDisplayTable {
+    tipsMetaList: [clz_Torappu_TipsMetaDisplayItem]; 
+    flashAlertAfterStageItemList: [clz_Torappu_FlashAlertAfterStageDisplayMetaItem]; 
+    mapPreviewDisplayMetaItemList: [clz_Torappu_MapPreviewDisplayMetaItem]; 
+    battleFinishDisplayMetaItemList: [clz_Torappu_BattleFinishDisplayMetaItem]; 
+    battleLoadingDisplayMetaItemList: [clz_Torappu_BattleLoadingDisplayMetaItem]; 
+    battleAutoBattleMetaItemList: [clz_Torappu_BattleAutoBattleMetaItem]; 
+}
+
+root_type clz_Torappu_MetaUIDisplayTable;

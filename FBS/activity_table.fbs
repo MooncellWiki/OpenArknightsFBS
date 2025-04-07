@@ -51,7 +51,9 @@ enum enum__Torappu_ActivityType : int {
     CHECKIN_VIDEO = 48,
     ARCADE = 49,
     MULTIPLAY_V3 = 50,
-    ENUM = 51,
+    TYPE_MAINSS = 51,
+    ENEMY_DUEL = 52,
+    ENUM = 53,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -65,6 +67,35 @@ enum enum__Torappu_ActivityCompleteType : int {
     SPECIAL = 0,
     CAN_COMPLETE = 1,
     CANNOT_COMPLETE = 2,
+}
+
+enum enum__Torappu_CommonUnlockType : int {
+    STAGECLEAR = 0,
+    HASCHAR = 1,
+    NONE = 2,
+}
+
+table clz_Torappu_StageUnlockParam {
+    stageId: string; 
+}
+
+table clz_Torappu_CharUnlockParam {
+    charId: string; 
+}
+
+table clz_Torappu_CommonAvailCheck {
+    startTs: long; 
+    endTs: long; 
+    type: enum__Torappu_CommonUnlockType; 
+    rate: float; 
+    stageUnlockParam: clz_Torappu_StageUnlockParam; 
+    charUnlockParam: clz_Torappu_CharUnlockParam; 
+}
+
+table clz_Torappu_ActivityTable_PicGroup {
+    sortIndex: int; 
+    picId: string; 
+    availCheck: clz_Torappu_CommonAvailCheck; 
 }
 
 table clz_Torappu_ActivityTable_BasicData {
@@ -86,6 +117,8 @@ table clz_Torappu_ActivityTable_BasicData {
     recType: enum__Torappu_ActivityCompleteType; 
     isPageEntry: bool; 
     isMagnify: bool; 
+    picGroup: [clz_Torappu_ActivityTable_PicGroup]; 
+    usePicGroup: bool; 
 }
 
 table dict__string__clz_Torappu_ActivityTable_BasicData {
@@ -111,6 +144,11 @@ table dict__string__string {
     value: string;
 }
 
+table dict__string__long {
+    key: string(key);
+    value: long;
+}
+
 enum enum__Torappu_MissionType : int {
     UNKNOWN = 0,
     MAIN = 1,
@@ -121,6 +159,7 @@ enum enum__Torappu_MissionType : int {
     ACTIVITY = 6,
     OPENSERVER = 7,
     TOWERSEASON = 8,
+    RETRO = 9,
 }
 
 enum enum__Torappu_MissionItemBgType : int {
@@ -242,6 +281,7 @@ table clz_Torappu_MissionData {
     backImagePath: string; 
     foldId: string; 
     haveSubMissionToUnlock: bool; 
+    countEndTs: long; 
 }
 
 table clz_Torappu_MissionGroup {
@@ -301,11 +341,6 @@ table clz_Torappu_DefaultCheckInData_CheckInDailyInfo {
 table dict__int__clz_Torappu_DefaultCheckInData_CheckInDailyInfo {
     key: int(key);
     value: clz_Torappu_DefaultCheckInData_CheckInDailyInfo;
-}
-
-table dict__string__long {
-    key: string(key);
-    value: long;
 }
 
 table clz_Torappu_DefaultCheckInData_DynCheckInDailyInfo {
@@ -879,10 +914,20 @@ enum enum__Torappu_PlayerSideMask : ubyte {
     NONE = 3,
 }
 
+enum enum__Torappu_Battle_SideType : int {
+    NONE = 0,
+    ALLY = 1,
+    ENEMY = 2,
+    BOTH_ALLY_AND_ENEMY = 3,
+    NEUTRAL = 4,
+    ALL = 7,
+}
+
 table clz_Torappu_RuneData_Selector {
     professionMask: enum__Torappu_ProfessionCategory; 
     buildableMask: enum__Torappu_BuildableType; 
     playerSideMask: enum__Torappu_PlayerSideMask; 
+    sideType: enum__Torappu_Battle_SideType; 
     charIdFilter: [string]; 
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 
@@ -4631,6 +4676,7 @@ table clz_Torappu_ActMultiV3ConstData {
     trainPartnerAvatarId: string; 
     trainPartnerTitleList: [string]; 
     trainPartnerNameCardSkinId: string; 
+    trainPartnerNameCardSkinTmpl: int; 
     maxPhotoPerType: int; 
     checkFriendStateTime: int; 
     photoCharacterDefaultAct: string; 
@@ -4666,6 +4712,321 @@ table clz_Torappu_ActMultiV3Data {
 table dict__string__clz_Torappu_ActMultiV3Data {
     key: string(key);
     value: clz_Torappu_ActMultiV3Data;
+}
+
+table clz_Torappu_ActMainSSZoneAdditionData {
+    unlockTip: string; 
+}
+
+table dict__string__clz_Torappu_ActMainSSZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_ActMainSSZoneAdditionData;
+}
+
+table clz_Torappu_ActMainSSData {
+    zoneAdditionDataMap: [dict__string__clz_Torappu_ActMainSSZoneAdditionData]; 
+}
+
+table dict__string__clz_Torappu_ActMainSSData {
+    key: string(key);
+    value: clz_Torappu_ActMainSSData;
+}
+
+table clz_Torappu_ActivityEnemyDuelMilestoneItemData {
+    milestoneId: string; 
+    orderId: int; 
+    tokenNum: int; 
+    reward: clz_Torappu_ItemBundle; 
+    availTime: long; 
+}
+
+enum enum__Torappu_EnemyDuelModeType : int {
+    OPERATION = 0,
+    STAND = 1,
+}
+
+table clz_Torappu_ActivityEnemyDuelModeData {
+    modeId: string; 
+    isMultiPlayer: bool; 
+    isRoom: bool; 
+    modeType: enum__Torappu_EnemyDuelModeType; 
+    stageIds: [string]; 
+    pageId: int; 
+    innerSortId: int; 
+    modeName: string; 
+    modeShortName: string; 
+    modeEnName: string; 
+    maxPlayer: int; 
+    preposedMode: string; 
+    startTs: long; 
+    endTs: long; 
+    entryPicId: string; 
+    titlePics: [string]; 
+    modeTarget: string; 
+    modeDesc: string; 
+    modeRecordDesc: string; 
+    extraTag: bool; 
+    modeAvatarPicId: string; 
+    modeAvatarName: string; 
+    modeAvatarText: string; 
+    hasUnlockToast: bool; 
+}
+
+table dict__string__clz_Torappu_ActivityEnemyDuelModeData {
+    key: string(key);
+    value: clz_Torappu_ActivityEnemyDuelModeData;
+}
+
+table clz_Torappu_ActivityEnemyDuelRoundData {
+    roundId: string; 
+    modeId: string; 
+    round: int; 
+    enemyPredefined: bool; 
+    roundScore: int; 
+    enemyScore: float; 
+    enemyScoreRandom: float; 
+    enemySideMinLeft: int; 
+    enemySideMaxLeft: int; 
+    enemySideMinRight: int; 
+    enemySideMaxRight: int; 
+    enemyPoolLeft: string; 
+    enemyPoolRight: string; 
+    canSkip: bool; 
+    canAllIn: bool; 
+}
+
+table dict__string__clz_Torappu_ActivityEnemyDuelRoundData {
+    key: string(key);
+    value: clz_Torappu_ActivityEnemyDuelRoundData;
+}
+
+table clz_Torappu_ActivityEnemyDuelPoolData {
+    enemyId: string; 
+    poolNormal: float; 
+    poolSmallEnemy: float; 
+    poolBoss: float; 
+}
+
+table dict__string__clz_Torappu_ActivityEnemyDuelPoolData {
+    key: string(key);
+    value: clz_Torappu_ActivityEnemyDuelPoolData;
+}
+
+enum enum__Torappu_EnemyDuelBetStrategy : int {
+    DEFAULT = 0,
+    CHOOSE_WIN = 1,
+    CHOOSE_ODD = 2,
+    FOLLOW_FEWER = 3,
+    FOLLOW_MORE = 4,
+    CHOOSE_ODD_ENEMY_COUNT = 5,
+    CHOOSE_EVEN_ENEMY_COUNT = 6,
+    ALWAYS_LEFT = 7,
+}
+
+table clz_Torappu_ActivityEnemyDuelNpcData {
+    npcId: string; 
+    avatarId: string; 
+    name: string; 
+    priority: float; 
+    specialStrategy: enum__Torappu_EnemyDuelBetStrategy; 
+    npcProb: float; 
+    defaultEnemyScore: float; 
+    allinProb: float; 
+}
+
+table dict__string__clz_Torappu_ActivityEnemyDuelNpcData {
+    key: string(key);
+    value: clz_Torappu_ActivityEnemyDuelNpcData;
+}
+
+table clz_Torappu_ActivityEnemyDuelNpcSelectorData {
+    enemyId: string; 
+    score: float; 
+}
+
+table clz_Torappu_ActivityEnemyDuelNpcSelectorGroupData {
+    npcId: string; 
+    data: [clz_Torappu_ActivityEnemyDuelNpcSelectorData]; 
+}
+
+table dict__string__clz_Torappu_ActivityEnemyDuelNpcSelectorGroupData {
+    key: string(key);
+    value: clz_Torappu_ActivityEnemyDuelNpcSelectorGroupData;
+}
+
+table clz_Torappu_ActivityEnemyDuelEnemyData {
+    enemyId: string; 
+    originalEnemyId: string; 
+}
+
+table dict__string__clz_Torappu_ActivityEnemyDuelEnemyData {
+    key: string(key);
+    value: clz_Torappu_ActivityEnemyDuelEnemyData;
+}
+
+table clz_Torappu_ActivityEnemyDuelExtraScoreData {
+    rankMin: int; 
+    rankMax: int; 
+    tokenNum: int; 
+}
+
+table clz_Torappu_ActivityEnemyDuelExtraScoreGroupData {
+    modeId: string; 
+    data: [clz_Torappu_ActivityEnemyDuelExtraScoreData]; 
+}
+
+table dict__string__clz_Torappu_ActivityEnemyDuelExtraScoreGroupData {
+    key: string(key);
+    value: clz_Torappu_ActivityEnemyDuelExtraScoreGroupData;
+}
+
+table clz_Torappu_ActivityEnemyDuelAnnounceData {
+    startTs: long; 
+    endTs: long; 
+    announceText: string; 
+    showNew: bool; 
+}
+
+table clz_Torappu_ActivityEnemyDuelSingleCommentData {
+    commentId: string; 
+    priority: int; 
+    template: string; 
+    param: [string]; 
+    commentText: string; 
+}
+
+table dict__string__clz_Torappu_ActivityEnemyDuelSingleCommentData {
+    key: string(key);
+    value: clz_Torappu_ActivityEnemyDuelSingleCommentData;
+}
+
+table dict__string__list_dict__string__clz_Torappu_ActivityEnemyDuelSingleCommentData {
+    key: string(key);
+    value: [dict__string__clz_Torappu_ActivityEnemyDuelSingleCommentData];
+}
+
+table clz_Torappu_ActivityEnemyDuelConstData_PingCond {
+    cond: int; 
+    txt: string; 
+}
+
+table clz_Torappu_ActivityEnemyDuelConstData {
+    maxLoadingTime: float; 
+    maxRetryTimeInBattle: float; 
+    maxMatchTime: float; 
+    maxRoomTime: float; 
+    maxRetryTimeInTeamRoom: float; 
+    roomReserveTime: float; 
+    minRoomNum: int; 
+    roomFinishWaitingTime: int; 
+    roomMasterRestartWaitingTime: int; 
+    pingConds: [clz_Torappu_ActivityEnemyDuelConstData_PingCond]; 
+    chatCd: float; 
+    chatTime: float; 
+    dailyMissionParam: int; 
+    dailyMissionReward: clz_Torappu_ItemBundle; 
+    dailyMissionName: string; 
+    dailyMissionDesc: string; 
+    maxOperatorDelay: float; 
+    maxPlaySpeed: float; 
+    delayTimeNeedTip: float; 
+    netBlockTimeNeedTip: float; 
+    stageTimeMax: float; 
+    npcCorrectProb: float; 
+    winStreakRoundNum: int; 
+    settlementPicNum: int; 
+    timeBeforeSelectAfterRoundBegin: int; 
+    npcMaxCorrectCountInStand: int; 
+    battlePhaseTimeMax: int; 
+    battleFinishToSettleTimeMax: int; 
+    minBetCd: float; 
+    defaultEmoticonItemId: string; 
+    defaultEmoticonPicId: string; 
+    modeOperationRoundNumber: int; 
+    modeOperationInitialScore: int; 
+    modeOperationMaxScore: int; 
+    modeOperationSelectTime: int; 
+    modeOperationSelectTimeLast: int; 
+    modeOperationSkipParam: float; 
+    modeOperationBetParam: float; 
+    modeOperationAllinParam: float; 
+    modeOperationTopRank: int; 
+    modeOperationRankTime: int; 
+    modeSoloOperationRankTime: int; 
+    modeOperationRewardMultiplier: int; 
+    modeOperationRewardMultiplierAllin: int; 
+    modeOperationHotRoundNumber: int; 
+    modeSoloOperationSelectTime: int; 
+    modeStandRoundNumber: int; 
+    modeStandShieldTurn: int; 
+    modeStandSelectTime: int; 
+    modeStandSelectTimeLast: int; 
+    modeStandAllinParam: float; 
+    modeStandTopRank: int; 
+    modeStandRankTime: int; 
+    modeStandHotRoundNumber: int; 
+    milestoneName: string; 
+    milestoneItemId: string; 
+    milestoneItemName: string; 
+    milestoneItemText: string; 
+    milestoneTrackId: string; 
+    entryVideoId: string; 
+    entryTabText: string; 
+    matchTabText: string; 
+    modeOperationId: string; 
+    modeStandId: string; 
+    multiPreposedModeId: string; 
+    entryMusicName: string; 
+    modeCondLockText: string; 
+    modeTimeLockText: string; 
+    titlePicRotateTime: float; 
+}
+
+table clz_Torappu_ActivityEnemyDuelConstToastData {
+    createRoomAliveFailed: string; 
+    joinRoomAliveFailed: string; 
+    roomIdFormatError: string; 
+    emptyRoomId: string; 
+    noRoom: string; 
+    continuousClicks: string; 
+    matchAliveFailed: string; 
+    serverOverloaded: string; 
+    matchTimeout: string; 
+    unlockMultiMode: string; 
+    unlockRoomMode: string; 
+    addFriendInRoom: string; 
+    roomIdCopySuccess: string; 
+    entryModeLock: string; 
+}
+
+table clz_Torappu_ActivityEnemyDuelTipsData {
+    id: string; 
+    txt: string; 
+    weight: int; 
+    modeIds: [string]; 
+}
+
+table clz_Torappu_ActivityEnemyDuelData {
+    milestoneList: [clz_Torappu_ActivityEnemyDuelMilestoneItemData]; 
+    modeData: [dict__string__clz_Torappu_ActivityEnemyDuelModeData]; 
+    roundData: [dict__string__clz_Torappu_ActivityEnemyDuelRoundData]; 
+    poolData: [dict__string__clz_Torappu_ActivityEnemyDuelPoolData]; 
+    npcData: [dict__string__clz_Torappu_ActivityEnemyDuelNpcData]; 
+    npcSelectorData: [dict__string__clz_Torappu_ActivityEnemyDuelNpcSelectorGroupData]; 
+    enemyData: [dict__string__clz_Torappu_ActivityEnemyDuelEnemyData]; 
+    extraScoreData: [dict__string__clz_Torappu_ActivityEnemyDuelExtraScoreGroupData]; 
+    basicScores: [int]; 
+    announceData: [clz_Torappu_ActivityEnemyDuelAnnounceData]; 
+    commentData: [dict__string__list_dict__string__clz_Torappu_ActivityEnemyDuelSingleCommentData]; 
+    constData: clz_Torappu_ActivityEnemyDuelConstData; 
+    constToastData: clz_Torappu_ActivityEnemyDuelConstToastData; 
+    tipsData: [clz_Torappu_ActivityEnemyDuelTipsData]; 
+    enabledEmoticonThemeIdList: [string]; 
+}
+
+table dict__string__clz_Torappu_ActivityEnemyDuelData {
+    key: string(key);
+    value: clz_Torappu_ActivityEnemyDuelData;
 }
 
 table clz_Torappu_ActivityTable_ActivityDetailTable {
@@ -4705,6 +5066,8 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     AUTOCHESS_VERIFY1: [dict__string__clz_Torappu_ActivityAutoChessVerify1Data]; // __prts__check_required__defaultAutoChessV1Data__
     ARCADE: [dict__string__clz_Torappu_ActArcadeData]; // __prts__check_required__typeActArcadeData__
     MULTIPLAY_V3: [dict__string__clz_Torappu_ActMultiV3Data]; // __prts__check_required__typeActMultiV3Data__
+    TYPE_MAINSS: [dict__string__clz_Torappu_ActMainSSData]; // __prts__check_required__typeActMainSSData__
+    ENEMY_DUEL: [dict__string__clz_Torappu_ActivityEnemyDuelData]; // __prts__check_required__typeActEnemyDuelData__
 }
 
 table clz_Torappu_ActMainlineBpExtraData_ActMainlineBpExtraPeriodData {
@@ -4762,11 +5125,18 @@ enum enum__Torappu_ActivityThemeType : int {
     ROGUELIKE = 4,
     CRISISV2 = 5,
     SANDBOX_PERM = 6,
+    ACTIVITY_COMP = 7,
 }
 
 table clz_Torappu_ActivityThemeData_TimeNode {
     title: string; 
     ts: long; 
+}
+
+table clz_Torappu_ActivityThemeData_PicGroup {
+    sortIndex: int; 
+    picId: string; 
+    availCheck: clz_Torappu_CommonAvailCheck; 
 }
 
 table clz_Torappu_ActivityThemeData {
@@ -4777,6 +5147,7 @@ table clz_Torappu_ActivityThemeData {
     sortId: int; 
     itemId: string; 
     timeNodes: [clz_Torappu_ActivityThemeData_TimeNode]; 
+    picGroups: [clz_Torappu_ActivityThemeData_PicGroup]; 
     startTs: long; 
 }
 
@@ -4795,7 +5166,8 @@ enum enum__Torappu_LevelData_Difficulty : int {
     NORMAL = 1,
     FOUR_STAR = 2,
     EASY = 4,
-    ALL = 7,
+    SIX_STAR = 8,
+    ALL = 15,
 }
 
 table clz_Torappu_StageData_ConditionDesc {
@@ -5937,6 +6309,7 @@ table clz_Torappu_FifthAnnivExploreMissionData {
     backImagePath: string; 
     foldId: string; 
     haveSubMissionToUnlock: bool; 
+    countEndTs: long; 
 }
 
 table dict__string__clz_Torappu_FifthAnnivExploreMissionData {
@@ -6018,6 +6391,7 @@ enum enum__Torappu_TemplateMissionBigRewardType : int {
     ILLUST_CHAR_REWARD = 1,
     CUSTOM = 2,
     PIC_REWARD = 3,
+    SKIN_REWARD = 4,
 }
 
 enum enum__Torappu_TemplateMissionTitleType : int {
@@ -6078,6 +6452,7 @@ table clz_Torappu_ActivityTable {
     basicInfo: [dict__string__clz_Torappu_ActivityTable_BasicData]; 
     homeActConfig: [dict__string__clz_Torappu_ActivityTable_HomeActivityConfig]; 
     zoneToActivity: [dict__string__string]; 
+    actTimeTrackPoint: [dict__string__long]; 
     missionData: [clz_Torappu_MissionData]; 
     missionGroup: [clz_Torappu_MissionGroup]; 
     replicateMissions: [dict__string__string]; 

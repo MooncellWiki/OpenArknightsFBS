@@ -133,7 +133,8 @@ enum enum__Torappu_LevelData_Difficulty : int {
     NORMAL = 1,
     FOUR_STAR = 2,
     EASY = 4,
-    ALL = 7,
+    SIX_STAR = 8,
+    ALL = 15,
 }
 
 enum enum__Torappu_ProfessionCategory : int {
@@ -156,6 +157,11 @@ table clz_Torappu_LegacyInLevelRuneData {
     professionMask: enum__Torappu_ProfessionCategory; 
     buildableMask: enum__Torappu_BuildableType; 
     blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table dict__string__list_clz_Torappu_LegacyInLevelRuneData {
+    key: string(key);
+    value: [clz_Torappu_LegacyInLevelRuneData];
 }
 
 table clz_Torappu_LevelData_GlobalBuffData {
@@ -554,6 +560,7 @@ table clz_Torappu_LevelData {
     mapData: clz_Torappu_MapData; 
     tilesDisallowToLocate: [clz_Torappu_GridPosition]; 
     runes: [clz_Torappu_LegacyInLevelRuneData]; 
+    optionalRunes: [dict__string__list_clz_Torappu_LegacyInLevelRuneData]; // __prts__check_required__optionalRunes__
     globalBuffs: [clz_Torappu_LevelData_GlobalBuffData]; 
     routes: [clz_Torappu_RouteData]; 
     extraRoutes: [clz_Torappu_RouteData]; 

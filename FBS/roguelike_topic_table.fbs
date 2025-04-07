@@ -757,7 +757,8 @@ enum enum__Torappu_LevelData_Difficulty : int {
     NORMAL = 1,
     FOUR_STAR = 2,
     EASY = 4,
-    ALL = 7,
+    SIX_STAR = 8,
+    ALL = 15,
 }
 
 table clz_Torappu_RoguelikeGameStageData {

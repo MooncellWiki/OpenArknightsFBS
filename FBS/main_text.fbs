@@ -1,0 +1,11 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table dict__string__string {
+    key: string(key);
+    value: string;
+}
+
+table clz_Torappu_LanguageData {
+    strings: [dict__string__string]; 
+}
+
+root_type clz_Torappu_LanguageData;

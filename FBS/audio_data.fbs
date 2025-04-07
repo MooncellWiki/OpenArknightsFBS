@@ -22,6 +22,21 @@ table clz_Torappu_Audio_Middleware_Data_SoundFXBank_SoundFX {
     ignoreTimeScale: bool; 
 }
 
+enum enum__Torappu_Audio_MixerDesc_Category : int {
+    CUSTOM = 0,
+    FX_UI = 1,
+    FX_BATTLE = 2,
+    MUSIC = 3,
+    VOICE = 4,
+    MASTER = 5,
+}
+
+table clz_Torappu_Audio_MixerDesc {
+    category: enum__Torappu_Audio_MixerDesc_Category; 
+    customGroup: string; 
+    important: bool; 
+}
+
 table clz_Torappu_Audio_Middleware_Data_SoundFXBank {
     sounds: [clz_Torappu_Audio_Middleware_Data_SoundFXBank_SoundFX]; 
     maxSoundAllowed: int; 
@@ -29,6 +44,7 @@ table clz_Torappu_Audio_Middleware_Data_SoundFXBank {
     customMixerGroup: string; 
     loop: bool; 
     name: string; 
+    mixerDesc: clz_Torappu_Audio_MixerDesc; 
 }
 
 table clz_Torappu_Audio_Middleware_Data_SoundFXCtrlBank {

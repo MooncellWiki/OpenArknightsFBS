@@ -187,6 +187,7 @@ table clz_Torappu_GameDataConsts {
     charRotationPresetTrackTs: long; 
     uniequipArchiveSysTrackTs: long; 
     manufactPromptTime: int; 
+    mainGuideActivedStageId: string; 
     richTextStyles: [dict__string__string]; 
     charAssistRefreshTime: [clz_Torappu_GameDataConsts_CharAssistRefreshTimeState]; 
     normalRecruitLockedString: [string]; 

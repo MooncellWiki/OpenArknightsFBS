@@ -799,10 +799,20 @@ enum enum__Torappu_PlayerSideMask : ubyte {
     NONE = 3,
 }
 
+enum enum__Torappu_Battle_SideType : int {
+    NONE = 0,
+    ALLY = 1,
+    ENEMY = 2,
+    BOTH_ALLY_AND_ENEMY = 3,
+    NEUTRAL = 4,
+    ALL = 7,
+}
+
 table clz_Torappu_RuneData_Selector {
     professionMask: enum__Torappu_ProfessionCategory; 
     buildableMask: enum__Torappu_BuildableType; 
     playerSideMask: enum__Torappu_PlayerSideMask; 
+    sideType: enum__Torappu_Battle_SideType; 
     charIdFilter: [string]; 
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 
@@ -847,7 +857,8 @@ enum enum__Torappu_LevelData_Difficulty : int {
     NORMAL = 1,
     FOUR_STAR = 2,
     EASY = 4,
-    ALL = 7,
+    SIX_STAR = 8,
+    ALL = 15,
 }
 
 table clz_Torappu_LegacyInLevelRuneData {

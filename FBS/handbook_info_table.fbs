@@ -14,6 +14,8 @@ table clz_Torappu_HandBookStoryViewData_StoryText {
     storyText: string; 
     unLockType: enum__Torappu_DataUnlockType; 
     unLockParam: string; 
+    showType: enum__Torappu_DataUnlockType; 
+    showParam: string; 
     unLockString: string; 
     patchIdList: [string]; 
 }

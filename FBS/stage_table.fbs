@@ -18,7 +18,8 @@ enum enum__Torappu_LevelData_Difficulty : int {
     NORMAL = 1,
     FOUR_STAR = 2,
     EASY = 4,
-    ALL = 7,
+    SIX_STAR = 8,
+    ALL = 15,
 }
 
 enum enum__Torappu_StageData_PerformanceStageFlag : int {
@@ -250,6 +251,7 @@ table clz_Torappu_StageData {
     name: string; 
     description: string; 
     hardStagedId: string; 
+    sixStarStageId: string; 
     dangerLevel: string; 
     dangerPoint: float; 
     loadingPicId: string; 
@@ -292,6 +294,10 @@ table clz_Torappu_StageData {
     mainStageId: string; 
     extraCondition: [clz_Torappu_StageData_ExtraConditionDesc]; // __prts__check_required__S_extraCondition__
     extraInfo: [clz_Torappu_StageData_SpecialStoryInfo]; // __prts__check_required__S_extraInfo__
+    sixStarBaseDesc: string; 
+    sixStarDisplayRewardList: [clz_Torappu_ItemBundle]; 
+    advancedRuneIdList1: [string]; 
+    advancedRuneIdList2: [string]; 
 }
 
 table dict__string__clz_Torappu_StageData {
@@ -444,9 +450,15 @@ enum enum__Torappu_FogType : int {
     STAGE = 1,
 }
 
+enum enum__Torappu_StageButtonInFogRenderType : int {
+    HIDE = 0,
+    SHOW_WITH_FOG_SIX_STAR = 1,
+}
+
 table clz_Torappu_StageFogInfo {
     lockId: string; 
     fogType: enum__Torappu_FogType; 
+    stageButtonInFogRenderType: enum__Torappu_StageButtonInFogRenderType; 
     stageId: string; 
     lockName: string; 
     lockDesc: string; 
@@ -549,9 +561,9 @@ table dict__string__clz_Torappu_ApProtectZoneInfo {
     value: clz_Torappu_ApProtectZoneInfo;
 }
 
-table dict__string__string {
+table dict__string__list_string {
     key: string(key);
-    value: string;
+    value: [string];
 }
 
 enum enum__Torappu_OverrideGameMode : int {
@@ -566,6 +578,178 @@ table clz_Torappu_ActCustomStageData {
 table dict__string__clz_Torappu_ActCustomStageData {
     key: string(key);
     value: clz_Torappu_ActCustomStageData;
+}
+
+enum enum__Torappu_StorylineType : int {
+    CONTINUE = 0,
+    DISCRETE = 1,
+}
+
+enum enum__Torappu_StorylineLocationType : int {
+    STORY_SET = 0,
+    BEFORE = 1,
+    AFTER = 2,
+    MAINLINE_SPLIT = 3,
+}
+
+table clz_Torappu_StorylineMainlineSplitData {
+    iconId: string; 
+}
+
+table clz_Torappu_StorylineLocationData {
+    locationId: string; 
+    locationType: enum__Torappu_StorylineLocationType; 
+    sortId: int; 
+    startTime: long; 
+    presentStageId: string; 
+    unlockStageId: string; 
+    relevantStorySetId: string; 
+    mainlineSplitData: clz_Torappu_StorylineMainlineSplitData; 
+}
+
+table dict__string__clz_Torappu_StorylineLocationData {
+    key: string(key);
+    value: clz_Torappu_StorylineLocationData;
+}
+
+table clz_Torappu_StorylineData {
+    storylineId: string; 
+    storylineType: enum__Torappu_StorylineType; 
+    sortId: int; 
+    storylineName: string; 
+    storylineIconId: string; 
+    backgroundId: string; 
+    startTs: long; 
+    locations: [dict__string__clz_Torappu_StorylineLocationData]; 
+}
+
+table dict__string__clz_Torappu_StorylineData {
+    key: string(key);
+    value: clz_Torappu_StorylineData;
+}
+
+enum enum__Torappu_StorylineStorySetType : int {
+    MAINLINE = 0,
+    SS = 1,
+    COLLECT = 2,
+}
+
+table clz_Torappu_StorylineMainlineData {
+    zoneId: string; 
+    retroId: string; 
+    decoImageId: string; 
+}
+
+table clz_Torappu_StorylineSSData {
+    name: string; 
+    desc: string; 
+    backgroundId: string; 
+    tags: [string]; 
+    reopenActivityId: string; 
+    retroActivityId: string; 
+    isRecommended: bool; 
+    recommendHideStageId: string; 
+    overrideStageList: [string]; 
+}
+
+table clz_Torappu_StorylineCollectData {
+    name: string; 
+    desc: string; 
+    backgroundId: string; 
+}
+
+table clz_Torappu_StorylineStorySetData {
+    storySetId: string; 
+    storySetType: enum__Torappu_StorylineStorySetType; 
+    sortByYear: int; 
+    sortWithinYear: int; 
+    kvImageId: string; 
+    titleImageId: string; 
+    backgroundId: string; 
+    gameMusicId: string; 
+    coreRewardType: enum__Torappu_ItemType; 
+    coreRewardId: string; 
+    relevantActivityId: string; 
+    mainlineData: clz_Torappu_StorylineMainlineData; 
+    ssData: clz_Torappu_StorylineSSData; 
+    collectData: clz_Torappu_StorylineCollectData; 
+}
+
+table dict__string__clz_Torappu_StorylineStorySetData {
+    key: string(key);
+    value: clz_Torappu_StorylineStorySetData;
+}
+
+table clz_Torappu_StorylineTagData {
+    tagId: string; 
+    sortId: int; 
+    tagDesc: string; 
+    textColor: string; 
+    bkgColor: string; 
+}
+
+table dict__string__clz_Torappu_StorylineTagData {
+    key: string(key);
+    value: clz_Torappu_StorylineTagData;
+}
+
+table clz_Torappu_StorylineConstData {
+    recommendHideGuideGroupId: string; 
+    tutorialSelectStorylineId: string; 
+}
+
+table clz_Torappu_SixStarRuneData {
+    runeId: string; 
+    runeDesc: string; 
+    runeKey: string; 
+}
+
+table dict__string__clz_Torappu_SixStarRuneData {
+    key: string(key);
+    value: clz_Torappu_SixStarRuneData;
+}
+
+enum enum__Torappu_SixStarMilestoneRewardType : int {
+    UNLOCK_STAGE = 0,
+    REWARD = 1,
+}
+
+table clz_Torappu_SixStarMilestoneItemData {
+    id: string; 
+    sortId: int; 
+    nodePoint: int; 
+    rewardType: enum__Torappu_SixStarMilestoneRewardType; 
+    unlockStageFog: string; 
+    unlockStageId: string; 
+    unlockStageName: string; 
+    rewardList: [clz_Torappu_ItemBundle]; 
+}
+
+table clz_Torappu_SixStarMilestoneGroupData {
+    groupId: string; 
+    stageIdList: [string]; 
+    milestoneDataList: [clz_Torappu_SixStarMilestoneItemData]; 
+}
+
+table dict__string__clz_Torappu_SixStarMilestoneGroupData {
+    key: string(key);
+    value: clz_Torappu_SixStarMilestoneGroupData;
+}
+
+enum enum__Torappu_SixStarStageCompatibleDropType : int {
+    COMPLETE_ONLY = 0,
+}
+
+table clz_Torappu_SixStarLinkedStageCompatibleInfo {
+    stageId: string; 
+    apCost: int; 
+    apFailReturn: int; 
+    dropType: enum__Torappu_SixStarStageCompatibleDropType; 
+}
+
+table dict__string__clz_Torappu_SixStarLinkedStageCompatibleInfo {
+    key: string(key);
+    value: clz_Torappu_SixStarLinkedStageCompatibleInfo;
 }
 
 table clz_Torappu_StageTable {
@@ -586,9 +770,16 @@ table clz_Torappu_StageTable {
     specialBattleFinishStageData: [dict__string__clz_Torappu_SpecialBattleFinishStageData]; 
     recordRewardData: [dict__string__clz_Torappu_RecordRewardServerData]; 
     apProtectZoneInfo: [dict__string__clz_Torappu_ApProtectZoneInfo]; 
-    antiSpoilerDict: [dict__string__string]; 
+    antiSpoilerDict: [dict__string__list_string]; 
     actCustomStageDatas: [dict__string__clz_Torappu_ActCustomStageData]; 
     spNormalStageIdFor4StarList: [string]; 
+    storylines: [dict__string__clz_Torappu_StorylineData]; 
+    storylineStorySets: [dict__string__clz_Torappu_StorylineStorySetData]; 
+    storylineTags: [dict__string__clz_Torappu_StorylineTagData]; 
+    storylineConst: clz_Torappu_StorylineConstData; 
+    sixStarRuneData: [dict__string__clz_Torappu_SixStarRuneData]; 
+    sixStarMilestoneInfo: [dict__string__clz_Torappu_SixStarMilestoneGroupData]; 
+    sixStarCompatibleInfo: [dict__string__clz_Torappu_SixStarLinkedStageCompatibleInfo]; 
 }
 
 root_type clz_Torappu_StageTable;

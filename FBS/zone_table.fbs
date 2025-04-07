@@ -11,6 +11,8 @@ enum enum__Torappu_ZoneType : int {
     BRANCHLINE = 8,
     ROGUELIKE = 9,
     CLIMB_TOWER = 10,
+    MAINLINE_ACTIVITY = 11,
+    MAINLINE_RETRO = 12,
 }
 
 table clz_Torappu_ZoneData {
@@ -24,8 +26,12 @@ table clz_Torappu_ZoneData {
     zoneNameTitleEx: string; 
     zoneNameThird: string; 
     lockedText: string; 
+    antiSpoilerId: string; 
     canPreview: bool; 
     hasAdditionalPanel: bool; 
+    sixStarMilestoneGroupId: string; 
+    bindMainlineZoneId: string; 
+    bindMainlineRetroZoneId: string; 
 }
 
 table dict__string__clz_Torappu_ZoneData {
@@ -81,7 +87,7 @@ table clz_Torappu_MainlineZoneData {
     zoneIndex: int; 
     startStageId: string; 
     endStageId: string; 
-    mainlneBgName: string; 
+    gameMusicId: string; 
     recapId: string; 
     recapPreStageId: string; 
     buttonName: string; 
@@ -269,6 +275,7 @@ table clz_Torappu_ZoneTable {
     mainlineAdditionInfo: [dict__string__clz_Torappu_MainlineZoneData]; 
     zoneRecordGroupedData: [dict__string__clz_Torappu_ZoneRecordGroupData]; 
     zoneRecordRewardData: [dict__string__list_string]; 
+    mainlineZoneIdList: [string]; 
     zoneMetaData: clz_Torappu_ZoneMetaData; 
 }
 
