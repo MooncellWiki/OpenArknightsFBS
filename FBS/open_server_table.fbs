@@ -274,6 +274,7 @@ table clz_Torappu_ReturnV2Const {
     pointId: string; 
     returnPriceDesc: string; 
     dailySupplyDesc: string; 
+    oldGPId: string; 
 }
 
 table clz_Torappu_ReturnV2ItemData {

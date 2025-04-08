@@ -7,6 +7,7 @@ enum enum__Torappu_UniEquipTarget : int {
     TALENT = 3,
     TALENT_DATA_ONLY = 4,
     DISPLAY = 5,
+    OVERWRITE_BATTLE_DATA = 6,
 }
 
 enum enum__Torappu_EvolvePhase : int {
