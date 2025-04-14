@@ -292,8 +292,8 @@ table clz_Torappu_StageData {
     startButtonOverrideId: string; 
     isStagePatch: bool; 
     mainStageId: string; 
-    extraCondition: [clz_Torappu_StageData_ExtraConditionDesc]; // __prts__check_required__S_extraCondition__
-    extraInfo: [clz_Torappu_StageData_SpecialStoryInfo]; // __prts__check_required__S_extraInfo__
+    extraCondition: [clz_Torappu_StageData_ExtraConditionDesc]; 
+    extraInfo: [clz_Torappu_StageData_SpecialStoryInfo]; 
     sixStarBaseDesc: string; 
     sixStarDisplayRewardList: [clz_Torappu_ItemBundle]; 
     advancedRuneIdList1: [string]; 

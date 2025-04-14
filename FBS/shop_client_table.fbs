@@ -239,8 +239,8 @@ table clz_Torappu_ShopClientData {
     shopGPDataDict: [dict__string__clz_Torappu_ShopClientGPData]; 
     tabDisplayData: [dict__string__clz_Torappu_ShopGPTabDisplayData]; 
     shopMonthlySubGoodId: string; 
-    ls: [clz_Torappu_LMTGSShopSchedule]; // __prts__check_required__limitedShopSchedule__
-    os: [clz_Torappu_LMTGSShopOverlaySchedule]; // __prts__check_required__overlaySchedule__
+    ls: [clz_Torappu_LMTGSShopSchedule]; 
+    os: [clz_Torappu_LMTGSShopOverlaySchedule]; 
 }
 
 root_type clz_Torappu_ShopClientData;

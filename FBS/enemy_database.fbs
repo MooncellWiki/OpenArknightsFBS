@@ -1,22 +1,22 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 table clz_Torappu_Undefinable_1_System_String_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: string; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: string; 
 }
 
 table clz_Torappu_Undefinable_1_System_Int32_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: int; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: int; 
 }
 
 table clz_Torappu_Undefinable_1_System_Single_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: float; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: float; 
 }
 
 table clz_Torappu_Undefinable_1_System_Boolean_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: bool; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: bool; 
 }
 
 table clz_Torappu_EnemyDatabase_AttributesData {
@@ -57,8 +57,8 @@ enum enum__Torappu_SourceApplyWay : int {
 }
 
 table clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: enum__Torappu_SourceApplyWay; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: enum__Torappu_SourceApplyWay; 
 }
 
 enum enum__Torappu_MotionMode : int {
@@ -68,13 +68,13 @@ enum enum__Torappu_MotionMode : int {
 }
 
 table clz_Torappu_Undefinable_1_Torappu_MotionMode_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: enum__Torappu_MotionMode; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: enum__Torappu_MotionMode; 
 }
 
 table clz_Torappu_Undefinable_1_System_String___ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: [string]; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: [string]; 
 }
 
 enum enum__Torappu_EnemyLevelType : int {
@@ -85,8 +85,8 @@ enum enum__Torappu_EnemyLevelType : int {
 }
 
 table clz_Torappu_Undefinable_1_Torappu_EnemyLevelType_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: enum__Torappu_EnemyLevelType; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: enum__Torappu_EnemyLevelType; 
 }
 
 table clz_Torappu_Blackboard_DataPair {

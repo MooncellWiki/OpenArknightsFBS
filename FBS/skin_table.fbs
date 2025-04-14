@@ -41,15 +41,15 @@ table clz_Torappu_CharSkinData {
     skinId: string; 
     charId: string; 
     tokenSkinMap: [clz_Torappu_CharSkinData_TokenSkinInfo]; 
-    illustId: string; // __prts__check_required__m_illustId__
-    dynIllustId: string; // __prts__check_required__m_dynIllustId__
-    avatarId: string; // __prts__check_required__m_avatarId__
-    portraitId: string; // __prts__check_required__m_portraitId__
-    dynPortraitId: string; // __prts__check_required__m_dynPortraitId__
-    dynEntranceId: string; // __prts__check_required__m_dynEntranceId__
-    buildingId: string; // __prts__check_required__m_buildingId__
-    battleSkin: clz_Torappu_CharSkinData_BattleSkin; // __prts__check_required__m_battleSkin__
-    isBuySkin: bool; // __prts__check_required__m_isBuyAble__
+    illustId: string; 
+    dynIllustId: string; 
+    avatarId: string; 
+    portraitId: string; 
+    dynPortraitId: string; 
+    dynEntranceId: string; 
+    buildingId: string; 
+    battleSkin: clz_Torappu_CharSkinData_BattleSkin; 
+    isBuySkin: bool; 
     tmplId: string; 
     voiceId: string; 
     voiceType: enum__Torappu_SkinVoiceType; 

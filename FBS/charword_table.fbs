@@ -121,7 +121,7 @@ table dict__enum__Torappu_VoiceLangType__clz_Torappu_VoiceLangInfoData {
 table clz_Torappu_VoiceLangData {
     wordkeys: [string]; 
     charId: string; 
-    dict: [dict__enum__Torappu_VoiceLangType__clz_Torappu_VoiceLangInfoData]; // __prts__check_required__voiceLangInfoDataDict__
+    dict: [dict__enum__Torappu_VoiceLangType__clz_Torappu_VoiceLangInfoData]; 
 }
 
 table dict__string__clz_Torappu_VoiceLangData {

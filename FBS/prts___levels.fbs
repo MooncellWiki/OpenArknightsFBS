@@ -72,9 +72,9 @@ enum enum__Torappu_MotionMask : int {
 
 enum enum__Torappu_PlayerSideMask : ubyte {
     ALL = 0,
-    SIDE_A = 1,
-    SIDE_B = 2,
-    NONE = 3,
+    SIDE_A = 2,
+    SIDE_B = 4,
+    NONE = 255,
 }
 
 table clz_UnityEngine_Vector3 {
@@ -307,23 +307,23 @@ table clz_Torappu_LevelData_EnemyData {
 }
 
 table clz_Torappu_Undefinable_1_System_String_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: string; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: string; 
 }
 
 table clz_Torappu_Undefinable_1_System_Int32_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: int; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: int; 
 }
 
 table clz_Torappu_Undefinable_1_System_Single_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: float; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: float; 
 }
 
 table clz_Torappu_Undefinable_1_System_Boolean_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: bool; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: bool; 
 }
 
 table clz_Torappu_EnemyDatabase_AttributesData {
@@ -357,23 +357,23 @@ table clz_Torappu_EnemyDatabase_AttributesData {
 }
 
 table clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: enum__Torappu_SourceApplyWay; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: enum__Torappu_SourceApplyWay; 
 }
 
 table clz_Torappu_Undefinable_1_Torappu_MotionMode_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: enum__Torappu_MotionMode; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: enum__Torappu_MotionMode; 
 }
 
 table clz_Torappu_Undefinable_1_System_String___ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: [string]; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: [string]; 
 }
 
 table clz_Torappu_Undefinable_1_Torappu_EnemyLevelType_ {
-    m_defined: bool; // __prts__check_required__m_defined__
-    m_value: enum__Torappu_EnemyLevelType; // __prts__check_required__m_value__
+    m_defined: bool; 
+    m_value: enum__Torappu_EnemyLevelType; 
 }
 
 table clz_Torappu_EnemyDatabase_EnemyData {
@@ -501,7 +501,7 @@ table clz_Torappu_CharacterInst_Metadata {
     characterKey: string; 
     level: int; 
     phase: enum__Torappu_EvolvePhase; 
-    favorPoint: int; // __prts__check_required__favorBattlePhase__
+    favorPoint: int; 
     potentialRank: int; 
 }
 
@@ -560,7 +560,7 @@ table clz_Torappu_LevelData {
     mapData: clz_Torappu_MapData; 
     tilesDisallowToLocate: [clz_Torappu_GridPosition]; 
     runes: [clz_Torappu_LegacyInLevelRuneData]; 
-    optionalRunes: [dict__string__list_clz_Torappu_LegacyInLevelRuneData]; // __prts__check_required__optionalRunes__
+    optionalRunes: [dict__string__list_clz_Torappu_LegacyInLevelRuneData]; 
     globalBuffs: [clz_Torappu_LevelData_GlobalBuffData]; 
     routes: [clz_Torappu_RouteData]; 
     extraRoutes: [clz_Torappu_RouteData]; 

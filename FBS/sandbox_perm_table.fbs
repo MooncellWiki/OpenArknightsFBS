@@ -794,9 +794,9 @@ enum enum__Torappu_BuildableType : int {
 
 enum enum__Torappu_PlayerSideMask : ubyte {
     ALL = 0,
-    SIDE_A = 1,
-    SIDE_B = 2,
-    NONE = 3,
+    SIDE_A = 2,
+    SIDE_B = 4,
+    NONE = 255,
 }
 
 enum enum__Torappu_Battle_SideType : int {
@@ -1097,9 +1097,9 @@ enum enum__Torappu_ProfessionID : int {
     SUPPORT = 4,
     CASTER = 5,
     SPECIAL = 6,
+    PIONEER = 9,
     TOKEN = 7,
     TRAP = 8,
-    PIONEER = 9,
 }
 
 table clz_Torappu_SandboxV2ExpeditionData {
@@ -1110,7 +1110,7 @@ table clz_Torappu_SandboxV2ExpeditionData {
     costDrink: int; 
     charCnt: int; 
     profession: enum__Torappu_ProfessionCategory; 
-    professions: [enum__Torappu_ProfessionID]; // __prts__check_required__professions__
+    professions: [enum__Torappu_ProfessionID]; 
     minEliteRank: int; 
     duration: int; 
 }
@@ -1548,7 +1548,7 @@ table clz_Torappu_SandboxV2TutorialData {
 table clz_Torappu_SandboxV2RacerBasicInfo {
     racerId: string; 
     sortId: int; 
-    racerName: string; // __prts__check_required__racerTypeName__
+    racerName: string; 
     itemId: string; 
     attributeMaxValue: [int]; 
 }
@@ -1789,7 +1789,7 @@ table dict__string__clz_Torappu_SandboxV2Data {
 }
 
 table clz_Torappu_SandboxPermDetailData {
-    SANDBOX_V2: [dict__string__clz_Torappu_SandboxV2Data]; // __prts__check_required__sandboxV2TemplateData__
+    SANDBOX_V2: [dict__string__clz_Torappu_SandboxV2Data]; 
 }
 
 table clz_Torappu_SandboxPermItemData {

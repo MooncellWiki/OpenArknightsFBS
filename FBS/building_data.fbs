@@ -18,8 +18,8 @@ enum enum__Torappu_BuildingData_RoomType : int {
     TRADING = 512,
     WORKSHOP = 1024,
     TRAINING = 2048,
-    FUNCTIONAL = 3710,
     PRIVATE = 4096,
+    FUNCTIONAL = 3710,
     ALL = 8191,
 }
 

@@ -858,9 +858,9 @@ enum enum__Torappu_ProfessionID : int {
     SUPPORT = 4,
     CASTER = 5,
     SPECIAL = 6,
+    PIONEER = 9,
     TOKEN = 7,
     TRAP = 8,
-    PIONEER = 9,
 }
 
 enum enum__Torappu_RarityRank : int {
@@ -877,7 +877,7 @@ table clz_Torappu_RoguelikeGameRecruitTicketData {
     id: string; 
     profession: enum__Torappu_ProfessionCategory; 
     rarity: enum__Torappu_RarityRankMask; 
-    professionList: [enum__Torappu_ProfessionID]; // __prts__check_required__professionList__
+    professionList: [enum__Torappu_ProfessionID]; 
     rarityList: [enum__Torappu_RarityRank]; 
     extraEliteNum: int; 
     extraFreeRarity: [enum__Torappu_RarityRank]; 
@@ -893,7 +893,7 @@ table clz_Torappu_RoguelikeGameUpgradeTicketData {
     id: string; 
     profession: enum__Torappu_ProfessionCategory; 
     rarity: enum__Torappu_RarityRankMask; 
-    professionList: [enum__Torappu_ProfessionID]; // __prts__check_required__professionList__
+    professionList: [enum__Torappu_ProfessionID]; 
     rarityList: [enum__Torappu_RarityRank]; 
 }
 
@@ -954,7 +954,7 @@ table clz_Torappu_RoguelikeGameRelicCheckParam {
 
 table clz_Torappu_RoguelikeGameRelicParamData {
     id: string; 
-    checkCharBoxTypes: [enum__Torappu_RoguelikeGameRelicCheckType]; // __prts__check_required__checkCharBoxTypes__
+    checkCharBoxTypes: [enum__Torappu_RoguelikeGameRelicCheckType]; 
     checkCharBoxParams: [clz_Torappu_RoguelikeGameRelicCheckParam]; 
 }
 
@@ -1067,7 +1067,6 @@ enum enum__Torappu_RoguelikeEventType : int {
     BATTLE_NORMAL = 1,
     BATTLE_ELITE = 2,
     BATTLE_BOSS = 4,
-    BATTLES = 7,
     SHOP = 8,
     REST = 16,
     INCIDENT = 32,
@@ -1084,6 +1083,7 @@ enum enum__Torappu_RoguelikeEventType : int {
     STORY_HIDDEN = 65536,
     ALCHEMY = 131072,
     DUEL = 262144,
+    BATTLES = 7,
     CHOICES = 388848,
     EVENTS = 392952,
     ALL = 392959,
@@ -1619,7 +1619,7 @@ table dict__string__clz_Torappu_RoguelikeActivitySeedModeData {
 }
 
 table clz_Torappu_RoguelikeActivityTable {
-    SEED_MODE: [dict__string__clz_Torappu_RoguelikeActivitySeedModeData]; // __prts__check_required__seedModeDict__
+    SEED_MODE: [dict__string__clz_Torappu_RoguelikeActivitySeedModeData]; 
 }
 
 table clz_Torappu_RoguelikeActivityData {
@@ -2029,10 +2029,10 @@ table dict__string__clz_Torappu_RoguelikeFragmentBuffData {
 }
 
 enum enum__Torappu_AlchemyPoolRarityType : int {
+    NONE = -1,
     NORMAL = 0,
     RARE = 1,
     SUPER_RARE = 2,
-    NONE = -1,
 }
 
 table clz_Torappu_RoguelikeAlchemyData {
@@ -2607,10 +2607,10 @@ table clz_Torappu_RL04CustomizeData {
 }
 
 table clz_Torappu_RoguelikeTopicCustomizeData {
-    rogue_1: clz_Torappu_RL01CustomizeData; // __prts__check_required__rl01__
-    rogue_2: clz_Torappu_RL02CustomizeData; // __prts__check_required__rl02__
-    rogue_3: clz_Torappu_RL03CustomizeData; // __prts__check_required__rl03__
-    rogue_4: clz_Torappu_RL04CustomizeData; // __prts__check_required__rl04__
+    rogue_1: clz_Torappu_RL01CustomizeData; 
+    rogue_2: clz_Torappu_RL02CustomizeData; 
+    rogue_3: clz_Torappu_RL03CustomizeData; 
+    rogue_4: clz_Torappu_RL04CustomizeData; 
 }
 
 table clz_Torappu_RoguelikeTopicTable {

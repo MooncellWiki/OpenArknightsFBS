@@ -1,0 +1,22 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table clz_Torappu_Resource_ResourceManifest_BundleMeta {
+    name: string; 
+    props: int; 
+    sccIndex: int; 
+    allDependencies: [int]; 
+}
+
+table clz_Torappu_Resource_ResourceManifest_AssetToBundleMeta {
+    assetName: string; 
+    bundleIndex: int; 
+    name: string; 
+    path: string; 
+}
+
+table clz_Torappu_Resource_ResourceManifest {
+    rawCount: int; 
+    bundles: [clz_Torappu_Resource_ResourceManifest_BundleMeta]; 
+    assetToBundleList: [clz_Torappu_Resource_ResourceManifest_AssetToBundleMeta]; 
+}
+
+root_type clz_Torappu_Resource_ResourceManifest;

@@ -221,7 +221,7 @@ table clz_Torappu_GameDataConsts {
     monthlySubWarningTime: long; 
     UnlimitSkinOutOfTime: long; 
     replicateShopStartTime: long; 
-    TSO: long; // __prts__check_required__operatorRecordsStartTime__
+    TSO: long; 
     isDynIllustEnabled: bool; 
     isDynIllustStartEnabled: bool; 
     isClassicQCShopEnabled: bool; 
