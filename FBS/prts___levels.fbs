@@ -245,6 +245,7 @@ table clz_Torappu_AttributesData {
     levitateImmune: bool; 
     disarmedCombatImmune: bool; 
     fearedImmune: bool; 
+    palsyImmune: bool; 
 }
 
 enum enum__Torappu_SourceApplyWay : int {
@@ -354,6 +355,7 @@ table clz_Torappu_EnemyDatabase_AttributesData {
     levitateImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     disarmedCombatImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     fearedImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    palsyImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
 }
 
 table clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_ {
@@ -416,7 +418,8 @@ enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_ActionType : int {
     WITHDRAW_PREDEFINED = 10,
     DIALOG = 11,
     SHOW_ALL_HIDDEN_CARDS = 12,
-    E_NUM = 13,
+    EMPTY = 13,
+    E_NUM = 14,
 }
 
 enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RandomType : int {
@@ -511,6 +514,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedCharacter {
     hidden: bool; 
     alias: string; 
     uniEquipIds: [clz_Torappu_CharacterData_UniqueEquipPair]; 
+    showSpIllust: bool; 
     inst: clz_Torappu_CharacterInst_Metadata; 
     skillIndex: int; 
     mainSkillLvl: int; 
@@ -523,6 +527,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedCard {
     hidden: bool; 
     alias: string; 
     uniEquipIds: [clz_Torappu_CharacterData_UniqueEquipPair]; 
+    showSpIllust: bool; 
     inst: clz_Torappu_CharacterInst_Metadata; 
     skillIndex: int; 
     mainSkillLvl: int; 
@@ -536,6 +541,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedTokenCard {
     hidden: bool; 
     alias: string; 
     uniEquipIds: [clz_Torappu_CharacterData_UniqueEquipPair]; 
+    showSpIllust: bool; 
     inst: clz_Torappu_CharacterInst_Metadata; 
     skillIndex: int; 
     mainSkillLvl: int; 

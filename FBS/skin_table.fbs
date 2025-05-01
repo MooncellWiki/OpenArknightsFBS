@@ -42,7 +42,9 @@ table clz_Torappu_CharSkinData {
     charId: string; 
     tokenSkinMap: [clz_Torappu_CharSkinData_TokenSkinInfo]; 
     illustId: string; 
+    spIllustId: string; 
     dynIllustId: string; 
+    spDynIllustId: string; 
     avatarId: string; 
     portraitId: string; 
     dynPortraitId: string; 
@@ -113,12 +115,26 @@ table clz_Torappu_SpecialSkinInfo {
     endTime: long; 
 }
 
+table clz_Torappu_SpDynIllustInfo {
+    skinId: string; 
+    spDynIllustId: string; 
+    spDynIllustSkinTag: string; 
+    spIllustId: string; 
+}
+
+table dict__string__clz_Torappu_SpDynIllustInfo {
+    key: string(key);
+    value: clz_Torappu_SpDynIllustInfo;
+}
+
 table clz_Torappu_SkinTable {
     charSkins: [dict__string__clz_Torappu_CharSkinData]; 
     buildinEvolveMap: [dict__string__list_dict__int__string]; 
     buildinPatchMap: [dict__string__list_dict__string__string]; 
     brandList: [dict__string__clz_Torappu_CharSkinBrandInfo]; 
     specialSkinInfoList: [clz_Torappu_SpecialSkinInfo]; 
+    spDynSkins: [dict__string__clz_Torappu_SpDynIllustInfo]; 
+    spDynIllustSkinTagsMap: [dict__string__string]; 
 }
 
 root_type clz_Torappu_SkinTable;

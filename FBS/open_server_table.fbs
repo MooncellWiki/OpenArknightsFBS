@@ -413,6 +413,30 @@ table clz_Torappu_NewbieCheckInPackageData {
     checkInRewardDict: [dict__int__list_clz_Torappu_NewbieCheckInPackageRewardData]; 
 }
 
+table clz_Torappu_LongTermCheckInGroupData {
+    groupId: string; 
+    sortId: int; 
+    startTs: long; 
+    level: int; 
+    days: int; 
+    bkgImgId: string; 
+    titleImgId: string; 
+    tipText: string; 
+    bottomText: string; 
+    rewardList: [clz_Torappu_ItemBundle]; 
+}
+
+table clz_Torappu_LongTermCheckInConstData {
+    startTs: long; 
+    detailTitle: string; 
+    detailDesc: string; 
+}
+
+table clz_Torappu_LongTermCheckInData {
+    groupList: [clz_Torappu_LongTermCheckInGroupData]; 
+    constData: clz_Torappu_LongTermCheckInConstData; 
+}
+
 table clz_Torappu_OpenServerSchedule {
     schedule: [clz_Torappu_OpenServerScheduleItem]; 
     dataMap: [dict__string__clz_Torappu_OpenServerData]; 
@@ -420,6 +444,7 @@ table clz_Torappu_OpenServerSchedule {
     playerReturn: clz_Torappu_ReturnData; 
     playerReturnV2: clz_Torappu_ReturnV2Data; 
     newbieCheckInPackageList: [clz_Torappu_NewbieCheckInPackageData]; 
+    longTermCheckInData: clz_Torappu_LongTermCheckInData; 
 }
 
 root_type clz_Torappu_OpenServerSchedule;

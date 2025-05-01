@@ -288,7 +288,7 @@ table clz_Torappu_StageData {
     canUseTrapTool: bool; 
     canUseBattlePerformance: bool; 
     canUseFirework: bool; 
-    canContinuousBattle: bool; 
+    canMultipleBattle: bool; 
     startButtonOverrideId: string; 
     isStagePatch: bool; 
     mainStageId: string; 

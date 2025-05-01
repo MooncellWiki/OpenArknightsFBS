@@ -9,6 +9,12 @@ table dict__string__clz_Torappu_CharPatchData_PatchInfo {
     value: clz_Torappu_CharPatchData_PatchInfo;
 }
 
+table clz_Torappu_CharacterData_PowerData {
+    nationId: string; 
+    groupId: string; 
+    teamId: string; 
+}
+
 enum enum__Torappu_BuildableType : int {
     NONE = 0,
     MELEE = 1,
@@ -97,6 +103,7 @@ table clz_Torappu_AttributesData {
     levitateImmune: bool; 
     disarmedCombatImmune: bool; 
     fearedImmune: bool; 
+    palsyImmune: bool; 
 }
 
 table clz_Torappu_KeyFrames_2_KeyFrame_Torappu_AttributesData_Torappu_AttributesData_ {
@@ -284,7 +291,11 @@ enum enum__Torappu_AbnormalFlag : int {
     SKILL_ACTIVABLE_IN_ABNORMAL = 34,
     MOTION_TARGET_FREE = 35,
     FORCE_LEVITATE = 36,
-    E_NUM = 37,
+    BUFF_ADD_CAN_BE_CANCELED_IF_DEFENSE = 37,
+    DEFENSE_BUFF_ADD_IF_CANCELABLE_BUFF = 38,
+    PALSY = 39,
+    PALSYING = 40,
+    E_NUM = 41,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
@@ -392,6 +403,7 @@ table clz_Torappu_AttributesDeltaData {
     levitateImmune: bool; 
     disarmedCombatImmune: bool; 
     fearedImmune: bool; 
+    palsyImmune: bool; 
 }
 
 table clz_Torappu_KeyFrames_2_KeyFrame_Torappu_AttributesDeltaData_Torappu_AttributesData_ {
@@ -407,6 +419,7 @@ table clz_Torappu_CharacterData_SkillLevelCost {
 table clz_Torappu_CharacterData {
     name: string; 
     description: string; 
+    sortIndex: int; 
     canUseGeneralPotentialItem: bool; 
     canUseActivityPotentialItem: bool; 
     potentialItemId: string; 
@@ -415,6 +428,8 @@ table clz_Torappu_CharacterData {
     nationId: string; 
     groupId: string; 
     teamId: string; 
+    mainPower: clz_Torappu_CharacterData_PowerData; 
+    subPower: [clz_Torappu_CharacterData_PowerData]; 
     displayNumber: string; 
     appellation: string; 
     position: enum__Torappu_BuildableType; 
