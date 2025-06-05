@@ -40,6 +40,7 @@ table clz_Torappu_EnemyDatabase_AttributesData {
     epResistance: clz_Torappu_Undefinable_1_System_Single_; 
     damageHitratePhysical: clz_Torappu_Undefinable_1_System_Single_; 
     damageHitrateMagical: clz_Torappu_Undefinable_1_System_Single_; 
+    epBreakRecoverSpeed: clz_Torappu_Undefinable_1_System_Single_; 
     stunImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     silenceImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     sleepImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
@@ -48,6 +49,7 @@ table clz_Torappu_EnemyDatabase_AttributesData {
     disarmedCombatImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     fearedImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     palsyImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    attractImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
 }
 
 enum enum__Torappu_SourceApplyWay : int {

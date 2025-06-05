@@ -395,6 +395,7 @@ table clz_Torappu_StageData {
     canBattleReplay: bool; 
     apCost: int; 
     apFailReturn: int; 
+    maxSlot: int; 
     etItemId: string; 
     etCost: int; 
     etFailReturn: int; 

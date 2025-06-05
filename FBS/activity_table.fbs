@@ -1016,6 +1016,7 @@ table clz_Torappu_ActivityCollectionData_Consts {
     jumpBtnParam1: string; 
     jumpBtnParam2: string; 
     dailyTaskStartTime: long; 
+    isSimpleMode: bool; 
 }
 
 table clz_Torappu_ActivityCollectionData {

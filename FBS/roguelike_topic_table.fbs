@@ -779,6 +779,8 @@ table clz_Torappu_RoguelikeGameStageData {
     vutresProb: [double]; 
     boxProb: [double]; 
     specialNodeId: string; 
+    redCapsulePool: string; 
+    redCapsuleProb: float; 
 }
 
 table dict__string__clz_Torappu_RoguelikeGameStageData {
@@ -1130,6 +1132,19 @@ table dict__string__clz_Torappu_RoguelikeGameVariationData {
     value: clz_Torappu_RoguelikeGameVariationData;
 }
 
+table clz_Torappu_RoguelikeGameFusionData {
+    id: string; 
+    type: enum__Torappu_RoguelikeGameVariationType; 
+    name: string; 
+    functionDesc: string; 
+    desc: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeGameFusionData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeGameFusionData;
+}
+
 enum enum__Torappu_RoguelikeGameCharBuffType : int {
     NONE = 0,
     MUTATION = 1,
@@ -1261,6 +1276,8 @@ table clz_Torappu_RoguelikeGameConst {
     portalZones: [string]; 
     specialFailZoneId: string; 
     exploreExpOnKill: string; 
+    fusionName: string; 
+    fusionNotifyToast: string; 
 }
 
 table clz_Torappu_RoguelikeGameShopDialogGroupData {
@@ -1407,6 +1424,7 @@ enum enum__Torappu_RoguelikeGameItemSubType : int {
     TOTEM_LOWER = 8,
     SECRET = 16,
     SINGLE_RAND_FREE = 32,
+    RED_CAPSULE = 64,
 }
 
 enum enum__Torappu_RoguelikeGameItemRarity : int {
@@ -1657,6 +1675,7 @@ table clz_Torappu_RoguelikeTopicDetail {
     nodeTypeData: [dict__enum__Torappu_RoguelikeEventType__clz_Torappu_RoguelikeGameNodeTypeData]; 
     subTypeData: [clz_Torappu_RoguelikeGameNodeSubTypeData]; 
     variationData: [dict__string__clz_Torappu_RoguelikeGameVariationData]; 
+    fusionData: [dict__string__clz_Torappu_RoguelikeGameFusionData]; 
     charBuffData: [dict__string__clz_Torappu_RoguelikeGameCharBuffData]; 
     squadBuffData: [dict__string__clz_Torappu_RoguelikeGameSquadBuffData]; 
     taskData: [dict__string__clz_Torappu_RoguelikeTaskData]; 
@@ -2206,6 +2225,7 @@ table dict__string__clz_Torappu_RoguelikeTopicDevToken {
 
 table clz_Torappu_RL01EndingText {
     summaryVariation: string; 
+    summaryFusion: string; 
     summaryDefeatBoss: string; 
     summaryAccidentMeet: string; 
     summaryCapsule: string; 
@@ -2240,10 +2260,17 @@ table clz_Torappu_RL01EndingText {
     summaryFailEnd: string; 
 }
 
+table clz_Torappu_RL01DifficultyExt {
+    modeDifficulty: enum__Torappu_RoguelikeTopicMode; 
+    grade: int; 
+    buffDesc: [string]; 
+}
+
 table clz_Torappu_RL01CustomizeData {
     developments: [dict__string__clz_Torappu_RoguelikeTopicDev]; 
     developmentTokens: [dict__string__clz_Torappu_RoguelikeTopicDevToken]; 
     endingText: clz_Torappu_RL01EndingText; 
+    difficulties: [clz_Torappu_RL01DifficultyExt]; 
 }
 
 enum enum__Torappu_RL02DevelopmentNodeType : int {

@@ -104,6 +104,7 @@ enum enum__Torappu_VoiceLangType : int {
     ITA = 7,
     GER = 8,
     RUS = 9,
+    FRE = 10,
 }
 
 table clz_Torappu_VoiceLangInfoData {

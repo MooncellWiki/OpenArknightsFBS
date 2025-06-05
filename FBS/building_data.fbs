@@ -422,6 +422,9 @@ table clz_Torappu_BuildingData_BuildingBuff {
     buffCategory: enum__Torappu_BuildingData_BuffCategory; 
     roomType: enum__Torappu_BuildingData_RoomType; 
     description: string; 
+    efficiency: int; 
+    targetGroupSortId: int; 
+    targets: [string]; 
 }
 
 table dict__string__clz_Torappu_BuildingData_BuildingBuff {
@@ -909,6 +912,27 @@ table clz_Torappu_BuildingData_MusicData {
     musicDatas: [dict__string__clz_Torappu_BuildingData_MusicSingleData]; 
 }
 
+table clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData_buffGroupInfo {
+    targets: [string]; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData_buffGroupInfo {
+    key: string(key);
+    value: clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData_buffGroupInfo;
+}
+
+table clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData {
+    hasEfficiencySort: bool; 
+    defaultGroupSortId: int; 
+    efficiencyTargetDict: [dict__string__clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData_buffGroupInfo]; 
+}
+
+table dict__string__clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData {
+    key: string(key);
+    value: clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData;
+}
+
 table clz_Torappu_BuildingData {
     controlSlotId: string; 
     meetingSlotId: string; 
@@ -989,6 +1013,8 @@ table clz_Torappu_BuildingData {
     stationManageFilterInfos: [dict__int__clz_Torappu_BuildingData_StationManageFilterInfo]; 
     musicData: clz_Torappu_BuildingData_MusicData; 
     emojis: [string]; 
+    categoryNames: [dict__string__string]; 
+    buffSortData: [dict__string__clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData]; 
 }
 
 root_type clz_Torappu_BuildingData;

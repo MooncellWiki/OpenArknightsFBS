@@ -127,6 +127,7 @@ enum enum__Torappu_VoiceLangType : int {
     ITA = 7,
     GER = 8,
     RUS = 9,
+    FRE = 10,
 }
 
 table dict__enum__Torappu_VoiceLangType__string {
