@@ -1,0 +1,135 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
+table clz_Torappu_CrisisV2SeasonInfo {
+    seasonId: string; 
+    name: string; 
+    startTs: long; 
+    endTs: long; 
+    medalGroupId: string; 
+    medalId: string; 
+    themeColor1: string; 
+    themeColor2: string; 
+    themeColor3: string; 
+    seasonBgm: string; 
+    seasonBgmChallenge: string; 
+    crisisV2SeasonCode: string; 
+}
+
+table dict__string__clz_Torappu_CrisisV2SeasonInfo {
+    key: string(key);
+    value: clz_Torappu_CrisisV2SeasonInfo;
+}
+
+enum enum__Torappu_CrisisV2AppraiseType : int {
+    RANK_D = 0,
+    RANK_C = 1,
+    RANK_B = 2,
+    RANK_A = 3,
+    RANK_S = 4,
+    RANK_SS = 5,
+    RANK_SSS = 6,
+}
+
+table clz_Torappu_CrisisV2AppraiseWrap {
+    appraiseType: enum__Torappu_CrisisV2AppraiseType; 
+}
+
+table dict__int__clz_Torappu_CrisisV2AppraiseWrap {
+    key: int(key);
+    value: clz_Torappu_CrisisV2AppraiseWrap;
+}
+
+table clz_Torappu_CrisisV2ConstData {
+    sysStartTime: long; 
+    blackScoreThreshold: int; 
+    redScoreThreshold: int; 
+    detailBkgRedThreshold: int; 
+    voiceGrade: int; 
+    seasonButtonUnlockInfo: long; 
+    shopCoinId: string; 
+    hardBgmSwitchScore: int; 
+    stageId: string; 
+    hideTodoWhenStageFinish: bool; 
+}
+
+enum enum__Torappu_ProfessionCategory : int {
+    NONE = 0,
+    WARRIOR = 1,
+    SNIPER = 2,
+    TANK = 4,
+    MEDIC = 8,
+    SUPPORT = 16,
+    CASTER = 32,
+    SPECIAL = 64,
+    TOKEN = 128,
+    TRAP = 256,
+    PIONEER = 512,
+}
+
+enum enum__Torappu_BuildableType : int {
+    NONE = 0,
+    MELEE = 1,
+    RANGED = 2,
+    ALL = 3,
+}
+
+enum enum__Torappu_PlayerSideMask : ubyte {
+    ALL = 0,
+    SIDE_A = 2,
+    SIDE_B = 4,
+    NONE = 255,
+}
+
+enum enum__Torappu_Battle_SideType : int {
+    NONE = 0,
+    ALLY = 1,
+    ENEMY = 2,
+    BOTH_ALLY_AND_ENEMY = 3,
+    NEUTRAL = 4,
+    ALL = 7,
+}
+
+table clz_Torappu_RuneData_Selector {
+    professionMask: enum__Torappu_ProfessionCategory; 
+    buildableMask: enum__Torappu_BuildableType; 
+    playerSideMask: enum__Torappu_PlayerSideMask; 
+    sideType: enum__Torappu_Battle_SideType; 
+    charIdFilter: [string]; 
+    enemyIdFilter: [string]; 
+    enemyIdExcludeFilter: [string]; 
+    enemyLevelTypeFilter: [string]; 
+    enemyActionHiddenGroupFilter: [string]; 
+    skillIdFilter: [string]; 
+    tileKeyFilter: [string]; 
+    groupTagFilter: [string]; 
+    filterTagFilter: [string]; 
+    filterTagExcludeFilter: [string]; 
+    subProfessionExcludeFilter: [string]; 
+    mapTagFilter: [string]; 
+}
+
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
+}
+
+table clz_Torappu_RuneData {
+    key: string; 
+    selector: clz_Torappu_RuneData_Selector; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table dict__string__list_clz_Torappu_RuneData {
+    key: string(key);
+    value: [clz_Torappu_RuneData];
+}
+
+table clz_Torappu_CrisisV2SharedData {
+    seasonInfoDataMap: [dict__string__clz_Torappu_CrisisV2SeasonInfo]; 
+    scoreLevelToAppraiseDataMap: [dict__int__clz_Torappu_CrisisV2AppraiseWrap]; 
+    constData: clz_Torappu_CrisisV2ConstData; 
+    battleCommentRuneData: [dict__string__list_clz_Torappu_RuneData]; 
+}
+
+root_type clz_Torappu_CrisisV2SharedData;

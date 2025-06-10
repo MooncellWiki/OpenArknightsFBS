@@ -19,8 +19,9 @@ enum enum__Torappu_BuildingData_RoomType : int {
     TRADING = 512,
     WORKSHOP = 1024,
     TRAINING = 2048,
+    PRIVATE = 4096,
     FUNCTIONAL = 3710,
-    ALL = 4095,
+    ALL = 8191,
 }
 
 table clz_Torappu_BuildingData_RoomUnlockCond_CondItem {
@@ -52,7 +53,10 @@ enum enum__Torappu_BuildingData_RoomCategory : int {
     ELEVATOR = 8,
     CORRIDOR = 16,
     SPECIAL = 32,
-    ALL = 63,
+    CUSTOM_P = 64,
+    ELEVATOR_P = 128,
+    CORRIDOR_P = 256,
+    ALL = 511,
 }
 
 table clz_Torappu_GridPosition {
@@ -143,8 +147,9 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EXCLUSIVE_TKT_GACHA = 82,
-    EXCLUSIVE_TKT_GACHA_10 = 83,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
 }
 
 table clz_Torappu_ItemBundle {
@@ -312,6 +317,14 @@ table clz_Torappu_BuildingData_RoomBean_1_Torappu_BuildingData_DormPhase_ {
     phases: [clz_Torappu_BuildingData_DormPhase]; 
 }
 
+table clz_Torappu_BuildingData_PrivatePhase {
+    decorationLimit: int; 
+}
+
+table clz_Torappu_BuildingData_RoomBean_1_Torappu_BuildingData_PrivatePhase_ {
+    phases: [clz_Torappu_BuildingData_PrivatePhase]; 
+}
+
 table clz_Torappu_BuildingData_MeetingPhase {
     friendSlotInc: int; 
     maxVisitorNum: int; 
@@ -426,6 +439,7 @@ enum enum__Torappu_BuildingData_FurnitureInteract : int {
     NONE = 0,
     ANIMATOR = 1,
     MUSIC = 2,
+    FUNCTION = 3,
 }
 
 enum enum__Torappu_BuildingData_FurnitureType : int {
@@ -441,6 +455,8 @@ enum enum__Torappu_BuildingData_FurnitureType : int {
     WALLLAMP = 9,
     CEILING = 10,
     CEILINGLAMP = 11,
+    FUNCTION = 12,
+    INTERACT = 13,
 }
 
 enum enum__Torappu_BuildingData_FurnitureSubType : int {
@@ -483,6 +499,8 @@ enum enum__Torappu_BuildingData_FurnitureSubType : int {
     CONTRACT_2 = 36,
     LIGHT = 37,
     ORTHER_C = 38,
+    VISITOR = 39,
+    MUSIC = 40,
 }
 
 enum enum__Torappu_BuildingData_FurnitureLocation : int {
@@ -536,6 +554,7 @@ table clz_Torappu_BuildingData_CustomData_FurnitureData {
     processedByProductGroup: [clz_Torappu_BuildingData_WorkshopExtraWeightItem]; 
     canBeDestroy: bool; 
     isOnly: int; 
+    enableRoomType: int; 
     quantity: int; 
 }
 
@@ -553,6 +572,7 @@ table clz_Torappu_BuildingData_CustomData_ThemeQuickSetupItem {
 
 table clz_Torappu_BuildingData_CustomData_ThemeData {
     id: string; 
+    enableRoomType: int; 
     sortId: int; 
     name: string; 
     themeType: string; 
@@ -585,6 +605,7 @@ table dict__string__clz_Torappu_BuildingData_CustomData_GroupData {
 table clz_Torappu_BuildingData_CustomData_FurnitureTypeData {
     type: enum__Torappu_BuildingData_FurnitureType; 
     name: string; 
+    enableRoomType: int; 
 }
 
 table dict__enum__Torappu_BuildingData_FurnitureType__clz_Torappu_BuildingData_CustomData_FurnitureTypeData {
@@ -597,6 +618,8 @@ table clz_Torappu_BuildingData_CustomData_FurnitureSubTypeData {
     name: string; 
     type: enum__Torappu_BuildingData_FurnitureType; 
     sortId: int; 
+    countLimit: int; 
+    enableRoomType: int; 
 }
 
 table dict__enum__Torappu_BuildingData_FurnitureSubType__clz_Torappu_BuildingData_CustomData_FurnitureSubTypeData {
@@ -625,14 +648,18 @@ table dict__string__list_clz_Torappu_BuildingData_CustomData_InteractItem {
     value: [clz_Torappu_BuildingData_CustomData_InteractItem];
 }
 
-enum enum__Torappu_BuildingData_DiyUIType : int {
-    MENU = 0,
+enum enum__Torappu_BuildingData_DiySortType : int {
+    NONE = 0,
     THEME = 1,
     FURNITURE = 2,
     FURNITURE_IN_THEME = 3,
     RECENT_THEME = 4,
     RECENT_FURNITURE = 5,
-    PRESET = 6,
+    MEETING_THEME = 6,
+    MEETING_FURNITURE = 7,
+    MEETING_FURNITURE_IN_THEME = 8,
+    MEETING_RECENT_THEME = 9,
+    MEETING_RECENT_FURNITURE = 10,
 }
 
 enum enum__Torappu_BuildingData_DiyUISortOrder : int {
@@ -648,7 +675,7 @@ table clz_Torappu_BuildingData_CustomData_DiyUISortTemplateListData_DiyUISortTem
 }
 
 table clz_Torappu_BuildingData_CustomData_DiyUISortTemplateListData {
-    diyUIType: enum__Torappu_BuildingData_DiyUIType; 
+    diySortType: enum__Torappu_BuildingData_DiySortType; 
     expandState: string; 
     defaultTemplateIndex: int; 
     defaultTemplateOrder: enum__Torappu_BuildingData_DiyUISortOrder; 
@@ -660,8 +687,8 @@ table dict__string__clz_Torappu_BuildingData_CustomData_DiyUISortTemplateListDat
     value: clz_Torappu_BuildingData_CustomData_DiyUISortTemplateListData;
 }
 
-table dict__enum__Torappu_BuildingData_DiyUIType__list_dict__string__clz_Torappu_BuildingData_CustomData_DiyUISortTemplateListData {
-    key: enum__Torappu_BuildingData_DiyUIType(key);
+table dict__enum__Torappu_BuildingData_DiySortType__list_dict__string__clz_Torappu_BuildingData_CustomData_DiyUISortTemplateListData {
+    key: enum__Torappu_BuildingData_DiySortType(key);
     value: [dict__string__clz_Torappu_BuildingData_CustomData_DiyUISortTemplateListData];
 }
 
@@ -673,7 +700,7 @@ table clz_Torappu_BuildingData_CustomData {
     subTypes: [dict__enum__Torappu_BuildingData_FurnitureSubType__clz_Torappu_BuildingData_CustomData_FurnitureSubTypeData]; 
     defaultFurnitures: [dict__string__list_clz_Torappu_BuildingData_CustomData_DormitoryDefaultFurnitureItem]; 
     interactGroups: [dict__string__list_clz_Torappu_BuildingData_CustomData_InteractItem]; 
-    diyUISortTemplates: [dict__enum__Torappu_BuildingData_DiyUIType__list_dict__string__clz_Torappu_BuildingData_CustomData_DiyUISortTemplateListData]; 
+    diyUISortTemplates: [dict__enum__Torappu_BuildingData_DiySortType__list_dict__string__clz_Torappu_BuildingData_CustomData_DiyUISortTemplateListData]; 
 }
 
 enum enum__Torappu_BuildingData_FormulaItemType : int {
@@ -832,6 +859,7 @@ table dict__string__string {
 table clz_Torappu_BuildingData_StationManageConstData {
     cantWorkToastNoTiredChar: string; 
     cantWorkToastNoAvailQueue: string; 
+    cantWorkToastNoNeed: string; 
     cantRestToastNoTiredChar: string; 
     cantRestToastNoAvailDorm: string; 
     workBatchToast: string; 
@@ -841,6 +869,45 @@ table clz_Torappu_BuildingData_StationManageConstData {
     cantUseWorking: string; 
     queueCleared: string; 
     updateTime: long; 
+    dormLockUpdateTime: long; 
+}
+
+enum enum__Torappu_BuildingData_CharStationFilterType : int {
+    All = 0,
+    DormLock = 1,
+    NotStationed = 2,
+}
+
+table clz_Torappu_BuildingData_StationManageFilterInfo {
+    charStationFilterType: enum__Torappu_BuildingData_CharStationFilterType; 
+    name: string; 
+}
+
+table dict__int__clz_Torappu_BuildingData_StationManageFilterInfo {
+    key: int(key);
+    value: clz_Torappu_BuildingData_StationManageFilterInfo;
+}
+
+table clz_Torappu_BuildingData_MusicSingleData {
+    bgmId: string; 
+    bgmSortId: int; 
+    bgmStartTime: long; 
+    bgmName: string; 
+    gameMusicId: string; 
+    obtainApproach: string; 
+    bgmDescUnlocked: string; 
+    unlockType: string; 
+    unlockParams: [string]; 
+}
+
+table dict__string__clz_Torappu_BuildingData_MusicSingleData {
+    key: string(key);
+    value: clz_Torappu_BuildingData_MusicSingleData;
+}
+
+table clz_Torappu_BuildingData_MusicData {
+    defaultMusic: string; 
+    musicDatas: [dict__string__clz_Torappu_BuildingData_MusicSingleData]; 
 }
 
 table clz_Torappu_BuildingData {
@@ -882,6 +949,12 @@ table clz_Torappu_BuildingData {
     manufactManpowerCostByNum: [int]; 
     tradingManpowerCostByNum: [int]; 
     trainingBonusMax: int; 
+    betaRemoveTime: long; 
+    furniHighlightTime: float; 
+    canNotVisitToast: string; 
+    musicPlayerOpenTime: long; 
+    roomsWithoutRemoveStaff: [string]; 
+    privateFavorLevelThresholds: [int]; 
     roomUnlockConds: [dict__string__clz_Torappu_BuildingData_RoomUnlockCond]; 
     rooms: [dict__string__clz_Torappu_BuildingData_RoomData]; 
     layouts: [dict__string__clz_Torappu_BuildingData_LayoutData]; 
@@ -891,6 +964,7 @@ table clz_Torappu_BuildingData {
     shopData: clz_Torappu_BuildingData_RoomBean_1_Torappu_BuildingData_ShopPhase_; 
     hireData: clz_Torappu_BuildingData_HireRoomBean; 
     dormData: clz_Torappu_BuildingData_RoomBean_1_Torappu_BuildingData_DormPhase_; 
+    privateRoomData: clz_Torappu_BuildingData_RoomBean_1_Torappu_BuildingData_PrivatePhase_; 
     meetingData: clz_Torappu_BuildingData_MeetingRoomBean; 
     tradingData: clz_Torappu_BuildingData_TradingRoomBean; 
     workshopData: clz_Torappu_BuildingData_RoomBean_1_Torappu_BuildingData_WorkshopPhase_; 
@@ -913,6 +987,9 @@ table clz_Torappu_BuildingData {
     workshopTargetDesDict: [dict__string__string]; 
     tradingOrderDesDict: [dict__string__string]; 
     stationManageConstData: clz_Torappu_BuildingData_StationManageConstData; 
+    stationManageFilterInfos: [dict__int__clz_Torappu_BuildingData_StationManageFilterInfo]; 
+    musicData: clz_Torappu_BuildingData_MusicData; 
+    emojis: [string]; 
 }
 
 root_type clz_Torappu_BuildingData;

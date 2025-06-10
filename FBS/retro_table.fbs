@@ -98,8 +98,9 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EXCLUSIVE_TKT_GACHA = 82,
-    EXCLUSIVE_TKT_GACHA_10 = 83,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
 }
 
 table clz_Torappu_ItemBundle {
@@ -238,7 +239,12 @@ enum enum__Torappu_ActivityType : int {
     TYPE_ACT36SIDE = 45,
     TYPE_ACT38SIDE = 46,
     AUTOCHESS_VERIFY1 = 47,
-    ENUM = 48,
+    CHECKIN_VIDEO = 48,
+    ARCADE = 49,
+    MULTIPLAY_V3 = 50,
+    TYPE_MAINSS = 51,
+    ENEMY_DUEL = 52,
+    ENUM = 53,
 }
 
 table clz_Torappu_RetroActData {
@@ -249,12 +255,9 @@ table clz_Torappu_RetroActData {
     trailStartTime: long; 
     index: int; 
     name: string; 
-    detail: string; 
     haveTrail: bool; 
     customActId: string; 
     customActType: enum__Torappu_ActivityType; 
-    isRecommend: bool; 
-    recommendTagRemoveStage: string; 
 }
 
 table dict__string__clz_Torappu_RetroActData {
@@ -303,7 +306,8 @@ enum enum__Torappu_LevelData_Difficulty : int {
     NORMAL = 1,
     FOUR_STAR = 2,
     EASY = 4,
-    ALL = 7,
+    SIX_STAR = 8,
+    ALL = 15,
 }
 
 enum enum__Torappu_StageData_PerformanceStageFlag : int {
@@ -382,6 +386,7 @@ table clz_Torappu_StageData {
     name: string; 
     description: string; 
     hardStagedId: string; 
+    sixStarStageId: string; 
     dangerLevel: string; 
     dangerPoint: float; 
     loadingPicId: string; 
@@ -422,8 +427,12 @@ table clz_Torappu_StageData {
     startButtonOverrideId: string; 
     isStagePatch: bool; 
     mainStageId: string; 
-    extraCondition: [clz_Torappu_StageData_ExtraConditionDesc]; // __prts__check_required__S_extraCondition__
-    extraInfo: [clz_Torappu_StageData_SpecialStoryInfo]; // __prts__check_required__S_extraInfo__
+    extraCondition: [clz_Torappu_StageData_ExtraConditionDesc]; 
+    extraInfo: [clz_Torappu_StageData_SpecialStoryInfo]; 
+    sixStarBaseDesc: string; 
+    sixStarDisplayRewardList: [clz_Torappu_ItemBundle]; 
+    advancedRuneIdList1: [string]; 
+    advancedRuneIdList2: [string]; 
 }
 
 table dict__string__clz_Torappu_StageData {
@@ -706,15 +715,25 @@ enum enum__Torappu_BuildableType : int {
 
 enum enum__Torappu_PlayerSideMask : ubyte {
     ALL = 0,
-    SIDE_A = 1,
-    SIDE_B = 2,
-    NONE = 3,
+    SIDE_A = 2,
+    SIDE_B = 4,
+    NONE = 255,
+}
+
+enum enum__Torappu_Battle_SideType : int {
+    NONE = 0,
+    ALLY = 1,
+    ENEMY = 2,
+    BOTH_ALLY_AND_ENEMY = 3,
+    NEUTRAL = 4,
+    ALL = 7,
 }
 
 table clz_Torappu_RuneData_Selector {
     professionMask: enum__Torappu_ProfessionCategory; 
     buildableMask: enum__Torappu_BuildableType; 
     playerSideMask: enum__Torappu_PlayerSideMask; 
+    sideType: enum__Torappu_Battle_SideType; 
     charIdFilter: [string]; 
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 
@@ -910,10 +929,15 @@ table dict__string__clz_Torappu_Act21SideData {
 }
 
 table clz_Torappu_ActivityCustomData {
-    TYPE_ACT17SIDE: [dict__string__clz_Torappu_Act17sideData]; // __prts__check_required__typeAct17sideData__
-    TYPE_ACT25SIDE: [dict__string__clz_Torappu_ActivityCustomData_Act25sideCustomData]; // __prts__check_required__typeAct25sideData__
-    TYPE_ACT20SIDE: [dict__string__clz_Torappu_Act20SideData]; // __prts__check_required__typeAct20sideData__
-    TYPE_ACT21SIDE: [dict__string__clz_Torappu_Act21SideData]; // __prts__check_required__typeAct21sideData__
+    TYPE_ACT17SIDE: [dict__string__clz_Torappu_Act17sideData]; 
+    TYPE_ACT25SIDE: [dict__string__clz_Torappu_ActivityCustomData_Act25sideCustomData]; 
+    TYPE_ACT20SIDE: [dict__string__clz_Torappu_Act20SideData]; 
+    TYPE_ACT21SIDE: [dict__string__clz_Torappu_Act21SideData]; 
+}
+
+table dict__int__int {
+    key: int(key);
+    value: int;
 }
 
 table clz_Torappu_RetroStageTable {
@@ -927,7 +951,7 @@ table clz_Torappu_RetroStageTable {
     customData: clz_Torappu_ActivityCustomData; 
     initRetroCoin: int; 
     retroCoinPerWeek: int; 
-    retroCoinMax: int; 
+    retroCoinMaxOfLevels: [dict__int__int]; 
     retroUnlockCost: int; 
     retroDetail: string; 
     retroPreShowTime: long; 

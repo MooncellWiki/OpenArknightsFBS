@@ -1,0 +1,418 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
+enum enum__Torappu_PlayerAvatarGroupType : int {
+    NONE = 0,
+    ASSISTANT = 1,
+    DEFAULT = 2,
+    SPECIAL = 3,
+    ACTIVITY = 4,
+    DYNAMIC = 5,
+}
+
+table clz_Torappu_PlayerAvatarPerData {
+    avatarId: string; 
+    avatarType: enum__Torappu_PlayerAvatarGroupType; 
+    avatarIdSort: int; 
+    avatarIdDesc: string; 
+    avatarItemName: string; 
+    avatarItemDesc: string; 
+    avatarItemUsage: string; 
+    obtainApproach: string; 
+    dynAvatarId: string; 
+}
+
+table clz_Torappu_PlayerAvatarGroupData {
+    avatarType: enum__Torappu_PlayerAvatarGroupType; 
+    typeName: string; 
+    sortId: int; 
+    avatarIdList: [string]; 
+}
+
+table dict__enum__Torappu_PlayerAvatarGroupType__clz_Torappu_PlayerAvatarGroupData {
+    key: enum__Torappu_PlayerAvatarGroupType(key);
+    value: clz_Torappu_PlayerAvatarGroupData;
+}
+
+table clz_Torappu_PlayerAvatarData {
+    defaultAvatarId: string; 
+    avatarList: [clz_Torappu_PlayerAvatarPerData]; 
+    avatarTypeData: [dict__enum__Torappu_PlayerAvatarGroupType__clz_Torappu_PlayerAvatarGroupData]; 
+}
+
+table clz_Torappu_HomeBackgroundSingleData {
+    bgId: string; 
+    bgSortId: int; 
+    bgStartTime: long; 
+    bgName: string; 
+    bgMusicId: string; 
+    bgDes: string; 
+    bgUsage: string; 
+    obtainApproach: string; 
+    unlockDesList: [string]; 
+}
+
+enum enum__Torappu_ItemRarity : int {
+    TIER_1 = 0,
+    TIER_2 = 1,
+    TIER_3 = 2,
+    TIER_4 = 3,
+    TIER_5 = 4,
+    TIER_6 = 5,
+    E_NUM = 6,
+}
+
+table clz_Torappu_HomeThemeDisplayData {
+    id: string; 
+    type: string; 
+    sortId: int; 
+    startTime: long; 
+    tmName: string; 
+    tmDes: string; 
+    tmUsage: string; 
+    obtainApproach: string; 
+    unlockDesList: [string]; 
+    isLimitObtain: bool; 
+    hideWhenLimit: bool; 
+    rarity: enum__Torappu_ItemRarity; 
+}
+
+table clz_Torappu_HomeBackgroundLimitInfoData {
+    limitInfoId: string; 
+    startTime: long; 
+    endTime: long; 
+    invalidObtainDesc: string; 
+    displayAfterEndTime: bool; 
+}
+
+table clz_Torappu_HomeBackgroundLimitData {
+    bgId: string; 
+    limitInfos: [clz_Torappu_HomeBackgroundLimitInfoData]; 
+}
+
+table dict__string__clz_Torappu_HomeBackgroundLimitData {
+    key: string(key);
+    value: clz_Torappu_HomeBackgroundLimitData;
+}
+
+table clz_Torappu_HomeThemeLimitInfoData {
+    startTime: long; 
+    endTime: long; 
+    invalidObtainDesc: string; 
+}
+
+table clz_Torappu_HomeThemeLimitData {
+    id: string; 
+    limitInfos: [clz_Torappu_HomeThemeLimitInfoData]; 
+}
+
+table dict__string__clz_Torappu_HomeThemeLimitData {
+    key: string(key);
+    value: clz_Torappu_HomeThemeLimitData;
+}
+
+table clz_Torappu_HomeBackgroundData {
+    defaultBackgroundId: string; 
+    defaultThemeId: string; 
+    homeBgDataList: [clz_Torappu_HomeBackgroundSingleData]; 
+    themeList: [clz_Torappu_HomeThemeDisplayData]; 
+    backgroundLimitData: [dict__string__clz_Torappu_HomeBackgroundLimitData]; 
+    themeLimitData: [dict__string__clz_Torappu_HomeThemeLimitData]; 
+    defaultBgMusicId: string; 
+    themeStartTime: long; 
+}
+
+enum enum__Torappu_NameCardV2ModuleType : int {
+    NONE = 0,
+    BACKGROUND = 1,
+    ILLUST = 2,
+    COLLECT = 3,
+    AVATAR = 4,
+    REMOVABLE = 5,
+    AVATAR_SIMPLE = 6,
+}
+
+table clz_Torappu_NameCardV2ModuleData {
+    id: string; 
+    type: enum__Torappu_NameCardV2ModuleType; 
+}
+
+table dict__string__clz_Torappu_NameCardV2ModuleData {
+    key: string(key);
+    value: clz_Torappu_NameCardV2ModuleData;
+}
+
+enum enum__Torappu_NameCardV2ModuleSubType : int {
+    NONE = 0,
+    SIGN = 1,
+    ASSIST = 2,
+    MEDAL = 3,
+    MAINLINE = 4,
+    EQUIPMENT = 5,
+}
+
+table clz_Torappu_NameCardV2RemovableModuleData {
+    sortId: int; 
+    subType: enum__Torappu_NameCardV2ModuleSubType; 
+    name: string; 
+    id: string; 
+    type: enum__Torappu_NameCardV2ModuleType; 
+}
+
+table dict__string__clz_Torappu_NameCardV2RemovableModuleData {
+    key: string(key);
+    value: clz_Torappu_NameCardV2RemovableModuleData;
+}
+
+enum enum__Torappu_NameCardV2SkinType : int {
+    NONE = 0,
+    MAINLINE = 1,
+    ACTIVITY = 2,
+}
+
+table clz_Torappu_NameCardV2TimeLimitInfo {
+    id: string; 
+    availStartTime: long; 
+    availEndTime: long; 
+}
+
+table clz_Torappu_NameCardV2SkinData {
+    id: string; 
+    name: string; 
+    type: enum__Torappu_NameCardV2SkinType; 
+    sortId: int; 
+    isSpTheme: bool; 
+    defaultShowDetail: bool; 
+    themeName: string; 
+    themeEnName: string; 
+    skinStartTime: long; 
+    skinDesc: string; 
+    usageDesc: string; 
+    skinApproach: string; 
+    unlockConditionCnt: int; 
+    unlockDescList: [string]; 
+    fixedModuleList: [string]; 
+    rarity: enum__Torappu_ItemRarity; 
+    skinTmplCnt: int; 
+    canChangeTmpl: bool; 
+    isTimeLimit: bool; 
+    timeLimitInfoList: [clz_Torappu_NameCardV2TimeLimitInfo]; 
+}
+
+table dict__string__clz_Torappu_NameCardV2SkinData {
+    key: string(key);
+    value: clz_Torappu_NameCardV2SkinData;
+}
+
+table clz_Torappu_NameCardV2Consts {
+    defaultNameCardSkinId: string; 
+    canUidHide: bool; 
+    removableModuleMaxCount: int; 
+}
+
+table clz_Torappu_NameCardV2Data {
+    fixedModuleData: [dict__string__clz_Torappu_NameCardV2ModuleData]; 
+    removableModuleData: [dict__string__clz_Torappu_NameCardV2RemovableModuleData]; 
+    skinData: [dict__string__clz_Torappu_NameCardV2SkinData]; 
+    consts: clz_Torappu_NameCardV2Consts; 
+}
+
+enum enum__Torappu_MailArchiveItemType : int {
+    NORMAL = 0,
+    BIRTHDAY = 1,
+    OPEN_SERVER = 2,
+}
+
+enum enum__Torappu_ItemType : int {
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_4 = 40,
+    VOUCHER_ELITE_II_5 = 41,
+    VOUCHER_ELITE_II_6 = 42,
+    VOUCHER_SKIN = 43,
+    RETRO_COIN = 44,
+    PLAYER_AVATAR = 45,
+    UNI_COLLECTION = 46,
+    VOUCHER_FULL_POTENTIAL = 47,
+    RL_COIN = 48,
+    RETURN_CREDIT = 49,
+    MEDAL = 50,
+    CHARM = 51,
+    HOME_BACKGROUND = 52,
+    EXTERMINATION_AGENT = 53,
+    OPTIONAL_VOUCHER_PICK = 54,
+    ACT_CART_COMPONENT = 55,
+    VOUCHER_LEVELMAX_6 = 56,
+    VOUCHER_LEVELMAX_5 = 57,
+    VOUCHER_LEVELMAX_4 = 58,
+    VOUCHER_SKILL_SPECIALLEVELMAX_6 = 59,
+    VOUCHER_SKILL_SPECIALLEVELMAX_5 = 60,
+    VOUCHER_SKILL_SPECIALLEVELMAX_4 = 61,
+    ACTIVITY_POTENTIAL = 62,
+    ITEM_PACK = 63,
+    SANDBOX = 64,
+    FAVOR_ADD_ITEM = 65,
+    CLASSIC_SHD = 66,
+    CLASSIC_TKT_GACHA = 67,
+    CLASSIC_TKT_GACHA_10 = 68,
+    LIMITED_BUFF = 69,
+    CLASSIC_FES_PICK_TIER_5 = 70,
+    CLASSIC_FES_PICK_TIER_6 = 71,
+    RETURN_PROGRESS = 72,
+    NEW_PROGRESS = 73,
+    MCARD_VOUCHER = 74,
+    MATERIAL_ISSUE_VOUCHER = 75,
+    CRS_SHOP_COIN_V2 = 76,
+    HOME_THEME = 77,
+    SANDBOX_PERM = 78,
+    SANDBOX_TOKEN = 79,
+    TEMPLATE_TRAP = 80,
+    NAME_CARD_SKIN = 81,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
+}
+
+table clz_Torappu_ItemBundle {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
+}
+
+table clz_Torappu_MailArchiveItemData {
+    id: string; 
+    type: enum__Torappu_MailArchiveItemType; 
+    sortId: int; 
+    displayReceiveTs: long; 
+    year: int; 
+    dateDelta: int; 
+    senderId: string; 
+    title: string; 
+    content: string; 
+    rewardList: [clz_Torappu_ItemBundle]; 
+}
+
+table dict__string__clz_Torappu_MailArchiveItemData {
+    key: string(key);
+    value: clz_Torappu_MailArchiveItemData;
+}
+
+table clz_Torappu_MailArchiveConstData {
+    funcOpenTs: long; 
+}
+
+table clz_Torappu_MailArchiveData {
+    mailArchiveInfoDict: [dict__string__clz_Torappu_MailArchiveItemData]; 
+    constData: clz_Torappu_MailArchiveConstData; 
+}
+
+table clz_Torappu_MailSenderSingleInfo {
+    senderId: string; 
+    senderName: string; 
+    avatarId: string; 
+}
+
+table dict__string__clz_Torappu_MailSenderSingleInfo {
+    key: string(key);
+    value: clz_Torappu_MailSenderSingleInfo;
+}
+
+table clz_Torappu_MailSenderData {
+    senderDict: [dict__string__clz_Torappu_MailSenderSingleInfo]; 
+}
+
+enum enum__Torappu_EmojiSceneType : int {
+    NONE = 0,
+    ACTMULTIV3_ROOM = 1,
+    ACTMULTIV3_PICK = 2,
+    ACTMULTIV3_BATTLE = 3,
+    ENEMYDUEL_BATTLE = 4,
+}
+
+table clz_Torappu_EmoticonData_EmojiData {
+    id: string; 
+    type: enum__Torappu_EmojiSceneType; 
+    sortId: int; 
+    picId: string; 
+    desc: string; 
+}
+
+table dict__string__clz_Torappu_EmoticonData_EmojiData {
+    key: string(key);
+    value: clz_Torappu_EmoticonData_EmojiData;
+}
+
+table dict__string__list_string {
+    key: string(key);
+    value: [string];
+}
+
+table clz_Torappu_EmoticonData {
+    emojiDataDict: [dict__string__clz_Torappu_EmoticonData_EmojiData]; 
+    emoticonThemeDataDict: [dict__string__list_string]; 
+}
+
+table clz_Torappu_StoryVariantData {
+    plotTaskId: string; 
+    spStoryId: string; 
+    storyId: string; 
+    priority: int; 
+    startTime: long; 
+    endTime: long; 
+    template: string; 
+    param: [string]; 
+}
+
+table dict__string__clz_Torappu_StoryVariantData {
+    key: string(key);
+    value: clz_Torappu_StoryVariantData;
+}
+
+table clz_Torappu_DisplayMetaData {
+    playerAvatarData: clz_Torappu_PlayerAvatarData; 
+    homeBackgroundData: clz_Torappu_HomeBackgroundData; 
+    nameCardV2Data: clz_Torappu_NameCardV2Data; 
+    mailArchiveData: clz_Torappu_MailArchiveData; 
+    mailSenderData: clz_Torappu_MailSenderData; 
+    emoticonData: clz_Torappu_EmoticonData; 
+    storyVariantData: [dict__string__clz_Torappu_StoryVariantData]; 
+}
+
+root_type clz_Torappu_DisplayMetaData;

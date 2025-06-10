@@ -1,49 +1,5 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 // YoStar version
-enum enum__Torappu_StoryData_Trigger_TriggerType : int {
-    GAME_START = 0,
-    BEFORE_BATTLE = 1,
-    AFTER_BATTLE = 2,
-    SWITCH_TO_SCENE = 3,
-    PAGE_LOADED = 4,
-    STORY_FINISH = 5,
-    CUSTOM_OPERATION = 6,
-    STORY_FINISH_OR_PAGE_LOADED = 7,
-    ACTIVITY_LOADED = 8,
-    ACTIVITY_ANNOUNCE = 9,
-    CRISIS_SEASON_LOADED = 10,
-    STORY_FINISH_OR_CUSTOM_OPERATION = 11,
-    E_NUM = 12,
-}
-
-table clz_Torappu_StoryData_Trigger {
-    type: enum__Torappu_StoryData_Trigger_TriggerType; 
-    key: string; 
-    useRegex: bool; 
-}
-
-enum enum__Torappu_PlayerStageState : int {
-    UNLOCKED = 0,
-    PLAYED = 1,
-    PASS = 2,
-    COMPLETE = 3,
-}
-
-table clz_Torappu_StoryData_Condition_StageCondition {
-    stageId: string; 
-    minState: enum__Torappu_PlayerStageState; 
-    maxState: enum__Torappu_PlayerStageState; 
-}
-
-table clz_Torappu_StoryData_Condition {
-    minProgress: int; 
-    maxProgress: int; 
-    minPlayerLevel: int; 
-    requiredFlags: [string]; 
-    excludedFlags: [string]; 
-    requiredStages: [clz_Torappu_StoryData_Condition_StageCondition]; 
-}
-
 enum enum__Torappu_ItemType : int {
     NONE = 0,
     CHAR = 1,
@@ -138,24 +94,27 @@ table clz_Torappu_ItemBundle {
     type: enum__Torappu_ItemType; 
 }
 
-table clz_Torappu_StoryData {
-    id: string; 
-    needCommit: bool; 
-    repeatable: bool; 
-    disabled: bool; 
-    videoResource: bool; 
-    trigger: clz_Torappu_StoryData_Trigger; 
-    condition: clz_Torappu_StoryData_Condition; 
-    setProgress: int; 
-    setFlags: [string]; 
-    completedRewards: [clz_Torappu_ItemBundle]; 
+table clz_Torappu_CrisisClientData_SeasonInfo {
+    seasonId: string; 
+    startTs: long; 
+    endTs: long; 
+    name: string; 
+    crisisRuneCoinUnlockItem: clz_Torappu_ItemBundle; 
+    permBgm: string; 
+    medalGroupId: string; 
+    bgmHardPoint: int; 
+    permBgmHard: string; 
 }
 
-table dict__string__clz_Torappu_StoryData {
-    key: string(key);
-    value: clz_Torappu_StoryData;
+table clz_Torappu_CrisisClientData {
+    seasonInfo: [clz_Torappu_CrisisClientData_SeasonInfo]; 
+    meta: string; 
+    unlockCoinLv3: int; 
+    hardPointPerm: int; 
+    hardPointTemp: int; 
+    voiceGrade: int; 
+    crisisRuneCoinUnlockItemTitle: string; 
+    crisisRuneCoinUnlockItemDesc: string; 
 }
-table clz_Torappu_SimpleKVTable_clz_Torappu_StoryData {
-    stories: [dict__string__clz_Torappu_StoryData];
-}
-root_type clz_Torappu_SimpleKVTable_clz_Torappu_StoryData;
+
+root_type clz_Torappu_CrisisClientData;
