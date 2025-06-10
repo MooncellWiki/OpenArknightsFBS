@@ -1,0 +1,52 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
+table clz_Torappu_GridPosition {
+    row: int; 
+    col: int; 
+}
+
+table clz_Torappu_BuildingData_ObstaclePoint {
+    offset: clz_Torappu_GridPosition; 
+    edgeWalkableMask: ubyte; 
+}
+
+table clz_Torappu_BuildingData_ObstacleData {
+    floorObstacles: [clz_Torappu_BuildingData_ObstaclePoint]; 
+    backwallObstacles: [clz_Torappu_BuildingData_ObstaclePoint]; 
+}
+
+table dict__string__clz_Torappu_BuildingData_ObstacleData {
+    key: string(key);
+    value: clz_Torappu_BuildingData_ObstacleData;
+}
+
+enum enum__Torappu_BuildingData_LODLEVEL : int {
+    HIGHEST = 0,
+    HIGH = 1,
+    LOW = 2,
+    LOWEST = 3,
+    COUNT = 4,
+}
+
+table dict__enum__Torappu_BuildingData_LODLEVEL__list_string {
+    key: enum__Torappu_BuildingData_LODLEVEL(key);
+    value: [string];
+}
+
+table clz_Torappu_BuildingData_FurnitureLODConfig {
+    showedObjNames: [dict__enum__Torappu_BuildingData_LODLEVEL__list_string]; 
+    isOverWrite: bool; 
+}
+
+table dict__string__clz_Torappu_BuildingData_FurnitureLODConfig {
+    key: string(key);
+    value: clz_Torappu_BuildingData_FurnitureLODConfig;
+}
+
+table clz_Torappu_BuildingData_BuildingLocalData {
+    furnitureObstacleData: [dict__string__clz_Torappu_BuildingData_ObstacleData]; 
+    roomObstacleData: [dict__string__clz_Torappu_BuildingData_ObstacleData]; 
+    furnitureLODConfig: [dict__string__clz_Torappu_BuildingData_FurnitureLODConfig]; 
+}
+
+root_type clz_Torappu_BuildingData_BuildingLocalData;
