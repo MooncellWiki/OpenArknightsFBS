@@ -97,9 +97,8 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EMOTICON_SET = 82,
-    EXCLUSIVE_TKT_GACHA = 83,
-    EXCLUSIVE_TKT_GACHA_10 = 84,
+    EXCLUSIVE_TKT_GACHA = 82,
+    EXCLUSIVE_TKT_GACHA_10 = 83,
 }
 
 table clz_Torappu_ItemBundle {
@@ -178,17 +177,6 @@ table clz_Torappu_GameDataConsts {
     rejectSpCharMission: long; 
     addedRewardDisplayZone: string; 
     oneDiamondAp: int; 
-    charRotationPresetMaxCnt: int; 
-    charRotationSkinListMaxCnt: int; 
-    defaultCRPresetCharId: string; 
-    defaultCRPresetCharSkinId: string; 
-    defaultCRPresetBGId: string; 
-    defaultCRPresetThemeId: string; 
-    defaultCRPresetName: string; 
-    charRotationPresetTrackTs: long; 
-    uniequipArchiveSysTrackTs: long; 
-    manufactPromptTime: int; 
-    mainGuideActivedStageId: string; 
     richTextStyles: [dict__string__string]; 
     charAssistRefreshTime: [clz_Torappu_GameDataConsts_CharAssistRefreshTimeState]; 
     normalRecruitLockedString: [string]; 
@@ -222,7 +210,7 @@ table clz_Torappu_GameDataConsts {
     monthlySubWarningTime: long; 
     UnlimitSkinOutOfTime: long; 
     replicateShopStartTime: long; 
-    TSO: long; 
+    TSO: long; // __prts__check_required__operatorRecordsStartTime__
     isDynIllustEnabled: bool; 
     isDynIllustStartEnabled: bool; 
     isClassicQCShopEnabled: bool; 
@@ -248,13 +236,6 @@ table clz_Torappu_GameDataConsts {
     continuousActionOpen: bool; 
     subProfessionDamageTypePairs: [dict__string__enum__Torappu_SubProfessionAttackType]; 
     classicProtectChar: [string]; 
-    birthdaySettingDesc: string; 
-    birthdaySettingConfirmDesc: string; 
-    birthdaySettingLeapConfirmDesc: string; 
-    leapBirthdayRewardMonth: int; 
-    leapBirthdayRewardDay: int; 
-    birthdaySettingShowStageId: string; 
-    isBirthdayFuncEnabled: bool; 
 }
 
 root_type clz_Torappu_GameDataConsts;
