@@ -177,6 +177,16 @@ table clz_Torappu_GameDataConsts {
     rejectSpCharMission: long; 
     addedRewardDisplayZone: string; 
     oneDiamondAp: int; 
+    charRotationPresetMaxCnt: int; 
+    charRotationSkinListMaxCnt: int; 
+    defaultCRPresetCharId: string; 
+    defaultCRPresetCharSkinId: string; 
+    defaultCRPresetBGId: string; 
+    defaultCRPresetThemeId: string; 
+    defaultCRPresetName: string; 
+    charRotationPresetTrackTs: long; 
+    uniequipArchiveSysTrackTs: long; 
+    manufactPromptTime: int; 
     richTextStyles: [dict__string__string]; 
     charAssistRefreshTime: [clz_Torappu_GameDataConsts_CharAssistRefreshTimeState]; 
     normalRecruitLockedString: [string]; 
@@ -236,6 +246,13 @@ table clz_Torappu_GameDataConsts {
     continuousActionOpen: bool; 
     subProfessionDamageTypePairs: [dict__string__enum__Torappu_SubProfessionAttackType]; 
     classicProtectChar: [string]; 
+    birthdaySettingDesc: string; 
+    birthdaySettingConfirmDesc: string; 
+    birthdaySettingLeapConfirmDesc: string; 
+    leapBirthdayRewardMonth: int; 
+    leapBirthdayRewardDay: int; 
+    birthdaySettingShowStageId: string; 
+    isBirthdayFuncEnabled: bool; 
 }
 
 root_type clz_Torappu_GameDataConsts;
