@@ -1,0 +1,419 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_SpecialOperatorTargetType : int {
+    NONE = 0,
+    ROGUE = 1,
+}
+
+table clz_Torappu_SpecialOperatorBasicData {
+    soCharId: string; 
+    sortId: int; 
+    targetType: enum__Torappu_SpecialOperatorTargetType; 
+    targetId: string; 
+    targetTopicName: string; 
+    bgId: string; 
+    bgEffectId: string; 
+    charEffectId: string; 
+    typeIconId: string; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorBasicData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorBasicData;
+}
+
+table list_int {
+    values: [int];
+}
+
+table clz_Torappu_SpecialOperatorDetailConstData {
+    nextRoundBuffToast: string; 
+}
+
+enum enum__Torappu_SpecialOperatorDetailNodeType : int {
+    NONE = 0,
+    EVOLVE = 1,
+    SKILL = 2,
+    TALENT = 3,
+    MASTER = 4,
+    UNIEQUIP = 5,
+}
+
+table clz_Torappu_SpecialOperatorDetailTabData {
+    soTabId: string; 
+    soTabName: string; 
+    soTabSortId: int; 
+    nodeType: enum__Torappu_SpecialOperatorDetailNodeType; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorDetailTabData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorDetailTabData;
+}
+
+enum enum__Torappu_EvolvePhase : int {
+    PHASE_0 = 0,
+    PHASE_1 = 1,
+    PHASE_2 = 2,
+    PHASE_3 = 3,
+    E_NUM = 4,
+}
+
+enum enum__Torappu_SpecialOperatorConditionViewType : int {
+    TASK = 0,
+    EVOLVEPHASE = 1,
+}
+
+table clz_Torappu_SpecialOperatorDetailNodeUnlockData {
+    nodeId: string; 
+    nodeType: enum__Torappu_SpecialOperatorDetailNodeType; 
+    isInGameMechanics: bool; 
+    unlockEvolvePhase: enum__Torappu_EvolvePhase; 
+    unlockLevel: int; 
+    unlockTaskId: string; 
+    frontNodeId: string; 
+    ifAutoUnlock: bool; 
+    conditionViewType: enum__Torappu_SpecialOperatorConditionViewType; 
+    topoOrder: int; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorDetailNodeUnlockData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorDetailNodeUnlockData;
+}
+
+table clz_Torappu_SpecialOperatorDetailEvolveNodeData {
+    nodeId: string; 
+    toEvolvePhase: enum__Torappu_EvolvePhase; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorDetailEvolveNodeData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorDetailEvolveNodeData;
+}
+
+table clz_Torappu_SpecialOperatorDetailSkillNodeData {
+    nodeId: string; 
+    skillKey: string; 
+    skillLevel: int; 
+    skillSpLevel: int; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorDetailSkillNodeData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorDetailSkillNodeData;
+}
+
+table clz_Torappu_SpecialOperatorDetailTalentNodeData {
+    nodeId: string; 
+    talentIndex: int; 
+    updateCount: int; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorDetailTalentNodeData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorDetailTalentNodeData;
+}
+
+table clz_Torappu_SpecialOperatorDetailMasterNodeData {
+    nodeId: string; 
+    masterId: string; 
+    level: int; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorDetailMasterNodeData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorDetailMasterNodeData;
+}
+
+table clz_Torappu_SpecialOperatorDetailUniEquipNodeData {
+    nodeId: string; 
+    uniEquipId: string; 
+    equipLevel: int; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorDetailUniEquipNodeData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorDetailUniEquipNodeData;
+}
+
+table clz_UnityEngine_Vector2 {
+    x: float; 
+    y: float; 
+}
+
+table clz_Torappu_SpecialOperatorPointPosData {
+    pos: clz_UnityEngine_Vector2; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorPointPosData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorPointPosData;
+}
+
+table clz_Torappu_SpecialOperatorNodePointData {
+    nodeId: string; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorNodePointData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorNodePointData;
+}
+
+table clz_Torappu_SpecialOperatorElitePointData {
+    evolvePhase: enum__Torappu_EvolvePhase; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorElitePointData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorElitePointData;
+}
+
+table clz_Torappu_SpecialOperatorLevelPointData {
+    evolvePhase: enum__Torappu_EvolvePhase; 
+    level: int; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorLevelPointData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorLevelPointData;
+}
+
+table clz_Torappu_SpecialOperatorLinePosData {
+    startPos: clz_UnityEngine_Vector2; 
+    endPos: clz_UnityEngine_Vector2; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorLinePosData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorLinePosData;
+}
+
+table clz_Torappu_SpecialOperatorLineRelationData {
+    startPointList: [string]; 
+    endPointList: [string]; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorLineRelationData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorLineRelationData;
+}
+
+table clz_Torappu_SpecialOperatorDiagramData {
+    width: float; 
+    height: float; 
+    pointPosDataMap: [dict__string__clz_Torappu_SpecialOperatorPointPosData]; 
+    nodePointDataMap: [dict__string__clz_Torappu_SpecialOperatorNodePointData]; 
+    elitePointDataMap: [dict__string__clz_Torappu_SpecialOperatorElitePointData]; 
+    levelPointDataMap: [dict__string__clz_Torappu_SpecialOperatorLevelPointData]; 
+    linePosDataMap: [dict__string__clz_Torappu_SpecialOperatorLinePosData]; 
+    lineRelationDataMap: [dict__string__clz_Torappu_SpecialOperatorLineRelationData]; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorDiagramData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorDiagramData;
+}
+
+table clz_Torappu_SpecialOperatorDetailData {
+    specialOperatorExpMap: [list_int]; 
+    detailConstData: clz_Torappu_SpecialOperatorDetailConstData; 
+    tabData: [dict__string__clz_Torappu_SpecialOperatorDetailTabData]; 
+    nodeUnlockData: [dict__string__clz_Torappu_SpecialOperatorDetailNodeUnlockData]; 
+    evolveNodeData: [dict__string__clz_Torappu_SpecialOperatorDetailEvolveNodeData]; 
+    skillNodeData: [dict__string__clz_Torappu_SpecialOperatorDetailSkillNodeData]; 
+    talentNodeData: [dict__string__clz_Torappu_SpecialOperatorDetailTalentNodeData]; 
+    masterNodeData: [dict__string__clz_Torappu_SpecialOperatorDetailMasterNodeData]; 
+    uniEquipNodeData: [dict__string__clz_Torappu_SpecialOperatorDetailUniEquipNodeData]; 
+    nodeDiagramMap: [dict__string__clz_Torappu_SpecialOperatorDiagramData]; 
+}
+
+table dict__string__clz_Torappu_SpecialOperatorDetailData {
+    key: string(key);
+    value: clz_Torappu_SpecialOperatorDetailData;
+}
+
+table clz_Torappu_SpecialOperatorModeData {
+    type: enum__Torappu_SpecialOperatorTargetType; 
+    typeName: string; 
+}
+
+enum enum__Torappu_MissionType : int {
+    UNKNOWN = 0,
+    MAIN = 1,
+    DAILY = 2,
+    WEEKLY = 3,
+    GUIDE = 4,
+    SUB = 5,
+    ACTIVITY = 6,
+    OPENSERVER = 7,
+    TOWERSEASON = 8,
+    RETRO = 9,
+    SPECIAL_OPERATOR = 10,
+    SPECIAL_OPERATOR_WEEKLY = 11,
+}
+
+enum enum__Torappu_MissionItemBgType : int {
+    COMMON = 0,
+    Equipment = 1,
+    Char = 2,
+}
+
+enum enum__Torappu_ItemType : int {
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_4 = 40,
+    VOUCHER_ELITE_II_5 = 41,
+    VOUCHER_ELITE_II_6 = 42,
+    VOUCHER_SKIN = 43,
+    RETRO_COIN = 44,
+    PLAYER_AVATAR = 45,
+    UNI_COLLECTION = 46,
+    VOUCHER_FULL_POTENTIAL = 47,
+    RL_COIN = 48,
+    RETURN_CREDIT = 49,
+    MEDAL = 50,
+    CHARM = 51,
+    HOME_BACKGROUND = 52,
+    EXTERMINATION_AGENT = 53,
+    OPTIONAL_VOUCHER_PICK = 54,
+    ACT_CART_COMPONENT = 55,
+    VOUCHER_LEVELMAX_6 = 56,
+    VOUCHER_LEVELMAX_5 = 57,
+    VOUCHER_LEVELMAX_4 = 58,
+    VOUCHER_SKILL_SPECIALLEVELMAX_6 = 59,
+    VOUCHER_SKILL_SPECIALLEVELMAX_5 = 60,
+    VOUCHER_SKILL_SPECIALLEVELMAX_4 = 61,
+    ACTIVITY_POTENTIAL = 62,
+    ITEM_PACK = 63,
+    SANDBOX = 64,
+    FAVOR_ADD_ITEM = 65,
+    CLASSIC_SHD = 66,
+    CLASSIC_TKT_GACHA = 67,
+    CLASSIC_TKT_GACHA_10 = 68,
+    LIMITED_BUFF = 69,
+    CLASSIC_FES_PICK_TIER_5 = 70,
+    CLASSIC_FES_PICK_TIER_6 = 71,
+    RETURN_PROGRESS = 72,
+    NEW_PROGRESS = 73,
+    MCARD_VOUCHER = 74,
+    MATERIAL_ISSUE_VOUCHER = 75,
+    CRS_SHOP_COIN_V2 = 76,
+    HOME_THEME = 77,
+    SANDBOX_PERM = 78,
+    SANDBOX_TOKEN = 79,
+    TEMPLATE_TRAP = 80,
+    NAME_CARD_SKIN = 81,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
+    SO_CHAR_EXP = 85,
+}
+
+table clz_Torappu_MissionDisplayRewards {
+    type: enum__Torappu_ItemType; 
+    id: string; 
+    count: int; 
+}
+
+table clz_Torappu_MissionData {
+    id: string; 
+    sortId: int; 
+    description: string; 
+    type: enum__Torappu_MissionType; 
+    itemBgType: enum__Torappu_MissionItemBgType; 
+    preMissionIds: [string]; 
+    template: string; 
+    templateType: string; 
+    param: [string]; 
+    unlockCondition: string; 
+    unlockParam: [string]; 
+    missionGroup: string; 
+    toPage: string; 
+    periodicalPoint: int; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+    backImagePath: string; 
+    foldId: string; 
+    haveSubMissionToUnlock: bool; 
+    countEndTs: long; 
+}
+
+table dict__string__clz_Torappu_MissionData {
+    key: string(key);
+    value: clz_Torappu_MissionData;
+}
+
+table clz_Torappu_MissionGroup {
+    id: string; 
+    title: string; 
+    type: enum__Torappu_MissionType; 
+    preMissionGroup: string; 
+    period: [int]; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+    missionIds: [string]; 
+    startTs: long; 
+    endTs: long; 
+}
+
+table dict__string__clz_Torappu_MissionGroup {
+    key: string(key);
+    value: clz_Torappu_MissionGroup;
+}
+
+table clz_Torappu_SpecialOperatorConstData {
+    weeklyTaskBoardUnlock: string; 
+    taskPinOnToast: string; 
+    noFrontNodeToast: string; 
+    noFrontTaskToast: string; 
+    skillGotoToast: string; 
+    evolveTabExpNotice: string; 
+    pinnedSpecialOperator: string; 
+}
+
+table clz_Torappu_SpecialOperatorTable {
+    operatorBasicData: [dict__string__clz_Torappu_SpecialOperatorBasicData]; 
+    operatorDetailData: [dict__string__clz_Torappu_SpecialOperatorDetailData]; 
+    modeData: [clz_Torappu_SpecialOperatorModeData]; 
+    nodeUnlockMissionData: [dict__string__clz_Torappu_MissionData]; 
+    nodeUnlockMissionGroup: [dict__string__clz_Torappu_MissionGroup]; 
+    constData: clz_Torappu_SpecialOperatorConstData; 
+}
+
+root_type clz_Torappu_SpecialOperatorTable;

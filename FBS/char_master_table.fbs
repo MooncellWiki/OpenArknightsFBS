@@ -1,0 +1,50 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+enum enum__Torappu_EvolvePhase : int {
+    PHASE_0 = 0,
+    PHASE_1 = 1,
+    PHASE_2 = 2,
+    PHASE_3 = 3,
+    E_NUM = 4,
+}
+
+table clz_Torappu_CharacterData_UnlockCondition {
+    phase: enum__Torappu_EvolvePhase; 
+    level: int; 
+}
+
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
+}
+
+table clz_Torappu_TalentData {
+    unlockCondition: clz_Torappu_CharacterData_UnlockCondition; 
+    requiredPotentialRank: int; 
+    prefabKey: string; 
+    name: string; 
+    description: string; 
+    rangeId: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+    tokenKey: string; 
+    isHideTalent: bool; 
+}
+
+table clz_Torappu_CharacterData_MasterData {
+    level: int; 
+    masterId: string; 
+    talentData: clz_Torappu_TalentData; 
+}
+
+table clz_Torappu_CharacterData_MasterDataBundle {
+    candidates: [clz_Torappu_CharacterData_MasterData]; 
+}
+
+table dict__string__clz_Torappu_CharacterData_MasterDataBundle {
+    key: string(key);
+    value: clz_Torappu_CharacterData_MasterDataBundle;
+}
+table clz_Torappu_SimpleKVTable_clz_Torappu_CharacterData_MasterDataBundle {
+    master_data_bundles: [dict__string__clz_Torappu_CharacterData_MasterDataBundle];
+}
+root_type clz_Torappu_SimpleKVTable_clz_Torappu_CharacterData_MasterDataBundle;
