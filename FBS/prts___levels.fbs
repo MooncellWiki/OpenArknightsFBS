@@ -495,6 +495,11 @@ table clz_Torappu_CharacterData_UniqueEquipPair {
     level: int; 
 }
 
+table clz_Torappu_CharacterData_MasterInfo {
+    masterId: string; 
+    level: int; 
+}
+
 enum enum__Torappu_EvolvePhase : int {
     PHASE_0 = 0,
     PHASE_1 = 1,
@@ -518,6 +523,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedCharacter {
     alias: string; 
     uniEquipIds: [clz_Torappu_CharacterData_UniqueEquipPair]; 
     showSpIllust: bool; 
+    masterInfos: [clz_Torappu_CharacterData_MasterInfo]; 
     inst: clz_Torappu_CharacterInst_Metadata; 
     skillIndex: int; 
     mainSkillLvl: int; 
@@ -531,6 +537,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedCard {
     alias: string; 
     uniEquipIds: [clz_Torappu_CharacterData_UniqueEquipPair]; 
     showSpIllust: bool; 
+    masterInfos: [clz_Torappu_CharacterData_MasterInfo]; 
     inst: clz_Torappu_CharacterInst_Metadata; 
     skillIndex: int; 
     mainSkillLvl: int; 
@@ -545,6 +552,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedTokenCard {
     alias: string; 
     uniEquipIds: [clz_Torappu_CharacterData_UniqueEquipPair]; 
     showSpIllust: bool; 
+    masterInfos: [clz_Torappu_CharacterData_MasterInfo]; 
     inst: clz_Torappu_CharacterInst_Metadata; 
     skillIndex: int; 
     mainSkillLvl: int; 
