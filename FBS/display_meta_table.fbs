@@ -38,16 +38,34 @@ table clz_Torappu_PlayerAvatarData {
     avatarTypeData: [dict__enum__Torappu_PlayerAvatarGroupType__clz_Torappu_PlayerAvatarGroupData]; 
 }
 
+enum enum__Torappu_HomeMultiFormChangeRule : int {
+    NONE = 0,
+    TIME = 1,
+}
+
+table clz_Torappu_HomeBackgroundMultiFormData {
+    multiFormBgId: string; 
+    sortId: int; 
+    bgMusicId: string; 
+}
+
 table clz_Torappu_HomeBackgroundSingleData {
     bgId: string; 
     bgSortId: int; 
     bgStartTime: long; 
     bgName: string; 
-    bgMusicId: string; 
     bgDes: string; 
     bgUsage: string; 
+    isMultiForm: bool; 
+    changeRule: enum__Torappu_HomeMultiFormChangeRule; 
+    multiFormList: [clz_Torappu_HomeBackgroundMultiFormData]; 
     obtainApproach: string; 
     unlockDesList: [string]; 
+}
+
+table clz_Torappu_HomeThemeMultiFormData {
+    multiFormTmId: string; 
+    sortId: int; 
 }
 
 enum enum__Torappu_ItemRarity : int {
@@ -68,6 +86,9 @@ table clz_Torappu_HomeThemeDisplayData {
     tmName: string; 
     tmDes: string; 
     tmUsage: string; 
+    isMultiForm: bool; 
+    changeRule: enum__Torappu_HomeMultiFormChangeRule; 
+    multiFormList: [clz_Torappu_HomeThemeMultiFormData]; 
     obtainApproach: string; 
     unlockDesList: [string]; 
     isLimitObtain: bool; 
@@ -109,6 +130,22 @@ table dict__string__clz_Torappu_HomeThemeLimitData {
     value: clz_Torappu_HomeThemeLimitData;
 }
 
+table clz_Torappu_HomeMultiFormInfoData {
+    changeRule: enum__Torappu_HomeMultiFormChangeRule; 
+    bgDesc: string; 
+    tmDesc: string; 
+}
+
+table clz_Torappu_HomeMultiFormTimeRuleData {
+    id: string; 
+    startHour: int; 
+}
+
+table dict__string__list_clz_Torappu_HomeMultiFormTimeRuleData {
+    key: string(key);
+    value: [clz_Torappu_HomeMultiFormTimeRuleData];
+}
+
 table clz_Torappu_HomeBackgroundData {
     defaultBackgroundId: string; 
     defaultThemeId: string; 
@@ -116,6 +153,8 @@ table clz_Torappu_HomeBackgroundData {
     themeList: [clz_Torappu_HomeThemeDisplayData]; 
     backgroundLimitData: [dict__string__clz_Torappu_HomeBackgroundLimitData]; 
     themeLimitData: [dict__string__clz_Torappu_HomeThemeLimitData]; 
+    multiFormInfoData: [clz_Torappu_HomeMultiFormInfoData]; 
+    timeRuleData: [dict__string__list_clz_Torappu_HomeMultiFormTimeRuleData]; 
     defaultBgMusicId: string; 
     themeStartTime: long; 
 }
@@ -308,6 +347,7 @@ enum enum__Torappu_ItemType : int {
     EXCLUSIVE_TKT_GACHA = 83,
     EXCLUSIVE_TKT_GACHA_10 = 84,
     SO_CHAR_EXP = 85,
+    GIFTPACKAGE_TKT = 86,
 }
 
 table clz_Torappu_ItemBundle {
@@ -451,6 +491,7 @@ enum enum__Torappu_UIGuideTarget : int {
     VEC_BREAK_V2 = 44,
     GUN_TASK = 45,
     SPECIAL_OPERATOR = 46,
+    INFORMANT = 47,
 }
 
 table clz_Torappu_GuidebookConfigData {

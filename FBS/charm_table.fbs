@@ -43,6 +43,13 @@ enum enum__Torappu_Battle_SideType : int {
     ALL = 7,
 }
 
+enum enum__Torappu_TileData_HeightTypeMask : int {
+    NONE = 0,
+    LOWLAND = 1,
+    HIGHLAND = 2,
+    ALL = 3,
+}
+
 table clz_Torappu_RuneData_Selector {
     professionMask: enum__Torappu_ProfessionCategory; 
     buildableMask: enum__Torappu_BuildableType; 
@@ -60,6 +67,7 @@ table clz_Torappu_RuneData_Selector {
     filterTagExcludeFilter: [string]; 
     subProfessionExcludeFilter: [string]; 
     mapTagFilter: [string]; 
+    heightTypeMask: enum__Torappu_TileData_HeightTypeMask; 
 }
 
 table clz_Torappu_Blackboard_DataPair {

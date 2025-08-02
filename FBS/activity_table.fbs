@@ -55,7 +55,8 @@ enum enum__Torappu_ActivityType : int {
     ENEMY_DUEL = 52,
     VEC_BREAK_V2 = 53,
     TYPE_ACT42SIDE = 54,
-    ENUM = 55,
+    TYPE_ACT44SIDE = 55,
+    ENUM = 56,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -259,6 +260,7 @@ enum enum__Torappu_ItemType : int {
     EXCLUSIVE_TKT_GACHA = 83,
     EXCLUSIVE_TKT_GACHA_10 = 84,
     SO_CHAR_EXP = 85,
+    GIFTPACKAGE_TKT = 86,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -928,6 +930,13 @@ enum enum__Torappu_Battle_SideType : int {
     ALL = 7,
 }
 
+enum enum__Torappu_TileData_HeightTypeMask : int {
+    NONE = 0,
+    LOWLAND = 1,
+    HIGHLAND = 2,
+    ALL = 3,
+}
+
 table clz_Torappu_RuneData_Selector {
     professionMask: enum__Torappu_ProfessionCategory; 
     buildableMask: enum__Torappu_BuildableType; 
@@ -945,6 +954,7 @@ table clz_Torappu_RuneData_Selector {
     filterTagExcludeFilter: [string]; 
     subProfessionExcludeFilter: [string]; 
     mapTagFilter: [string]; 
+    heightTypeMask: enum__Torappu_TileData_HeightTypeMask; 
 }
 
 table clz_Torappu_Blackboard_DataPair {
@@ -4896,6 +4906,8 @@ table clz_Torappu_ActivityEnemyDuelPoolData {
     poolNormal: float; 
     poolSmallEnemy: float; 
     poolBoss: float; 
+    poolMusic: float; 
+    poolNoSurpriseEnemy: float; 
 }
 
 table dict__string__clz_Torappu_ActivityEnemyDuelPoolData {
@@ -5068,9 +5080,11 @@ table clz_Torappu_ActivityEnemyDuelConstData {
     modeStandId: string; 
     multiPreposedModeId: string; 
     entryMusicName: string; 
+    milestonePlanName: string; 
     modeCondLockText: string; 
     modeTimeLockText: string; 
     titlePicRotateTime: float; 
+    titlePicId: string; 
 }
 
 table clz_Torappu_ActivityEnemyDuelConstToastData {
@@ -5228,6 +5242,137 @@ table dict__string__clz_Torappu_Act42SideData {
     value: clz_Torappu_Act42SideData;
 }
 
+table clz_Torappu_Act44SideData_Act44SideZoneAdditionData {
+    zoneId: string; 
+    unlockText: string; 
+}
+
+table dict__string__clz_Torappu_Act44SideData_Act44SideZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act44SideData_Act44SideZoneAdditionData;
+}
+
+table clz_Torappu_Act44SideData_Act44SideCustomerData {
+    id: string; 
+    name: string; 
+    imgId: string; 
+    iconId: string; 
+    isSp: bool; 
+    description: string; 
+}
+
+table dict__string__clz_Torappu_Act44SideData_Act44SideCustomerData {
+    key: string(key);
+    value: clz_Torappu_Act44SideData_Act44SideCustomerData;
+}
+
+table clz_Torappu_Act44SideData_Act44SideTagData {
+    id: string; 
+    name: string; 
+    isSp: bool; 
+    description: string; 
+}
+
+table dict__string__clz_Torappu_Act44SideData_Act44SideTagData {
+    key: string(key);
+    value: clz_Torappu_Act44SideData_Act44SideTagData;
+}
+
+table clz_Torappu_Act44SideData_Act44SideChoiceData {
+    id: string; 
+    imgId: string; 
+    attentionArrow: int; 
+    trustArrow: int; 
+    attentionValue: int; 
+    trustValue: int; 
+    patienceValue: int; 
+}
+
+table dict__string__clz_Torappu_Act44SideData_Act44SideChoiceData {
+    key: string(key);
+    value: clz_Torappu_Act44SideData_Act44SideChoiceData;
+}
+
+table clz_Torappu_Act44SideData_Act44SideNewsData {
+    id: string; 
+    title: string; 
+    desc1: string; 
+    desc2: string; 
+    imgId: string; 
+}
+
+table dict__string__clz_Torappu_Act44SideData_Act44SideNewsData {
+    key: string(key);
+    value: clz_Torappu_Act44SideData_Act44SideNewsData;
+}
+
+enum enum__Torappu_Act44SideData_InsightType : int {
+    PATIENCE = 0,
+    ATTENTION = 1,
+    TRUST = 2,
+}
+
+table clz_Torappu_Act44SideData_Act44SideInsightData {
+    type: enum__Torappu_Act44SideData_InsightType; 
+    lowerDesc: string; 
+    recommendDesc: string; 
+    maxDesc: string; 
+}
+
+table dict__string__clz_Torappu_Act44SideData_Act44SideInsightData {
+    key: string(key);
+    value: clz_Torappu_Act44SideData_Act44SideInsightData;
+}
+
+table clz_Torappu_Act44SideData_Act44SideMileStoneData {
+    mileStoneId: string; 
+    mileStoneLvl: int; 
+    needPointCnt: int; 
+    rewardItem: clz_Torappu_ItemBundle; 
+}
+
+table clz_Torappu_Act44SideData_Act44SideMilestoneSpecialRewardInfo {
+    itemName: string; 
+    point: int; 
+}
+
+table clz_Torappu_Act44SideData_Act44SideConstData {
+    informantUnlockStageId: string; 
+    informantItemId: string; 
+    informantItemType: enum__Torappu_ItemType; 
+    informantItemCount: int; 
+    milestoneItemId: string; 
+    attentionMax: int; 
+    trustMax: int; 
+    attentionMin: int; 
+    trustMin: int; 
+    patienceRCRoundNum: int; 
+    beginnerPatienceRCRoundNum: int; 
+    specialCustomerListId: [string]; 
+    milestoneRewardList: [clz_Torappu_Act44SideData_Act44SideMilestoneSpecialRewardInfo]; 
+    forCountBigSuccess: int; 
+    outerOpenUnlock: string; 
+    customerTagFormat: string; 
+}
+
+table clz_Torappu_Act44SideData {
+    zoneAdditionDataMap: [dict__string__clz_Torappu_Act44SideData_Act44SideZoneAdditionData]; 
+    customerDataMap: [dict__string__clz_Torappu_Act44SideData_Act44SideCustomerData]; 
+    tagDataMap: [dict__string__clz_Torappu_Act44SideData_Act44SideTagData]; 
+    choiceDataMap: [dict__string__clz_Torappu_Act44SideData_Act44SideChoiceData]; 
+    customerDialogMap: [dict__string__string]; 
+    keeperDialogMap: [dict__string__string]; 
+    newsDataMap: [dict__string__clz_Torappu_Act44SideData_Act44SideNewsData]; 
+    insightDescMap: [dict__string__clz_Torappu_Act44SideData_Act44SideInsightData]; 
+    mileStoneList: [clz_Torappu_Act44SideData_Act44SideMileStoneData]; 
+    constData: clz_Torappu_Act44SideData_Act44SideConstData; 
+}
+
+table dict__string__clz_Torappu_Act44SideData {
+    key: string(key);
+    value: clz_Torappu_Act44SideData;
+}
+
 table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; 
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; 
@@ -5268,6 +5413,7 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     TYPE_MAINSS: [dict__string__clz_Torappu_ActMainSSData]; 
     ENEMY_DUEL: [dict__string__clz_Torappu_ActivityEnemyDuelData]; 
     TYPE_ACT42SIDE: [dict__string__clz_Torappu_Act42SideData]; 
+    TYPE_ACT44SIDE: [dict__string__clz_Torappu_Act44SideData]; 
 }
 
 table clz_Torappu_ActMainlineBpExtraData_ActMainlineBpExtraPeriodData {
@@ -6313,6 +6459,7 @@ table clz_Torappu_DynEntrySwitchInfo {
     entryId: string; 
     sortId: int; 
     stageId: string; 
+    signalId: string; 
 }
 
 table dict__string__clz_Torappu_DynEntrySwitchInfo {
@@ -6322,6 +6469,7 @@ table dict__string__clz_Torappu_DynEntrySwitchInfo {
 
 table clz_Torappu_ActivityDynEntrySwitchData {
     entrySwitchInfo: [dict__string__clz_Torappu_DynEntrySwitchInfo]; 
+    randomEntrySwitchInfo: [dict__string__clz_Torappu_DynEntrySwitchInfo]; 
 }
 
 table dict__string__clz_Torappu_ActivityDynEntrySwitchData {

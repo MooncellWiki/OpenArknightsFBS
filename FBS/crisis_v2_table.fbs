@@ -88,6 +88,13 @@ enum enum__Torappu_Battle_SideType : int {
     ALL = 7,
 }
 
+enum enum__Torappu_TileData_HeightTypeMask : int {
+    NONE = 0,
+    LOWLAND = 1,
+    HIGHLAND = 2,
+    ALL = 3,
+}
+
 table clz_Torappu_RuneData_Selector {
     professionMask: enum__Torappu_ProfessionCategory; 
     buildableMask: enum__Torappu_BuildableType; 
@@ -105,6 +112,7 @@ table clz_Torappu_RuneData_Selector {
     filterTagExcludeFilter: [string]; 
     subProfessionExcludeFilter: [string]; 
     mapTagFilter: [string]; 
+    heightTypeMask: enum__Torappu_TileData_HeightTypeMask; 
 }
 
 table clz_Torappu_Blackboard_DataPair {
@@ -124,11 +132,186 @@ table dict__string__list_clz_Torappu_RuneData {
     value: [clz_Torappu_RuneData];
 }
 
+enum enum__Torappu_ItemType : int {
+    NONE = 0,
+    CHAR = 1,
+    CARD_EXP = 2,
+    MATERIAL = 3,
+    GOLD = 4,
+    EXP_PLAYER = 5,
+    TKT_TRY = 6,
+    TKT_RECRUIT = 7,
+    TKT_INST_FIN = 8,
+    TKT_GACHA = 9,
+    ACTIVITY_COIN = 10,
+    DIAMOND = 11,
+    DIAMOND_SHD = 12,
+    HGG_SHD = 13,
+    LGG_SHD = 14,
+    FURN = 15,
+    AP_GAMEPLAY = 16,
+    AP_BASE = 17,
+    SOCIAL_PT = 18,
+    CHAR_SKIN = 19,
+    TKT_GACHA_10 = 20,
+    TKT_GACHA_PRSV = 21,
+    AP_ITEM = 22,
+    AP_SUPPLY = 23,
+    RENAMING_CARD = 24,
+    RENAMING_CARD_2 = 25,
+    ET_STAGE = 26,
+    ACTIVITY_ITEM = 27,
+    VOUCHER_PICK = 28,
+    VOUCHER_CGACHA = 29,
+    VOUCHER_MGACHA = 30,
+    CRS_SHOP_COIN = 31,
+    CRS_RUNE_COIN = 32,
+    LMTGS_COIN = 33,
+    EPGS_COIN = 34,
+    LIMITED_TKT_GACHA_10 = 35,
+    LIMITED_FREE_GACHA = 36,
+    REP_COIN = 37,
+    ROGUELIKE = 38,
+    LINKAGE_TKT_GACHA_10 = 39,
+    VOUCHER_ELITE_II_4 = 40,
+    VOUCHER_ELITE_II_5 = 41,
+    VOUCHER_ELITE_II_6 = 42,
+    VOUCHER_SKIN = 43,
+    RETRO_COIN = 44,
+    PLAYER_AVATAR = 45,
+    UNI_COLLECTION = 46,
+    VOUCHER_FULL_POTENTIAL = 47,
+    RL_COIN = 48,
+    RETURN_CREDIT = 49,
+    MEDAL = 50,
+    CHARM = 51,
+    HOME_BACKGROUND = 52,
+    EXTERMINATION_AGENT = 53,
+    OPTIONAL_VOUCHER_PICK = 54,
+    ACT_CART_COMPONENT = 55,
+    VOUCHER_LEVELMAX_6 = 56,
+    VOUCHER_LEVELMAX_5 = 57,
+    VOUCHER_LEVELMAX_4 = 58,
+    VOUCHER_SKILL_SPECIALLEVELMAX_6 = 59,
+    VOUCHER_SKILL_SPECIALLEVELMAX_5 = 60,
+    VOUCHER_SKILL_SPECIALLEVELMAX_4 = 61,
+    ACTIVITY_POTENTIAL = 62,
+    ITEM_PACK = 63,
+    SANDBOX = 64,
+    FAVOR_ADD_ITEM = 65,
+    CLASSIC_SHD = 66,
+    CLASSIC_TKT_GACHA = 67,
+    CLASSIC_TKT_GACHA_10 = 68,
+    LIMITED_BUFF = 69,
+    CLASSIC_FES_PICK_TIER_5 = 70,
+    CLASSIC_FES_PICK_TIER_6 = 71,
+    RETURN_PROGRESS = 72,
+    NEW_PROGRESS = 73,
+    MCARD_VOUCHER = 74,
+    MATERIAL_ISSUE_VOUCHER = 75,
+    CRS_SHOP_COIN_V2 = 76,
+    HOME_THEME = 77,
+    SANDBOX_PERM = 78,
+    SANDBOX_TOKEN = 79,
+    TEMPLATE_TRAP = 80,
+    NAME_CARD_SKIN = 81,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
+    SO_CHAR_EXP = 85,
+    GIFTPACKAGE_TKT = 86,
+}
+
+table clz_Torappu_ItemBundle {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
+}
+
+table clz_Torappu_RuneTable_PackedRuneData {
+    id: string; 
+    points: float; 
+    mutexGroupKey: string; 
+    description: string; 
+    runes: [clz_Torappu_RuneData]; 
+}
+
+table clz_Torappu_RecalRuneRuneData {
+    runeId: string; 
+    score: int; 
+    sortId: int; 
+    essential: bool; 
+    exclusiveGroupId: string; 
+    runeIcon: string; 
+    packedRune: clz_Torappu_RuneTable_PackedRuneData; 
+}
+
+table dict__string__clz_Torappu_RecalRuneRuneData {
+    key: string(key);
+    value: clz_Torappu_RecalRuneRuneData;
+}
+
+table clz_Torappu_RecalRuneStageData {
+    stageId: string; 
+    levelId: string; 
+    juniorMedalId: string; 
+    seniorMedalId: string; 
+    juniorMedalScore: int; 
+    seniorMedalScore: int; 
+    runes: [dict__string__clz_Torappu_RecalRuneRuneData]; 
+    sourceName: string; 
+    sourceType: string; 
+    useName: bool; 
+    levelName: string; 
+    levelCode: string; 
+    levelDesc: string; 
+    fixedRuneSeriesName: string; 
+    logoId: string; 
+    mainPicId: string; 
+    loadingPicId: string; 
+}
+
+table dict__string__clz_Torappu_RecalRuneStageData {
+    key: string(key);
+    value: clz_Torappu_RecalRuneStageData;
+}
+
+table clz_Torappu_RecalRuneSeasonData {
+    seasonId: string; 
+    sortId: int; 
+    startTs: long; 
+    seasonCode: string; 
+    juniorReward: clz_Torappu_ItemBundle; 
+    seniorReward: clz_Torappu_ItemBundle; 
+    seniorRewardHint: string; 
+    mainMedalId: string; 
+    picId: string; 
+    stages: [dict__string__clz_Torappu_RecalRuneStageData]; 
+}
+
+table dict__string__clz_Torappu_RecalRuneSeasonData {
+    key: string(key);
+    value: clz_Torappu_RecalRuneSeasonData;
+}
+
+table clz_Torappu_RecalRuneConstData {
+    stageCountPerSeason: int; 
+    juniorRewardMedalCount: int; 
+    seniorRewardMedalCount: int; 
+    unlockLevelIds: [string]; 
+}
+
+table clz_Torappu_RecalRuneSharedData {
+    seasons: [dict__string__clz_Torappu_RecalRuneSeasonData]; 
+    constData: clz_Torappu_RecalRuneConstData; 
+}
+
 table clz_Torappu_CrisisV2SharedData {
     seasonInfoDataMap: [dict__string__clz_Torappu_CrisisV2SeasonInfo]; 
     scoreLevelToAppraiseDataMap: [dict__int__clz_Torappu_CrisisV2AppraiseWrap]; 
     constData: clz_Torappu_CrisisV2ConstData; 
     battleCommentRuneData: [dict__string__list_clz_Torappu_RuneData]; 
+    recalRuneData: clz_Torappu_RecalRuneSharedData; 
 }
 
 root_type clz_Torappu_CrisisV2SharedData;

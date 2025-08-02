@@ -1,0 +1,15 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table dict__string__list_string {
+    key: string(key);
+    value: [string];
+}
+
+table clz_Torappu_Battle_LevelScriptDataMap {
+    levelScriptDataCharacterDict: [dict__string__list_string]; 
+    levelScriptDataEnemyDict: [dict__string__list_string]; 
+    levelScriptDataLevelDict: [dict__string__list_string]; 
+    levelScriptDataGameModeDict: [dict__string__list_string]; 
+    levelScriptDataMiscList: [string]; 
+}
+
+root_type clz_Torappu_Battle_LevelScriptDataMap;
