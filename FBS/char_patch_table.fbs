@@ -2,7 +2,7 @@
 // YoStar version
 table clz_Torappu_CharPatchData_PatchInfo {
     tmplIds: [string]; 
-    default: string; // __prts__check_required__defaultPatch__
+    default: string; 
 }
 
 table dict__string__clz_Torappu_CharPatchData_PatchInfo {
@@ -188,8 +188,9 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EXCLUSIVE_TKT_GACHA = 82,
-    EXCLUSIVE_TKT_GACHA_10 = 83,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
 }
 
 table clz_Torappu_ItemBundle {
@@ -216,8 +217,8 @@ table clz_Torappu_CharacterData_MainSkill {
     skillId: string; 
     overridePrefabKey: string; 
     overrideTokenKey: string; 
-    levelUpCostCond: [clz_Torappu_CharacterData_MainSkill_SpecializeLevelData]; // __prts__check_required__specializeLevelUpData__
-    unlockCond: clz_Torappu_CharacterData_UnlockCondition; // __prts__check_required__initialUnlockCond__
+    levelUpCostCond: [clz_Torappu_CharacterData_MainSkill_SpecializeLevelData]; 
+    unlockCond: clz_Torappu_CharacterData_UnlockCondition; 
 }
 
 table dict__string__bool {
@@ -257,12 +258,12 @@ enum enum__Torappu_AbnormalFlag : int {
     HEAL_FREE = 7,
     UNBALANCE_IMMUNE = 8,
     INVISIBLE = 9,
+    UNUSED_PLACEHOLDER_2 = 14,
+    ALLY_TARGET_FREE = 15,
     UNUSED_PLACEHOLDER_1 = 10,
     DISARMED = 11,
     SILENCED = 12,
     UNMOVABLE = 13,
-    UNUSED_PLACEHOLDER_2 = 14,
-    ALLY_TARGET_FREE = 15,
     FROZEN = 16,
     CAMOUFLAGE = 17,
     FORCE_DISARMED = 18,

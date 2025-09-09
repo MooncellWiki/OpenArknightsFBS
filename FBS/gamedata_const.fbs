@@ -97,8 +97,9 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EXCLUSIVE_TKT_GACHA = 82,
-    EXCLUSIVE_TKT_GACHA_10 = 83,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
 }
 
 table clz_Torappu_ItemBundle {
@@ -187,6 +188,7 @@ table clz_Torappu_GameDataConsts {
     charRotationPresetTrackTs: long; 
     uniequipArchiveSysTrackTs: long; 
     manufactPromptTime: int; 
+    mainGuideActivedStageId: string; 
     richTextStyles: [dict__string__string]; 
     charAssistRefreshTime: [clz_Torappu_GameDataConsts_CharAssistRefreshTimeState]; 
     normalRecruitLockedString: [string]; 
@@ -220,7 +222,7 @@ table clz_Torappu_GameDataConsts {
     monthlySubWarningTime: long; 
     UnlimitSkinOutOfTime: long; 
     replicateShopStartTime: long; 
-    TSO: long; // __prts__check_required__operatorRecordsStartTime__
+    TSO: long; 
     isDynIllustEnabled: bool; 
     isDynIllustStartEnabled: bool; 
     isClassicQCShopEnabled: bool; 
