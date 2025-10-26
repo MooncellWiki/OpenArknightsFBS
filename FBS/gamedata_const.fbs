@@ -243,9 +243,9 @@ table clz_Torappu_GameDataConsts {
     announceWebBusType: string; 
     videoPlayerWebBusType: string; 
     gachaLogBusType: string; 
-    defaultMinContinuousBattleTimes: int; 
-    defaultMaxContinuousBattleTimes: int; 
-    continuousActionOpen: bool; 
+    defaultMinMultipleBattleTimes: int; 
+    defaultMaxMultipleBattleTimes: int; 
+    multipleActionOpen: bool; 
     subProfessionDamageTypePairs: [dict__string__enum__Torappu_SubProfessionAttackType]; 
     classicProtectChar: [string]; 
     birthdaySettingDesc: string; 

@@ -177,7 +177,7 @@ table clz_Torappu_RetroStageOverrideInfo {
     goldGain: int; 
     passFavor: int; 
     completeFavor: int; 
-    canContinuousBattle: bool; 
+    canMultipleBattle: bool; 
 }
 
 table dict__string__clz_Torappu_RetroStageOverrideInfo {
@@ -244,7 +244,9 @@ enum enum__Torappu_ActivityType : int {
     MULTIPLAY_V3 = 50,
     TYPE_MAINSS = 51,
     ENEMY_DUEL = 52,
-    ENUM = 53,
+    VEC_BREAK_V2 = 53,
+    TYPE_ACT42SIDE = 54,
+    ENUM = 55,
 }
 
 table clz_Torappu_RetroActData {
@@ -394,6 +396,7 @@ table clz_Torappu_StageData {
     canBattleReplay: bool; 
     apCost: int; 
     apFailReturn: int; 
+    maxSlot: int; 
     etItemId: string; 
     etCost: int; 
     etFailReturn: int; 
@@ -423,7 +426,7 @@ table clz_Torappu_StageData {
     canUseTrapTool: bool; 
     canUseBattlePerformance: bool; 
     canUseFirework: bool; 
-    canContinuousBattle: bool; 
+    canMultipleBattle: bool; 
     startButtonOverrideId: string; 
     isStagePatch: bool; 
     mainStageId: string; 

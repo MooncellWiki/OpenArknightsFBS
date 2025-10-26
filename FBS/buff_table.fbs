@@ -38,7 +38,12 @@ enum enum__Torappu_AbnormalFlag : int {
     SKILL_ACTIVABLE_IN_ABNORMAL = 34,
     MOTION_TARGET_FREE = 35,
     FORCE_LEVITATE = 36,
-    E_NUM = 37,
+    BUFF_ADD_CAN_BE_CANCELED_IF_DEFENSE = 37,
+    DEFENSE_BUFF_ADD_IF_CANCELABLE_BUFF = 38,
+    PALSY = 39,
+    PALSYING = 40,
+    ATTRACTED = 41,
+    E_NUM = 42,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
@@ -83,7 +88,8 @@ enum enum__Torappu_AttributeType : int {
     EP_RESISTANCE = 32,
     DAMAGE_HITRATE_PHYSICAL = 33,
     DAMAGE_HITRATE_MAGICAL = 34,
-    E_NUM = 35,
+    EP_BREAK_RECOVER_SPEED = 35,
+    E_NUM = 36,
 }
 
 enum enum__Torappu_AttributeModifierData_AttributeModifier_FormulaItemType : int {
