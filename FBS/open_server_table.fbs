@@ -210,18 +210,53 @@ table clz_Torappu_OpenServerConst {
     resFullOpenStartTime: long; 
 }
 
-table clz_Torappu_ReturnConst {
-    startTime: long; 
-    systemTab_time: int; 
-    afkDays: int; 
-    unlockLv: int; 
-    unlockLevel: string; 
-    juniorClear: bool; 
-    ifvisitor: bool; 
-    permMission_time: int; 
-    needPoints: int; 
-    defaultIntro: string; 
-    pointId: string; 
+enum enum__Torappu_ReturnAllOpenType : int {
+    RESOURCE = 0,
+    CAMP = 1,
+}
+
+table clz_Torappu_ReturnOpenData {
+    allOpenType: enum__Torappu_ReturnAllOpenType; 
+    allOpenTime: int; 
+    desc: string; 
+}
+
+table clz_Torappu_ReturnGroupData {
+    groupId: string; 
+    taskDays: int; 
+    onceGroupId: string; 
+    missionGroupId: [string]; 
+    checkinGroupId: string; 
+    priceGroupId: string; 
+    newsGroupId: [string]; 
+    giftPackageIdList: [string]; 
+    checkinGpId: string; 
+    gachaPoolId: string; 
+    allOpenDays: int; 
+    campAllOpenDays: int; 
+    allOpenData: [clz_Torappu_ReturnOpenData]; 
+}
+
+table dict__string__clz_Torappu_ReturnGroupData {
+    key: string(key);
+    value: clz_Torappu_ReturnGroupData;
+}
+
+table clz_Torappu_ReturnItemData {
+    id: string; 
+    count: int; 
+    type: enum__Torappu_ItemType; 
+    sortId: int; 
+}
+
+table clz_Torappu_ReturnOnceRewardData {
+    groupId: string; 
+    rewardList: [clz_Torappu_ReturnItemData]; 
+}
+
+table dict__string__clz_Torappu_ReturnOnceRewardData {
+    key: string(key);
+    value: clz_Torappu_ReturnOnceRewardData;
 }
 
 table clz_Torappu_ItemBundle {
@@ -230,110 +265,48 @@ table clz_Torappu_ItemBundle {
     type: enum__Torappu_ItemType; 
 }
 
-table clz_Torappu_ReturnIntroData {
-    sort: int; 
-    pubTime: long; 
-    image: string; 
-}
-
-table clz_Torappu_ReturnDailyTaskData {
-    groupId: string; 
-    id: string; 
-    groupSortId: int; 
-    taskSortId: int; 
-    template: string; 
-    param: [string]; 
-    desc: string; 
-    rewards: [clz_Torappu_MissionDisplayRewards]; 
-    playPoint: int; 
-}
-
-table dict__string__list_clz_Torappu_ReturnDailyTaskData {
-    key: string(key);
-    value: [clz_Torappu_ReturnDailyTaskData];
-}
-
-table clz_Torappu_ReturnLongTermTaskData {
-    id: string; 
-    sortId: int; 
-    template: string; 
-    param: [string]; 
-    desc: string; 
-    rewards: [clz_Torappu_MissionDisplayRewards]; 
-    playPoint: int; 
-}
-
-table clz_Torappu_ReturnCheckinData {
-    isImportant: bool; 
-    checkinRewardItems: [clz_Torappu_ItemBundle]; 
-}
-
-table clz_Torappu_ReturnData {
-    constData: clz_Torappu_ReturnConst; 
-    onceRewards: [clz_Torappu_ItemBundle]; 
-    intro: [clz_Torappu_ReturnIntroData]; 
-    returnDailyTaskDic: [dict__string__list_clz_Torappu_ReturnDailyTaskData]; 
-    returnLongTermTaskList: [clz_Torappu_ReturnLongTermTaskData]; 
-    creditsList: [clz_Torappu_ItemBundle]; 
-    checkinRewardList: [clz_Torappu_ReturnCheckinData]; 
-}
-
-table clz_Torappu_ReturnV2Const {
-    startTime: long; 
-    unlockLv: int; 
-    unlockStage: string; 
-    permMissionTime: int; 
-    pointId: string; 
-    returnPriceDesc: string; 
-    dailySupplyDesc: string; 
-    oldGPId: string; 
-}
-
-table clz_Torappu_ReturnV2ItemData {
-    id: string; 
-    type: enum__Torappu_ItemType; 
-    count: int; 
-    sortId: int; 
-}
-
-table clz_Torappu_ReturnV2OnceRewardData {
-    groupId: string; 
-    startTime: long; 
-    endTime: long; 
-    rewardList: [clz_Torappu_ReturnV2ItemData]; 
-}
-
-table clz_Torappu_ReturnV2CheckInRewardItemData {
-    sortId: int; 
-    isImportant: bool; 
+table clz_Torappu_ReturnCheckinItemData {
+    order: int; 
+    isKeyItem: bool; 
     rewardList: [clz_Torappu_ItemBundle]; 
 }
 
-table clz_Torappu_ReturnV2CheckInRewardData {
+table clz_Torappu_ReturnCheckinGroupData {
     groupId: string; 
-    startTime: long; 
-    endTime: long; 
-    rewardList: [clz_Torappu_ReturnV2CheckInRewardItemData]; 
+    checkinItemList: [clz_Torappu_ReturnCheckinItemData]; 
 }
 
-table clz_Torappu_ReturnV2PriceRewardData {
+table dict__string__clz_Torappu_ReturnCheckinGroupData {
+    key: string(key);
+    value: clz_Torappu_ReturnCheckinGroupData;
+}
+
+table clz_Torappu_ReturnPriceItemData {
     contentId: string; 
     sortId: int; 
     pointRequire: int; 
     desc: string; 
-    iconId: string; 
-    topIconId: string; 
-    rewardList: [clz_Torappu_ReturnV2ItemData]; 
+    displayReward: clz_Torappu_ReturnItemData; 
+    rewardList: [clz_Torappu_ReturnItemData]; 
 }
 
-table clz_Torappu_ReturnV2PriceRewardGroupData {
+table clz_Torappu_ReturnPriceGroupData {
     groupId: string; 
-    startTime: long; 
-    endTime: long; 
-    contentList: [clz_Torappu_ReturnV2PriceRewardData]; 
+    content: [clz_Torappu_ReturnPriceItemData]; 
 }
 
-enum enum__Torappu_ReturnV2JumpType : int {
+table dict__string__clz_Torappu_ReturnPriceGroupData {
+    key: string(key);
+    value: clz_Torappu_ReturnPriceGroupData;
+}
+
+enum enum__Torappu_ReturnMissionGroupType : int {
+    DAILY = 0,
+    NORMAL = 1,
+    DIFF = 2,
+}
+
+enum enum__Torappu_ReturnJumpType : int {
     NONE = 0,
     ZONE_GROUP = 1,
     ROGUE = 2,
@@ -343,63 +316,119 @@ enum enum__Torappu_ReturnV2JumpType : int {
     RECRUIT_BUILD = 6,
     DAILY_MISSION = 7,
     SANDBOX = 8,
+    MAIN_SS = 9,
 }
 
-table clz_Torappu_ReturnV2MissionItemData {
+table clz_Torappu_ReturnMissionItemData {
     missionId: string; 
-    groupId: string; 
     sortId: int; 
-    jumpType: enum__Torappu_ReturnV2JumpType; 
-    jumpParam: string; 
+    uncompleteBgIcon: string; 
+    completeBgIcon: string; 
     desc: string; 
+    jumpType: enum__Torappu_ReturnJumpType; 
+    jumpPlace: string; 
     rewardList: [clz_Torappu_ItemBundle]; 
 }
 
-table clz_Torappu_ReturnV2MissionGroupData {
+table clz_Torappu_ReturnMissionGroupData {
     groupId: string; 
     sortId: int; 
-    tabTitle: string; 
-    title: string; 
-    desc: string; 
-    diffMissionCount: int; 
-    startTime: long; 
-    endTime: long; 
-    imageId: string; 
-    iconId: string; 
-    missionList: [clz_Torappu_ReturnV2MissionItemData]; 
+    type: enum__Torappu_ReturnMissionGroupType; 
+    missionList: [clz_Torappu_ReturnMissionItemData]; 
 }
 
-table clz_Torappu_ReturnV2DailySupplyData {
-    groupId: string; 
-    startTime: long; 
-    endTime: long; 
-    rewardList: [clz_Torappu_ItemBundle]; 
+table dict__string__clz_Torappu_ReturnMissionGroupData {
+    key: string(key);
+    value: clz_Torappu_ReturnMissionGroupData;
 }
 
-table dict__int__list_clz_Torappu_ReturnV2ItemData {
+table dict__int__list_clz_Torappu_ReturnItemData {
     key: int(key);
-    value: [clz_Torappu_ReturnV2ItemData];
+    value: [clz_Torappu_ReturnItemData];
 }
 
-table clz_Torappu_ReturnV2PackageCheckInRewardData {
+table clz_Torappu_ReturnCheckinGpRewardData {
     groupId: string; 
-    startTime: long; 
-    endTime: long; 
     getTime: int; 
     bindGPGoodId: string; 
     totalCheckInDay: int; 
     iconId: string; 
-    rewardDict: [dict__int__list_clz_Torappu_ReturnV2ItemData]; 
+    rewardDict: [dict__int__list_clz_Torappu_ReturnItemData]; 
 }
 
-table clz_Torappu_ReturnV2Data {
-    constData: clz_Torappu_ReturnV2Const; 
-    onceRewardData: [clz_Torappu_ReturnV2OnceRewardData]; 
-    checkInRewardData: [clz_Torappu_ReturnV2CheckInRewardData]; 
-    priceRewardData: [clz_Torappu_ReturnV2PriceRewardGroupData]; 
-    missionGroupData: [clz_Torappu_ReturnV2MissionGroupData]; 
-    dailySupplyData: [clz_Torappu_ReturnV2DailySupplyData]; 
-    packageCheckInRewardData: [clz_Torappu_ReturnV2PackageCheckInRewardData]; 
+table dict__string__clz_Torappu_ReturnCheckinGpRewardData {
+    key: string(key);
+    value: clz_Torappu_ReturnCheckinGpRewardData;
+}
+
+enum enum__Torappu_ReturnNewsType : int {
+    NONE = 0,
+    MAIN_SS = 1,
+    ROGUE = 2,
+    SANDBOX = 3,
+}
+
+table clz_Torappu_ReturnNewsData {
+    groupId: string; 
+    sortId: int; 
+    tabTitle: string; 
+    tabIcon: string; 
+    title: string; 
+    desc: string; 
+    imgId: string; 
+    iconId: string; 
+    jumpType: enum__Torappu_ReturnNewsType; 
+    jumpPlace: string; 
+}
+
+table dict__string__clz_Torappu_ReturnNewsData {
+    key: string(key);
+    value: clz_Torappu_ReturnNewsData;
+}
+
+table clz_Torappu_ReturnGiftPackagePicData {
+    giftPackageId: string; 
+    giftPackagePic: string; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_ReturnGiftPackagePicData {
+    key: string(key);
+    value: clz_Torappu_ReturnGiftPackagePicData;
+}
+
+table clz_Torappu_ReturnOpenStyleData {
+    sortId: int; 
+    imgBkgId: string; 
+    imgEntryId: string; 
+    imgIconId: string; 
+    pauseDesc: string; 
+    title: string; 
+    name: string; 
+}
+
+table dict__string__clz_Torappu_ReturnOpenStyleData {
+    key: string(key);
+    value: clz_Torappu_ReturnOpenStyleData;
+}
+
+table clz_Torappu_ReturnConstData {
+    pointItemId: string; 
+    returnPriceDesc: string; 
+    oldReturnGroupId: string; 
+}
+
+table clz_Torappu_ReturnData {
+    groupDataMap: [dict__string__clz_Torappu_ReturnGroupData]; 
+    onceDataMap: [dict__string__clz_Torappu_ReturnOnceRewardData]; 
+    checkinDataMap: [dict__string__clz_Torappu_ReturnCheckinGroupData]; 
+    priceDataMap: [dict__string__clz_Torappu_ReturnPriceGroupData]; 
+    missionDataMap: [dict__string__clz_Torappu_ReturnMissionGroupData]; 
+    checkinGpData: [dict__string__clz_Torappu_ReturnCheckinGpRewardData]; 
+    newsDataMap: [dict__string__clz_Torappu_ReturnNewsData]; 
+    giftPackagePicDataMap: [dict__string__clz_Torappu_ReturnGiftPackagePicData]; 
+    openStyleData: [dict__string__clz_Torappu_ReturnOpenStyleData]; 
+    constData: clz_Torappu_ReturnConstData; 
 }
 
 table clz_Torappu_NewbieCheckInPackageRewardData {
@@ -452,7 +481,6 @@ table clz_Torappu_OpenServerSchedule {
     dataMap: [dict__string__clz_Torappu_OpenServerData]; 
     constant: clz_Torappu_OpenServerConst; 
     playerReturn: clz_Torappu_ReturnData; 
-    playerReturnV2: clz_Torappu_ReturnV2Data; 
     newbieCheckInPackageList: [clz_Torappu_NewbieCheckInPackageData]; 
     longTermCheckInData: clz_Torappu_LongTermCheckInData; 
 }

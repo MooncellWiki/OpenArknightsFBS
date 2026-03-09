@@ -223,6 +223,8 @@ table clz_Torappu_RoguelikeTopicBP {
     itemCount: int; 
     isGoodPrize: bool; 
     isGrandPrize: bool; 
+    isReturnDisplay: bool; 
+    returnSortId: int; 
 }
 
 table clz_Torappu_RoguelikeTopicMilestoneUpdateData {
@@ -1777,6 +1779,16 @@ table dict__string__clz_Torappu_RoguelikeRollNodeData {
     value: clz_Torappu_RoguelikeRollNodeData;
 }
 
+table clz_Torappu_RoguelikeRelicTipsData {
+    itemId: string; 
+    toastText: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeRelicTipsData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeRelicTipsData;
+}
+
 enum enum__Torappu_RoguelikeActivityType : int {
     NONE = 0,
     SEED_MODE = 1,
@@ -1890,6 +1902,7 @@ table clz_Torappu_RoguelikeTopicDetail {
     styleConfig: clz_Torappu_RoguelikePredefinedConstStyleData; 
     exploreTools: [dict__string__clz_Torappu_RoguelikeGameExploreToolData]; 
     rollNodeData: [dict__string__clz_Torappu_RoguelikeRollNodeData]; 
+    relicTipsData: [dict__string__clz_Torappu_RoguelikeRelicTipsData]; 
     activity: clz_Torappu_RoguelikeActivityData; 
 }
 

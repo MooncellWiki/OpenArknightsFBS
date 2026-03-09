@@ -2471,6 +2471,7 @@ enum enum__Torappu_Act24SideData_MeldingItemRarityType : int {
 
 table clz_Torappu_Act24SideData_MeldingItemData {
     meldingId: string; 
+    bgId: string; 
     sortId: int; 
     meldingPrice: int; 
     rarity: enum__Torappu_Act24SideData_MeldingItemRarityType; 
@@ -2555,6 +2556,8 @@ enum enum__Torappu_Act24SideData_MissionType : int {
     HUNTING_TASK = 1,
     COLLECTION_TASK = 2,
     EXPLORATION_TASK = 3,
+    MONSTER_TASK = 4,
+    INVATION_TASK = 5,
 }
 
 table clz_Torappu_Act24SideData_MissionExtraData {
@@ -2615,12 +2618,42 @@ table dict__string__list_string {
     value: [string];
 }
 
+table clz_Torappu_Act24SideData_HuntDatabaseData {
+    id: string; 
+    name: string; 
+    sortId: int; 
+    level: int; 
+    isBoss: bool; 
+    bossPicId: string; 
+    iconSmallId: string; 
+    iconLargeId: string; 
+    basicDesc: string; 
+    rideIcon: string; 
+    rideDesc: string; 
+    secretTaskId: string; 
+    secretTaskItemId: string; 
+    secretTaskDesc: string; 
+    secretContent: string; 
+}
+
+table dict__string__clz_Torappu_Act24SideData_HuntDatabaseData {
+    key: string(key);
+    value: clz_Torappu_Act24SideData_HuntDatabaseData;
+}
+
 table clz_Torappu_Act24SideData_ConstData {
     stageUnlockToolDesc: string; 
     mealLackMoney: string; 
     mealDayTimesLimit: int; 
     toolMaximum: int; 
     stageCanNotUseToTool: [string]; 
+    hunterGuideRewardItemId: string; 
+    hunterGuideRewardItemType: string; 
+    hunterGuideRewardItemCount: int; 
+    hunterGuideDetailTabPosition: int; 
+    taskRewardItemNoIconDisplayId: string; 
+    specialLevelUnlockTaskId: string; 
+    missionProgressFormat: string; 
     gachaDefaultProb: float; 
     gachaExtraProb: float; 
 }
@@ -2637,6 +2670,8 @@ table clz_Torappu_Act24SideData {
     missionDataList: [dict__string__clz_Torappu_Act24SideData_MissionExtraData]; 
     meldingDropDict: [dict__string__clz_Torappu_StageData_StageDropInfo]; 
     stageMapPreviewDict: [dict__string__list_string]; 
+    huntDatabaseDict: [dict__string__clz_Torappu_Act24SideData_HuntDatabaseData]; 
+    stageIdToUnlockItemIdDict: [dict__string__string]; 
     constData: clz_Torappu_Act24SideData_ConstData; 
 }
 
@@ -5760,6 +5795,7 @@ enum enum__Torappu_ActAutoChessModeDifficultyType : int {
     FUNNY = 1,
     NORMAL = 2,
     HARD = 3,
+    ABYSS = 4,
 }
 
 table clz_Torappu_ActAutoChessData_ActAutoChessModeData {
@@ -5781,6 +5817,7 @@ table clz_Torappu_ActAutoChessData_ActAutoChessModeData {
     activeBondIdList: [string]; 
     inactiveBondIdList: [string]; 
     inactiveEnemyKey: [string]; 
+    startTime: long; 
 }
 
 table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessModeData {
@@ -5803,6 +5840,7 @@ table clz_Torappu_ActAutoChessData_ActAutoChessBandData {
     effectId: string; 
     victorCount: int; 
     bandRewardModulus: float; 
+    updateTime: long; 
 }
 
 table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBandData {
@@ -5978,6 +6016,13 @@ table dict__string__list_dict__int__list_clz_Torappu_ActAutoChessData_ActAutoChe
     value: [dict__int__list_clz_Torappu_ActAutoChessData_ActAutoChessBattleData];
 }
 
+enum enum__Torappu_ActAutoChessBondActiveConditionType : int {
+    BOARD = 0,
+    BOARD_AND_DECK = 1,
+    DECK = 2,
+    BOARD_ALL_CHESS = 3,
+}
+
 enum enum__Torappu_ActAutoChessBondActiveType : int {
     BATTLE = 0,
     ALL = 1,
@@ -5990,11 +6035,15 @@ table clz_Torappu_ActAutoChessData_ActAutoChessBondInfo {
     desc: string; 
     iconId: string; 
     activeCount: int; 
+    activeCondition: enum__Torappu_ActAutoChessBondActiveConditionType; 
+    activeConditionTemplate: string; 
+    activeParamList: [string]; 
     effectId: string; 
     activeType: enum__Torappu_ActAutoChessBondActiveType; 
     identifier: int; 
     weight: int; 
     isActiveInDeck: bool; 
+    maxInactiveBondCount: int; 
     descParamBaseList: [string]; 
     descParamPerStackList: [string]; 
     noStack: bool; 
@@ -6114,6 +6163,7 @@ table clz_Torappu_ActAutoChessData_ActAutochessBossEntry {
     bloodPoint: int; 
     bloodPointNormal: int; 
     bloodPointHard: int; 
+    bloodPointAbyss: int; 
     isHidingBoss: bool; 
 }
 
@@ -6211,7 +6261,6 @@ table clz_Torappu_ActAutoChessData_ActAutoChessConstData {
     trBondIds: [string]; 
     trBannedBondIds: [string]; 
     milestoneTrackId: string; 
-    bandNextUpdateTs: long; 
     escapedBattleTemplateMapSinglePlayer: string; 
     escapedBattleTemplateMapMultiPlayer: string; 
     webBusType: string; 
@@ -6893,6 +6942,72 @@ table clz_Torappu_Act6FunData {
     constData: clz_Torappu_Act6FunConst; 
 }
 
+table clz_Torappu_Act7FunStageAdditionData {
+    homepageSpineGroupId: string; 
+    battleSpineGroupId: string; 
+    settleWinSpineGroupId: string; 
+    settleLoseSpineGroupId: string; 
+    trapMaxNum: int; 
+    trapTargetNum: int; 
+}
+
+table dict__string__clz_Torappu_Act7FunStageAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act7FunStageAdditionData;
+}
+
+table clz_Torappu_Act7FunEasterEggData {
+    eastereggId: string; 
+    charId: string; 
+    newsDesc: string; 
+}
+
+table dict__string__clz_Torappu_Act7FunEasterEggData {
+    key: string(key);
+    value: clz_Torappu_Act7FunEasterEggData;
+}
+
+table clz_Torappu_Act7FunSpineHolderData {
+    holderId: int; 
+    charId: string; 
+    direction: bool; 
+}
+
+table clz_Torappu_Act7FunSpineGroupData {
+    spineGroupId: string; 
+    holderData: [clz_Torappu_Act7FunSpineHolderData]; 
+}
+
+table dict__string__clz_Torappu_Act7FunSpineGroupData {
+    key: string(key);
+    value: clz_Torappu_Act7FunSpineGroupData;
+}
+
+table clz_Torappu_Act7FunCharAnimData {
+    charId: string; 
+    failAnimId: string; 
+    normalAnimIds: [string]; 
+}
+
+table dict__string__clz_Torappu_Act7FunCharAnimData {
+    key: string(key);
+    value: clz_Torappu_Act7FunCharAnimData;
+}
+
+table clz_Torappu_Act7FunConstData {
+    defaultStage: string; 
+    homepageSwitchStageId: string; 
+}
+
+table clz_Torappu_Act7FunData {
+    stageAdditionMap: [dict__string__clz_Torappu_Act7FunStageAdditionData]; 
+    easterEggData: [dict__string__clz_Torappu_Act7FunEasterEggData]; 
+    spineGroupData: [dict__string__clz_Torappu_Act7FunSpineGroupData]; 
+    charAnimData: [dict__string__clz_Torappu_Act7FunCharAnimData]; 
+    stageRewardList: [string]; 
+    constData: clz_Torappu_Act7FunConstData; 
+}
+
 table clz_Torappu_AprilFoolTable {
     stages: [dict__string__clz_Torappu_AprilFoolStageData]; 
     scoreDict: [dict__string__list_clz_Torappu_AprilFoolScoreData]; 
@@ -6900,6 +7015,7 @@ table clz_Torappu_AprilFoolTable {
     act4FunData: clz_Torappu_Act4funData; 
     act5FunData: clz_Torappu_Act5FunData; 
     act6FunData: clz_Torappu_Act6FunData; 
+    act7FunData: clz_Torappu_Act7FunData; 
 }
 
 enum enum__Torappu_CartComponents_CartAccessoryType : int {
@@ -7597,9 +7713,8 @@ table clz_Torappu_FifthAnnivExploreData {
 table clz_Torappu_AutoChessData_AutoChessVersionInfoData {
     versionId: string; 
     activityId: string; 
-    updateTime: long; 
-    appearTimeOnMainScreen: long; 
-    disappearTimeOnMainScreen: long; 
+    seasonName: string; 
+    startTime: long; 
 }
 
 table dict__string__clz_Torappu_AutoChessData_AutoChessVersionInfoData {
@@ -7652,6 +7767,7 @@ table clz_Torappu_AutoChessData_AutoChessBondInfoData {
     icon: string; 
     isPower: bool; 
     bondOrder: int; 
+    isHiddenCharList: bool; 
 }
 
 table dict__string__clz_Torappu_AutoChessData_AutoChessBondInfoData {
@@ -7729,6 +7845,7 @@ enum enum__Torappu_AutoChessSkillTriggerType : int {
     GDGLOW_SKILL_2 = 9,
     ACT_DEFAULT = 10,
     AUTO_STOP = 11,
+    TAKE_DAMAGE = 12,
 }
 
 table clz_Torappu_AutoChessData_AutoChessSkillTriggerData {
@@ -7839,6 +7956,7 @@ table clz_Torappu_AutoChessData_AutoChessConstData {
     enemyAtkFactor: float; 
     enemyDefFactor: float; 
     enemyMagicResistanceFactor: float; 
+    singleReconnectTime: int; 
     specialPhaseStayTime: int; 
     hintTimeSpecialPhase: int; 
     hintTimeNormalPhase: int; 
@@ -7856,6 +7974,7 @@ table clz_Torappu_AutoChessData_AutoChessConstData {
     bossTrailerStartRound: int; 
     singleClosureStayTime: float; 
     matchTimeMax: float; 
+    enemyDataLevelId: string; 
 }
 
 table clz_Torappu_AutoChessData {

@@ -11,6 +11,7 @@ enum enum__Torappu_GachaRuleType : int {
     SPECIAL = 8,
     DOUBLE = 9,
     CLASSIC_DOUBLE = 10,
+    BACKFLOW = 11,
 }
 
 table hg__internal__JObject {
