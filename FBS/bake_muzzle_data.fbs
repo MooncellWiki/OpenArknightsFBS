@@ -1,0 +1,50 @@
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+table clz_Torappu_Battle_BakedFrameData {
+    position: [float]; 
+    rotation: [float]; 
+    scale: [float]; 
+}
+
+table clz_Torappu_Battle_BakedMountPointData {
+    isConstant: bool; 
+    bakedStepInterval: int; 
+    frames: [clz_Torappu_Battle_BakedFrameData]; 
+}
+
+table dict__int__clz_Torappu_Battle_BakedMountPointData {
+    key: int(key);
+    value: clz_Torappu_Battle_BakedMountPointData;
+}
+
+table dict__string__list_dict__int__clz_Torappu_Battle_BakedMountPointData {
+    key: string(key);
+    value: [dict__int__clz_Torappu_Battle_BakedMountPointData];
+}
+
+table clz_Torappu_Battle_BakedEventTimeline {
+    eventTime: [float]; 
+    events: [string]; 
+}
+
+table dict__string__clz_Torappu_Battle_BakedEventTimeline {
+    key: string(key);
+    value: clz_Torappu_Battle_BakedEventTimeline;
+}
+
+table clz_Torappu_Battle_BakedAnimData {
+    md5: string; 
+    skipZeroFrameUpdate: bool; 
+    bakedMPDatas: [dict__string__list_dict__int__clz_Torappu_Battle_BakedMountPointData]; 
+    bakedEvents: [dict__string__clz_Torappu_Battle_BakedEventTimeline]; 
+}
+
+table dict__string__clz_Torappu_Battle_BakedAnimData {
+    key: string(key);
+    value: clz_Torappu_Battle_BakedAnimData;
+}
+
+table clz_Torappu_Battle_BakedSpineData {
+    bakedAnimDatas: [dict__string__clz_Torappu_Battle_BakedAnimData]; 
+}
+
+root_type clz_Torappu_Battle_BakedSpineData;
