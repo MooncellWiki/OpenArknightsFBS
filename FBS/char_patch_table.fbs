@@ -324,7 +324,8 @@ enum enum__Torappu_AbnormalFlag : int {
 enum enum__Torappu_AbnormalCombo : int {
     SLEEPING = 0,
     SHELTERING = 1,
-    E_NUM = 2,
+    ISOLATE = 2,
+    E_NUM = 3,
 }
 
 enum enum__Torappu_AttributeType : int {

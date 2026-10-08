@@ -1434,6 +1434,7 @@ enum enum__Torappu_RoguelikeRewardExDropTagSrcType : int {
     STEP = 8,
     GREED = 9,
     GOLDEN_AGE = 10,
+    ADVENTURER_EXTRA = 11,
 }
 
 table dict__enum__Torappu_RoguelikeRewardExDropTagSrcType__string {
@@ -2700,6 +2701,11 @@ table dict__string__bool {
 table clz_Torappu_RoguelikeGridZoneModuleConsts {
     savageBubble: string; 
     secretZoneDisableBuff: string; 
+    shadvrTrapIds: [string]; 
+    shadvrFirstDieTrapIds: [string]; 
+    shadvrAliveEventId: string; 
+    shadvrDieEventId: string; 
+    shadvrFinalRelicId: string; 
     maxBannerDifficulty: int; 
     focusViewBossHintStageId: [dict__string__bool]; 
 }
@@ -2739,6 +2745,7 @@ table dict__string__clz_Torappu_RoguelikeScrapTypeData {
 enum enum__Torappu_RoguelikeMoveScrapRangeType : int {
     RANGE = 0,
     FULL_MAP = 1,
+    FULL_ROW_COL = 2,
 }
 
 table clz_Torappu_RoguelikeScrapMoveData {
@@ -2748,6 +2755,7 @@ table clz_Torappu_RoguelikeScrapMoveData {
     node: [string]; 
     step: int; 
     isRandomMove: bool; 
+    nodeChangeTargetType: enum__Torappu_RoguelikeEventType; 
     scrapId: string; 
     scrapDesc: string; 
     sellPrice: int; 

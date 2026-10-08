@@ -19,8 +19,9 @@ enum enum__Torappu_BuildingData_RoomType : int {
     WORKSHOP = 1024,
     TRAINING = 2048,
     PRIVATE = 4096,
-    FUNCTIONAL = 3710,
-    ALL = 8191,
+    RECYCLE = 8192,
+    FUNCTIONAL = 11902,
+    ALL = 16383,
 }
 
 table clz_Torappu_BuildingData_RoomUnlockCond_CondItem {
@@ -379,6 +380,16 @@ table clz_Torappu_BuildingData_PowerPhase {
 table clz_Torappu_BuildingData_PowerRoomBean {
     basicSpeedBuff: float; 
     phases: [clz_Torappu_BuildingData_PowerPhase]; 
+}
+
+table clz_Torappu_BuildingData_RecyclePhase {
+    recycleCapacity: int; 
+    recycleSpeed: float; 
+}
+
+table clz_Torappu_BuildingData_RecycleBean {
+    basicSpeedBuff: float; 
+    phases: [clz_Torappu_BuildingData_RecyclePhase]; 
 }
 
 enum enum__Torappu_EvolvePhase : int {
@@ -958,6 +969,57 @@ table clz_Torappu_BuildingData_TradingRoomInfoData {
     tradingRoomSpecialOrderData: [dict__string__clz_Torappu_BuildingData_TradingRoomSpecialOrderInfo]; 
 }
 
+table clz_Torappu_BuildingData_RecycleRoomOutputPoolData {
+    itemPoolId: string; 
+    itemPoolStartTime: long; 
+    itemPoolEndTime: long; 
+    extraPoolId: string; 
+    extraPoolRequirement: int; 
+}
+
+table dict__string__clz_Torappu_BuildingData_RecycleRoomOutputPoolData {
+    key: string(key);
+    value: clz_Torappu_BuildingData_RecycleRoomOutputPoolData;
+}
+
+table clz_Torappu_BuildingData_RecycleRoomOutputPoolItemData {
+    itemId: string; 
+    targetTags: [string]; 
+    weight: int; 
+    count: int; 
+    extraPoolValueChange: int; 
+    isNew: bool; 
+}
+
+table clz_Torappu_BuildingData_RecycleRoomOutputPoolContentData {
+    items: [clz_Torappu_BuildingData_RecycleRoomOutputPoolItemData]; 
+}
+
+table dict__string__clz_Torappu_BuildingData_RecycleRoomOutputPoolContentData {
+    key: string(key);
+    value: clz_Torappu_BuildingData_RecycleRoomOutputPoolContentData;
+}
+
+table clz_Torappu_BuildingData_RecycleRoomInputItemData {
+    itemId: string; 
+    addedTime: long; 
+}
+
+table dict__string__clz_Torappu_BuildingData_RecycleRoomInputItemData {
+    key: string(key);
+    value: clz_Torappu_BuildingData_RecycleRoomInputItemData;
+}
+
+table clz_Torappu_BuildingData_RecycleRoomConsts {
+    recycleTimeRequirement: long; 
+    recycleBaseCapacity: int; 
+    recycleBoostSpeed: float; 
+    recycleBoostLimit: long; 
+    recycleBoostLimitProtect: long; 
+    recycleSpeedUpUnlockLevel: int; 
+    recycleTwoPersonUnlockLevel: int; 
+}
+
 table clz_Torappu_BuildingData {
     controlSlotId: string; 
     meetingSlotId: string; 
@@ -1019,6 +1081,7 @@ table clz_Torappu_BuildingData {
     workshopData: clz_Torappu_BuildingData_RoomBean_1_Torappu_BuildingData_WorkshopPhase_; 
     trainingData: clz_Torappu_BuildingData_TrainingBean; 
     powerData: clz_Torappu_BuildingData_PowerRoomBean; 
+    recycleData: clz_Torappu_BuildingData_RecycleBean; 
     chars: [dict__string__clz_Torappu_BuildingData_BuildingCharacter]; 
     buffs: [dict__string__clz_Torappu_BuildingData_BuildingBuff]; 
     workshopBonus: [dict__string__list_string]; 
@@ -1042,6 +1105,10 @@ table clz_Torappu_BuildingData {
     categoryNames: [dict__string__string]; 
     buffSortData: [dict__string__clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData]; 
     tradingRoomInfoData: clz_Torappu_BuildingData_TradingRoomInfoData; 
+    recycleRoomOutputPoolDatas: [dict__string__clz_Torappu_BuildingData_RecycleRoomOutputPoolData]; 
+    recycleRoomOutputPoolContentDatas: [dict__string__clz_Torappu_BuildingData_RecycleRoomOutputPoolContentData]; 
+    recycleRoomInputItemDatas: [dict__string__clz_Torappu_BuildingData_RecycleRoomInputItemData]; 
+    recycleRoomConsts: clz_Torappu_BuildingData_RecycleRoomConsts; 
 }
 
 root_type clz_Torappu_BuildingData;
