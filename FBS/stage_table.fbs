@@ -153,6 +153,9 @@ enum enum__Torappu_ItemType : int {
     STICKER = 92,
     ARKHUB = 93,
     LINKAGE_TKT_GACHA = 94,
+    AUTOCHESS_SKIN = 95,
+    AUTOCHESS_MISSION_POINT = 96,
+    OPEN_SERVER_CREDIT = 97,
 }
 
 table clz_Torappu_ItemBundle {
@@ -298,6 +301,7 @@ table clz_Torappu_StageData {
     isStoryOnly: bool; 
     appearanceStyle: enum__Torappu_AppearanceStyle; 
     stageDropInfo: clz_Torappu_StageData_StageDropInfo; 
+    levelMapId: string; 
     canUseCharm: bool; 
     canUseTech: bool; 
     canUseTrapTool: bool; 
@@ -718,7 +722,7 @@ table dict__string__clz_Torappu_StorylineTagData {
 }
 
 table clz_Torappu_StorylineConstData {
-    recommendHideGuideGroupId: string; 
+    recommendHideGuideGroupId: [string]; 
     tutorialSelectStorylineId: string; 
     mainlineStorylineId: string; 
 }

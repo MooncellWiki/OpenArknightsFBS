@@ -68,7 +68,9 @@ enum enum__Torappu_ActivityType : int {
     TYPE_ACT54SIDE = 65,
     ACT_DP = 66,
     REWARD_ONLY = 67,
-    ENUM = 68,
+    AUTOCHESS = 68,
+    TYPE_ACT55SIDE = 69,
+    ENUM = 70,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -177,6 +179,7 @@ enum enum__Torappu_MissionType : int {
     RETRO = 9,
     SPECIAL_OPERATOR = 10,
     SPECIAL_OPERATOR_WEEKLY = 11,
+    GUIDE_V3 = 12,
 }
 
 enum enum__Torappu_MissionItemBgType : int {
@@ -281,6 +284,9 @@ enum enum__Torappu_ItemType : int {
     STICKER = 92,
     ARKHUB = 93,
     LINKAGE_TKT_GACHA = 94,
+    AUTOCHESS_SKIN = 95,
+    AUTOCHESS_MISSION_POINT = 96,
+    OPEN_SERVER_CREDIT = 97,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -938,6 +944,17 @@ enum enum__Torappu_PlayerSideMask : ubyte {
     ALL = 0,
     SIDE_A = 2,
     SIDE_B = 4,
+    SIDE_C = 8,
+    SIDE_D = 16,
+    NONE = 255,
+}
+
+enum enum__Torappu_MapLayerMask : ubyte {
+    ALL = 0,
+    LAYER_A = 2,
+    LAYER_B = 4,
+    LAYER_C = 8,
+    LAYER_D = 16,
     NONE = 255,
 }
 
@@ -961,6 +978,7 @@ table clz_Torappu_RuneData_Selector {
     professionMask: enum__Torappu_ProfessionCategory; 
     buildableMask: enum__Torappu_BuildableType; 
     playerSideMask: enum__Torappu_PlayerSideMask; 
+    mapLayerMask: enum__Torappu_MapLayerMask; 
     sideType: enum__Torappu_Battle_SideType; 
     charIdFilter: [string]; 
     charIdExcludeFilter: [string]; 
@@ -5808,6 +5826,15 @@ enum enum__Torappu_ActAutoChessModeDifficultyType : int {
     NORMAL = 2,
     HARD = 3,
     ABYSS = 4,
+    FAST = 5,
+}
+
+enum enum__Torappu_ActAutoChessModeGroupType : int {
+    GROUP_MULTI = 0,
+    GROUP_ROOM = 1,
+    GROUP_SINGLE = 2,
+    GROUP_FAST = 3,
+    GROUP_OFFSEASON = 4,
 }
 
 table clz_Torappu_ActAutoChessData_ActAutoChessModeData {
@@ -5817,8 +5844,11 @@ table clz_Torappu_ActAutoChessData_ActAutoChessModeData {
     sortId: int; 
     backgroundId: string; 
     desc: string; 
-    effectDescList: [string]; 
-    preposedMode: string; 
+    difficulty: int; 
+    factor: float; 
+    difficultyDesc: string; 
+    trophyDesc: string; 
+    eventIds: [string]; 
     unlockText: string; 
     loadingPicId: string; 
     modeType: enum__Torappu_ActAutoChessModeType; 
@@ -5830,6 +5860,8 @@ table clz_Torappu_ActAutoChessData_ActAutoChessModeData {
     inactiveBondIdList: [string]; 
     inactiveEnemyKey: [string]; 
     startTime: long; 
+    unlockDiffierentModeId: string; 
+    groupList: [enum__Torappu_ActAutoChessModeGroupType]; 
 }
 
 table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessModeData {
@@ -5837,22 +5869,265 @@ table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessModeData {
     value: clz_Torappu_ActAutoChessData_ActAutoChessModeData;
 }
 
-table clz_Torappu_ActAutoChessData_ActAutoChessBaseRewardData {
-    round: int; 
+enum enum__Torappu_ActAutoChessMultiModeSubType : int {
+    NONE = 0,
+    SOLO = 1,
+    TEAM = 2,
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessModeGroupData {
+    groupType: enum__Torappu_ActAutoChessModeGroupType; 
+    modeType: enum__Torappu_ActAutoChessMultiModeSubType; 
+    willExpand: bool; 
+    modeIds: [string]; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessModeGroupData {
+    key: string(key);
+    value: clz_Torappu_ActAutoChessData_ActAutoChessModeGroupData;
+}
+
+table dict__string__enum__Torappu_RarityRank {
+    key: string(key);
+    value: enum__Torappu_RarityRank;
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessShopLevelDisplayData {
+    shopLevel: int; 
+    levelTagBgColor: string; 
+    isLevelCharChessEmpty: bool; 
+    isLevelTrapChessEmpty: bool; 
+    charChessDiySlotIdList: [string]; 
+}
+
+table dict__int__clz_Torappu_ActAutoChessData_ActAutoChessShopLevelDisplayData {
+    key: int(key);
+    value: clz_Torappu_ActAutoChessData_ActAutoChessShopLevelDisplayData;
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessStageData {
+    stageId: string; 
+    mode: [string]; 
+    weight: int; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessStageData {
+    key: string(key);
+    value: clz_Torappu_ActAutoChessData_ActAutoChessStageData;
+}
+
+table clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyTypeEntry {
+    count: int; 
+    countSingle: int; 
+    weight: int; 
+    showEnemyId: string; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyTypeEntry {
+    key: string(key);
+    value: clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyTypeEntry;
+}
+
+table clz_Torappu_ActivityCommonMilestoneData {
+    milestoneId: string; 
+    milestoneLvl: int; 
+    tokenNum: int; 
+    rewardItem: clz_Torappu_ItemBundle; 
+    availableTime: long; 
+}
+
+table clz_Torappu_ActivityPeriodicalRewardConf {
+    id: string; 
+    periodicalPointCost: int; 
+    sortIndex: int; 
+    rewards: [clz_Torappu_MissionDisplayRewards]; 
+}
+
+table dict__string__clz_Torappu_ActivityPeriodicalRewardConf {
+    key: string(key);
+    value: clz_Torappu_ActivityPeriodicalRewardConf;
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessPlayerTitleData {
+    id: string; 
+    type: string; 
+    point: int; 
+    rank: int; 
+    picId: string; 
+    txt: string; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessPlayerTitleData {
+    key: string(key);
+    value: clz_Torappu_ActAutoChessData_ActAutoChessPlayerTitleData;
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessShopCharChessInfoData {
+    chessLevel: int; 
+    isGolden: bool; 
+    evolvePhase: enum__Torappu_EvolvePhase; 
+    charLevel: int; 
+    skillLevel: int; 
+    favorPoint: int; 
+    equipLevel: int; 
+    purchasePrice: int; 
+    chessSoldPrice: int; 
+    eliteIconId: string; 
+}
+
+table dict__int__list_clz_Torappu_ActAutoChessData_ActAutoChessShopCharChessInfoData {
+    key: int(key);
+    value: [clz_Torappu_ActAutoChessData_ActAutoChessShopCharChessInfoData];
+}
+
+table dict__int__int {
+    key: int(key);
+    value: int;
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessConstData {
+    shopRefreshPrice: int; 
+    maxDeckChessCnt: int; 
+    maxDeckEquipmentChessCnt: int; 
+    maxBattleChessCnt: int; 
+    fallbackBondId: string; 
+    storeCntMax: int; 
+    costPlayerHpLimit: int; 
+    borrowCount: int; 
+    milestoneId: string; 
+    dailyMissionParam: int; 
+    dailyMissionName: string; 
+    dailyMissionRule: string; 
+    milestoneTrackId: string; 
+    escapedBattleTemplateMapSinglePlayer: string; 
+    escapedBattleTemplateMapMultiPlayer: string; 
+    webBusType: string; 
+    webUpdateLogBusType: string; 
+    itemMaxCount: int; 
+    diyCharLimitForLevels: [dict__int__int]; 
+    permShopLogoId: string; 
+    contentUpdateTime: long; 
+    systemCustomChar: [string]; 
+    bossIconId: string; 
+    modeWarningDiff: int; 
+    perfectBattleVoiceRound: int; 
+    loseHpVoiceRound: int; 
+    bondVoiceLayers: [int]; 
+    shopTagWarmUpId: string; 
+}
+
+enum enum__Torappu_UI_TemplateShop_TemplateShopData_TShopType : int {
+    NORMAL = 0,
+    SHOP_RARITY_GROUP = 1,
+    SHOP_PERIOD_UNLOCK = 2,
+    SHOP_MILESTONE_GROUP = 3,
+    SHOP_PORTRAIT_GROUP = 4,
+}
+
+enum enum__Torappu_UI_TemplateShop_TemplateShopData_GoodType : int {
+    NORMAL = 0,
+    PROGRESS = 1,
+}
+
+table clz_Torappu_UI_TemplateShop_TemplateShopData_ShopGood {
+    goodId: string; 
+    displayName: string; 
+    sortId: int; 
+    goodType: enum__Torappu_UI_TemplateShop_TemplateShopData_GoodType; 
     item: clz_Torappu_ItemBundle; 
-    dailyMissionPoint: int; 
+    progressGoodId: string; 
+    price: int; 
+    availCount: int; 
+}
+
+table dict__string__clz_Torappu_UI_TemplateShop_TemplateShopData_ShopGood {
+    key: string(key);
+    value: clz_Torappu_UI_TemplateShop_TemplateShopData_ShopGood;
+}
+
+table clz_Torappu_UI_TemplateShop_TemplateShopData_ProgessGoodItem {
+    order: int; 
+    price: int; 
+    displayName: string; 
+    item: clz_Torappu_ItemBundle; 
+}
+
+table dict__string__list_clz_Torappu_UI_TemplateShop_TemplateShopData_ProgessGoodItem {
+    key: string(key);
+    value: [clz_Torappu_UI_TemplateShop_TemplateShopData_ProgessGoodItem];
+}
+
+table clz_Torappu_UI_TemplateShop_TemplateShopData_TShopGroup {
+    shopGroupId: string; 
+    sortId: int; 
+    preGroup: string; 
+    bkgIconId: string; 
+    lockDesc: string; 
+    shopGood: [dict__string__clz_Torappu_UI_TemplateShop_TemplateShopData_ShopGood]; 
+    progressGoods: [dict__string__list_clz_Torappu_UI_TemplateShop_TemplateShopData_ProgessGoodItem]; 
+}
+
+table dict__string__clz_Torappu_UI_TemplateShop_TemplateShopData_TShopGroup {
+    key: string(key);
+    value: clz_Torappu_UI_TemplateShop_TemplateShopData_TShopGroup;
+}
+
+table clz_Torappu_UI_TemplateShop_TemplateShopData_GroupShopExtraData {
+    inTimeText: string; 
+    allEndText: string; 
+}
+
+table clz_Torappu_UI_TemplateShop_TemplateShopData_ShopAccumulativePrizeItem {
+    prizeId: string; 
+    sortId: int; 
+    picId: string; 
+    itemId: string; 
+    itemType: enum__Torappu_ItemType; 
+    count: int; 
+    costTotal: int; 
+    acquireTitle: string; 
+    displayName: string; 
+    displayDiscription: string; 
+}
+
+table dict__string__clz_Torappu_UI_TemplateShop_TemplateShopData_ShopAccumulativePrizeItem {
+    key: string(key);
+    value: clz_Torappu_UI_TemplateShop_TemplateShopData_ShopAccumulativePrizeItem;
+}
+
+table clz_Torappu_UI_TemplateShop_TemplateShopData {
+    shopId: string; 
+    shopName: string; 
+    type: enum__Torappu_UI_TemplateShop_TemplateShopData_TShopType; 
+    price: clz_Torappu_ItemBundle; 
+    shopGroup: [dict__string__clz_Torappu_UI_TemplateShop_TemplateShopData_TShopGroup]; 
+    iconColorCodes: string; 
+    buttonColorCodes: string; 
+    startTime: long; 
+    endTime: long; 
+    groupExtraData: clz_Torappu_UI_TemplateShop_TemplateShopData_GroupShopExtraData; 
+    accumulativePrizeGoods: [dict__string__clz_Torappu_UI_TemplateShop_TemplateShopData_ShopAccumulativePrizeItem]; 
+}
+
+enum enum__Torappu_AutoChessBandType : int {
+    NONE = 0,
+    GENERAL = 1,
+    BONDRELEVANT = 2,
 }
 
 table clz_Torappu_ActAutoChessData_ActAutoChessBandData {
     bandId: string; 
     sortId: int; 
-    modeTypeList: [string]; 
+    bandType: enum__Torappu_AutoChessBandType; 
+    inactiveModeIdList: [string]; 
     bandDesc: string; 
     totalHp: int; 
     effectId: string; 
     victorCount: int; 
+    masterVictorCount: int; 
     bandRewardModulus: float; 
-    updateTime: long; 
+    offseasonPriority: int; 
+    relateBondList: [string]; 
 }
 
 table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBandData {
@@ -5860,33 +6135,173 @@ table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBandData {
     value: clz_Torappu_ActAutoChessData_ActAutoChessBandData;
 }
 
-table clz_Torappu_ActAutoChessData_ActAutoChessCharChessStatusData {
-    evolvePhase: enum__Torappu_EvolvePhase; 
-    charLevel: int; 
-    skillLevel: int; 
-    favorPoint: int; 
-    equipLevel: int; 
+enum enum__Torappu_ActAutoChessBondActiveConditionType : int {
+    BOARD = 0,
+    BOARD_AND_DECK = 1,
+    DECK = 2,
+    BOARD_ALL_CHESS = 3,
 }
 
-table clz_Torappu_ActAutoChessData_ActAutoChessCharChessData {
-    chessId: string; 
+enum enum__Torappu_ActAutoChessBondActiveType : int {
+    BATTLE = 0,
+    ALL = 1,
+    MANI = 2,
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessBondInfo {
+    bondId: string; 
+    name: string; 
+    desc: string; 
+    iconId: string; 
+    activeCount: int; 
+    activeCondition: enum__Torappu_ActAutoChessBondActiveConditionType; 
+    activeConditionTemplate: string; 
+    activeParamList: [string]; 
+    effectId: string; 
+    activeType: enum__Torappu_ActAutoChessBondActiveType; 
     identifier: int; 
-    isGolden: bool; 
-    status: clz_Torappu_ActAutoChessData_ActAutoChessCharChessStatusData; 
-    upgradeChessId: string; 
-    upgradeNum: int; 
-    bondIds: [string]; 
-    garrisonIds: [string]; 
+    weight: int; 
+    isActiveInDeck: bool; 
+    maxInactiveBondCount: int; 
+    noStack: bool; 
+    noSelect: bool; 
+    chessIdList: [string]; 
 }
 
-table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessCharChessData {
+table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBondInfo {
     key: string(key);
-    value: clz_Torappu_ActAutoChessData_ActAutoChessCharChessData;
+    value: clz_Torappu_ActAutoChessData_ActAutoChessBondInfo;
 }
 
-table dict__string__enum__Torappu_RarityRank {
+table clz_Torappu_ActAutoChessData_ActAutoChessGarrisonData {
+    garrisonDesc: string; 
+    eventType: string; 
+    eventTypeDesc: string; 
+    eventTypeIcon: string; 
+    eventTypeSmallIcon: string; 
+    eventEffect: string; 
+    effectType: string; 
+    charLevel: int; 
+    battleRuneKey: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+    description: string; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessGarrisonData {
     key: string(key);
-    value: enum__Torappu_RarityRank;
+    value: clz_Torappu_ActAutoChessData_ActAutoChessGarrisonData;
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessEffectDescParamInfo {
+    descParamBase: string; 
+    descParamPerStack: string; 
+    descParamMax: float; 
+}
+
+enum enum__Torappu_ActAutoChessBondPhaseType : int {
+    NONE = 0,
+    PEOPLE_COUNT = 1,
+    STACK_COUNT = 2,
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessEffectDescParamData {
+    descParamInfos: [clz_Torappu_ActAutoChessData_ActAutoChessEffectDescParamInfo]; 
+    phaseType: enum__Torappu_ActAutoChessBondPhaseType; 
+    bondPhaseCountList: [int]; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectDescParamData {
+    key: string(key);
+    value: clz_Torappu_ActAutoChessData_ActAutoChessEffectDescParamData;
+}
+
+enum enum__Torappu_AutoChessEffectType : int {
+    NONE = 0,
+    BAND_INITIAL = 1,
+    ENEMY = 2,
+    ENEMY_TEMPORARY = 3,
+    ALLY = 4,
+    EQUIP = 5,
+    MAGIC = 6,
+    CHAR_MAP = 7,
+    BOND = 8,
+    ENEMY_GAIN = 9,
+    BUFF_GAIN = 10,
+    GARRISON = 11,
+    BAND_SKILL = 12,
+}
+
+enum enum__Torappu_AutoChessEffectCounterType : int {
+    NONE = 0,
+    TURN_COUNT = 1,
+    TRIGGER_COUNT = 2,
+    CHAR_COUNT = 3,
+    STACK_COUNT = 4,
+    COIN_JAR = 5,
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessEffectInfoData {
+    effectId: string; 
+    effectType: enum__Torappu_AutoChessEffectType; 
+    effectCounterType: enum__Torappu_AutoChessEffectCounterType; 
+    continuedRound: int; 
+    effectName: string; 
+    effectDesc: string; 
+    effectDecoIconId: string; 
+    enemyPrice: int; 
+    showTag: string; 
+    displayInHUD: bool; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectInfoData {
+    key: string(key);
+    value: clz_Torappu_ActAutoChessData_ActAutoChessEffectInfoData;
+}
+
+enum enum__Torappu_AutoChessSkillType : int {
+    NONE = 0,
+    PASSIVE = 1,
+    ACTIVE = 2,
+}
+
+enum enum__Torappu_AutoChessSkillAvailType : int {
+    DEFAULT = 0,
+    ROUND_RESET = 1,
+    ALL_LIMIT = 2,
+    COOLDOWN = 3,
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessSkillInfoData {
+    effectId: string; 
+    skillDesc: string; 
+    skillType: enum__Torappu_AutoChessSkillType; 
+    skillCost: int; 
+    skillAvailType: enum__Torappu_AutoChessSkillAvailType; 
+    skillAvailCount: int; 
+    unlockType: string; 
+    unlockParam: [string]; 
+    minorUnlock: bool; 
+    unlockEffectId: string; 
+    targetType: string; 
+    targetFilterType: string; 
+    targetTip: string; 
+    isUnusableAtSpecialRecruit: bool; 
+    bandId: string; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessSkillInfoData {
+    key: string(key);
+    value: clz_Torappu_ActAutoChessData_ActAutoChessSkillInfoData;
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessBuffInfoData {
+    key: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table dict__string__list_clz_Torappu_ActAutoChessData_ActAutoChessBuffInfoData {
+    key: string(key);
+    value: [clz_Torappu_ActAutoChessData_ActAutoChessBuffInfoData];
 }
 
 table clz_Torappu_ActAutoChessData_ActAutoChessShopLevelData {
@@ -5907,17 +6322,31 @@ table dict__string__list_dict__int__clz_Torappu_ActAutoChessData_ActAutoChessSho
     value: [dict__int__clz_Torappu_ActAutoChessData_ActAutoChessShopLevelData];
 }
 
-table clz_Torappu_ActAutoChessData_ActAutoChessShopLevelDisplayData {
-    shopLevel: int; 
-    levelTagBgColor: string; 
-    isLevelCharChessEmpty: bool; 
-    isLevelTrapChessEmpty: bool; 
-    charChessDiySlotIdList: [string]; 
+table clz_Torappu_ActAutoChessData_ActAutoChessCharChessStatusData {
+    evolvePhase: enum__Torappu_EvolvePhase; 
+    charLevel: int; 
+    skillLevel: int; 
+    favorPoint: int; 
+    equipLevel: int; 
 }
 
-table dict__int__clz_Torappu_ActAutoChessData_ActAutoChessShopLevelDisplayData {
-    key: int(key);
-    value: clz_Torappu_ActAutoChessData_ActAutoChessShopLevelDisplayData;
+table clz_Torappu_ActAutoChessData_ActAutoChessCharChessData {
+    chessId: string; 
+    identifier: int; 
+    isGolden: bool; 
+    status: clz_Torappu_ActAutoChessData_ActAutoChessCharChessStatusData; 
+    upgradeChessId: string; 
+    upgradeNum: int; 
+    equipSlotNum: int; 
+    showTag: string; 
+    bondIds: [string]; 
+    garrisonIds: [string]; 
+    desc: string; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessCharChessData {
+    key: string(key);
+    value: clz_Torappu_ActAutoChessData_ActAutoChessCharChessData;
 }
 
 enum enum__Torappu_AutoChessChessType : int {
@@ -5975,8 +6404,10 @@ table clz_Torappu_ActAutoChessData_ActAutoChessTrapChessData {
     trapDuration: int; 
     effectId: string; 
     giveBondId: string; 
-    givePowerId: string; 
     canGiveBond: bool; 
+    canFuse: bool; 
+    fuseWith: string; 
+    fuseResult: string; 
     itemType: enum__Torappu_AutoChessItemType; 
 }
 
@@ -6001,15 +6432,32 @@ table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessTrapShopChessData {
     value: clz_Torappu_ActAutoChessData_ActAutoChessTrapShopChessData;
 }
 
-table clz_Torappu_ActAutoChessData_ActAutoChessStageData {
-    stageId: string; 
-    mode: [string]; 
-    weight: int; 
+enum enum__Torappu_AutoChessEffectChoiceType : int {
+    EQUIP_FREE = 0,
+    EQUIP_PAID = 1,
+    BOUNTY_HUNT = 2,
+    BUFF_SELECT = 3,
+    PERSONAL_CHOOSE = 4,
+    SKILL_CHANGE = 5,
 }
 
-table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessStageData {
+enum enum__Torappu_AutoChessSelectionType : int {
+    ROBIN = 0,
+    SHARED = 1,
+}
+
+table clz_Torappu_ActAutoChessData_ActAutoChessEffectChoiceInfoData {
+    choiceEventId: string; 
+    choiceType: enum__Torappu_AutoChessEffectChoiceType; 
+    effectType: enum__Torappu_AutoChessEffectType; 
+    selectionType: enum__Torappu_AutoChessSelectionType; 
+    name: string; 
+    desc: string; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectChoiceInfoData {
     key: string(key);
-    value: clz_Torappu_ActAutoChessData_ActAutoChessStageData;
+    value: clz_Torappu_ActAutoChessData_ActAutoChessEffectChoiceInfoData;
 }
 
 table clz_Torappu_ActAutoChessData_ActAutoChessBattleData {
@@ -6028,154 +6476,11 @@ table dict__string__list_dict__int__list_clz_Torappu_ActAutoChessData_ActAutoChe
     value: [dict__int__list_clz_Torappu_ActAutoChessData_ActAutoChessBattleData];
 }
 
-enum enum__Torappu_ActAutoChessBondActiveConditionType : int {
-    BOARD = 0,
-    BOARD_AND_DECK = 1,
-    DECK = 2,
-    BOARD_ALL_CHESS = 3,
-}
-
-enum enum__Torappu_ActAutoChessBondActiveType : int {
-    BATTLE = 0,
-    ALL = 1,
-    MANI = 2,
-}
-
-table clz_Torappu_ActAutoChessData_ActAutoChessBondInfo {
-    bondId: string; 
-    name: string; 
-    desc: string; 
-    iconId: string; 
-    activeCount: int; 
-    activeCondition: enum__Torappu_ActAutoChessBondActiveConditionType; 
-    activeConditionTemplate: string; 
-    activeParamList: [string]; 
-    effectId: string; 
-    activeType: enum__Torappu_ActAutoChessBondActiveType; 
-    identifier: int; 
-    weight: int; 
-    isActiveInDeck: bool; 
-    maxInactiveBondCount: int; 
-    descParamBaseList: [string]; 
-    descParamPerStackList: [string]; 
-    noStack: bool; 
-    chessIdList: [string]; 
-}
-
-table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBondInfo {
-    key: string(key);
-    value: clz_Torappu_ActAutoChessData_ActAutoChessBondInfo;
-}
-
-table clz_Torappu_ActAutoChessData_ActAutoChessGarrisonData {
-    garrisonDesc: string; 
-    eventType: string; 
-    eventTypeDesc: string; 
-    eventTypeIcon: string; 
-    eventTypeSmallIcon: string; 
-    effectType: string; 
-    charLevel: int; 
-    battleRuneKey: string; 
-    blackboard: [clz_Torappu_Blackboard_DataPair]; 
-    description: string; 
-}
-
-table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessGarrisonData {
-    key: string(key);
-    value: clz_Torappu_ActAutoChessData_ActAutoChessGarrisonData;
-}
-
-enum enum__Torappu_AutoChessEffectType : int {
-    NONE = 0,
-    BAND_INITIAL = 1,
-    ENEMY = 2,
-    ENEMY_TEMPORARY = 3,
-    ALLY = 4,
-    EQUIP = 5,
-    MAGIC = 6,
-    CHAR_MAP = 7,
-    BOND = 8,
-    ENEMY_GAIN = 9,
-    BUFF_GAIN = 10,
-    GARRISON = 11,
-}
-
-enum enum__Torappu_AutoChessEffectCounterType : int {
-    NONE = 0,
-    TURN_COUNT = 1,
-    TRIGGER_COUNT = 2,
-    CHAR_COUNT = 3,
-    STACK_COUNT = 4,
-    COIN_JAR = 5,
-}
-
-table clz_Torappu_ActAutoChessData_ActAutoChessEffectInfoData {
-    effectId: string; 
-    effectType: enum__Torappu_AutoChessEffectType; 
-    effectCounterType: enum__Torappu_AutoChessEffectCounterType; 
-    continuedRound: int; 
-    effectName: string; 
-    effectDesc: string; 
-    effectDecoIconId: string; 
-    enemyPrice: int; 
-}
-
-table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectInfoData {
-    key: string(key);
-    value: clz_Torappu_ActAutoChessData_ActAutoChessEffectInfoData;
-}
-
-enum enum__Torappu_AutoChessCountType : int {
-    NONE = 0,
-    BATTLE_LAYER = 1,
-    COUNTING = 2,
-    PROFESSIONS = 3,
-    GROUPS = 4,
-    LEVEL = 5,
-    PURCHASE = 6,
-}
-
-table clz_Torappu_ActAutoChessData_ActAutoChessBuffInfoData {
-    key: string; 
-    blackboard: [clz_Torappu_Blackboard_DataPair]; 
-    countType: enum__Torappu_AutoChessCountType; 
-}
-
-table dict__string__list_clz_Torappu_ActAutoChessData_ActAutoChessBuffInfoData {
-    key: string(key);
-    value: [clz_Torappu_ActAutoChessData_ActAutoChessBuffInfoData];
-}
-
-enum enum__Torappu_AutoChessEffectChoiceType : int {
-    EQUIP_FREE = 0,
-    EQUIP_PAID = 1,
-    BOUNTY_HUNT = 2,
-    BUFF_SELECT = 3,
-    PERSONAL_CHOOSE = 4,
-}
-
-table clz_Torappu_ActAutoChessData_ActAutoChessEffectChoiceInfoData {
-    choiceEventId: string; 
-    choiceType: enum__Torappu_AutoChessEffectChoiceType; 
-    effectType: enum__Torappu_AutoChessEffectType; 
-    name: string; 
-    desc: string; 
-    typeTxtColor: string; 
-}
-
-table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectChoiceInfoData {
-    key: string(key);
-    value: clz_Torappu_ActAutoChessData_ActAutoChessEffectChoiceInfoData;
-}
-
 table clz_Torappu_ActAutoChessData_ActAutochessBossEntry {
     bossId: string; 
     sortId: int; 
     weight: int; 
-    bloodPoint: int; 
-    bloodPointNormal: int; 
-    bloodPointHard: int; 
-    bloodPointAbyss: int; 
+    bloodDataDict: [dict__string__int]; 
     isHidingBoss: bool; 
 }
 
@@ -6198,16 +6503,6 @@ table dict__string__clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyEntry {
     value: clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyEntry;
 }
 
-table clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyTypeEntry {
-    count: int; 
-    weight: int; 
-}
-
-table dict__string__clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyTypeEntry {
-    key: string(key);
-    value: clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyTypeEntry;
-}
-
 table clz_Torappu_ActAutoChessData_ActAutoChessTrainingNpcData {
     npcId: string; 
     charId: string; 
@@ -6216,55 +6511,73 @@ table clz_Torappu_ActAutoChessData_ActAutoChessTrainingNpcData {
     bandId: string; 
 }
 
-table clz_Torappu_ActivityCommonMilestoneData {
-    milestoneId: string; 
-    milestoneLvl: int; 
-    tokenNum: int; 
-    rewardItem: clz_Torappu_ItemBundle; 
-    availableTime: long; 
+table clz_Torappu_AutoChessData_AutoChessBandData {
+    bandId: string; 
+    bandName: string; 
+    bandIconId: string; 
+    unlockDesc: string; 
 }
 
-table clz_Torappu_ActAutoChessData_ActAutoChessPlayerTitleData {
-    id: string; 
-    picId: string; 
-    txt: string; 
-}
-
-table dict__string__clz_Torappu_ActAutoChessData_ActAutoChessPlayerTitleData {
+table dict__string__clz_Torappu_AutoChessData_AutoChessBandData {
     key: string(key);
-    value: clz_Torappu_ActAutoChessData_ActAutoChessPlayerTitleData;
+    value: clz_Torappu_AutoChessData_AutoChessBandData;
 }
 
-table clz_Torappu_ActAutoChessData_ActAutoChessShopCharChessInfoData {
-    chessLevel: int; 
-    isGolden: bool; 
-    evolvePhase: enum__Torappu_EvolvePhase; 
-    charLevel: int; 
-    skillLevel: int; 
-    favorPoint: int; 
-    equipLevel: int; 
-    purchasePrice: int; 
-    chessSoldPrice: int; 
-    eliteIconId: string; 
+enum enum__Torappu_AutoChessBondType : int {
+    NONE = 0,
+    REGULAR = 1,
+    SEASON = 2,
 }
 
-table dict__int__list_clz_Torappu_ActAutoChessData_ActAutoChessShopCharChessInfoData {
-    key: int(key);
-    value: [clz_Torappu_ActAutoChessData_ActAutoChessShopCharChessInfoData];
+table clz_Torappu_AutoChessData_AutoChessBondInfoData {
+    bondId: string; 
+    bondType: enum__Torappu_AutoChessBondType; 
+    powerIdList: [string]; 
+    name: string; 
+    icon: string; 
+    isPower: bool; 
+    bondOrder: int; 
+    isHiddenCharList: bool; 
 }
 
-table clz_Torappu_ActAutoChessData_ActAutoChessConstData {
-    shopRefreshPrice: int; 
-    maxDeckChessCnt: int; 
-    maxBattleChessCnt: int; 
-    fallbackBondId: string; 
-    storeCntMax: int; 
-    costPlayerHpLimit: int; 
-    milestoneId: string; 
-    borrowCount: int; 
-    dailyMissionParam: int; 
-    dailyMissionName: string; 
-    dailyMissionRule: string; 
+table dict__string__clz_Torappu_AutoChessData_AutoChessBondInfoData {
+    key: string(key);
+    value: clz_Torappu_AutoChessData_AutoChessBondInfoData;
+}
+
+table clz_Torappu_AutoChessData_AutoChessBossInfoData {
+    bossId: string; 
+    enemyId: string; 
+    handbookEnemyId: string; 
+}
+
+table dict__string__clz_Torappu_AutoChessData_AutoChessBossInfoData {
+    key: string(key);
+    value: clz_Torappu_AutoChessData_AutoChessBossInfoData;
+}
+
+table clz_Torappu_AutoChessData_AutoChessRandomEnemyAttributeData {
+    enemyKey: string; 
+    level: int; 
+    extraEnemyIdentifier: int; 
+    extraEnemyKeyList: [string]; 
+    isFlyEnemy: bool; 
+    enemyBattleEffectivenessFactor: float; 
+}
+
+table dict__string__clz_Torappu_AutoChessData_AutoChessRandomEnemyAttributeData {
+    key: string(key);
+    value: clz_Torappu_AutoChessData_AutoChessRandomEnemyAttributeData;
+}
+
+table clz_Torappu_ActAutoChessTrainingData_AutoChessTrainingData {
+    bandDataDict: [dict__string__clz_Torappu_AutoChessData_AutoChessBandData]; 
+    bondDataDict: [dict__string__clz_Torappu_AutoChessData_AutoChessBondInfoData]; 
+    bossInfoDict: [dict__string__clz_Torappu_AutoChessData_AutoChessBossInfoData]; 
+    randomEnemyAttributeDict: [dict__string__clz_Torappu_AutoChessData_AutoChessRandomEnemyAttributeData]; 
+}
+
+table clz_Torappu_ActAutoChessTrainingData_TrainingConstData {
     trstageBandId: string; 
     trstageBossId: string; 
     trStageId: string; 
@@ -6272,47 +6585,153 @@ table clz_Torappu_ActAutoChessData_ActAutoChessConstData {
     trSpecialEnemyTypes: [string]; 
     trBondIds: [string]; 
     trBannedBondIds: [string]; 
-    milestoneTrackId: string; 
-    escapedBattleTemplateMapSinglePlayer: string; 
-    escapedBattleTemplateMapMultiPlayer: string; 
-    webBusType: string; 
+    trStageBossHP: int; 
+    trInGameDiyChessId: string; 
+    trInGameBanDiyChessId: string; 
+}
+
+table clz_Torappu_ActAutoChessTrainingData_TrainingShopSlotData {
+    slot: int; 
+    chessIds: [string]; 
+}
+
+table dict__int__list_clz_Torappu_ActAutoChessTrainingData_TrainingShopSlotData {
+    key: int(key);
+    value: [clz_Torappu_ActAutoChessTrainingData_TrainingShopSlotData];
+}
+
+table clz_Torappu_ActAutoChessTrainingData_TrainingRoundInfoData {
+    round: int; 
+    isBossTurn: bool; 
+    baseGoldCnt: int; 
+}
+
+table dict__int__clz_Torappu_ActAutoChessTrainingData_TrainingRoundInfoData {
+    key: int(key);
+    value: clz_Torappu_ActAutoChessTrainingData_TrainingRoundInfoData;
+}
+
+table clz_Torappu_ActAutoChessTrainingData_TrainingSpecialChoiceData {
+    choiceEventId: string; 
+    round: int; 
+    slot: int; 
+    equipId: string; 
+    trainingNpcId: string; 
+}
+
+table dict__string__list_clz_Torappu_ActAutoChessTrainingData_TrainingSpecialChoiceData {
+    key: string(key);
+    value: [clz_Torappu_ActAutoChessTrainingData_TrainingSpecialChoiceData];
+}
+
+table clz_Torappu_ActAutoChessTrainingData_TrainingNpcDeployData {
+    round: int; 
+    trainingNpcId: string; 
+    chessId: string; 
+    position: clz_UnityEngine_Vector2; 
+    direction: int; 
+    equipChessIds: [string]; 
+    garrisonLayer: int; 
+}
+
+table dict__int__list_clz_Torappu_ActAutoChessTrainingData_TrainingNpcDeployData {
+    key: int(key);
+    value: [clz_Torappu_ActAutoChessTrainingData_TrainingNpcDeployData];
+}
+
+table clz_Torappu_ActAutoChessTrainingData_TrainingDiyChessData {
+    chessId: string; 
+    charId: string; 
+    tmplId: string; 
+    skinId: string; 
+    skillIndex: int; 
+    uniEquipId: string; 
+    potentialRank: int; 
+}
+
+table dict__string__clz_Torappu_ActAutoChessTrainingData_TrainingDiyChessData {
+    key: string(key);
+    value: clz_Torappu_ActAutoChessTrainingData_TrainingDiyChessData;
+}
+
+table clz_Torappu_ActAutoChessTrainingData {
+    overrideAutoChessData: clz_Torappu_ActAutoChessTrainingData_AutoChessTrainingData; 
+    bandDataListDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBandData]; 
+    bondInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBondInfo]; 
+    garrisonDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessGarrisonData]; 
+    effectInfoDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectInfoData]; 
+    effectDescParamDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectDescParamData]; 
+    skillInfoDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessSkillInfoData]; 
+    effectBuffInfoDataDict: [dict__string__list_clz_Torappu_ActAutoChessData_ActAutoChessBuffInfoData]; 
+    shopLevelDataDict: [dict__string__list_dict__int__clz_Torappu_ActAutoChessData_ActAutoChessShopLevelData]; 
+    charChessDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessCharChessData]; 
+    charShopChessDatas: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessCharShopChessData]; 
+    trapChessDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessTrapChessData]; 
+    trapShopChessDatas: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessTrapShopChessData]; 
+    chessNormalIdLookupDict: [dict__string__string]; 
+    effectChoiceInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectChoiceInfoData]; 
+    battleDataDict: [dict__string__list_dict__int__list_clz_Torappu_ActAutoChessData_ActAutoChessBattleData]; 
+    bossInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutochessBossEntry]; 
+    specialEnemyInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyEntry]; 
+    trainingNpcList: [clz_Torappu_ActAutoChessData_ActAutoChessTrainingNpcData]; 
+    constData: clz_Torappu_ActAutoChessData_ActAutoChessConstData; 
+    trainingConstData: clz_Torappu_ActAutoChessTrainingData_TrainingConstData; 
+    trainingShopDict: [dict__int__list_clz_Torappu_ActAutoChessTrainingData_TrainingShopSlotData]; 
+    trainingRoundInfoDict: [dict__int__clz_Torappu_ActAutoChessTrainingData_TrainingRoundInfoData]; 
+    trainingSpecialChoiceDict: [dict__string__list_clz_Torappu_ActAutoChessTrainingData_TrainingSpecialChoiceData]; 
+    trainingNpcDeployDict: [dict__int__list_clz_Torappu_ActAutoChessTrainingData_TrainingNpcDeployData]; 
+    trainingDiyChessDict: [dict__string__clz_Torappu_ActAutoChessTrainingData_TrainingDiyChessData]; 
+    specialEnemyRandomTypeDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyTypeEntry]; 
 }
 
 table clz_Torappu_ActAutoChessData {
     modeDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessModeData]; 
-    baseRewardDataList: [clz_Torappu_ActAutoChessData_ActAutoChessBaseRewardData]; 
-    bandDataListDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBandData]; 
-    charChessDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessCharChessData]; 
+    modeGroupDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessModeGroupData]; 
     chessNormalIdLookupDict: [dict__string__string]; 
     diyChessDict: [dict__string__enum__Torappu_RarityRank]; 
-    shopLevelDataDict: [dict__string__list_dict__int__clz_Torappu_ActAutoChessData_ActAutoChessShopLevelData]; 
+    diyChessInfoDict: [dict__string__list_string]; 
     shopLevelDisplayDataDict: [dict__int__clz_Torappu_ActAutoChessData_ActAutoChessShopLevelDisplayData]; 
-    charShopChessDatas: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessCharShopChessData]; 
-    trapChessDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessTrapChessData]; 
-    trapShopChessDatas: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessTrapShopChessData]; 
     stageDatasDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessStageData]; 
-    battleDataDict: [dict__string__list_dict__int__list_clz_Torappu_ActAutoChessData_ActAutoChessBattleData]; 
-    bondInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBondInfo]; 
-    garrisonDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessGarrisonData]; 
-    effectInfoDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectInfoData]; 
-    effectBuffInfoDataDict: [dict__string__list_clz_Torappu_ActAutoChessData_ActAutoChessBuffInfoData]; 
-    effectChoiceInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectChoiceInfoData]; 
-    bossInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutochessBossEntry]; 
-    specialEnemyInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyEntry]; 
     enemyInfoDict: [dict__string__list_string]; 
     specialEnemyRandomTypeDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyTypeEntry]; 
-    trainingNpcList: [clz_Torappu_ActAutoChessData_ActAutoChessTrainingNpcData]; 
+    enemyRewardTypeDict: [dict__string__string]; 
+    enemyRewardTextFormatDict: [dict__string__string]; 
     milestoneList: [clz_Torappu_ActivityCommonMilestoneData]; 
+    periodicalRewards: [dict__string__clz_Torappu_ActivityPeriodicalRewardConf]; 
     modeFactorInfo: [dict__string__float]; 
     difficultyFactorInfo: [dict__string__float]; 
     playerTitleDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessPlayerTitleData]; 
     shopCharChessInfoData: [dict__int__list_clz_Torappu_ActAutoChessData_ActAutoChessShopCharChessInfoData]; 
     constData: clz_Torappu_ActAutoChessData_ActAutoChessConstData; 
+    seasonShop: clz_Torappu_UI_TemplateShop_TemplateShopData; 
+    bandDataListDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBandData]; 
+    bondInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessBondInfo]; 
+    garrisonDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessGarrisonData]; 
+    effectDescParamDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectDescParamData]; 
+    effectInfoDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectInfoData]; 
+    skillInfoDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessSkillInfoData]; 
+    effectBuffInfoDataDict: [dict__string__list_clz_Torappu_ActAutoChessData_ActAutoChessBuffInfoData]; 
+    shopLevelDataDict: [dict__string__list_dict__int__clz_Torappu_ActAutoChessData_ActAutoChessShopLevelData]; 
+    charChessDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessCharChessData]; 
+    charShopChessDatas: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessCharShopChessData]; 
+    trapChessDataDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessTrapChessData]; 
+    trapShopChessDatas: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessTrapShopChessData]; 
+    effectChoiceInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutoChessEffectChoiceInfoData]; 
+    battleDataDict: [dict__string__list_dict__int__list_clz_Torappu_ActAutoChessData_ActAutoChessBattleData]; 
+    bossInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutochessBossEntry]; 
+    specialEnemyInfoDict: [dict__string__clz_Torappu_ActAutoChessData_ActAutochessSpecialEnemyEntry]; 
+    trainingNpcList: [clz_Torappu_ActAutoChessData_ActAutoChessTrainingNpcData]; 
+    trainingData: clz_Torappu_ActAutoChessTrainingData; 
 }
 
 table dict__string__clz_Torappu_ActAutoChessData {
     key: string(key);
     value: clz_Torappu_ActAutoChessData;
+}
+
+table dict__string__list_dict__string__clz_Torappu_ActAutoChessData {
+    key: string(key);
+    value: [dict__string__clz_Torappu_ActAutoChessData];
 }
 
 table clz_Torappu_ActFootballData_ActFootballZoneAdditionData {
@@ -7132,6 +7551,111 @@ table dict__string__clz_Torappu_ActVasebreakerData {
     value: clz_Torappu_ActVasebreakerData;
 }
 
+table clz_Torappu_Act55SideData_Act55SideZoneAdditionData {
+    zoneId: string; 
+    unlockText: string; 
+}
+
+table dict__string__clz_Torappu_Act55SideData_Act55SideZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act55SideData_Act55SideZoneAdditionData;
+}
+
+table clz_Torappu_Act55SideData_Act55SideNewspaperData {
+    stageId: string; 
+    sortId: int; 
+    stageName: string; 
+    stageDesc: string; 
+    bgPic: string; 
+    unlockStageId: string; 
+    unlockTs: long; 
+    baseRewardList: [clz_Torappu_ItemBundle]; 
+    advancedRewardList: [clz_Torappu_ItemBundle]; 
+    basicTargetDesc: string; 
+    advancedTargetDesc: string; 
+    advancedTargetParam: int; 
+    initCardIdList: [string]; 
+    ratingScoreList: [int]; 
+    maxScore: int; 
+    picId: string; 
+    initEmptySlot: int; 
+    fixedReportIdList: [string]; 
+}
+
+table dict__string__clz_Torappu_Act55SideData_Act55SideNewspaperData {
+    key: string(key);
+    value: clz_Torappu_Act55SideData_Act55SideNewspaperData;
+}
+
+table clz_Torappu_Act55SideData_Act55SideFixedReportData {
+    fixedReportId: string; 
+    fixedReportTag: string; 
+}
+
+table dict__string__clz_Torappu_Act55SideData_Act55SideFixedReportData {
+    key: string(key);
+    value: clz_Torappu_Act55SideData_Act55SideFixedReportData;
+}
+
+table clz_Torappu_Act55SideData_Act55SideHandReportData {
+    handReportId: string; 
+    handReportPic_1: string; 
+    handReportPic_2: string; 
+    handReportTitleId: string; 
+    handReportSubTitleId: string; 
+    handReportPositiveTagList: [string]; 
+    handReportNegativeTagList: [string]; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_Act55SideData_Act55SideHandReportData {
+    key: string(key);
+    value: clz_Torappu_Act55SideData_Act55SideHandReportData;
+}
+
+table clz_Torappu_Act55SideData_Act55SideHandReportColorData {
+    handReportPic_1: string; 
+    handReportTitleColor: string; 
+    handReportSubTitleColor: string; 
+}
+
+table dict__string__clz_Torappu_Act55SideData_Act55SideHandReportColorData {
+    key: string(key);
+    value: clz_Torappu_Act55SideData_Act55SideHandReportColorData;
+}
+
+table clz_Torappu_Act55SideData_Act55SideBattleItemLevelData {
+    level: int; 
+    score: int; 
+}
+
+table clz_Torappu_Act55SideData_Act55SideConstData {
+    priceItemId: string; 
+    priceItemType: string; 
+    entryRequirement: string; 
+    businessUnlockText: string; 
+    stageUnlockText: string; 
+    handBasicScore: int; 
+    handPositiveScore: int; 
+    handNegativeScore: int; 
+}
+
+table clz_Torappu_Act55SideData {
+    zoneAdditionDataMap: [dict__string__clz_Torappu_Act55SideData_Act55SideZoneAdditionData]; 
+    newspaperDataMap: [dict__string__clz_Torappu_Act55SideData_Act55SideNewspaperData]; 
+    fixedReportDataMap: [dict__string__clz_Torappu_Act55SideData_Act55SideFixedReportData]; 
+    handReportDataMap: [dict__string__clz_Torappu_Act55SideData_Act55SideHandReportData]; 
+    handReportColorDataMap: [dict__string__clz_Torappu_Act55SideData_Act55SideHandReportColorData]; 
+    reportTagList: [string]; 
+    battleItemLevelDataList: [clz_Torappu_Act55SideData_Act55SideBattleItemLevelData]; 
+    constData: clz_Torappu_Act55SideData_Act55SideConstData; 
+}
+
+table dict__string__clz_Torappu_Act55SideData {
+    key: string(key);
+    value: clz_Torappu_Act55SideData;
+}
+
 table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; 
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; 
@@ -7176,12 +7700,13 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     TYPE_ACT45SIDE: [dict__string__clz_Torappu_Act45SideData]; 
     RECRUIT_ONLY: [dict__string__clz_Torappu_ActRecruitOnlyData]; 
     TYPE_ACT46SIDE: [dict__string__clz_Torappu_Act46SideData]; 
-    AUTOCHESS_SEASON: [dict__string__clz_Torappu_ActAutoChessData]; 
+    AUTOCHESS: [dict__string__list_dict__string__clz_Torappu_ActAutoChessData]; 
     ACT_FOOTBALL: [dict__string__clz_Torappu_ActFootballData]; 
     ARK_HUB: [dict__string__clz_Torappu_ActArkHubData]; 
     TYPE_ACT53SIDE: [dict__string__clz_Torappu_Act53SideData]; 
     TYPE_ACT54SIDE: [dict__string__clz_Torappu_Act54SideData]; 
     ACT_DP: [dict__string__clz_Torappu_ActVasebreakerData]; 
+    TYPE_ACT55SIDE: [dict__string__clz_Torappu_Act55SideData]; 
 }
 
 table clz_Torappu_ActMainlineBpExtraData_ActMainlineBpExtraPeriodData {
@@ -8303,6 +8828,16 @@ table clz_Torappu_HalfIdleData {
     itemData: [dict__string__clz_Torappu_Act1VHalfIdleItemData]; 
 }
 
+table clz_Torappu_ArkNewsData_ArkNewsBuffItemData {
+    level: int; 
+    desc: string; 
+    templateTrapId: string; 
+}
+
+table clz_Torappu_ArkNewsData {
+    battleItemLevelDataList: [clz_Torappu_ArkNewsData_ArkNewsBuffItemData]; 
+}
+
 enum enum__Torappu_PlayerStageState : int {
     UNLOCKED = 0,
     PLAYED = 1,
@@ -8635,11 +9170,35 @@ table clz_Torappu_Anniv7thMainlineData {
     constData: clz_Torappu_Anniv7thClueConstData; 
 }
 
+enum enum__Torappu_AutoChessPeriodType : int {
+    SEASON = 0,
+    OFFSEASON = 1,
+    SUSPENSION = 2,
+}
+
+enum enum__Torappu_AutoChessContentType : int {
+    NONE = 0,
+    BASIC = 1,
+    EXPAND = 2,
+}
+
 table clz_Torappu_AutoChessData_AutoChessVersionInfoData {
     versionId: string; 
     activityId: string; 
+    enrollId: string; 
+    periodType: enum__Torappu_AutoChessPeriodType; 
+    contentType: enum__Torappu_AutoChessContentType; 
+    isContentUpdated: bool; 
+    isShopUpdated: bool; 
     seasonName: string; 
+    seasonYear: string; 
+    isActivityItemMax: bool; 
+    isActivityTaskMax: bool; 
+    isOffseason: bool; 
+    sortId: int; 
+    expireVersion: int; 
     startTime: long; 
+    endTime: long; 
 }
 
 table dict__string__clz_Torappu_AutoChessData_AutoChessVersionInfoData {
@@ -8647,16 +9206,29 @@ table dict__string__clz_Torappu_AutoChessData_AutoChessVersionInfoData {
     value: clz_Torappu_AutoChessData_AutoChessVersionInfoData;
 }
 
-table clz_Torappu_AutoChessData_AutoChessBandData {
-    bandId: string; 
-    bandName: string; 
-    bandIconId: string; 
-    unlockDesc: string; 
+table clz_Torappu_AutoChessData_AutoChessWarmupScheduleData {
+    warmupId: string; 
+    versionId: string; 
+    startTime: long; 
+    endTime: long; 
+    isMainPageUsed: bool; 
 }
 
-table dict__string__clz_Torappu_AutoChessData_AutoChessBandData {
+table dict__string__clz_Torappu_AutoChessData_AutoChessWarmupScheduleData {
     key: string(key);
-    value: clz_Torappu_AutoChessData_AutoChessBandData;
+    value: clz_Torappu_AutoChessData_AutoChessWarmupScheduleData;
+}
+
+table clz_Torappu_AutoChessData_AutoChessStagePageDisplayData {
+    displayId: string; 
+    versionId: string; 
+    mainDisappearTime: long; 
+    stagePageDisappearTime: long; 
+}
+
+table dict__string__clz_Torappu_AutoChessData_AutoChessStagePageDisplayData {
+    key: string(key);
+    value: clz_Torappu_AutoChessData_AutoChessStagePageDisplayData;
 }
 
 table clz_Torappu_AutoChessData_AutoChessCultivateRelationData {
@@ -8678,39 +9250,6 @@ table dict__string__clz_Torappu_AutoChessData_AutoChessEffectTypeData {
     value: clz_Torappu_AutoChessData_AutoChessEffectTypeData;
 }
 
-enum enum__Torappu_AutoChessBondType : int {
-    NONE = 0,
-    REGULAR = 1,
-    SEASON = 2,
-}
-
-table clz_Torappu_AutoChessData_AutoChessBondInfoData {
-    bondId: string; 
-    bondType: enum__Torappu_AutoChessBondType; 
-    powerIdList: [string]; 
-    name: string; 
-    icon: string; 
-    isPower: bool; 
-    bondOrder: int; 
-    isHiddenCharList: bool; 
-}
-
-table dict__string__clz_Torappu_AutoChessData_AutoChessBondInfoData {
-    key: string(key);
-    value: clz_Torappu_AutoChessData_AutoChessBondInfoData;
-}
-
-table clz_Torappu_AutoChessData_AutoChessBossInfoData {
-    bossId: string; 
-    enemyId: string; 
-    handbookEnemyId: string; 
-}
-
-table dict__string__clz_Torappu_AutoChessData_AutoChessBossInfoData {
-    key: string(key);
-    value: clz_Torappu_AutoChessData_AutoChessBossInfoData;
-}
-
 table clz_Torappu_AutoChessData_AutoChessEnemyTypeData {
     type: string; 
     sortId: int; 
@@ -8730,7 +9269,8 @@ enum enum__Torappu_AutoChessPrepareStepType : int {
     NONE = 0,
     INFO_CHECK = 1,
     BAND_CHECK = 2,
-    BATTLE_CHECK = 3,
+    CUSTOM_CHECK = 3,
+    BATTLE_CHECK = 4,
 }
 
 table clz_Torappu_AutoChessData_AutoChessEnterStepData {
@@ -8758,19 +9298,21 @@ table dict__string__clz_Torappu_AutoChessData_AutoChessShopStateTokenData {
 }
 
 enum enum__Torappu_AutoChessSkillTriggerType : int {
-    DEFAULT = 0,
-    ALWAYS = 1,
-    SEARCH = 2,
-    MLYSS_WTRMAN = 3,
-    MARCILS2 = 4,
-    TRY_SEARCH_ENEMY_SKILL = 5,
-    TRY_SEARCH_ALLY_SKILL = 6,
-    CUSTOM_RANGE_SEARCH_ENEMY = 7,
-    CUSTOM_RANGE_SEARCH_ALLY = 8,
-    GDGLOW_SKILL_2 = 9,
-    ACT_DEFAULT = 10,
-    AUTO_STOP = 11,
-    TAKE_DAMAGE = 12,
+    ALWAYS = 0,
+    ON_TAKE_DAMAGE = 1,
+    ATTACK_RANGE_ENEMY = 2,
+    SKILL_RANGE_ENEMY = 3,
+    CUSTOM_RANGE_ENEMY = 4,
+    ATTACK_RANGE_ALLY = 5,
+    SKILL_RANGE_ALLY = 6,
+    CUSTOM_RANGE_ALLY = 7,
+    COMBAT_OR_ATTACK = 8,
+    GLOBAL_RANGE_ENEMY = 9,
+    AUTO_STOP = 10,
+    MLYSS_S = 11,
+    MARCIL_S2 = 12,
+    APHRIS_S3 = 13,
+    INVALID_IN_SKILL = 14,
 }
 
 table clz_Torappu_AutoChessData_AutoChessSkillTriggerData {
@@ -8778,7 +9320,7 @@ table clz_Torappu_AutoChessData_AutoChessSkillTriggerData {
     subProfessionId: string; 
     charId: string; 
     skillIndex: int; 
-    skillTriggerType: enum__Torappu_AutoChessSkillTriggerType; 
+    skillTriggerTypes: [enum__Torappu_AutoChessSkillTriggerType]; 
 }
 
 table clz_Torappu_AutoChessData_AutoChessPrepareStateData {
@@ -8790,20 +9332,6 @@ table clz_Torappu_AutoChessData_AutoChessPrepareStateData {
 table dict__string__clz_Torappu_AutoChessData_AutoChessPrepareStateData {
     key: string(key);
     value: clz_Torappu_AutoChessData_AutoChessPrepareStateData;
-}
-
-table clz_Torappu_AutoChessData_AutoChessRandomEnemyAttributeData {
-    enemyKey: string; 
-    level: int; 
-    extraEnemyIdentifier: int; 
-    extraEnemyKeyList: [string]; 
-    isFlyEnemy: bool; 
-    enemyBattleEffectivenessFactor: float; 
-}
-
-table dict__string__clz_Torappu_AutoChessData_AutoChessRandomEnemyAttributeData {
-    key: string(key);
-    value: clz_Torappu_AutoChessData_AutoChessRandomEnemyAttributeData;
 }
 
 table clz_Torappu_AutoChessData_AutoChessGameTipData {
@@ -8846,14 +9374,26 @@ enum enum__Torappu_AutoChessBroadcastType : int {
     CHAR_DAMAGE = 4,
     CHAR_GIFT = 5,
     BOND_EFFECT = 6,
+    GARRISON_EXECUTED = 7,
+    PERFECT_BATTLE = 8,
+    SKILL_EXECUTED = 9,
+    RESTORE_HEALTH = 10,
+    BAND_SKILL_FAILED = 11,
 }
 
 table clz_Torappu_AutoChessData_AutoChessBroadcastData {
     id: string; 
+    idCode: int; 
     desc: string; 
     priority: int; 
+    commentIcon: string; 
     type: enum__Torappu_AutoChessBroadcastType; 
     paramList: [string]; 
+}
+
+table clz_Torappu_AutoChessData_AutoChessBossDamageStatsStyleData {
+    damageThreshold: int; 
+    styleStatusId: string; 
 }
 
 table clz_Torappu_AutoChessData_AutoChessConstData {
@@ -8871,17 +9411,16 @@ table clz_Torappu_AutoChessData_AutoChessConstData {
     templateEnemyTokenFly: string; 
     maxLevelCnt: int; 
     specialEnemyNum: int; 
+    specialEnemyNumSingle: int; 
     enemyTypeIdentifierToFillRandom: int; 
     enemyMaxHpFactor: float; 
     enemyAtkFactor: float; 
     enemyDefFactor: float; 
     enemyMagicResistanceFactor: float; 
-    singleReconnectTime: int; 
     specialPhaseStayTime: int; 
     hintTimeSpecialPhase: int; 
     hintTimeNormalPhase: int; 
     hintTimeFightPhase: int; 
-    hintTimeDotPhase: int; 
     invitationSendCd: int; 
     discountColor: string; 
     premiumColor: string; 
@@ -8891,14 +9430,224 @@ table clz_Torappu_AutoChessData_AutoChessConstData {
     chatTime: float; 
     broadcastBeginDelay: float; 
     noMoneyTipsBand: [string]; 
+    noSkillTipsBand: [string]; 
     bossTrailerStartRound: int; 
     singleClosureStayTime: float; 
     matchTimeMax: float; 
     enemyDataLevelId: string; 
+    playerAvatarWinStreakThresholds: [int]; 
+    playerAvatarBossDamageThresholds: [float]; 
+    bossDamageStatsShowDelayTime: float; 
+}
+
+enum enum__Torappu_AutoChessSkinType : int {
+    ACTIVITY = 0,
+    SPECIAL = 1,
+}
+
+enum enum__Torappu_ItemRarity : int {
+    TIER_1 = 0,
+    TIER_2 = 1,
+    TIER_3 = 2,
+    TIER_4 = 3,
+    TIER_5 = 4,
+    TIER_6 = 5,
+    E_NUM = 6,
+}
+
+enum enum__Torappu_AutoChessSkinVoicePackType : int {
+    NONE = 0,
+    SINGLE = 1,
+    MULTI = 2,
+}
+
+table clz_Torappu_AutoChessSkinTimeLimitInfo {
+    limitId: string; 
+    id: string; 
+    availStartTime: long; 
+    availEndTime: long; 
+}
+
+table dict__string__clz_Torappu_AutoChessSkinTimeLimitInfo {
+    key: string(key);
+    value: clz_Torappu_AutoChessSkinTimeLimitInfo;
+}
+
+table clz_Torappu_AutoChessSkinData {
+    id: string; 
+    name: string; 
+    type: enum__Torappu_AutoChessSkinType; 
+    skinTrapId: string; 
+    rarity: enum__Torappu_ItemRarity; 
+    sortId: int; 
+    isTimeLimit: bool; 
+    thumbnailPicId: string; 
+    previewPicId: string; 
+    backgroundPreviewPicId: string; 
+    voicePackType: enum__Torappu_AutoChessSkinVoicePackType; 
+    voiceCv: string; 
+    skinStartTime: long; 
+    skinDesc: string; 
+    usageDesc: string; 
+    skinApproach: string; 
+    timeLimitInfoList: [dict__string__clz_Torappu_AutoChessSkinTimeLimitInfo]; 
+}
+
+table dict__string__clz_Torappu_AutoChessSkinData {
+    key: string(key);
+    value: clz_Torappu_AutoChessSkinData;
+}
+
+table clz_Torappu_AutoChessSkinColorData {
+    autochessSkinId: string; 
+    garrisonIconColor1: string; 
+    garrisonIconColor2: string; 
+    garrisonIconColor3: string; 
+    bondColor: string; 
+    bondIconColor: string; 
+    chessNameColor: string; 
+    saleColor1: string; 
+    saleColor2: string; 
+    destroyColor1: string; 
+    destroyColor2: string; 
+    countdownHintColor: string; 
+    obIconColor: string; 
+    skinDarkColor: string; 
+    skinLightColor: string; 
+}
+
+table dict__string__clz_Torappu_AutoChessSkinColorData {
+    key: string(key);
+    value: clz_Torappu_AutoChessSkinColorData;
+}
+
+enum enum__Torappu_CharWordShowType : int {
+    HOME_SHOW = 0,
+    HOME_PLACE = 1,
+    HOME_WAIT = 2,
+    GACHA = 3,
+    EVOLVE_ONE = 4,
+    EVOLVE_TWO = 5,
+    FOUR_STAR = 6,
+    THREE_STAR = 7,
+    TWO_STAR = 8,
+    LOSE = 9,
+    LEVEL_UP = 10,
+    SQUAD = 11,
+    SQUAD_FIRST = 12,
+    BATTLE_START = 13,
+    BATTLE_FACE_ENEMY = 14,
+    BATTLE_SELECT = 15,
+    BATTLE_PLACE = 16,
+    BATTLE_SKILL_1 = 17,
+    BATTLE_SKILL_2 = 18,
+    BATTLE_SKILL_3 = 19,
+    BATTLE_SKILL_4 = 20,
+    BUILDING_PLACE = 21,
+    BUILDING_DRAGGING = 22,
+    BUILDING_FAVOR_BUBBLE = 23,
+    BUILDING_TOUCHING = 24,
+    LOADING_PANEL = 25,
+    BIRTHDAY = 26,
+    NEW_YEAR = 27,
+    VALENT_DAY = 28,
+    DRAGON_BOAT_FESTIVAL = 29,
+    HALLOWEEN_DAY = 30,
+    CHRISMATS_DAY = 31,
+    GREETING = 32,
+    ANNIVERSARY = 33,
+    UNUSED = 34,
+    AUTOCHESS_GAME_START = 35,
+    AUTOCHESS_REST_NO_HP_LOSS = 36,
+    AUTOCHESS_REST_HP_LOSS = 37,
+    AUTOCHESS_REST_BOSS = 38,
+    AUTOCHESS_REST_HIDDEN_BOSS = 39,
+    AUTOCHESS_SAME_OPERATOR = 40,
+    AUTOCHESS_BUY_OPERATOR_LOW = 41,
+    AUTOCHESS_BUY_OPERATOR_HIGH = 42,
+    AUTOCHESS_SHOP_UPGRADE = 43,
+    AUTOCHESS_COUNTDOWN = 44,
+    AUTOCHESS_MERGE_TRIPLE = 45,
+    AUTOCHESS_ALLIANCE_LEVEL = 46,
+    AUTOCHESS_FREEZE = 47,
+    E_ALL = 48,
+}
+
+table clz_Torappu_AutoChessSkinVoiceTriggerData {
+    trigger: enum__Torappu_CharWordShowType; 
+    probability: float; 
+    cd: int; 
+    priority: int; 
+}
+
+table dict__string__clz_Torappu_AutoChessSkinVoiceTriggerData {
+    key: string(key);
+    value: clz_Torappu_AutoChessSkinVoiceTriggerData;
+}
+
+table clz_Torappu_AutoChessSkinEffectPreviewData {
+    effectId: string; 
+    sortId: int; 
+    title: string; 
+    iconId: string; 
+    desc: string; 
+}
+
+table dict__string__list_clz_Torappu_AutoChessSkinEffectPreviewData {
+    key: string(key);
+    value: [clz_Torappu_AutoChessSkinEffectPreviewData];
+}
+
+table clz_Torappu_AutoChessSkinSoundPreviewData {
+    soundId: string; 
+    sortId: int; 
+    title: string; 
+    voiceUse: string; 
+    voiceId: string; 
+    placeType: enum__Torappu_CharWordShowType; 
+    sfxModule: string; 
+    sfxPlaySignal: string; 
+    sfxSubSignal: string; 
+}
+
+table dict__string__list_clz_Torappu_AutoChessSkinSoundPreviewData {
+    key: string(key);
+    value: [clz_Torappu_AutoChessSkinSoundPreviewData];
+}
+
+table dict__string__list_dict__string__string {
+    key: string(key);
+    value: [dict__string__string];
+}
+
+table clz_Torappu_AutoChessSkinConsts {
+    defaultAutoChessSkinId: string; 
+}
+
+table clz_Torappu_OffseasonConstData {
+    offSeasonBandFrequency: int; 
+}
+
+table clz_Torappu_OffseasonData {
+    offseasonId: string; 
+    versionId: string; 
+    offseasonConstData: clz_Torappu_OffseasonConstData; 
+}
+
+table dict__string__clz_Torappu_OffseasonData {
+    key: string(key);
+    value: clz_Torappu_OffseasonData;
+}
+
+table dict__string__list_dict__string__clz_Torappu_OffseasonData {
+    key: string(key);
+    value: [dict__string__clz_Torappu_OffseasonData];
 }
 
 table clz_Torappu_AutoChessData {
     versionInfoDict: [dict__string__clz_Torappu_AutoChessData_AutoChessVersionInfoData]; 
+    warmupScheduleDict: [dict__string__clz_Torappu_AutoChessData_AutoChessWarmupScheduleData]; 
+    stagePageDisplayDict: [dict__string__clz_Torappu_AutoChessData_AutoChessStagePageDisplayData]; 
     bandDataDict: [dict__string__clz_Torappu_AutoChessData_AutoChessBandData]; 
     cultivateEffectList: [clz_Torappu_AutoChessData_AutoChessCultivateRelationData]; 
     effectTypeDataDict: [dict__string__clz_Torappu_AutoChessData_AutoChessEffectTypeData]; 
@@ -8913,22 +9662,23 @@ table clz_Torappu_AutoChessData {
     randomEnemyAttributeDict: [dict__string__clz_Torappu_AutoChessData_AutoChessRandomEnemyAttributeData]; 
     enabledEmoticonThemeIdList: [string]; 
     gameTipsList: [clz_Torappu_AutoChessData_AutoChessGameTipData]; 
+    prizeShopRelationDict: [dict__string__string]; 
     medalDataList: [clz_Torappu_AutoChessData_AutoChessMedalData]; 
     turnInfoDataDict: [dict__string__list_dict__int__clz_Torappu_AutoChessData_AutoChessTurnInfoData]; 
     roundScoreDataList: [clz_Torappu_AutoChessData_AutoChessRoundScoreData]; 
     reportPlayerDataList: [clz_Torappu_CommonReportPlayerData]; 
     broadcastList: [clz_Torappu_AutoChessData_AutoChessBroadcastData]; 
+    bossDamageStatsStyleList: [clz_Torappu_AutoChessData_AutoChessBossDamageStatsStyleData]; 
     constData: clz_Torappu_AutoChessData_AutoChessConstData; 
-}
-
-enum enum__Torappu_ItemRarity : int {
-    TIER_1 = 0,
-    TIER_2 = 1,
-    TIER_3 = 2,
-    TIER_4 = 3,
-    TIER_5 = 4,
-    TIER_6 = 5,
-    E_NUM = 6,
+    skinDataDict: [dict__string__clz_Torappu_AutoChessSkinData]; 
+    skinColorDataDict: [dict__string__clz_Torappu_AutoChessSkinColorData]; 
+    skinVoiceTriggerDataDict: [dict__string__clz_Torappu_AutoChessSkinVoiceTriggerData]; 
+    skinEffectPreviewDict: [dict__string__list_clz_Torappu_AutoChessSkinEffectPreviewData]; 
+    skinSoundPreviewDict: [dict__string__list_clz_Torappu_AutoChessSkinSoundPreviewData]; 
+    skinVoiceAnimDict: [dict__string__list_dict__string__string]; 
+    skinConsts: clz_Torappu_AutoChessSkinConsts; 
+    offseasonDataDict: [dict__string__list_dict__string__clz_Torappu_OffseasonData]; 
+    permShopId: string; 
 }
 
 table clz_Torappu_ActArkHubItemData {
@@ -8955,11 +9705,6 @@ table dict__string__clz_Torappu_ActArkHubItemData {
 
 table clz_Torappu_ArkhubData {
     itemData: [dict__string__clz_Torappu_ActArkHubItemData]; 
-}
-
-table dict__string__list_dict__string__string {
-    key: string(key);
-    value: [dict__string__string];
 }
 
 table clz_Torappu_ActivityTable_TemplateTrapData {
@@ -9030,6 +9775,7 @@ enum enum__Torappu_TemplateMissionBigRewardType : int {
     CUSTOM = 2,
     PIC_REWARD = 3,
     SKIN_REWARD = 4,
+    POINT_REWARD_LIST = 5,
 }
 
 enum enum__Torappu_TemplateMissionTitleType : int {
@@ -9121,6 +9867,7 @@ table clz_Torappu_ActivityTable {
     siracusaData: clz_Torappu_SiracusaData; 
     fireworkData: clz_Torappu_FireworkData; 
     halfIdleData: clz_Torappu_HalfIdleData; 
+    arkNewsData: clz_Torappu_ArkNewsData; 
     kvSwitchData: [dict__string__clz_Torappu_ActivityKVSwitchData]; 
     dynEntrySwitchData: [dict__string__clz_Torappu_ActivityDynEntrySwitchData]; 
     hiddenStageData: [clz_Torappu_ActivityTable_ActivityHiddenStageData]; 
@@ -9137,6 +9884,7 @@ table clz_Torappu_ActivityTable {
     activityCrossDayTrackTypeDataDict: [dict__string__clz_Torappu_CrossDayTrackTypeData]; 
     activityCrossDayTrackTypeMap: [dict__string__list_string]; 
     activityStoryReadTipsDatas: [dict__string__clz_Torappu_StoryReadTipsData]; 
+    stagesForcePlayActEntryOnFirstRead: [dict__string__list_string]; 
 }
 
 root_type clz_Torappu_ActivityTable;
